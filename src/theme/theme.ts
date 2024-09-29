@@ -16,14 +16,14 @@ const roboto = Roboto({
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FDD835',
-      light: '#FEEB9A',
-      dark: '#CAA502',
+      main: '#FCD838',
+      light: '#F9E639',
+      dark: '#FAC030',
     },
     secondary: {
-      main: '#FFA726',
-      light: '#FDD08C',
-      dark: '#BF7200',
+      main: '#F8A11F',
+      light: '#F9B248',
+      dark: '#F79100',
     },
     info: {
       main: '#42A5F5',
@@ -38,8 +38,8 @@ const theme = createTheme({
       main: '#f44336',
     },
     background: {
-      default: '#242424',
-      paper: '#464646',
+      default: '#292b2e',
+      paper: '#212121',
     },
   },
   typography: {

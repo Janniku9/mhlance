@@ -6,7 +6,7 @@ const Header: React.FC = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: theme.palette.background.default }}>
       <Toolbar>
-        <Typography variant="h6">Your App Name</Typography>
+        <Typography variant="h6">J9MH</Typography>
       </Toolbar>
     </AppBar>
   );
