@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { Fjalla_One, Roboto } from 'next/font/google';
+import { Fjalla_One } from 'next/font/google';
 
 const fjallaOne = Fjalla_One({
   weight: '400',
@@ -7,43 +7,49 @@ const fjallaOne = Fjalla_One({
   display: 'swap',
 });
 
+/*
 const roboto = Roboto({
   weight: ['400', '700'],
   subsets: ['latin'],
   display: 'swap',
 });
+*/
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#FCD838',
       light: '#F9E639',
-      dark: '#FAC030',
+      dark: '#FBCE06',
     },
     secondary: {
       main: '#F8A11F',
       light: '#F9B248',
-      dark: '#F79100',
+      dark: '#DD8707',
     },
     info: {
-      main: '#42A5F5',
+      main: '#38FCD8',
     },
     success: {
-      main: '#4CAF50',
+      main: '#BEFC38',
     },
     warning: {
-      main: '#BA68C8',
+      main: '#D838FC',
     },
     error: {
-      main: '#f44336',
+      main: '#FC7638',
     },
     background: {
-      default: '#292b2e',
-      paper: '#212121',
+      default: '#03050d',
+      paper: '#060a1a',
+    },
+    text: {
+      primary: '#E0E0E0',
+      secondary: '#CCCCCC',
     },
   },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: fjallaOne.style.fontFamily,
     h1: {
       fontFamily: fjallaOne.style.fontFamily,
     },
