@@ -18,15 +18,17 @@ export default function RootLayout({
     setIsNavOpen(!isNavOpen);
   };
 
+  const headerHeight = 100;
+
   return (
     <html lang="en">
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <Header onMenuClick={handleNavToggle} />
+            <Header onMenuClick={handleNavToggle} headerHeight={headerHeight} />
             <Box sx={{ display: 'flex', flexGrow: 1 }}>
-              <Navigation isOpen={isNavOpen} onClose={handleNavToggle} />
+              <Navigation isOpen={isNavOpen} onClose={handleNavToggle} headerHeight={headerHeight} />
               <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <Container>{children}</Container>
               </Box>

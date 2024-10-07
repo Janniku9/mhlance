@@ -8,15 +8,18 @@ import {
   Theme,
   ListItemIcon,
   ListItemButton,
+  IconButton,
+  Stack,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
 
 interface NavigationProps {
+  headerHeight: number;
   isOpen: boolean;
   onClose: () => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ isOpen, onClose }) => {
+const Navigation: React.FC<NavigationProps> = ({ headerHeight, isOpen, onClose }) => {
   const isDesktop = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
 
   const content = (
@@ -58,7 +61,7 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, onClose }) => {
           '& .MuiDrawer-paper': {
             width: 240,
             boxSizing: 'border-box',
-            top: ['48px', '56px', '64px'],
+            top: [`${headerHeight}px`],
             height: 'auto',
             bottom: 0,
           },
@@ -78,6 +81,11 @@ const Navigation: React.FC<NavigationProps> = ({ isOpen, onClose }) => {
         '& .MuiDrawer-paper': { width: 240 },
       }}
     >
+      <Stack direction={'column'} alignItems={'flex-end'}>
+        <IconButton size="large" color="primary" onClick={onClose}>
+          <Icon icon="mdi:close" />
+        </IconButton>
+      </Stack>
       {content}
     </Drawer>
   );
