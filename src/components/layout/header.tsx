@@ -53,9 +53,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, headerHeight }) => {
           paddingRight={'20px'}
           justifyContent={'space-between'}
         >
-          <Stack direction={'row'} alignItems={'center'}>
-            <Box sx={{ height: '100%', position: 'relative', aspectRatio: '150/150' }}>
-              <Image alt="j9mh logo" src="/logo/watermark.png" layout="fill" objectFit="contain" />
+          <Stack direction={'row'} alignItems={'center'} spacing={1}>
+            <Box sx={{ height: '70%', position: 'relative', aspectRatio: '146/52' }}>
+              <Image alt="j9mh logo" src="/logo/full_logo.png" layout="fill" objectFit="contain" />
             </Box>
 
             <Breadcrumbs aria-label="breadcrumb" separator="›">

@@ -18,7 +18,7 @@ export default function RootLayout({
     setIsNavOpen(!isNavOpen);
   };
 
-  const headerHeight = 100;
+  const headerHeight = 60;
 
   return (
     <html lang="en">
