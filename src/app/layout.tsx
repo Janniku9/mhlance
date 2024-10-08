@@ -27,7 +27,7 @@ export default function RootLayout({
           <CssBaseline />
           <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header onMenuClick={handleNavToggle} headerHeight={headerHeight} />
-            <Box sx={{ display: 'flex', flexGrow: 1 }}>
+            <Box sx={{ display: 'flex', flexGrow: 1, mt: `${headerHeight}px` }}>
               <Navigation isOpen={isNavOpen} onClose={handleNavToggle} headerHeight={headerHeight} />
               <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <Container>{children}</Container>

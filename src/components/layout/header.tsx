@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, IconButton, useTheme, Box, Stack } from '@mui/material';
+import { AppBar, Toolbar, IconButton, useTheme, Box, Stack, Breadcrumbs } from '@mui/material';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
+import GameSelect from './game-select';
 
 interface HeaderProps {
   headerHeight: number;
   onMenuClick: () => void;
 }
+
+const games = ['Game 1', 'Game 2', 'Game 3'];
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick, headerHeight }) => {
   const theme = useTheme();
@@ -35,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, headerHeight }) => {
         transition: theme.transitions.create(['height'], {
           duration: theme.transitions.duration.shorter,
         }),
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: theme.palette.background.paper,
         height: headerHeight,
         boxShadow: isScrolled ? `0 0 30px ${theme.palette.text.secondary}` : 'none',
       }}
@@ -50,9 +53,17 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, headerHeight }) => {
           paddingRight={'20px'}
           justifyContent={'space-between'}
         >
-          <Box sx={{ height: '100%', position: 'relative', aspectRatio: '150/150' }}>
-            <Image alt="j9mh logo" src="/logo/watermark.png" layout="fill" objectFit="contain" />
-          </Box>
+          <Stack direction={'row'} alignItems={'center'}>
+            <Box sx={{ height: '100%', position: 'relative', aspectRatio: '150/150' }}>
+              <Image alt="j9mh logo" src="/logo/watermark.png" layout="fill" objectFit="contain" />
+            </Box>
+
+            <Breadcrumbs aria-label="breadcrumb" separator="›">
+              <GameSelect games={games} />
+              {/* You can add more breadcrumb items here if needed */}
+            </Breadcrumbs>
+          </Stack>
+
           <IconButton
             size="large"
             edge="end"

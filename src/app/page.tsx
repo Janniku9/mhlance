@@ -1,7 +1,9 @@
+import { Typography } from '@mui/material';
+
 export default function Home() {
   return (
     <>
-      <h1>welcome to the home page</h1>
+      <Typography>Hey, I'm J9</Typography>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum libero ut pretium interdum. Lorem ipsum
         dolor sit amet, consectetur adipiscing elit. Aenean vel diam eu massa feugiat vehicula eget in purus. Sed
