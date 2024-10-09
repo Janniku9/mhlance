@@ -11,29 +11,36 @@ import {
   IconButton,
   Stack,
   Collapse,
+  Typography,
+  Box,
+  useTheme,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
+
+import Image from 'next/image';
 
 interface NavigationProps {
   headerHeight: number;
   isOpen: boolean;
   onClose: () => void;
+  navbarWidth: number;
 }
 
 interface NavItem {
   title: string;
-  icon: string;
+  emoji: string;
   subItems?: string[];
 }
 
 const navItems: NavItem[] = [
-  { title: 'BUILDS', icon: 'mdi:hammer-wrench', subItems: ['Sub-build 1', 'Sub-build 2'] },
-  { title: 'GUIDES', icon: 'mdi:book-open-variant', subItems: ['Guide 1', 'Guide 2'] },
-  { title: 'TOOLS', icon: 'mdi:tools', subItems: ['Tool 1', 'Tool 2'] },
-  { title: 'DATA', icon: 'mdi:database', subItems: ['Data 1', 'Data 2'] },
+  { title: 'BUILDS', emoji: '🛡️', subItems: ['Sub-build 1', 'Sub-build 2'] },
+  { title: 'GUIDES', emoji: '📚', subItems: ['Guide 1', 'Guide 2'] },
+  { title: 'TOOLS', emoji: '🛠️', subItems: ['Tool 1', 'Tool 2'] },
+  { title: 'DATA', emoji: '💾', subItems: ['Data 1', 'Data 2'] },
 ];
 
-const Navigation: React.FC<NavigationProps> = ({ headerHeight, isOpen, onClose }) => {
+const Navigation: React.FC<NavigationProps> = ({ headerHeight, isOpen, onClose, navbarWidth }) => {
+  const theme = useTheme();
   const isDesktop = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
   const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
 
@@ -42,32 +49,48 @@ const Navigation: React.FC<NavigationProps> = ({ headerHeight, isOpen, onClose }
   };
 
   const content = (
-    <List>
-      {navItems.map((item) => (
-        <React.Fragment key={item.title}>
-          <ListItem disablePadding>
-            <ListItemButton onClick={() => handleToggle(item.title)}>
-              <ListItemIcon>
-                <Icon icon={item.icon} />
-              </ListItemIcon>
-              <ListItemText primary={item.title} />
-              {item.subItems && <Icon icon={openItems[item.title] ? 'mdi:chevron-up' : 'mdi:chevron-down'} />}
-            </ListItemButton>
-          </ListItem>
-          {item.subItems && (
-            <Collapse in={openItems[item.title]} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                {item.subItems.map((subItem) => (
-                  <ListItemButton key={subItem} sx={{ pl: 4 }}>
-                    <ListItemText primary={subItem} />
-                  </ListItemButton>
-                ))}
-              </List>
-            </Collapse>
-          )}
-        </React.Fragment>
-      ))}
-    </List>
+    <>
+      {isDesktop && (
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+          sx={{ height: headerHeight, borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
+        >
+          <Box sx={{ height: '70%', position: 'relative', aspectRatio: '146/52' }}>
+            <Image alt="j9mh logo" src="/logo/full_logo.png" layout="fill" objectFit="contain" />
+          </Box>
+        </Stack>
+      )}
+      <List>
+        {navItems.map((item) => (
+          <React.Fragment key={item.title}>
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => handleToggle(item.title)}>
+                <ListItemIcon>
+                  <Typography fontSize="1.5rem" sx={{ color: theme.palette.text.primary }}>
+                    {item.emoji}
+                  </Typography>
+                </ListItemIcon>
+                <ListItemText primary={item.title} />
+                {item.subItems && <Icon icon={openItems[item.title] ? 'mdi:chevron-up' : 'mdi:chevron-down'} />}
+              </ListItemButton>
+            </ListItem>
+            {item.subItems && (
+              <Collapse in={openItems[item.title]} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {item.subItems.map((subItem) => (
+                    <ListItemButton key={subItem} sx={{ pl: 4 }}>
+                      <ListItemText primary={subItem} />
+                    </ListItemButton>
+                  ))}
+                </List>
+              </Collapse>
+            )}
+          </React.Fragment>
+        ))}
+      </List>
+    </>
   );
 
   if (isDesktop) {
@@ -75,14 +98,13 @@ const Navigation: React.FC<NavigationProps> = ({ headerHeight, isOpen, onClose }
       <Drawer
         variant="permanent"
         sx={{
-          width: 240,
+          width: navbarWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: 240,
+            width: navbarWidth,
             boxSizing: 'border-box',
-            top: [`${headerHeight}px`],
-            height: 'auto',
-            bottom: 0,
+            top: 0,
+            height: '100%',
           },
         }}
       >
@@ -97,15 +119,15 @@ const Navigation: React.FC<NavigationProps> = ({ headerHeight, isOpen, onClose }
       open={isOpen}
       onClose={onClose}
       sx={{
-        '& .MuiDrawer-paper': { width: 240 },
+        '& .MuiDrawer-paper': { width: navbarWidth },
       }}
     >
       <Stack
-        direction={'row'}
-        alignItems={'center'}
+        direction="row"
+        alignItems="center"
         height={headerHeight}
-        justifyContent={'flex-end'}
-        paddingRight={'25px'}
+        justifyContent="flex-end"
+        paddingRight="25px"
         spacing={1}
       >
         <IconButton size="large" color="primary" onClick={onClose}>
