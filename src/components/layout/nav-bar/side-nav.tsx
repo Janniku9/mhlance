@@ -12,12 +12,10 @@ import {
   Stack,
   Collapse,
   Typography,
-  Box,
   useTheme,
 } from '@mui/material';
 import { Icon } from '@iconify/react';
-
-import Image from 'next/image';
+import Logo from '../logo';
 
 interface NavigationProps {
   headerHeight: number;
@@ -57,12 +55,12 @@ const Navigation: React.FC<NavigationProps> = ({ headerHeight, isOpen, onClose, 
           justifyContent="center"
           sx={{ height: headerHeight, borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
         >
-          <Box sx={{ height: '70%', position: 'relative', aspectRatio: '146/52' }}>
-            <Image alt="j9mh logo" src="/logo/full_logo.png" layout="fill" objectFit="contain" />
-          </Box>
+          <Logo />
         </Stack>
       )}
-      <List>
+      <List sx={{ pt: isDesktop ? 3 : 0 }}>
+        {' '}
+        {/* Added padding top when in desktop mode */}
         {navItems.map((item) => (
           <React.Fragment key={item.title}>
             <ListItem disablePadding>

@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
+import { Game } from '@/data/games';
 
 interface GameSelectProps {
-  games: string[];
+  games: Game[];
 }
 
 const GameSelect: React.FC<GameSelectProps> = ({ games }) => {
@@ -38,11 +39,11 @@ const GameSelect: React.FC<GameSelectProps> = ({ games }) => {
   return (
     <Select value={selectedGame} onChange={handleGameChange} displayEmpty sx={{ minWidth: 120 }}>
       <MenuItem value="">
-        <em>Select a game</em>
+        <em>SELECT A GAME</em>
       </MenuItem>
       {games.map((game) => (
-        <MenuItem key={game} value={game}>
-          {game}
+        <MenuItem key={game.id} value={game.id}>
+          {game.displayName.toUpperCase()}
         </MenuItem>
       ))}
     </Select>

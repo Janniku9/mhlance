@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import './globals.css';
 import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
 import theme from '../theme/theme';
-import Header from '@/components/layout/header';
-import Navigation from '@/components/layout/side-nav';
+import Header from '@/components/layout/header/header';
+import Navigation from '@/components/layout/nav-bar/side-nav';
 
 export default function RootLayout({
   children,

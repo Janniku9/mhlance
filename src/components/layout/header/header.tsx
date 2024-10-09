@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, IconButton, useTheme, Box, Stack, Breadcrumbs, useMediaQuery } from '@mui/material';
+import { AppBar, Toolbar, IconButton, useTheme, Stack, Breadcrumbs, useMediaQuery } from '@mui/material';
 import { Icon } from '@iconify/react';
-import Image from 'next/image';
 import GameSelect from './game-select';
+import Logo from '../logo';
+import { games } from '@/data/games';
 
 interface HeaderProps {
   headerHeight: number;
   onMenuClick: () => void;
   navbarWidth: number;
 }
-
-const games = ['Game 1', 'Game 2', 'Game 3'];
 
 const Header: React.FC<HeaderProps> = ({ onMenuClick, headerHeight, navbarWidth }) => {
   const theme = useTheme();
@@ -52,11 +51,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick, headerHeight, navbarWidth 
           justifyContent="space-between"
         >
           <Stack direction={'row'} alignContent={'center'} justifyContent={'center'} spacing={2}>
-            {!isDesktop && (
-              <Box sx={{ height: '70%', position: 'relative', aspectRatio: '146/52' }}>
-                <Image alt="j9mh logo" src="/logo/full_logo.png" layout="fill" objectFit="contain" />
-              </Box>
-            )}
+            {!isDesktop && <Logo />}
 
             <Stack direction="row" alignItems="center" spacing={1}>
               <Breadcrumbs aria-label="breadcrumb" separator="›">
