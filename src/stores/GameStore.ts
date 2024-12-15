@@ -1,5 +1,4 @@
-// src/stores/gameStore.js
 import { atom } from 'nanostores';
-import type { GameType } from '../types/GameType';
+import type { GameType } from '../types/Game';
 
-export const currentGame = atom<GameType>(null);
+export const currentGameId = atom<GameType>(null);

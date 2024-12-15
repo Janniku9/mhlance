@@ -1,10 +1,11 @@
 ---
-import { currentGame } from '../stores/GameStore';
-import type { GameType } from '../types/GameType';
+import { currentGameId } from '../stores/GameStore';
+import type { GameType } from '../types/Game';
+import Header from '../components/core/Header.astro';
 
 const { game } = Astro.params;
 if (game) {
-  currentGame.set(game as GameType);
+  currentGameId.set(game as GameType);
 }
 ---
 
@@ -19,6 +20,7 @@ if (game) {
     <title>J9MH</title>
   </head>
   <body class="min-h-full font-mono m-0 bg-background text-text">
+    <Header />
     <slot />
   </body>
 </html>

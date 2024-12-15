@@ -1,0 +1,69 @@
+---
+import { Games } from '../../data/games';
+import type { GameType } from '../../types/Game';
+import { getGameFromPath } from '../../utils/game';
+
+const currentPath = Astro.url.pathname;
+const selectedGame = getGameFromPath(currentPath);
+---
+
+<header class="bg-slate-800 text-white shadow-lg">
+  <div class="container mx-auto px-4 py-3">
+    <div class="flex items-center justify-between">
+      <a href="/" class="text-xl font-bold">MH Lance Guide</a>
+
+      <select
+        id="gameSelect"
+        class="bg-slate-700 text-white px-4 py-2 rounded-lg border border-slate-600"
+      >
+        <option value="">Select Game</option>
+        {Games.map((game) => (
+          <option value={game.id} selected={selectedGame?.id === game.id}>
+            {game.name}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    <nav class="flex items-center gap-4 text-sm mt-2 text-slate-300">
+      <a href="/" class="hover:text-white">Home</a>
+      {selectedGame && (
+        <>
+          <span>/</span>
+          <a href={`/${selectedGame.id}`} class="hover:text-white">{selectedGame.name}</a>
+          <span>/</span>
+          <a href={`/${selectedGame.id}/builds`} class="hover:text-white">Builds</a>
+          <!-- Add more navigation items as needed -->
+        </>
+      )}
+    </nav>
+  </div>
+</header>
+
+<script>
+  import { currentGameId } from '../../stores/GameStore';
+  import type { GameType } from '../../types/Game';
+
+  const select = document.getElementById('gameSelect') as HTMLSelectElement;
+
+  // Set initial game state
+  const pathParts = window.location.pathname.split('/');
+  const gameId = pathParts[1] as GameType;
+  if (gameId) {
+    currentGameId.set(gameId);
+    // Ensure select value is set
+    select.value = gameId;
+  }
+
+  // Handle game selection
+  
+  select?.addEventListener('change', (e) => {
+    const gameId = (e.target as HTMLSelectElement)?.value as GameType;
+    currentGameId.set(gameId);
+    if (gameId) {
+      window.location.href = `/${gameId}`;
+    } else {
+      window.location.href = '/';
+    }
+  });
+</script>
