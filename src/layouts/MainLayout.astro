@@ -1,5 +1,11 @@
 ---
+import { currentGame } from '../stores/GameStore';
+import type { GameType } from '../types/GameType';
 
+const { game } = Astro.params;
+if (game) {
+  currentGame.set(game as GameType);
+}
 ---
 
 <!doctype html>
@@ -12,7 +18,7 @@
     <meta name="generator" content={Astro.generator} />
     <title>J9MH</title>
   </head>
-  <body class="min-h-full font-mono m-0 bg-background text-primary">
+  <body class="min-h-full font-mono m-0 bg-background text-text">
     <slot />
   </body>
 </html>

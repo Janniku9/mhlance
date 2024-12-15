@@ -11,7 +11,8 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "astro": "^5.0.5"
+    "astro": "^5.0.5",
+    "nanostores": "^0.11.3"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^5.1.3",
