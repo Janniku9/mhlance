@@ -1,6 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import { Games } from '../../data/games';
 import { getGameFromPath } from '../../utils/game';
+
+import logoSmall from '../../assets/logo_small.png';
+import logoLarge from '../../assets/logo_large.png';
 
 const currentPath = Astro.url.pathname;
 const selectedGame = getGameFromPath(currentPath);
@@ -8,18 +12,30 @@ const selectedGame = getGameFromPath(currentPath);
 const { height } = Astro.props;
 ---
 
-<header class=`shadow-lg bg-background-darker ${height}`>
+<header
+  class={`shadow-lg bg-background-darker transition-all duration-300 ${height}`}
+  id="main-header"
+>
   <div class="flex items-center justify-between h-full p-2 px-2">
-    <a href="/" class="text-2xl font-bold">J9MH</a>
+    <a href="/" class="flex items-center space-x-2">
+      {/* Mobile logo */}
+      <Image src={logoSmall} alt="J9MH" width={30} height={30} class="md:hidden" />
+      {/* Desktop logo */}
+      <Image src={logoLarge} alt="J9MH" width={120} height={30} class="hidden md:block" />
+    </a>
 
     <select
       id="gameSelect"
-      class="rounded-lg border border-text bg-background text-primary-lighter h-full"
+      class="rounded-lg border border-text-secondary bg-background text-text h-full"
     >
       <option value="">select game</option>
       {
         Games.map((game) => (
-          <option value={game.id} selected={selectedGame?.id === game.id}>
+          <option
+            value={game.id}
+            selected={selectedGame?.id === game.id}
+            class="text-text-secondary"
+          >
             {game.name}
           </option>
         ))
@@ -33,6 +49,7 @@ const { height } = Astro.props;
   import type { GameType } from '../../types/Game';
 
   const select = document.getElementById('gameSelect') as HTMLSelectElement;
+  const header = document.getElementById('main-header') as HTMLElement;
 
   // Set initial game state
   const pathParts = window.location.pathname.split('/');
@@ -43,8 +60,20 @@ const { height } = Astro.props;
     select.value = gameId;
   }
 
-  // Handle game selection
+  // Handle scroll events
+  let lastScrollPosition = window.scrollY;
 
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 0) {
+      header.classList.add('shadow-[0_0_25px_rgba(255,255,255,0.7)]');
+    } else {
+      header.classList.remove('shadow-[0_0_25px_rgba(255,255,255,0.7)]');
+    }
+    lastScrollPosition = currentScroll;
+  });
+
+  // Handle game selection
   select?.addEventListener('change', (e) => {
     const gameId = (e.target as HTMLSelectElement)?.value as GameType;
     currentGameId.set(gameId);

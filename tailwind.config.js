@@ -56,8 +56,7 @@ export default {
         },
         text: {
           DEFAULT: '#f0f0f0',
-          light: '#f0f0f0',
-          dark: '#0f0f0f',
+          secondary: '#90A4AE',
         },
         background: {
           DEFAULT: '#1e181c',
