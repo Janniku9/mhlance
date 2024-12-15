@@ -44,6 +44,13 @@ const { height } = Astro.props;
   </div>
 </header>
 
+<style>
+  /* Add this either in your global CSS or in this component */
+  .header-glow {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+  }
+</style>
+
 <script>
   import { currentGameId } from '../../stores/GameStore';
   import type { GameType } from '../../types/Game';
@@ -66,9 +73,9 @@ const { height } = Astro.props;
   window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
     if (currentScroll > 0) {
-      header.classList.add('shadow-[0_0_25px_rgba(255,255,255,0.7)]');
+      header.classList.add('header-glow');
     } else {
-      header.classList.remove('shadow-[0_0_25px_rgba(255,255,255,0.7)]');
+      header.classList.remove('header-glow');
     }
     lastScrollPosition = currentScroll;
   });
