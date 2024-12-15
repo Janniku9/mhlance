@@ -19,8 +19,12 @@ if (game) {
     <meta name="generator" content={Astro.generator} />
     <title>J9MH</title>
   </head>
-  <body class="min-h-full font-mono m-0 bg-background text-text">
-    <Header />
-    <slot />
+  <body class="min-h-full font-mono m-0 bg-background text-text flex flex-col">
+    <div class="fixed top-0 left-0 right-0 z-50 bg-background">
+      <Header />
+    </div>
+    <main class="flex-1 container mx-auto pt-[144px] flex flex-col">
+      <slot />
+    </main>
   </body>
 </html>

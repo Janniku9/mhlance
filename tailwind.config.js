@@ -60,9 +60,9 @@ export default {
           dark: '#0f0f0f',
         },
         background: {
-          tag: '#3a2f36',
           DEFAULT: '#1e181c',
-          paper: '#020102',
+          dark: '##191418',
+          darker: '#141014',
         },
       },
       fontFamily: {

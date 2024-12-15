@@ -1,42 +1,30 @@
 ---
 import { Games } from '../../data/games';
-import type { GameType } from '../../types/Game';
 import { getGameFromPath } from '../../utils/game';
 
 const currentPath = Astro.url.pathname;
 const selectedGame = getGameFromPath(currentPath);
 ---
 
-<header class="bg-slate-800 text-white shadow-lg">
-  <div class="container mx-auto px-4 py-3">
+<header class="shadow-lg bg-background-darker">
+  <div class="container">
     <div class="flex items-center justify-between">
-      <a href="/" class="text-xl font-bold">MH Lance Guide</a>
+      <a href="/" class="text-2xl font-bold">J9MH</a>
 
       <select
         id="gameSelect"
-        class="bg-slate-700 text-white px-4 py-2 rounded-lg border border-slate-600"
+        class="rounded-lg border border-text bg-background text-primary-lighter"
       >
-        <option value="">Select Game</option>
-        {Games.map((game) => (
-          <option value={game.id} selected={selectedGame?.id === game.id}>
-            {game.name}
-          </option>
-        ))}
+        <option value="">select game</option>
+        {
+          Games.map((game) => (
+            <option value={game.id} selected={selectedGame?.id === game.id}>
+              {game.name}
+            </option>
+          ))
+        }
       </select>
     </div>
-
-    <nav class="flex items-center gap-4 text-sm mt-2 text-slate-300">
-      <a href="/" class="hover:text-white">Home</a>
-      {selectedGame && (
-        <>
-          <span>/</span>
-          <a href={`/${selectedGame.id}`} class="hover:text-white">{selectedGame.name}</a>
-          <span>/</span>
-          <a href={`/${selectedGame.id}/builds`} class="hover:text-white">Builds</a>
-          <!-- Add more navigation items as needed -->
-        </>
-      )}
-    </nav>
   </div>
 </header>
 
@@ -56,7 +44,7 @@ const selectedGame = getGameFromPath(currentPath);
   }
 
   // Handle game selection
-  
+
   select?.addEventListener('change', (e) => {
     const gameId = (e.target as HTMLSelectElement)?.value as GameType;
     currentGameId.set(gameId);
