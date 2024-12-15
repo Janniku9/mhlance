@@ -4,27 +4,27 @@ import { getGameFromPath } from '../../utils/game';
 
 const currentPath = Astro.url.pathname;
 const selectedGame = getGameFromPath(currentPath);
+
+const { height } = Astro.props;
 ---
 
-<header class="shadow-lg bg-background-darker">
-  <div class="container">
-    <div class="flex items-center justify-between">
-      <a href="/" class="text-2xl font-bold">J9MH</a>
+<header class=`shadow-lg bg-background-darker ${height}`>
+  <div class="flex items-center justify-between h-full p-2 px-2">
+    <a href="/" class="text-2xl font-bold">J9MH</a>
 
-      <select
-        id="gameSelect"
-        class="rounded-lg border border-text bg-background text-primary-lighter"
-      >
-        <option value="">select game</option>
-        {
-          Games.map((game) => (
-            <option value={game.id} selected={selectedGame?.id === game.id}>
-              {game.name}
-            </option>
-          ))
-        }
-      </select>
-    </div>
+    <select
+      id="gameSelect"
+      class="rounded-lg border border-text bg-background text-primary-lighter h-full"
+    >
+      <option value="">select game</option>
+      {
+        Games.map((game) => (
+          <option value={game.id} selected={selectedGame?.id === game.id}>
+            {game.name}
+          </option>
+        ))
+      }
+    </select>
   </div>
 </header>
 

@@ -7,6 +7,8 @@ const { game } = Astro.params;
 if (game) {
   currentGameId.set(game as GameType);
 }
+
+const HeaderHeight = 'h-14';
 ---
 
 <!doctype html>
@@ -21,9 +23,10 @@ if (game) {
   </head>
   <body class="min-h-full font-mono m-0 bg-background text-text flex flex-col">
     <div class="fixed top-0 left-0 right-0 z-50 bg-background">
-      <Header />
+      <Header height={HeaderHeight} />
     </div>
-    <main class="flex-1 container mx-auto pt-[144px] flex flex-col">
+    <div class=`${HeaderHeight} mb-4`></div>
+    <main class="container mx-auto">
       <slot />
     </main>
   </body>
