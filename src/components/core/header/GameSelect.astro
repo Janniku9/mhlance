@@ -1,0 +1,51 @@
+---
+import { Games } from '../../../data/games';
+import { getGameFromPath } from '../../../utils/game';
+
+const currentPath = Astro.url.pathname;
+const selectedGame = getGameFromPath(currentPath);
+
+const { class: className } = Astro.props;
+
+const FontStyle = 'text-text text-xl';
+---
+
+<select
+  id="gameSelect"
+  class=`rounded-lg border border-0 bg-background-darker text-text h-full ${className} ${FontStyle}`
+>
+  <option value="" class={FontStyle}>SELECT GAME</option>
+  {
+    Games.map((game) => (
+      <option value={game.id} selected={selectedGame?.id === game.id} class={FontStyle}>
+        <p class={FontStyle}>{game.name.toUpperCase()}</p>
+      </option>
+    ))
+  }
+</select>
+
+<script>
+  import { currentGameId } from '../../../stores/GameStore';
+  import type { GameType } from '../../../types/Game';
+
+  const select = document.getElementById('gameSelect') as HTMLSelectElement;
+
+  const pathParts = window.location.pathname.split('/');
+  const gameId = pathParts[1] as GameType;
+  if (gameId) {
+    currentGameId.set(gameId);
+    // Ensure select value is set
+    select.value = gameId;
+  }
+
+  // Handle game selection
+  select?.addEventListener('change', (e) => {
+    const gameId = (e.target as HTMLSelectElement)?.value as GameType;
+    currentGameId.set(gameId);
+    if (gameId) {
+      window.location.href = `/${gameId}`;
+    } else {
+      window.location.href = '/';
+    }
+  });
+</script>

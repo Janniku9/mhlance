@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import GameSelect from './GameSelect.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+
+import logoSmall from '../../../assets/logo_small.png';
+import logoLarge from '../../../assets/logo_large.png';
+
+const IsDesktop = 'hidden md:block';
+const IsMobile = 'md:hidden';
+
+const { height } = Astro.props;
+---
+
+<header
+  class={`shadow-lg bg-background-darker transition-all duration-300 ${height}`}
+  id="main-header"
+>
+  <div class="flex items-center h-full p-2 px-2">
+    <a href="/" class="flex items-center space-x-2 mr-8">
+      {/* Mobile logo */}
+      <Image src={logoSmall} alt="J9MH" width={30} height={30} class="md:hidden" />
+      {/* Desktop logo */}
+      <Image src={logoLarge} alt="J9MH" width={120} height={30} class="hidden md:block" />
+    </a>
+
+    <GameSelect class=`${IsDesktop}` />
+    <Breadcrumbs class=`${IsDesktop}` />
+
+    <div class="flex-1"></div>
+    <GameSelect class=`${IsMobile}` />
+  </div>
+</header>
+
+<style>
+  /* Add this either in your global CSS or in this component */
+  .header-glow {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('main-header') as HTMLElement;
+
+  // Handle scroll events
+  let lastScrollPosition = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 0) {
+      header.classList.add('header-glow');
+    } else {
+      header.classList.remove('header-glow');
+    }
+    lastScrollPosition = currentScroll;
+  });
+</script>
