@@ -21,7 +21,7 @@ const FontStyle = 'text-text text-xl';
     {
       pathSegments.map((segment, index) => (
         <li class="flex items-center space-x-2">
-          <Icon name="mingcute:arrows-right-fill" size={24} />
+          <Icon name="mingcute:arrows-right-fill" size={24} class="text-primary" />
           <a href={segment.href} class:list={['transition-colors duration-200 hover:text-primary']}>
             {segment.name.toUpperCase()}
           </a>

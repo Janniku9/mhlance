@@ -7,18 +7,17 @@ const selectedGame = getGameFromPath(currentPath);
 
 const { class: className } = Astro.props;
 
-const FontStyle = 'text-text text-xl';
-const SelectFontStyle = 'text-text-secondary text-xs';
+const STYLES = {
+  select: 'rounded-lg border-0 bg-background-darker text-text h-full text-xl',
+  option: 'text-text-secondary text-xs',
+} as const;
 ---
 
-<select
-  id="gameSelect"
-  class=`rounded-lg border-0 bg-background-darker text-text h-full ${className} ${FontStyle}`
->
-  <option value="" class={SelectFontStyle}>SELECT GAME</option>
+<select class:list={[STYLES.select, className]} aria-label="Select game" data-game-select>
+  <option value="" class={STYLES.option}>SELECT GAME</option>
   {
     Games.map((game) => (
-      <option value={game.id} selected={selectedGame?.id === game.id} class={SelectFontStyle}>
+      <option value={game.id} selected={selectedGame?.id === game.id} class={STYLES.option}>
         {game.name.toUpperCase()}
       </option>
     ))
@@ -29,24 +28,28 @@ const SelectFontStyle = 'text-text-secondary text-xs';
   import { currentGameId } from '../../../stores/GameStore';
   import type { GameType } from '../../../types/Game';
 
-  const select = document.getElementById('gameSelect') as HTMLSelectElement;
+  const selects = document.querySelectorAll('[data-game-select]');
 
   const pathParts = window.location.pathname.split('/');
   const gameId = pathParts[1] as GameType;
   if (gameId) {
     currentGameId.set(gameId);
     // Ensure select value is set
-    select.value = gameId;
+    selects.forEach((select) => {
+      (select as HTMLSelectElement).value = gameId;
+    });
   }
 
   // Handle game selection
-  select?.addEventListener('change', (e) => {
-    const gameId = (e.target as HTMLSelectElement)?.value as GameType;
-    currentGameId.set(gameId);
-    if (gameId) {
-      window.location.href = `/${gameId}`;
-    } else {
-      window.location.href = '/';
-    }
+  selects.forEach((select) => {
+    select?.addEventListener('change', (e) => {
+      const gameId = (e.target as HTMLSelectElement)?.value as GameType;
+      currentGameId.set(gameId);
+      if (gameId) {
+        window.location.href = `/${gameId}`;
+      } else {
+        window.location.href = '/';
+      }
+    });
   });
 </script>

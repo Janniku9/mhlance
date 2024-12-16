@@ -6,51 +6,111 @@ import Breadcrumbs from './Breadcrumbs.astro';
 import logoSmall from '../../../assets/logo_small.png';
 import logoLarge from '../../../assets/logo_large.png';
 
-const IsDesktop = 'hidden md:block';
-const IsMobile = 'md:hidden';
+interface Props {
+  height: string;
+}
 
 const { height } = Astro.props;
+
+const BREAKPOINTS = {
+  desktop: 'hidden md:block',
+  mobile: 'md:hidden',
+} as const;
+
+const LOGO_DIMENSIONS = {
+  small: { width: 30, height: 30 },
+  large: { width: 120, height: 30 },
+} as const;
 ---
 
 <header
-  class={`shadow-lg bg-background-darker transition-all duration-300 ${height}`}
+  class:list={['shadow-lg', 'bg-background-darker', 'transition-all', 'duration-300', height]}
   id="main-header"
 >
-  <div class="flex items-center h-full p-2 px-2">
-    <a href="/" class="flex items-center space-x-2 mr-8">
-      {/* Mobile logo */}
-      <Image src={logoSmall} alt="J9MH" width={30} height={30} class="md:hidden" />
-      {/* Desktop logo */}
-      <Image src={logoLarge} alt="J9MH" width={120} height={30} class="hidden md:block" />
+  <div class="flex items-center h-full p-2">
+    {/* Brand logo and link */}
+    <a href="/" class="flex items-center space-x-2 mr-8" aria-label="Home">
+      {/* Mobile logo - only shows below md breakpoint */}
+      <Image
+        src={logoSmall}
+        alt="J9MH Logo"
+        width={LOGO_DIMENSIONS.small.width}
+        height={LOGO_DIMENSIONS.small.height}
+        class={BREAKPOINTS.mobile}
+        loading="eager"
+      />
+      {/* Desktop logo - only shows above md breakpoint */}
+      <Image
+        src={logoLarge}
+        alt="J9MH Logo"
+        width={LOGO_DIMENSIONS.large.width}
+        height={LOGO_DIMENSIONS.large.height}
+        class={BREAKPOINTS.desktop}
+        loading="eager"
+      />
     </a>
 
-    <GameSelect class=`${IsDesktop}` />
-    <Breadcrumbs class=`${IsDesktop}` />
+    {/* Desktop navigation elements */}
+    <GameSelect class={BREAKPOINTS.desktop} />
+    <Breadcrumbs class={BREAKPOINTS.desktop} />
 
+    {/* Spacer */}
     <div class="flex-1"></div>
-    <GameSelect class=`${IsMobile}` />
+
+    {/* Mobile navigation */}
+    <GameSelect class={BREAKPOINTS.mobile} />
   </div>
 </header>
 
 <style>
-  /* Add this either in your global CSS or in this component */
+  /* Header glow effect on scroll */
   .header-glow {
+    /* Using rgba for better browser support */
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+  }
+
+  /* Optimize transitions */
+  @media (prefers-reduced-motion: reduce) {
+    header {
+      transition: none;
+    }
   }
 </style>
 
 <script>
-  const header = document.getElementById('main-header') as HTMLElement;
+  // Initialize header scroll behavior
+  const initHeaderScroll = () => {
+    const header = document.getElementById('main-header');
+    if (!header) return;
 
-  // Handle scroll events
-  let lastScrollPosition = window.scrollY;
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    if (currentScroll > 0) {
-      header.classList.add('header-glow');
-    } else {
-      header.classList.remove('header-glow');
-    }
-    lastScrollPosition = currentScroll;
-  });
+    let lastScrollPosition = window.scrollY;
+    let ticking = false;
+
+    // Use requestAnimationFrame for smooth performance
+    const updateHeader = () => {
+      const currentScroll = window.scrollY;
+
+      header.classList.toggle('header-glow', currentScroll > 0);
+
+      lastScrollPosition = currentScroll;
+      ticking = false;
+    };
+
+    // Optimize scroll listener with throttling
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateHeader();
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  };
+
+  // Initialize on component mount
+  initHeaderScroll();
 </script>
