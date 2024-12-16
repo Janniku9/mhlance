@@ -8,17 +8,18 @@ const selectedGame = getGameFromPath(currentPath);
 const { class: className } = Astro.props;
 
 const FontStyle = 'text-text text-xl';
+const SelectFontStyle = 'text-text-secondary text-xs';
 ---
 
 <select
   id="gameSelect"
-  class=`rounded-lg border border-0 bg-background-darker text-text h-full ${className} ${FontStyle}`
+  class=`rounded-lg border-0 bg-background-darker text-text h-full ${className} ${FontStyle}`
 >
-  <option value="" class={FontStyle}>SELECT GAME</option>
+  <option value="" class={SelectFontStyle}>SELECT GAME</option>
   {
     Games.map((game) => (
-      <option value={game.id} selected={selectedGame?.id === game.id} class={FontStyle}>
-        <p class={FontStyle}>{game.name.toUpperCase()}</p>
+      <option value={game.id} selected={selectedGame?.id === game.id} class={SelectFontStyle}>
+        {game.name.toUpperCase()}
       </option>
     ))
   }
