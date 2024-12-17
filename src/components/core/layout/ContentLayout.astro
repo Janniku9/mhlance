@@ -1,0 +1,21 @@
+---
+import DesktopNavContainer from '../nav/DesktopNavContainer.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['flex min-h-0 w-full', className]}>
+  <!-- Desktop Side Navigation -->
+  <DesktopNavContainer />
+
+  <!-- Main Content Area -->
+  <div class="flex-1 md:ml-64">
+    <div class="max-w-[1600px] mx-auto">
+      <slot />
+    </div>
+  </div>
+</div>
