@@ -1,7 +1,10 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
 import GameSelect from './GameSelect.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
+import MobileDrawer from '../nav/MobileDrawer.astro';
 
 import logoSmall from '../../../assets/logo_small.png';
 import logoLarge from '../../../assets/logo_large.png';
@@ -50,16 +53,32 @@ const LOGO_DIMENSIONS = {
       />
     </a>
 
-    {/* Desktop navigation elements */}
-    <GameSelect class={BREAKPOINTS.desktop} />
+    {/* Choose current game */}
+    <GameSelect />
+
+    {/* Breadcrumbs, only on desktop */}
     <Breadcrumbs class={BREAKPOINTS.desktop} />
 
     {/* Spacer */}
     <div class="flex-1"></div>
 
-    {/* Mobile navigation */}
-    <GameSelect class={BREAKPOINTS.mobile} />
+    {/* Mobile menu button */}
+    <button
+      id="open-drawer"
+      class:list={[BREAKPOINTS.mobile, 'p-2 text-white hover:text-gray-300']}
+      aria-label="Open navigation menu"
+    >
+      <Icon name="mingcute:menu-fill" size={24} />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16m-7 6h7"></path>
+    </button>
   </div>
+
+  {/* Mobile drawer */}
+  <MobileDrawer />
 </header>
 
 <style>
