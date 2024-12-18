@@ -13,7 +13,12 @@ const STYLES = {
 } as const;
 ---
 
-<select class:list={[STYLES.select, className]} aria-label="Select game" data-game-select>
+<select
+  class:list={[STYLES.select, className]}
+  aria-label="Select game"
+  data-game-select
+  transition:persist
+>
   <option value="" class={STYLES.option}>SELECT GAME</option>
   {
     Games.map((game) => (
