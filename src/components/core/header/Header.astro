@@ -1,39 +1,27 @@
 ---
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-
+import type { HeaderProps } from '../../../types/Header';
 import GameSelect from './GameSelect.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import MobileDrawer from '../nav/MobileDrawer.astro';
+import { BREAKPOINTS, LOGO_DIMENSIONS } from '../../../types/Header';
 
+// Import images with explicit types
 import logoSmall from '../../../assets/logo_small.png';
 import logoLarge from '../../../assets/logo_large.png';
 
-interface Props {
-  height: string;
-}
-
 const { height } = Astro.props;
-
-const BREAKPOINTS = {
-  desktop: 'hidden md:block',
-  mobile: 'md:hidden',
-} as const;
-
-const LOGO_DIMENSIONS = {
-  small: { width: 30, height: 30 },
-  large: { width: 120, height: 30 },
-} as const;
 ---
 
 <header
   class:list={['shadow-lg', 'bg-background-darker', 'transition-all', 'duration-300', height]}
   id="main-header"
+  transition:persist
 >
   <div class="flex items-center h-full p-2">
-    {/* Brand logo and link */}
+    {/* Brand section */}
     <a href="/" class="flex items-center space-x-2 mr-8" aria-label="Home">
-      {/* Mobile logo - only shows below md breakpoint */}
       <Image
         src={logoSmall}
         alt="J9MH Logo"
@@ -42,7 +30,6 @@ const LOGO_DIMENSIONS = {
         class={BREAKPOINTS.mobile}
         loading="eager"
       />
-      {/* Desktop logo - only shows above md breakpoint */}
       <Image
         src={logoLarge}
         alt="J9MH Logo"
@@ -53,42 +40,39 @@ const LOGO_DIMENSIONS = {
       />
     </a>
 
-    {/* Choose current game */}
-    <GameSelect />
-
-    {/* Breadcrumbs, only on desktop */}
-    <Breadcrumbs class={BREAKPOINTS.desktop} />
-
-    {/* Spacer */}
-    <div class="flex-1"></div>
+    {/* Navigation section */}
+    <div class="flex items-center flex-1">
+      <GameSelect />
+      <Breadcrumbs class={BREAKPOINTS.desktop} />
+    </div>
 
     {/* Mobile menu button */}
     <button
       id="open-drawer"
-      class:list={[BREAKPOINTS.mobile, 'p-2 text-white hover:text-gray-300']}
+      class:list={[
+        BREAKPOINTS.mobile,
+        'p-2',
+        'text-text',
+        'hover:text-text-secondary',
+        'transition-colors',
+      ]}
       aria-label="Open navigation menu"
     >
       <Icon name="mingcute:menu-fill" size={24} />
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M4 6h16M4 12h16m-7 6h7"></path>
     </button>
   </div>
 
-  {/* Mobile drawer */}
+  {/* Mobile navigation drawer */}
   <MobileDrawer />
 </header>
 
 <style>
-  /* Header glow effect on scroll */
+  /* Header glow effect styles */
   .header-glow {
-    /* Using rgba for better browser support */
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 25px rgb(255 255 255 / 0.1);
   }
 
-  /* Optimize transitions */
+  /* Disable transitions for users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
     header {
       transition: none;
@@ -97,32 +81,31 @@ const LOGO_DIMENSIONS = {
 </style>
 
 <script>
-  // Initialize header scroll behavior
-  const initHeaderScroll = () => {
+  // Header scroll effect handler
+  const handleHeaderScroll = () => {
     const header = document.getElementById('main-header');
     if (!header) return;
 
-    let lastScrollPosition = window.scrollY;
+    let lastScrollY = window.scrollY;
     let ticking = false;
 
-    // Use requestAnimationFrame for smooth performance
     const updateHeader = () => {
-      const currentScroll = window.scrollY;
+      const currentScrollY = window.scrollY;
 
-      header.classList.toggle('header-glow', currentScroll > 0);
+      // Add/remove glow effect based on scroll position
+      header.classList.toggle('header-glow', currentScrollY > 0);
 
-      lastScrollPosition = currentScroll;
+      // Update positions
+      lastScrollY = currentScrollY;
       ticking = false;
     };
 
-    // Optimize scroll listener with throttling
+    // Optimized scroll listener using requestAnimationFrame
     window.addEventListener(
       'scroll',
       () => {
         if (!ticking) {
-          window.requestAnimationFrame(() => {
-            updateHeader();
-          });
+          window.requestAnimationFrame(updateHeader);
           ticking = true;
         }
       },
@@ -130,6 +113,9 @@ const LOGO_DIMENSIONS = {
     );
   };
 
-  // Initialize on component mount
-  initHeaderScroll();
+  // Initialize header behavior
+  handleHeaderScroll();
+
+  // Handle view transitions
+  document.addEventListener('astro:after-swap', handleHeaderScroll);
 </script>

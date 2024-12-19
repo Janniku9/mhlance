@@ -18,6 +18,7 @@ const STYLES = {
   aria-label="Select game"
   data-game-select
   transition:persist
+  transition:name="game-select"
 >
   <option value="" class={STYLES.option}>SELECT GAME</option>
   {
@@ -30,30 +31,25 @@ const STYLES = {
 </select>
 
 <script>
-  import { currentGameId } from '../../../stores/GameStore';
-  import type { GameType } from '../../../types/Game';
+  import { navigate } from 'astro:transitions/client';
 
-  const selects = document.querySelectorAll('[data-game-select]');
-
-  const pathParts = window.location.pathname.split('/');
-  const gameId = pathParts[1] as GameType;
-  if (gameId) {
-    currentGameId.set(gameId);
-    // Ensure select value is set
-    selects.forEach((select) => {
-      (select as HTMLSelectElement).value = gameId;
-    });
-  }
-
-  // Handle game selection
-  selects.forEach((select) => {
+  // Handle select changes
+  document.querySelectorAll('[data-game-select]').forEach((select) => {
     select?.addEventListener('change', (e) => {
-      const gameId = (e.target as HTMLSelectElement)?.value as GameType;
-      currentGameId.set(gameId);
-      if (gameId) {
-        window.location.href = `/${gameId}`;
-      } else {
-        window.location.href = '/';
+      const gameId = (e.target as HTMLSelectElement).value;
+      const newPath = gameId ? `/${gameId}` : '/';
+      navigate(newPath);
+    });
+  });
+
+  // Handle popstate (back/forward navigation)
+  window.addEventListener('popstate', () => {
+    const pathParts = window.location.pathname.split('/');
+    const gameId = pathParts[1];
+    // Update select without triggering change event
+    document.querySelectorAll('[data-game-select]').forEach((select) => {
+      if (select instanceof HTMLSelectElement) {
+        select.value = gameId || '';
       }
     });
   });

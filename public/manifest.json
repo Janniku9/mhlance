@@ -1,0 +1,10 @@
+{
+  "name": "J9MH",
+  "short_name": "J9MH",
+  "description": "lance guides and builds for monster hunter games",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e181c",
+  "theme_color": "#1e181c",
+  "icons": []
+}
