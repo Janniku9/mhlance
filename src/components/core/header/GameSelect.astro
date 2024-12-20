@@ -1,56 +1,93 @@
 ---
 import { Games } from '../../../data/games';
 import { getGameFromPath } from '../../../utils/game';
+import type { Game } from '../../../types/Game';
 
+// Constants
+const STYLES = {
+  select: [
+    'rounded-lg',
+    'border-0',
+    'bg-background-darker',
+    'text-text',
+    'h-full',
+    'text-xl',
+    'transition-colors',
+    'hover:bg-background-dark',
+    'focus:ring-2',
+    'focus:ring-primary',
+    'focus:outline-none',
+  ],
+  option: ['text-text-secondary', 'text-xs', 'bg-background-darker'],
+} as const;
+
+// Props
+const { class: className } = Astro.props;
+
+// Get current game from URL
 const currentPath = Astro.url.pathname;
 const selectedGame = getGameFromPath(currentPath);
 
-const { class: className } = Astro.props;
-
-const STYLES = {
-  select: 'rounded-lg border-0 bg-background-darker text-text h-full text-xl',
-  option: 'text-text-secondary text-xs',
-} as const;
+// Format game name for display
+const formatGameName = (game: Game) => game.name.toUpperCase();
 ---
 
-<select
-  class:list={[STYLES.select, className]}
-  aria-label="Select game"
-  data-game-select
-  transition:persist
-  transition:name="game-select"
->
-  <option value="" class={STYLES.option}>SELECT GAME</option>
-  {
-    Games.map((game) => (
-      <option value={game.id} selected={selectedGame?.id === game.id} class={STYLES.option}>
-        {game.name.toUpperCase()}
-      </option>
-    ))
-  }
-</select>
+<div class="relative">
+  <select
+    class:list={[STYLES.select, className]}
+    aria-label="Select game"
+    data-game-select
+    transition:persist
+    transition:name="game-select"
+  >
+    <option value="" class:list={STYLES.option} selected={!selectedGame}> SELECT GAME </option>
+
+    {
+      Games.map((game) => (
+        <option value={game.id} selected={selectedGame?.id === game.id} class:list={STYLES.option}>
+          {formatGameName(game)}
+        </option>
+      ))
+    }
+  </select>
+</div>
 
 <script>
   import { navigate } from 'astro:transitions/client';
+  import { gameStore } from '../../../stores/GameStore';
+  import type { GameType } from '../../../types/Game';
 
-  // Handle select changes
-  document.querySelectorAll('[data-game-select]').forEach((select) => {
-    select?.addEventListener('change', (e) => {
-      const gameId = (e.target as HTMLSelectElement).value;
-      const newPath = gameId ? `/${gameId}` : '/';
-      navigate(newPath);
+  const initializeGameSelect = () => {
+    const selects = document.querySelectorAll<HTMLSelectElement>('[data-game-select]');
+
+    selects.forEach((select) => {
+      // Handle change events
+      select.addEventListener('change', (e) => {
+        const gameId = (e.target as HTMLSelectElement).value;
+        const newPath = gameId ? `/${gameId}` : '/';
+
+        // Update store and navigate
+        gameStore.setGame(gameId as GameType);
+        navigate(newPath);
+      });
     });
-  });
 
-  // Handle popstate (back/forward navigation)
-  window.addEventListener('popstate', () => {
-    const pathParts = window.location.pathname.split('/');
-    const gameId = pathParts[1];
-    // Update select without triggering change event
-    document.querySelectorAll('[data-game-select]').forEach((select) => {
-      if (select instanceof HTMLSelectElement) {
+    // Handle browser navigation
+    window.addEventListener('popstate', () => {
+      const pathParts = window.location.pathname.split('/');
+      const gameId = pathParts[1] || null;
+
+      // Update selects without triggering change event
+      selects.forEach((select) => {
         select.value = gameId || '';
-      }
+      });
+
+      // Update store
+      gameStore.setGame(gameId as GameType);
     });
-  });
+  };
+
+  // Initialize on mount and after view transitions
+  initializeGameSelect();
+  document.addEventListener('astro:after-swap', initializeGameSelect);
 </script>
