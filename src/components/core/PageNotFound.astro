@@ -1,11 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Icons } from '../../types/Icons';
 ---
 
 <div class="flex flex-col h-full text-center justify-center space-y-6 max-w-xl mx-auto mt-16">
   <!-- ghost icon -->
   <div class="flex justify-center animate-bounce">
-    <Icon name="mingcute:ghost-line" class="w-32 h-32 text-primary-light" />
+    <Icon name={Icons.ghost} class="w-32 h-32 text-primary-light" />
   </div>
 
   <!-- error message -->
@@ -21,7 +22,7 @@ import { Icon } from 'astro-icon/components';
       class="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-colors bg-primary-light text-background hover:bg-primary-lighter"
     >
       return home
-      <Icon name="mingcute:arrow-right-line" class="" />
+      <Icon name={Icons.arrowRight} class="" />
     </a>
   </div>
 </div>
