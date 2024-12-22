@@ -1,0 +1,12 @@
+---
+interface Props {
+  value: string | null;
+  selected?: boolean;
+}
+
+const { value, selected = false } = Astro.props;
+---
+
+<div class="select-option" data-select-option data-value={value} data-selected={selected}>
+  <slot />
+</div>

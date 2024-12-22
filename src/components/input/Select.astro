@@ -1,0 +1,177 @@
+---
+import { Icon } from 'astro-icon/components';
+import { Icons } from '../../types/Icons';
+---
+
+<style>
+  .custom-select {
+    position: relative;
+    display: inline-block;
+  }
+
+  .select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background-color: var(--background-darker, #1a1a1a);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    min-width: 200px;
+    color: var(--text-color, #ffffff);
+    transition: background-color 0.2s;
+  }
+
+  .select-trigger:hover {
+    background-color: red;
+  }
+
+  .select-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: var(--background-darker, #1a1a1a);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    z-index: 50;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.2s;
+  }
+
+  .custom-select[data-open='true'] .select-options {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .select-option {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .select-option:hover {
+    background-color: var(--background-dark, #2a2a2a);
+  }
+
+  .select-option[data-selected='true'] .select-option:focus {
+    background-color: blue;
+  }
+
+  .select-option[data-selected='true'] {
+    background-color: green;
+  }
+
+  .arrow-icon {
+    transition: transform 0.2s;
+  }
+
+  .custom-select[data-open='true'] .arrow-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+<div class="custom-select" data-custom-select>
+  <div class="select-trigger" data-select-trigger>
+    <span data-selected-text>
+      <slot name="selected">Select an option</slot>
+    </span>
+    <slot name="icon">
+      <Icon name={Icons.down} class="arrow-icon" />
+    </slot>
+  </div>
+  <div class="select-options" data-select-options>
+    <slot />
+  </div>
+</div>
+
+<script>
+  class CustomSelect {
+    constructor(element: HTMLElement) {
+      this.element = element;
+      this.trigger = element.querySelector('[data-select-trigger]');
+      this.options = element.querySelector('[data-select-options]');
+      this.selectedText = element.querySelector('[data-selected-text]');
+
+      this.setupEventListeners();
+    }
+
+    private element: HTMLElement;
+    private trigger: HTMLElement | null;
+    private options: HTMLElement | null;
+    private selectedText: HTMLElement | null;
+    private isOpen = false;
+
+    private setupEventListeners() {
+      if (!this.trigger) return;
+
+      this.trigger.addEventListener('click', () => this.toggle());
+
+      document.addEventListener('click', (e) => {
+        if (!this.element.contains(e.target as Node)) {
+          this.close();
+        }
+      });
+
+      this.options?.addEventListener('click', (e) => {
+        const option = (e.target as HTMLElement).closest('[data-select-option]');
+        if (option) {
+          this.selectOption(option as HTMLElement);
+        }
+      });
+    }
+
+    private toggle() {
+      this.isOpen ? this.close() : this.open();
+    }
+
+    private open() {
+      this.isOpen = true;
+      this.element.setAttribute('data-open', 'true');
+    }
+
+    private close() {
+      this.isOpen = false;
+      this.element.setAttribute('data-open', 'false');
+    }
+
+    private selectOption(option: HTMLElement) {
+      const value = option.getAttribute('data-value');
+      const text = option.textContent;
+
+      // Update selected state
+      this.options?.querySelectorAll('[data-select-option]').forEach((opt) => {
+        opt.setAttribute('data-selected', 'false');
+      });
+      option.setAttribute('data-selected', 'true');
+
+      // Update trigger text
+      if (this.selectedText && text) {
+        this.selectedText.textContent = text;
+      }
+
+      // Dispatch change event
+      const event = new CustomEvent('select:change', {
+        detail: { value, text },
+        bubbles: true,
+      });
+      this.element.dispatchEvent(event);
+
+      this.close();
+    }
+  }
+
+  // Initialize all custom selects
+  function initCustomSelects() {
+    document.querySelectorAll('[data-custom-select]').forEach((select) => {
+      new CustomSelect(select as HTMLElement);
+    });
+  }
+
+  initCustomSelects();
+  document.addEventListener('astro:after-swap', initCustomSelects);
+</script>
