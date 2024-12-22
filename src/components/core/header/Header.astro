@@ -20,7 +20,7 @@ const { height } = Astro.props;
 >
   <div class="flex items-center h-full p-2">
     {/* Brand section */}
-    <a href="/" class="flex items-center space-x-2 mr-8" aria-label="Home">
+    <button class="flex items-center space-x-2 mr-8" aria-label="Home" id="home-button">
       <Image
         src={logoSmall}
         alt="J9MH Logo"
@@ -37,7 +37,7 @@ const { height } = Astro.props;
         class={BREAKPOINTS.desktop}
         loading="eager"
       />
-    </a>
+    </button>
 
     {/* Navigation section */}
     <div class="flex items-center flex-1">
@@ -80,6 +80,21 @@ const { height } = Astro.props;
 </style>
 
 <script>
+  import { navigate } from 'astro:transitions/client';
+  import { gameStore } from '../../../stores/GameStore';
+
+  function initializeHomeButton() {
+    const homeButton = document.getElementById('home-button');
+    homeButton?.addEventListener('click', () => {
+      navigate('/');
+      gameStore.setGame(null);
+    });
+  }
+
+  // Initialize on first load
+  initializeHomeButton();
+  // Re-initialize after view transitions
+  document.addEventListener('astro:after-swap', initializeHomeButton);
   // Header scroll effect handler
   const handleHeaderScroll = () => {
     const header = document.getElementById('main-header');

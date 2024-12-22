@@ -43,11 +43,30 @@ const formatGameName = (game: Game) => game.name.toUpperCase();
       navigate(newPath);
     };
 
-    // Remove old event listeners before adding new ones
-    document.querySelectorAll('[data-custom-select]').forEach((select) => {
-      select.removeEventListener('select:change', handleSelectChange as EventListener);
-      select.addEventListener('select:change', handleSelectChange as EventListener);
-    });
+    // Update the select's visual state based on current path
+    function updateSelectState() {
+      const pathParts = window.location.pathname.split('/');
+      const gameId = pathParts[1] || '';
+
+      const select = document.querySelector('[data-custom-select]');
+      const selectedText = select?.querySelector('[data-selected-text]');
+      if (selectedText) {
+        selectedText.textContent = gameId ? gameId.toUpperCase() : 'SELECT GAME';
+      }
+      // Update selected state of options
+      select?.querySelectorAll('[data-select-option]').forEach((option) => {
+        const value = option.getAttribute('data-value');
+        option.setAttribute('data-selected', (value === gameId).toString());
+        option.setAttribute('aria-selected', (value === gameId).toString());
+      });
+
+      // Remove old event listeners before adding new ones
+      document.querySelectorAll('[data-custom-select]').forEach((select) => {
+        select.removeEventListener('select:change', handleSelectChange as EventListener);
+        select.addEventListener('select:change', handleSelectChange as EventListener);
+      });
+    }
+    updateSelectState();
   }
 
   // Initialize on first load
