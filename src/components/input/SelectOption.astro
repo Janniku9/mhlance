@@ -7,6 +7,11 @@ interface Props {
 const { value, selected = false } = Astro.props;
 ---
 
-<div class="select-option" data-select-option data-value={value} data-selected={selected}>
+<div
+  class="px-4 py-3 cursor-pointer transition-colors hover:bg-background-dark hover:bg-primary-lighter hover:text-background"
+  data-select-option
+  data-value={value}
+  data-selected={selected}
+>
   <slot />
 </div>
