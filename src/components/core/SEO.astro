@@ -1,0 +1,90 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: 'website' | 'article';
+  keywords?: string[];
+  author?: string;
+  organization?: {
+    name: string;
+    logo?: string;
+  };
+}
+
+const {
+  title,
+  description = 'cool lance guides for most monster hunter games',
+  image = '/og-image.jpg', // You'll need to add a default OG image
+  canonicalURL = Astro.url.href,
+  type = 'website',
+  keywords = [
+    'Monster Hunter',
+    'Monster Hunter World',
+    'Monster Hunter Iceborne',
+    'Monster Hunter Rise',
+    'Monster Hunter Sunbreak',
+    'Monster Hunter Wilds',
+    'Lance Builds',
+    'Lance Guides',
+    'J9MH',
+  ],
+  author = 'J9MH',
+  organization = {
+    name: 'J9MH',
+    logo: '/j9mh.ico',
+  },
+} = Astro.props;
+
+// Ensure title doesn't duplicate
+const metaTitle = title.includes('J9MH') ? title : `${title} - J9MH`;
+---
+
+<!-- Title Tag -->
+<title>{metaTitle}</title>
+
+<!-- Basic Meta Tags -->
+<meta name="title" content={metaTitle} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords.join(', ')} />
+<meta name="author" content={author} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={metaTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={metaTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Schema.org JSON-LD -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': type === 'website' ? 'Organization' : 'Article',
+    name: organization.name,
+    url: canonicalURL,
+    logo: organization.logo ? new URL(organization.logo, Astro.url) : undefined,
+    description: description,
+    ...(type === 'article' && {
+      author: {
+        '@type': 'Person',
+        name: author,
+      },
+      headline: title,
+      image: new URL(image, Astro.url),
+      datePublished: new Date().toISOString(),
+    }),
+  })}
+/>
