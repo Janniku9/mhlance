@@ -1,19 +1,22 @@
 ---
 import { Image } from 'astro:assets';
 import { LOGO_DIMENSIONS } from '../../../types/Header';
+
+import LargeLogo from '../../../assets/logo_large.png';
+import SmallLogo from '../../../assets/logo_small.png';
 ---
 
 <div class="flex items-center">
   <a href="/" class="block">
     <Image
-      src="/assets/logo_large.png"
+      src={LargeLogo}
       alt="Logo"
       width={LOGO_DIMENSIONS.large.width}
       height={LOGO_DIMENSIONS.large.height}
       class="hidden md:block object-contain"
     />
     <Image
-      src="/assets/logo.png"
+      src={SmallLogo}
       alt="Logo"
       width={LOGO_DIMENSIONS.small.width}
       height={LOGO_DIMENSIONS.small.height}

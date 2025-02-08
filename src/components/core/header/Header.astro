@@ -1,10 +1,11 @@
 ---
 import { BREAKPOINTS } from '../../../types/Header';
-import DesktopNav from '../nav/DesktopNav.astro';
 import MobileNav from '../nav/MobileNav.astro';
 import MobileMenu from '../nav/MobileMenu.astro';
 import HeaderLogo from './HeaderLogo.astro';
+import NavDropdown from '../nav/NavDropdown.astro';
 import GameSelector from '../nav/GameSelector.astro';
+import GitHubLink from './GitHubLink.astro';
 import { games } from '../../../types/Navigation';
 
 interface Props {
@@ -24,16 +25,50 @@ const currentGame = games.find((g) => g.game === gameId);
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-200"
   style={`height: ${height}`}
 >
-  <nav class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-    <HeaderLogo />
+  <nav class="max-w-7xl mx-auto px-6 h-full">
+    <div class="grid grid-cols-3 items-center w-full h-full">
+      {/* Logo */}
+      <div class="flex items-center">
+        <HeaderLogo />
+      </div>
 
-    <!-- Desktop Navigation -->
-    <DesktopNav currentGame={currentGame} />
+      {/* Center Navigation */}
+      {
+        currentGame && (
+          <div class="hidden md:flex items-center justify-center gap-8">
+            <NavDropdown
+              title="Builds"
+              items={currentGame.sections.builds}
+              baseUrl={`/${currentGame.game}/builds`}
+            />
+            <NavDropdown
+              title="Guides"
+              items={currentGame.sections.guides}
+              baseUrl={`/${currentGame.game}/guides`}
+            />
+            <NavDropdown
+              title="Data"
+              items={currentGame.sections.data}
+              baseUrl={`/${currentGame.game}/data`}
+            />
+          </div>
+        )
+      }
 
-    <!-- Mobile Navigation -->
-    <MobileNav>
-      <GameSelector games={games} />
-    </MobileNav>
+      {/* Right Section */}
+      <div class="flex items-center justify-end">
+        {/* Desktop Navigation */}
+        <div class="hidden md:flex items-center gap-4">
+          <GameSelector games={games} />
+          <GitHubLink />
+        </div>
+
+        {/* Mobile Navigation */}
+        <div class="md:hidden">
+          <MobileNav />
+        </div>
+      </div>
+    </div>
   </nav>
 </header>
 
@@ -50,7 +85,7 @@ const currentGame = games.find((g) => g.game === gameId);
       const borderOpacity = scrollProgress;
 
       header.style.backgroundColor = `rgba(30, 24, 28, ${backgroundOpacity})`;
-      header.style.boxShadow = `0 1px ${borderOpacity * 4}px rgba(255, 235, 59, ${borderOpacity * 0.3})`;
+      header.style.boxShadow = `0 1px ${borderOpacity * 4}px rgba(255, 255, 255, ${borderOpacity * 0.3})`;
     };
 
     updateHeader();
