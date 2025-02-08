@@ -26,7 +26,7 @@ const currentGame = games.find((g) => g.game === gameId);
   style={`height: ${height}`}
 >
   <nav class="max-w-7xl mx-auto px-6 h-full">
-    <div class="grid grid-cols-3 items-center w-full h-full">
+    <div class="grid grid-cols-2 md:grid-cols-3 items-center w-full h-full">
       {/* Logo */}
       <div class="flex items-center">
         <HeaderLogo />
@@ -58,9 +58,11 @@ const currentGame = games.find((g) => g.game === gameId);
       {/* Right Section */}
       <div class="flex items-center justify-end">
         {/* Desktop Navigation */}
-        <div class="hidden md:flex items-center gap-4">
+        <div class="items-center gap-4 flex">
+          <div class="hidden md:flex">
+            <GitHubLink />
+          </div>
           <GameSelector games={games} />
-          <GitHubLink />
         </div>
 
         {/* Mobile Navigation */}
