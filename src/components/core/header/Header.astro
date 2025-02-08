@@ -37,17 +37,17 @@ const currentGame = games.find((g) => g.game === gameId);
         currentGame && (
           <div class="hidden md:flex items-center justify-center gap-8">
             <NavDropdown
-              title="Builds"
+              title="BUILDS"
               items={currentGame.sections.builds}
               baseUrl={`/${currentGame.game}/builds`}
             />
             <NavDropdown
-              title="Guides"
+              title="GUIDES"
               items={currentGame.sections.guides}
               baseUrl={`/${currentGame.game}/guides`}
             />
             <NavDropdown
-              title="Data"
+              title="DATA"
               items={currentGame.sections.data}
               baseUrl={`/${currentGame.game}/data`}
             />

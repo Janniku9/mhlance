@@ -1,5 +1,6 @@
 ---
 import type { NavItem } from '../../../types/Navigation';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   title: string;
@@ -10,34 +11,46 @@ interface Props {
 const { title, items, baseUrl } = Astro.props;
 ---
 
-<div class="relative group">
-  <button class="text-text hover:text-primary transition-colors py-2 flex items-center gap-2">
+<div class="relative group/nav">
+  <button
+    class="text-lg text-text hover:text-primary transition-colors py-3 flex items-center gap-2"
+  >
     {title}
-    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"></path>
-    </svg>
+    <Icon
+      name="mingcute:down-fill"
+      class="w-5 h-5 transition-transform duration-200 group-hover/nav:rotate-180"
+    />
   </button>
 
   <div
-    class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+    class="absolute -left-24 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50"
   >
-    <div class="bg-background-dark rounded-lg shadow-lg border border-text/10 p-4 min-w-[280px]">
-      <ul class="space-y-3">
+    <div class="bg-background rounded-xl shadow-xl border border-text/10 p-6 min-w-[420px]">
+      <ul class="space-y-4">
         {
           items.map((item) => (
             <li>
-              <a href={`${baseUrl}/${item.id}`} class="group block">
-                <span class="block text-sm text-text group-hover:text-primary transition-colors">
-                  {item.title}
-                </span>
-                {item.description && (
-                  <span class="block text-xs text-text/60 group-hover:text-primary/60 transition-colors mt-0.5">
-                    {item.description}
-                  </span>
-                )}
+              <a
+                href={`${baseUrl}/${item.id}`}
+                class="group block hover:bg-primary/10 rounded-lg p-3 transition-colors"
+              >
+                <div class="flex items-center gap-3">
+                  {item.emoji && (
+                    <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
+                      {item.emoji}
+                    </span>
+                  )}
+                  <div>
+                    <span class="block text-base text-text group-hover:text-primary transition-colors">
+                      {item.title.toUpperCase()}
+                    </span>
+                    {item.description && (
+                      <span class="block text-sm text-text/60 group-hover:text-primary/60 transition-colors mt-1">
+                        {item.description}
+                      </span>
+                    )}
+                  </div>
+                </div>
               </a>
             </li>
           ))
