@@ -62,7 +62,7 @@ const currentGame = games.find((g) => g.game === gameId);
           <div class="hidden md:flex">
             <GitHubLink />
           </div>
-          <GameSelector games={games} />
+          <GameSelector games={games} currentGame={currentGame} />
         </div>
 
         {/* Mobile Navigation */}

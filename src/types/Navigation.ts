@@ -22,7 +22,7 @@ export interface GameNavigation {
 export const games: GameNavigation[] = [
   {
     game: 'world',
-    title: 'MH World/Iceborne',
+    title: 'World/Iceborne',
     emoji: '🧊',
     sections: {
       builds: [
@@ -114,7 +114,7 @@ export const games: GameNavigation[] = [
   },
   {
     game: 'rise',
-    title: 'MH Rise/Sunbreak',
+    title: 'Rise/Sunbreak',
     emoji: '🌅',
     sections: {
       builds: [
@@ -212,7 +212,7 @@ export const games: GameNavigation[] = [
   },
   {
     game: 'wilds',
-    title: 'MH Wilds',
+    title: 'Wilds',
     emoji: '🌿',
     sections: {
       builds: [],
