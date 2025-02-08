@@ -1,0 +1,32 @@
+---
+import { Icon } from 'astro-icon/components';
+import { socials } from '../../data/Socials';
+
+const classList = Astro.props.class;
+---
+
+<footer class={`w-full ${classList}`}>
+  <div class="flex flex-col items-center justify-center gap-8">
+    <div class="flex items-center gap-6">
+      {
+        socials.map((social) => {
+          return (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col items-center gap-2 transition-colors hover:text-primary"
+              aria-label={`Visit our ${social.name} page`}
+            >
+              <div class="bg-background-dark rounded-full p-1.5">
+                <Icon name={social.icon} class="w-8 h-8" />
+              </div>
+              <span class="text-sm">{social.description}</span>
+            </a>
+          );
+        })
+      }
+    </div>
+    <p class="text-sm text-text/60">Made with ❤️ by the Monster Hunter Lance community</p>
+  </div>
+</footer>

@@ -20,19 +20,24 @@ const hasContent = (game: GameNavigation) => {
   href={hasContent(game) ? `/${game.game}` : '#'}
   class:list={[
     'group relative bg-background-dark border border-text/10 rounded-3xl p-12 transition-all duration-300',
+    'animate-fade-in hover:z-10',
     hasContent(game)
       ? 'hover:bg-background-darker hover:scale-105 hover:shadow-2xl hover:shadow-primary/5'
       : 'cursor-not-allowed opacity-80',
   ]}
 >
   <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"
+    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-300"
   >
   </div>
   <div class="relative flex flex-col items-center gap-8">
-    <span class="text-7xl bg-text/5 rounded-2xl p-8">{game.emoji}</span>
+    <span class="text-7xl bg-text/5 rounded-2xl p-8 transition-transform group-hover:animate-float"
+      >{game.emoji}</span
+    >
     <div class="text-center">
-      <h2 class="text-3xl font-bold group-hover:text-primary transition-colors mb-4">
+      <h2
+        class="text-3xl font-bold transition-all duration-300 group-hover:text-primary group-hover:scale-105 mb-4"
+      >
         {game.title.toUpperCase()}
       </h2>
       {
@@ -41,16 +46,47 @@ const hasContent = (game: GameNavigation) => {
             {Object.entries(game.sections).map(
               ([key, items]) =>
                 items.length > 0 && (
-                  <span class="text-sm px-3 py-1 bg-text/5 rounded-full">
+                  <span class="text-sm px-3 py-1 bg-text/5 rounded-full transition-all duration-300 hover:scale-110 hover:bg-text/10">
                     {items.length} {key}
                   </span>
                 )
             )}
           </div>
         ) : (
-          <span class="text-warning/80 font-semibold">Coming Soon</span>
+          <span class="text-warning/80 font-semibold animate-pulse">Coming Soon</span>
         )
       }
     </div>
   </div>
 </a>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 2s ease-in-out infinite;
+  }
+</style>

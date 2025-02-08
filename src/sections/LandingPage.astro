@@ -2,6 +2,7 @@
 import Image from 'astro/components/Image.astro';
 import type { GameNavigation } from '../types/Navigation';
 import GameCard from '../components/landing/GameCard.astro';
+import LandingFooter from '../components/landing/LandingFooter.astro';
 
 interface Props {
   games: GameNavigation[];
@@ -14,9 +15,12 @@ import logo from '../assets/logo_large.png';
 
 <div class="container mx-auto px-4">
   <div class="min-h-screen flex flex-col items-center justify-center py-20">
-    <Image src={logo} alt="J9 MH" width={200} height={60} class="mb-4" />
-    <p class="text-xl text-text/80 mb-16 text-center max-w-2xl">
-      A collection of builds, guides, and data for Monster Hunter <span class="text-primary"
+    <Image src={logo} alt="J9 MH" width={200} height={60} class="mb-4 animate-title" />
+    <p
+      class="text-xl text-text/80 mb-16 text-center max-w-2xl animate-title [animation-delay:200ms]"
+    >
+      A collection of builds, guides, and data for Monster Hunter <span
+        class="text-primary relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary after:origin-left hover:after:scale-x-100 after:scale-x-0 after:transition-transform"
         >Lance</span
       > players.
     </p>
@@ -26,5 +30,6 @@ import logo from '../assets/logo_large.png';
     </div>
 
     <!-- Footer -->
+    <LandingFooter class="mt-32" />
   </div>
 </div>
