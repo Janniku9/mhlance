@@ -82,7 +82,9 @@ const currentGame = games.find((g) => g.game === gameId);
 
   if (header) {
     const updateHeader = () => {
-      const scrollProgress = Math.min(window.scrollY / 100, 1);
+      const minScroll = 100; // Minimum scroll before effect starts
+      const scrollY = Math.max(0, window.scrollY - minScroll);
+      const scrollProgress = Math.min(scrollY / 100, 1);
       const backgroundOpacity = scrollProgress * 0.95;
       const borderOpacity = scrollProgress;
 

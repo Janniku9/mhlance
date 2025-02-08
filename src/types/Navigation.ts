@@ -3,13 +3,14 @@ import type { Game } from './Game';
 export interface NavItem {
   id: string;
   title: string;
-  emoji?: string;
+  emoji: string;
   description?: string;
 }
 
 export interface GameNavigation {
   game: Game;
   title: string;
+  emoji: string;
   sections: {
     builds: NavItem[];
     guides: NavItem[];
@@ -22,6 +23,7 @@ export const games: GameNavigation[] = [
   {
     game: 'world',
     title: 'MH World/Iceborne',
+    emoji: '🧊',
     sections: {
       builds: [
         {
@@ -113,6 +115,7 @@ export const games: GameNavigation[] = [
   {
     game: 'rise',
     title: 'MH Rise/Sunbreak',
+    emoji: '🌅',
     sections: {
       builds: [
         {
@@ -205,6 +208,17 @@ export const games: GameNavigation[] = [
           description: 'Anti species decoration match ups',
         },
       ],
+    },
+  },
+  {
+    game: 'wilds',
+    title: 'MH Wilds',
+    emoji: '🌿',
+    sections: {
+      builds: [],
+      guides: [],
+      tools: [],
+      data: [],
     },
   },
 ];

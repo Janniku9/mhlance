@@ -8,6 +8,6 @@ export const BREAKPOINTS = {
 } as const;
 
 export const LOGO_DIMENSIONS = {
-  small: { width: 30, height: 30 },
+  small: { width: 40, height: 40 },
   large: { width: 120, height: 30 },
 } as const;

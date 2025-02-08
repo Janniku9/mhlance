@@ -9,12 +9,16 @@ interface Props {
 const { games, currentGame } = Astro.props;
 ---
 
-<div class="relative group">
+<div class="relative group/nav">
   <button
     class="bg-primary hover:bg-primary-dark text-background px-4 py-2 rounded transition-colors flex items-center gap-2"
   >
     {currentGame?.title || 'SELECT GAME'}
-    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+    <svg
+      class="w-4 h-4 transition-transform duration-200 group-hover/nav:rotate-180"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
       <path
         fill-rule="evenodd"
         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -23,24 +27,31 @@ const { games, currentGame } = Astro.props;
   </button>
 
   <div
-    class="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+    class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50"
   >
-    <div class="bg-background-dark rounded-lg shadow-lg border border-text/10 p-2 min-w-[200px]">
-      {
-        games.map((game) => (
-          <a
-            href={`/${game.game}`}
-            class:list={[
-              'block px-4 py-2 rounded text-sm transition-colors',
-              game.game === currentGame?.game
-                ? 'bg-primary/10 text-primary'
-                : 'text-text hover:bg-primary/10 hover:text-primary',
-            ]}
-          >
-            {game.title}
-          </a>
-        ))
-      }
+    <div class="bg-background rounded-xl shadow-xl border border-text/10 p-4 min-w-[300px]">
+      <ul class="space-y-2">
+        {
+          games.map((game) => (
+            <li>
+              <a
+                href={`/${game.game}`}
+                class:list={[
+                  'group flex items-center gap-3 p-3 rounded-lg transition-colors',
+                  game.game === currentGame?.game
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-text hover:bg-primary/10 hover:text-primary',
+                ]}
+              >
+                <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
+                  {game.emoji}
+                </span>
+                {game.title.toUpperCase()}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </div>
