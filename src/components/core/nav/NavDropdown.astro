@@ -23,13 +23,18 @@ const { title, items, baseUrl } = Astro.props;
   </button>
 
   <div
-    class="absolute -left-24 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50"
+    class="absolute -left-24 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50 transform origin-top scale-95 group-hover/nav:scale-100"
   >
-    <div class="bg-background rounded-xl shadow-xl border border-text/10 p-6 min-w-[420px]">
+    <div
+      class="bg-background rounded-xl shadow-xl border border-text/10 p-6 min-w-[420px] animate-dropdown"
+    >
       <ul class="space-y-4">
         {
-          items.map((item) => (
-            <li>
+          items.map((item, index) => (
+            <li
+              class="opacity-0 translate-y-2 group-hover/nav:opacity-100 group-hover/nav:translate-y-0 transition-all duration-200"
+              style={`transition-delay: ${index * 50}ms`}
+            >
               <a
                 href={`${baseUrl}/${item.id}`}
                 class="group block hover:bg-primary/10 rounded-lg p-3 transition-colors"
@@ -59,3 +64,20 @@ const { title, items, baseUrl } = Astro.props;
     </div>
   </div>
 </div>
+
+<style>
+  @keyframes dropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-dropdown {
+    animation: dropdown 0.2s ease-out forwards;
+  }
+</style>

@@ -10,7 +10,11 @@ import { Icon } from 'astro-icon/components';
       <div class="text-7xl sm:text-8xl animate-float mb-8">😿</div>
 
       <!-- Error Message -->
-      <h1 class="text-5xl sm:text-6xl font-bold mb-4 text-primary hover:scale-105">404</h1>
+      <h1
+        class="text-5xl sm:text-6xl font-bold mb-4 text-primary transition-all duration-300 hover:scale-110 hover:text-warning"
+      >
+        404
+      </h1>
 
       <!-- Description with Lance emoji -->
       <p class="text-xl sm:text-2xl text-text/80 mb-4 text-center">
@@ -25,18 +29,21 @@ import { Icon } from 'astro-icon/components';
       <a
         href="/"
         class="group relative bg-background-dark border border-text/10 rounded-full px-6 sm:px-8 py-3 sm:py-4
-      transition-all duration-300 hover:bg-background-darker hover:scale-105 hover:shadow-2xl
-      hover:shadow-primary/5 flex items-center gap-3"
+        transition-all duration-300 hover:bg-background-darker hover:scale-105 hover:shadow-2xl
+        hover:shadow-primary/5 flex items-center gap-3"
       >
         <div
           class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
         >
         </div>
-        <Icon name="mingcute:campground-fill" class="w-5 h-5 sm:w-6 sm:h-6" />
-        <span>Return to Base Camp</span>
+        <Icon
+          name="mingcute:campground-fill"
+          class="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-primary transition-colors"
+        />
+        <span class="group-hover:text-primary transition-colors">Return to Base Camp</span>
         <Icon
           name="mingcute:arrow-right-line"
-          class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-1 transition-transform"
+          class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-2 group-hover:text-primary transition-all duration-300"
         />
       </a>
 
