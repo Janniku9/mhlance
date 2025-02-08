@@ -1,0 +1,51 @@
+---
+import FontLoader from '../components/core/FontLoader.astro';
+import HeaderLogo from '../components/core/header/HeaderLogo.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <FontLoader />
+  </head>
+  <body class="bg-background text-text min-h-screen font-mono">
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-text/10"
+    >
+      <div class="container mx-auto px-4">
+        <div class="h-20 flex items-center justify-between">
+          <HeaderLogo />
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen pt-20">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-background-darker to-background opacity-50"
+      >
+      </div>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>
