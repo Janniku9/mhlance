@@ -10,20 +10,43 @@ interface Props {
 const { title, items, baseUrl } = Astro.props;
 ---
 
-<div>
-  <h3 class="text-primary font-semibold mb-3">{title}</h3>
-  <ul class="space-y-3">
-    {
-      items.map((item) => (
-        <li>
-          <a
-            href={`${baseUrl}/${item.id}`}
-            class="block text-sm text-text hover:text-primary transition-colors"
-          >
-            {item.title}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+<div class="relative">
+  <h3 class="text-lg text-primary font-semibold py-3">
+    {title}
+  </h3>
+
+  <div class="mt-2">
+    <div class="border border-text/10 rounded-xl bg-background-light/5">
+      <ul class="py-2">
+        {
+          items.map((item) => (
+            <li>
+              <a
+                href={`${baseUrl}/${item.id}`}
+                class="group block hover:bg-primary/10 px-4 py-3 transition-colors"
+              >
+                <div class="flex items-center gap-3">
+                  {item.emoji && (
+                    <span class="text-xl bg-text/5 rounded-lg p-1.5 w-9 h-9 flex items-center justify-center">
+                      {item.emoji}
+                    </span>
+                  )}
+                  <div>
+                    <span class="block text-sm text-text group-hover:text-primary transition-colors">
+                      {item.title.toUpperCase()}
+                    </span>
+                    {item.description && (
+                      <span class="block text-xs text-text/60 group-hover:text-primary/60 transition-colors mt-0.5">
+                        {item.description}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </div>

@@ -13,29 +13,25 @@ const { currentGame, height } = Astro.props;
 
 <div
   id="mobile-menu"
-  class="fixed left-0 right-0 bg-background-dark transform -translate-y-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto pointer-events-none"
+  class="fixed left-0 right-0 bg-background-dark transform -translate-y-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto pointer-events-none invisible"
   style={`top: ${height}; bottom: 0;`}
 >
-  <div class="p-6">
-    <div class="flex justify-between items-center mb-8">
-      <h2 class="text-lg font-semibold text-primary">Navigation</h2>
-    </div>
-
+  <div class="p-4">
     {
       currentGame && (
-        <div class="space-y-6">
+        <div class="space-y-2">
           <MobileSection
-            title="Builds"
+            title="BUILDS"
             items={currentGame.sections.builds}
             baseUrl={`/${currentGame.game}/builds`}
           />
           <MobileSection
-            title="Guides"
+            title="GUIDES"
             items={currentGame.sections.guides}
             baseUrl={`/${currentGame.game}/guides`}
           />
           <MobileSection
-            title="Data"
+            title="DATA"
             items={currentGame.sections.data}
             baseUrl={`/${currentGame.game}/data`}
           />
@@ -43,7 +39,7 @@ const { currentGame, height } = Astro.props;
       )
     }
 
-    <div class="mt-8 pt-8 border-t border-text/10">
+    <div class="mt-6 pt-6 border-t border-text/10">
       <GitHubLink showLabel />
     </div>
   </div>
@@ -65,7 +61,7 @@ const { currentGame, height } = Astro.props;
   if (mobileMenu && mobileMenuToggle && overlay && menuIcon && closeIcon) {
     const openMenu = () => {
       document.body.style.overflow = 'hidden';
-      mobileMenu.classList.remove('-translate-y-full', 'pointer-events-none');
+      mobileMenu.classList.remove('-translate-y-full', 'pointer-events-none', 'invisible');
       overlay.classList.remove('opacity-0', 'pointer-events-none');
       menuIcon.classList.add('hidden');
       closeIcon.classList.remove('hidden');
@@ -73,7 +69,7 @@ const { currentGame, height } = Astro.props;
 
     const closeMenu = () => {
       document.body.style.overflow = '';
-      mobileMenu.classList.add('-translate-y-full', 'pointer-events-none');
+      mobileMenu.classList.add('-translate-y-full', 'pointer-events-none', 'invisible');
       overlay.classList.add('opacity-0', 'pointer-events-none');
       menuIcon.classList.remove('hidden');
       closeIcon.classList.add('hidden');
