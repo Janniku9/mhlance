@@ -1,0 +1,56 @@
+---
+import type { GameNavigation } from '../../types/Navigation';
+
+interface Props {
+  game: GameNavigation;
+}
+
+const { game } = Astro.props;
+
+const hasContent = (game: GameNavigation) => {
+  return (
+    game.sections.builds.length > 0 ||
+    game.sections.guides.length > 0 ||
+    game.sections.data.length > 0
+  );
+};
+---
+
+<a
+  href={hasContent(game) ? `/${game.game}` : '#'}
+  class:list={[
+    'group relative bg-background-dark border border-text/10 rounded-3xl p-12 transition-all duration-300',
+    hasContent(game)
+      ? 'hover:bg-background-darker hover:scale-105 hover:shadow-2xl hover:shadow-primary/5'
+      : 'cursor-not-allowed opacity-80',
+  ]}
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"
+  >
+  </div>
+  <div class="relative flex flex-col items-center gap-8">
+    <span class="text-7xl bg-text/5 rounded-2xl p-8">{game.emoji}</span>
+    <div class="text-center">
+      <h2 class="text-3xl font-bold group-hover:text-primary transition-colors mb-4">
+        {game.title.toUpperCase()}
+      </h2>
+      {
+        hasContent(game) ? (
+          <div class="flex flex-wrap gap-3 justify-center text-text/60">
+            {Object.entries(game.sections).map(
+              ([key, items]) =>
+                items.length > 0 && (
+                  <span class="text-sm px-3 py-1 bg-text/5 rounded-full">
+                    {items.length} {key}
+                  </span>
+                )
+            )}
+          </div>
+        ) : (
+          <span class="text-warning/80 font-semibold">Coming Soon</span>
+        )
+      }
+    </div>
+  </div>
+</a>
