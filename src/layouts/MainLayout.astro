@@ -1,94 +1,38 @@
 ---
-import { ClientRouter } from 'astro:transitions';
-import { currentGameId } from '../stores/GameStore';
-import type { GameType } from '../types/Game';
-
-// Core components
+// MainLayout.astro
 import Header from '../components/core/header/Header.astro';
-import ContentLayout from '../components/core/layout/ContentLayout.astro';
-import MetaTags from '../components/core/layout/MetaTags.astro';
-import BreakPointDebugger from '../components/debug/BreakPointDebugger.astro';
 
-// Constants
-const LAYOUT_CONFIG = {
-  HEADER_HEIGHT: 'h-14',
-  DEFAULTS: {
-    TITLE: 'J9MH',
-    DESCRIPTION: 'lance guides for monster hunter games',
-    OG_IMAGE: '/og-image.png',
-  },
-  FONT_URL: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap',
-} as const;
-
-// Props interface
 interface Props {
-  title?: string;
-  description?: string;
-  ogImage?: string;
+  title: string;
 }
 
-// Process game parameter and props
-const { game } = Astro.params;
-const {
-  title = LAYOUT_CONFIG.DEFAULTS.TITLE,
-  description = LAYOUT_CONFIG.DEFAULTS.DESCRIPTION,
-  ogImage = LAYOUT_CONFIG.DEFAULTS.OG_IMAGE,
-} = Astro.props;
-
-// Set current game if provided in URL
-if (game) {
-  currentGameId.set(game as GameType);
-}
+const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="en">
   <head>
-    <MetaTags {title} {description} {ogImage} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-
-    {/* Font preload */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href={LAYOUT_CONFIG.FONT_URL} rel="stylesheet" />
-
-    <ClientRouter />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
+  <body class="bg-background text-text min-h-screen font-mono">
+    <Header height="64px" />
 
-  <body class="min-h-full font-mono m-0 bg-background text-text flex flex-col">
-    {/* Fixed header */}
-    <div class="fixed top-0 left-0 right-0 z-50 bg-background">
-      <Header height={LAYOUT_CONFIG.HEADER_HEIGHT} />
-    </div>
-
-    {/* Header spacer */}
-    <div class:list={[LAYOUT_CONFIG.HEADER_HEIGHT]} aria-hidden="true"></div>
-
-    {/* Main content */}
-    <main id="main" class="flex-1">
-      <ContentLayout>
-        <slot />
-      </ContentLayout>
+    <main class="pt-16">
+      <slot />
     </main>
-
-    {/* Development tools */}
-    {import.meta.env.DEV && <BreakPointDebugger />}
   </body>
 </html>
 
-<style>
-  /* Fallback font stack */
-  body {
-    font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+<style is:global>
+  html {
+    scroll-behavior: smooth;
   }
 
-  /* Optimize for reduced motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+  body {
+    margin: 0;
+    padding: 0;
   }
 </style>

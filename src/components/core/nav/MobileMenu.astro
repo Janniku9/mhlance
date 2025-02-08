@@ -1,0 +1,84 @@
+---
+import type { GameNavigation } from '../../../types/Navigation';
+import GitHubLink from '../header/GitHubLink.astro';
+import MobileSection from './MobileSection.astro';
+
+interface Props {
+  currentGame?: GameNavigation;
+}
+
+const { currentGame } = Astro.props;
+---
+
+<div
+  id="mobile-menu"
+  class="fixed top-0 right-0 bottom-0 w-80 bg-background-dark transform translate-x-full transition-transform duration-300 ease-in-out z-[60] overflow-y-auto"
+>
+  <div class="p-6">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-lg font-semibold text-primary">Navigation</h2>
+      <button id="mobile-menu-close" class="text-text hover:text-primary transition-colors">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    {
+      currentGame && (
+        <div class="space-y-6">
+          <MobileSection
+            title="Builds"
+            items={currentGame.sections.builds}
+            baseUrl={`/${currentGame.game}/builds`}
+          />
+          <MobileSection
+            title="Guides"
+            items={currentGame.sections.guides}
+            baseUrl={`/${currentGame.game}/guides`}
+          />
+          <MobileSection
+            title="Data"
+            items={currentGame.sections.data}
+            baseUrl={`/${currentGame.game}/data`}
+          />
+        </div>
+      )
+    }
+
+    <div class="mt-8 pt-8 border-t border-text/10">
+      <GitHubLink showLabel />
+    </div>
+  </div>
+</div>
+
+<div
+  id="mobile-menu-overlay"
+  class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+>
+</div>
+
+<script>
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const overlay = document.getElementById('mobile-menu-overlay');
+
+  if (mobileMenu && mobileMenuToggle && mobileMenuClose && overlay) {
+    const openMenu = () => {
+      document.body.style.overflow = 'hidden';
+      mobileMenu.classList.remove('translate-x-full');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+    };
+
+    const closeMenu = () => {
+      document.body.style.overflow = '';
+      mobileMenu.classList.add('translate-x-full');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+    };
+
+    mobileMenuToggle.addEventListener('click', openMenu);
+    mobileMenuClose.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+  }
+</script>

@@ -1,0 +1,50 @@
+---
+import type { GameNavigation } from '../../../types/Navigation';
+import NavSection from './NavSection.astro';
+
+interface Props {
+  game: GameNavigation;
+}
+
+const { game } = Astro.props;
+const { sections } = game;
+
+// Helper to check if a section has any items
+const hasItems = (items: any[]) => items && items.length > 0;
+---
+
+<div class="relative group">
+  <button class="text-text hover:text-primary transition-colors py-2 flex items-center gap-2">
+    Navigation
+    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+      <path
+        fill-rule="evenodd"
+        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </button>
+
+  <div
+    class="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
+  >
+    <div
+      class="bg-background-dark rounded-lg shadow-lg border border-text/10 p-6 grid grid-cols-3 gap-8 w-[720px]"
+    >
+      {
+        hasItems(sections.builds) && (
+          <NavSection title="Builds" items={sections.builds} baseUrl={`/${game.game}/builds`} />
+        )
+      }
+      {
+        hasItems(sections.guides) && (
+          <NavSection title="Guides" items={sections.guides} baseUrl={`/${game.game}/guides`} />
+        )
+      }
+      {
+        hasItems(sections.data) && (
+          <NavSection title="Data" items={sections.data} baseUrl={`/${game.game}/data`} />
+        )
+      }
+    </div>
+  </div>
+</div>

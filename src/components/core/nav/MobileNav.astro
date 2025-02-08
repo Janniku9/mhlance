@@ -1,0 +1,14 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="flex md:hidden items-center gap-4">
+  <slot />
+  <button
+    id="mobile-menu-toggle"
+    class="text-text hover:text-primary transition-colors p-2"
+    aria-label="Toggle mobile menu"
+  >
+    <Icon name="mingcute:menu-line" size={24} />
+  </button>
+</div>

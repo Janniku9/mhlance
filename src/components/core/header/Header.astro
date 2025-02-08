@@ -1,135 +1,59 @@
 ---
-import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components';
-import GameSelect from './GameSelect.astro';
-import Breadcrumbs from './Breadcrumbs.astro';
-import MobileDrawer from '../nav/MobileDrawer.astro';
-import { BREAKPOINTS, LOGO_DIMENSIONS } from '../../../types/Header';
+import { BREAKPOINTS } from '../../../types/Header';
+import DesktopNav from '../nav/DesktopNav.astro';
+import MobileNav from '../nav/MobileNav.astro';
+import MobileMenu from '../nav/MobileMenu.astro';
+import HeaderLogo from './HeaderLogo.astro';
+import GameSelector from '../nav/GameSelector.astro';
+import { games } from '../../../types/Navigation';
 
-// Import images with explicit types
-import logoSmall from '../../../assets/logo_small.png';
-import logoLarge from '../../../assets/logo_large.png';
+interface Props {
+  height: string;
+}
 
 const { height } = Astro.props;
+
+// Get current game from URL
+const currentPath = Astro.url.pathname;
+const gameId = currentPath.split('/')[1] || 'world';
+const currentGame = games.find((g) => g.game === gameId);
 ---
 
 <header
-  class:list={['shadow-lg', 'bg-background-darker', 'transition-all', 'duration-300', height]}
-  id="main-header"
-  transition:persist
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-200"
+  style={`height: ${height}`}
 >
-  <div class="flex items-center h-full p-2">
-    {/* Brand section */}
-    <button class="flex items-center space-x-2 mr-8" aria-label="Home" id="home-button">
-      <Image
-        src={logoSmall}
-        alt="J9MH Logo"
-        width={LOGO_DIMENSIONS.small.width}
-        height={LOGO_DIMENSIONS.small.height}
-        class={BREAKPOINTS.mobile}
-        loading="eager"
-      />
-      <Image
-        src={logoLarge}
-        alt="J9MH Logo"
-        width={LOGO_DIMENSIONS.large.width}
-        height={LOGO_DIMENSIONS.large.height}
-        class={BREAKPOINTS.desktop}
-        loading="eager"
-      />
-    </button>
+  <nav class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+    <HeaderLogo />
 
-    {/* Navigation section */}
-    <div class="flex items-center flex-1">
-      <GameSelect />
-      <Breadcrumbs class={BREAKPOINTS.desktop} />
-    </div>
+    <!-- Desktop Navigation -->
+    <DesktopNav currentGame={currentGame} />
 
-    {/* Mobile menu button */}
-    <button
-      id="open-drawer"
-      class:list={[
-        BREAKPOINTS.mobile,
-        'p-2',
-        'text-text',
-        'hover:text-text-secondary',
-        'transition-colors',
-      ]}
-      aria-label="Open navigation menu"
-    >
-      <Icon name="mingcute:menu-fill" size={24} />
-    </button>
-  </div>
-
-  {/* Mobile navigation drawer */}
-  <MobileDrawer />
+    <!-- Mobile Navigation -->
+    <MobileNav>
+      <GameSelector games={games} />
+    </MobileNav>
+  </nav>
 </header>
 
-<style>
-  /* Header glow effect styles */
-  .header-glow {
-    box-shadow: 0 0 25px rgb(255 255 255 / 0.1);
-  }
-
-  /* Disable transitions for users who prefer reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    header {
-      transition: none;
-    }
-  }
-</style>
+<MobileMenu currentGame={currentGame} />
 
 <script>
-  import { navigate } from 'astro:transitions/client';
-  import { gameStore } from '../../../stores/GameStore';
+  // Header scroll effect
+  const header = document.getElementById('header');
 
-  function initializeHomeButton() {
-    const homeButton = document.getElementById('home-button');
-    homeButton?.addEventListener('click', () => {
-      navigate('/');
-      gameStore.setGame(null);
-    });
-  }
-
-  // Initialize on first load
-  initializeHomeButton();
-  // Re-initialize after view transitions
-  document.addEventListener('astro:after-swap', initializeHomeButton);
-  // Header scroll effect handler
-  const handleHeaderScroll = () => {
-    const header = document.getElementById('main-header');
-    if (!header) return;
-
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-
+  if (header) {
     const updateHeader = () => {
-      const currentScrollY = window.scrollY;
+      const scrollProgress = Math.min(window.scrollY / 100, 1);
+      const backgroundOpacity = scrollProgress * 0.95;
+      const borderOpacity = scrollProgress;
 
-      // Add/remove glow effect based on scroll position
-      header.classList.toggle('header-glow', currentScrollY > 0);
-
-      // Update positions
-      lastScrollY = currentScrollY;
-      ticking = false;
+      header.style.backgroundColor = `rgba(30, 24, 28, ${backgroundOpacity})`;
+      header.style.boxShadow = `0 1px ${borderOpacity * 4}px rgba(255, 235, 59, ${borderOpacity * 0.3})`;
     };
 
-    // Optimized scroll listener using requestAnimationFrame
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateHeader);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-  };
-
-  // Initialize header behavior
-  handleHeaderScroll();
-
-  // Handle view transitions
-  document.addEventListener('astro:after-swap', handleHeaderScroll);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader);
+  }
 </script>

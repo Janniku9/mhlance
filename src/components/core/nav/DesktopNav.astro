@@ -1,0 +1,36 @@
+---
+import type { GameNavigation } from '../../../types/Navigation';
+import NavDropdown from './NavDropdown.astro';
+import GitHubLink from '../header/GitHubLink.astro';
+
+interface Props {
+  currentGame?: GameNavigation;
+}
+
+const { currentGame } = Astro.props;
+---
+
+<div class="hidden md:flex items-center gap-8">
+  {
+    currentGame && (
+      <>
+        <NavDropdown
+          title="Builds"
+          items={currentGame.sections.builds}
+          baseUrl={`/${currentGame.game}/builds`}
+        />
+        <NavDropdown
+          title="Guides"
+          items={currentGame.sections.guides}
+          baseUrl={`/${currentGame.game}/guides`}
+        />
+        <NavDropdown
+          title="Data"
+          items={currentGame.sections.data}
+          baseUrl={`/${currentGame.game}/data`}
+        />
+      </>
+    )
+  }
+  <GitHubLink />
+</div>

@@ -1,6 +1,1 @@
-export type GameType = 'world' | 'rise' | 'wilds' | null;
-
-export interface Game {
-  id: GameType;
-  name: string;
-}
+export type Game = 'world' | 'rise' | 'wilds' | null;
