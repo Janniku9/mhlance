@@ -12,7 +12,7 @@ import hs_water from '../../../assets/rise/builds/endgame/hs_water.png';
 
 const exampleBuild: Build = {
   title: 'Example Build',
-  description: ['This is an example build'],
+  description: ['This is an example build', 'This is an example build'],
   image: hs_water,
   imageAlt: 'Example Build',
   stats: {
@@ -32,6 +32,11 @@ const exampleBuild: Build = {
   },
   augments: ['attack', 'element', 'status', 'sharpness', 'affinity', 'rampage_slot'],
   rampageDeco: 'teostra-soul',
+  additionalNotes: {
+    sharpness: 'This is a sharpness note',
+    affinity: 'This is an affinity note',
+  },
+  scroll: 'red',
 };
 ---
 
