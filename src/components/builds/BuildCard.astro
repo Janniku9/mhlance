@@ -43,7 +43,7 @@ const { build, class: className } = Astro.props;
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
         <!-- Title -->
         <h3 class="text-xl font-bold group-hover:text-primary transition-colors">
-          {build.title}
+          {build.title.toLocaleUpperCase()}
         </h3>
       </div>
 
