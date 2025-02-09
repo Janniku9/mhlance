@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="back-to-top"
+  class="fixed bottom-6 right-6 bg-secondary-light/80 hover:bg-secondary-light text-primary p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 pointer-events-none"
+  aria-label="Back to top"
+>
+  <Icon name="mingcute:arrow-up-fill" class="h-6 w-6" />
+</button>
+
+<script>
+  const button = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      button?.classList.remove('opacity-0', 'pointer-events-none');
+    } else {
+      button?.classList.add('opacity-0', 'pointer-events-none');
+    }
+  });
+
+  button?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

@@ -1,6 +1,7 @@
 ---
 import Header from '../components/core/header/Header.astro';
 import FontLoader from '../components/core/FontLoader.astro';
+import BackToTop from '../components/core/nav/BackToTop.astro';
 
 interface Props {
   title: string;
@@ -24,6 +25,8 @@ const { title } = Astro.props;
     <main class="pt-16">
       <slot />
     </main>
+
+    <BackToTop />
   </body>
 </html>
 
