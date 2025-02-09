@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  name: string;
+}
+
+const { href, name } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group inline-flex items-center gap-2 px-3 py-1.5 text-sm
+         bg-background-dark/30 rounded-md border border-text/5
+         transition-all duration-200 hover:bg-background-darker
+         hover:border-text/10"
+>
+  <span class="text-info/80 group-hover:text-info transition-colors"> 🔗 </span>
+  <span class="text-info/70 group-hover:text-info transition-colors">
+    {name}
+  </span>
+</a>

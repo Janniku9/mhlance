@@ -11,9 +11,9 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "astro": "^5.0.5",
     "@iconify-json/mdi": "^1.2.1",
     "@iconify-json/mingcute": "^1.2.1",
+    "astro": "^5.0.5",
     "astro-icon": "^1.1.4"
   },
   "devDependencies": {

@@ -104,6 +104,8 @@ export const games: GameNavigation[] = [
           title: 'Low Rank',
           emoji: '🏯',
           navDescription: 'Low rank progression builds',
+          pageDescription:
+            'Easy-to-follow builds for crushing the early game! Get geared up fast as you progress through Low Rank',
         },
         {
           id: 'high-rank',
@@ -137,7 +139,7 @@ export const games: GameNavigation[] = [
           emoji: '🥊',
           navDescription: 'Optimal combos for all situations',
           pageDescription:
-            'Learn how to perform combos in Rise. This guide covers everything from basic combos to advanced techniques.',
+            'Your bread & butter Lance combos for big damage! Everything you need to know about dishing out maximum DPS',
         },
         {
           id: 'switch-skills',

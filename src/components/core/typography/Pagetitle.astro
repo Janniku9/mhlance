@@ -10,21 +10,21 @@ const { emoji, title, description } = Astro.props;
 
 <div class="relative">
   <!-- Content container -->
-  <div class="flex flex-col md:flex-row items-start gap-8 py-12 px-4">
+  <div class="flex flex-col md:flex-row items-start gap-4 py-12 px-4">
     <!-- Mobile: emoji + title row, Desktop: just emoji -->
     <div
-      class="flex md:block flex-row items-center gap-6 md:gap-0 animate-title [animation-delay:200ms]"
+      class="flex md:block flex-row items-center gap-4 md:gap-0 animate-title [animation-delay:200ms]"
     >
       {
         emoji && (
-          <span class="text-4xl md:text-8xl bg-text/5 rounded-2xl p-3 md:p-6 inline-block animate-subtle-float">
+          <span class="text-3xl md:text-8xl bg-text/5 rounded-2xl p-3 md:p-6 inline-block animate-subtle-float">
             {emoji}
           </span>
         )
       }
 
       <!-- Mobile only: title appears next to emoji -->
-      <h1 class="text-5xl font-bold md:hidden animate-title text-secondary">
+      <h1 class="text-4xl font-bold md:hidden animate-title text-secondary">
         {title.toUpperCase()}
       </h1>
     </div>
@@ -37,7 +37,7 @@ const { emoji, title, description } = Astro.props;
       </h1>
 
       <p
-        class="text-lg md:text-xl text-text/80 max-w-2xl animate-title [animation-delay:200ms] leading-relaxed"
+        class="text-md md:text-xl text-text/80 max-w-2xl animate-title [animation-delay:200ms] leading-relaxed"
       >
         {description}
       </p>
