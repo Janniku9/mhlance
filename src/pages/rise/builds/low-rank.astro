@@ -3,7 +3,36 @@ import ExternalLinkButton from '../../../components/core/buttons/ExternalLinkBut
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import Section from '../../../components/core/layout/Section.astro';
 import InfoBox from '../../../components/core/alert/InfoBox.astro';
+import BuildCard from '../../../components/builds/BuildCard.astro';
 import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
+
+import type { Build } from '../../../types/builds/Build';
+
+import hs_water from '../../../assets/rise/builds/endgame/hs_water.png';
+
+const exampleBuild: Build = {
+  title: 'Example Build',
+  description: ['This is an example build'],
+  image: hs_water,
+  imageAlt: 'Example Build',
+  stats: {
+    raw: 100,
+    element: {
+      value: 100,
+      type: 'fire',
+    },
+    sharpness: {
+      hits: 100,
+      type: 'white',
+    },
+    affinity: {
+      avg: 100,
+      peak: 100,
+    },
+  },
+  augments: ['attack', 'element', 'status', 'sharpness', 'affinity', 'rampage_slot'],
+  rampageDeco: 'teostra-soul',
+};
 ---
 
 <ContentLayout>
@@ -75,6 +104,8 @@ import NavigationButton from '../../../components/core/buttons/NavigationButton.
       game. It's a straightforward hunt that introduces you to the game's mechanics and rewards you
       with some useful items.
     </p>
+
+    <BuildCard build={exampleBuild} />
   </Section>
 
   <NavigationButton href="/rise/builds/high-rank" text="Next: High Rank" />
