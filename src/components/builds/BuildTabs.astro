@@ -1,0 +1,86 @@
+---
+interface Props {
+  labels: string[];
+}
+
+const { labels } = Astro.props;
+---
+
+<div class="w-full space-y-6">
+  <div class="relative">
+    <div class="flex flex-wrap justify-center gap-3 pb-2">
+      {
+        labels.map((label) => (
+          <button
+            data-tab={label}
+            class:list={[
+              'group relative bg-background-dark border border-text/10 px-6 py-3',
+              'transition-all duration-300 rounded-xl',
+              'flex items-center gap-2',
+              label === labels[0]
+                ? 'text-primary border-primary/30 bg-background-darker'
+                : 'hover:bg-background-darker hover:scale-105 hover:shadow-xl hover:shadow-primary/5',
+            ]}
+          >
+            <div
+              class:list={[
+                'absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-xl',
+                'opacity-0 group-hover:opacity-100 transition-all duration-300',
+                label === labels[0] ? 'opacity-100' : '',
+              ]}
+            />
+            <span class="relative text-sm font-medium group-hover:text-primary transition-colors">
+              {label}
+            </span>
+          </button>
+        ))
+      }
+    </div>
+    <!-- Rounded border element -->
+    <div class="w-full h-[10px] border-t border-text/10 rounded-t-full"></div>
+  </div>
+
+  <div class="build-content relative">
+    <slot />
+  </div>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll('[data-tab]');
+
+  // Hide all except first content
+  tabs.forEach((tab) => {
+    const id = tab.getAttribute('data-tab');
+    const content = document.getElementById(id || '');
+    if (content && id !== tabs[0].getAttribute('data-tab')) {
+      content.classList.add('hidden');
+    }
+  });
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.getAttribute('data-tab');
+
+      // Update tabs
+      tabs.forEach((t) => {
+        if (t === tab) {
+          t.classList.add('text-primary', 'border-primary/30', 'bg-background-darker');
+          t.querySelector('.bg-gradient-to-br')?.classList.add('opacity-100');
+        } else {
+          t.classList.remove('text-primary', 'border-primary/30', 'bg-background-darker');
+          t.querySelector('.bg-gradient-to-br')?.classList.remove('opacity-100');
+        }
+
+        // Show/hide content
+        const content = document.getElementById(t.getAttribute('data-tab') || '');
+        if (content) {
+          if (t === tab) {
+            content.classList.remove('hidden');
+          } else {
+            content.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
