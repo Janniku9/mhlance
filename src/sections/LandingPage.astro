@@ -15,7 +15,15 @@ import logo from '../assets/logo_large.png';
 
 <div class="container mx-auto px-4">
   <div class="min-h-screen flex flex-col items-center justify-center py-20">
-    <Image src={logo} alt="J9 MH" width={200} height={60} class="mb-4 animate-title" />
+    <Image
+      src={logo}
+      alt="J9 MH"
+      width={200}
+      height={60}
+      class="mb-4 animate-title"
+      loading="eager"
+      decoding="async"
+    />
     <p
       class="text-xl text-text/80 mb-16 text-center max-w-2xl animate-title [animation-delay:200ms]"
     >

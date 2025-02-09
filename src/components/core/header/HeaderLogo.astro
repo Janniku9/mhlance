@@ -14,6 +14,8 @@ import SmallLogo from '../../../assets/logo_small.png';
       width={LOGO_DIMENSIONS.large.width}
       height={LOGO_DIMENSIONS.large.height}
       class="hidden md:block object-contain"
+      loading="eager"
+      decoding="async"
     />
     <Image
       src={SmallLogo}
@@ -21,6 +23,8 @@ import SmallLogo from '../../../assets/logo_small.png';
       width={LOGO_DIMENSIONS.small.width}
       height={LOGO_DIMENSIONS.small.height}
       class="md:hidden object-contain"
+      loading="eager"
+      decoding="async"
     />
   </a>
 </div>

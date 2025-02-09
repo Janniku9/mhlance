@@ -1,0 +1,27 @@
+---
+import MainLayout from './MainLayout.astro';
+import PageTitle from '../components/core/typography/Pagetitle.astro';
+import type { Game } from '../types/Game';
+import { games } from '../data/Navigation';
+
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const gameId = segments[0] as Game;
+const sectionType = segments[1];
+const sectionId = segments[2];
+
+const currentGame = games.find((game) => game.game === gameId);
+const currentSection = currentGame?.sections[
+  sectionType as keyof typeof currentGame.sections
+]?.find((section) => section.id === sectionId);
+---
+
+<MainLayout title={currentSection?.title ?? ''}>
+  <div class:list={['max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-24']}>
+    <PageTitle
+      title={currentSection?.title ?? ''}
+      description={currentSection?.pageDescription ?? currentSection?.navDescription ?? ''}
+      emoji={currentSection?.emoji ?? ''}
+    />
+    <slot />
+  </div>
+</MainLayout>

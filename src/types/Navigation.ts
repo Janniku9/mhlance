@@ -1,21 +1,14 @@
 import type { Game } from './Game';
-
-export interface NavItem {
-  id: string;
-  title: string;
-  emoji: string;
-  navDescription?: string;
-  pageDescription?: string;
-}
+import type { Section } from './Sections';
 
 export interface GameNavigation {
   game: Game;
   title: string;
   emoji: string;
   sections: {
-    builds: NavItem[];
-    guides: NavItem[];
-    tools: NavItem[];
-    data: NavItem[];
+    builds: Section[];
+    guides: Section[];
+    tools: Section[];
+    data: Section[];
   };
 }
