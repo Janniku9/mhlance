@@ -112,6 +112,8 @@ export const games: GameNavigation[] = [
           title: 'High Rank',
           emoji: '🌄',
           navDescription: 'High rank progression builds',
+          pageDescription:
+            'Power through High Rank with optimized lance builds! From starter gear to endgame sets.',
         },
         {
           id: 'master-rank',
