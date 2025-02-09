@@ -3,6 +3,7 @@ import ExternalLinkButton from '../../../components/core/buttons/ExternalLinkBut
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import Section from '../../../components/core/layout/Section.astro';
 import InfoBox from '../../../components/core/alert/InfoBox.astro';
+import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
 ---
 
 <ContentLayout>
@@ -47,6 +48,7 @@ import InfoBox from '../../../components/core/alert/InfoBox.astro';
     </p>
   </Section>
 
+  <!-- Village 1 star quests -->
   <Section title="Welcome To Kamura Village - 1⭐">
     <p>
       Your starting gear in Kamura is actually decent, though we'll upgrade to a few pieces of
@@ -65,4 +67,15 @@ import InfoBox from '../../../components/core/alert/InfoBox.astro';
       give Attack Boost and Critical Eye where possible.
     </p>
   </Section>
+
+  <!-- Village 2 star quests -->
+  <Section title="Expedition Into The Cold - 2⭐">
+    <p>
+      The first quest in Kamura is a great way to get your bearings and learn the basics of the
+      game. It's a straightforward hunt that introduces you to the game's mechanics and rewards you
+      with some useful items.
+    </p>
+  </Section>
+
+  <NavigationButton href="/rise/builds/high-rank" text="Next: High Rank" />
 </ContentLayout>
