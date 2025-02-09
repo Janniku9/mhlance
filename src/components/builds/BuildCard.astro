@@ -65,7 +65,9 @@ const { build, class: className } = Astro.props;
   <!-- Bottom Section -->
   <div class="flex flex-col md:flex-row">
     <!-- Right Side - Description -->
-    <div class="flex-1 p-6 md:p-8 border-b md:border-b-0 md:border-r border-text/10">
+    <div
+      class="flex-1 order-2 md:order-1 p-6 md:p-8 border-b md:border-b-0 md:border-r border-text/10"
+    >
       {
         build.description?.map((desc: string) => (
           <p class="text-sm text-text/80 mb-4 last:mb-0">{desc}</p>
@@ -89,7 +91,8 @@ const { build, class: className } = Astro.props;
     </div>
 
     <!-- Left Side - Build Configuration -->
-    <div class="flex-1 p-6 md:p-8">
+    <!-- Left Side - Build Configuration -->
+    <div class="flex-1 order-1 md:order-2 p-6 md:p-8">
       <!-- Stats Section -->
       <div class="flex flex-col gap-6 mb-6">
         <!-- Core Stats Grid -->
