@@ -1,0 +1,13 @@
+---
+import type { Combo } from '../../types/guides/Combo';
+
+interface Props {
+  combo: Combo;
+}
+
+const { combo } = Astro.props;
+
+const mvPerSecond = combo.stats.motionValue / combo.stats.duration;
+const elementModifier = combo.stats.elementModifier;
+const sharpnessCostPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
+---

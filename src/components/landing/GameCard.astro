@@ -22,7 +22,7 @@ const hasContent = (game: GameNavigation) => {
     'group relative bg-background-dark border border-text/10 rounded-3xl p-12 transition-all duration-300',
     'animate-fade-in hover:z-10',
     hasContent(game)
-      ? 'hover:bg-background-darker hover:scale-105 hover:shadow-2xl hover:shadow-primary/5'
+      ? 'hover:bg-background-darker hover:scale-105  hover:shadow-2xl hover:shadow-primary/5'
       : 'cursor-not-allowed opacity-80',
   ]}
 >
@@ -30,14 +30,17 @@ const hasContent = (game: GameNavigation) => {
     class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-300"
   >
   </div>
-  <div class="relative flex flex-col items-center gap-8">
+  <div
+    class:list={[
+      'relative flex flex-col items-center gap-8',
+      hasContent(game) ? 'hover:scale-105 transition-transform' : '',
+    ]}
+  >
     <span class="text-7xl bg-text/5 rounded-2xl p-8 transition-transform group-hover:animate-float"
       >{game.emoji}</span
     >
     <div class="text-center">
-      <h2
-        class="text-3xl font-bold transition-all duration-300 group-hover:text-primary group-hover:scale-105 mb-4"
-      >
+      <h2 class="text-3xl font-bold transition-all duration-300 group-hover:text-primary mb-4">
         {game.title.toUpperCase()}
       </h2>
       {

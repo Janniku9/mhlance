@@ -49,9 +49,9 @@ const { title, items, baseUrl } = Astro.props;
                     <span class="block text-base text-text group-hover:text-primary transition-colors">
                       {item.title.toUpperCase()}
                     </span>
-                    {item.description && (
+                    {item.navDescription && (
                       <span class="block text-sm text-text/60 group-hover:text-primary/60 transition-colors mt-1">
-                        {item.description}
+                        {item.navDescription}
                       </span>
                     )}
                   </div>

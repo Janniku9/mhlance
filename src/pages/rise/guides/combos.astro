@@ -1,0 +1,20 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import ContentContainer from '../../../layouts/ContentContainer.astro';
+import PageTitle from '../../../components/core/typography/Pagetitle.astro';
+
+import { games } from '../../../data/Navigation';
+
+const currentGame = games.find((game) => game.game === 'rise');
+const currentSection = currentGame?.sections.guides.find((section) => section.id === 'combos');
+---
+
+<MainLayout title="Combos">
+  <ContentContainer>
+    <PageTitle
+      title={currentSection?.title ?? ''}
+      description={currentSection?.pageDescription ?? currentSection?.navDescription ?? ''}
+      emoji={currentSection?.emoji ?? ''}
+    />
+  </ContentContainer>
+</MainLayout>

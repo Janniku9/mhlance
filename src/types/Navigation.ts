@@ -4,7 +4,8 @@ export interface NavItem {
   id: string;
   title: string;
   emoji: string;
-  description?: string;
+  navDescription?: string;
+  pageDescription?: string;
 }
 
 export interface GameNavigation {

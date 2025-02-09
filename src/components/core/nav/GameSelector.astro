@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { GameNavigation } from '../../../types/Navigation';
 
 interface Props {
@@ -14,26 +15,25 @@ const { games, currentGame } = Astro.props;
     class="bg-primary hover:bg-primary-dark text-background px-4 py-2 rounded transition-colors flex items-center gap-2"
   >
     {currentGame?.title.toUpperCase() || 'SELECT GAME'}
-    <svg
-      class="w-4 h-4 transition-transform duration-200 group-hover/nav:rotate-180"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"></path>
-    </svg>
+    <Icon
+      name="mingcute:down-fill"
+      class="w-5 h-5 transition-transform duration-200 group-hover/nav:rotate-180"
+    />
   </button>
 
   <div
-    class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50"
+    class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50 transform origin-top scale-95 group-hover/nav:scale-100"
   >
-    <div class="bg-background rounded-xl shadow-xl border border-text/10 p-4 min-w-[300px]">
+    <div
+      class="bg-background rounded-xl shadow-xl border border-text/10 p-4 min-w-[300px] animate-dropdown"
+    >
       <ul class="space-y-2">
         {
-          games.map((game) => (
-            <li>
+          games.map((game, index) => (
+            <li
+              class="opacity-0 translate-y-2 group-hover/nav:opacity-100 group-hover/nav:translate-y-0 transition-all duration-200"
+              style={`transition-delay: ${index * 50}ms`}
+            >
               <a
                 href={`/${game.game}`}
                 class:list={[
@@ -55,3 +55,20 @@ const { games, currentGame } = Astro.props;
     </div>
   </div>
 </div>
+
+<style>
+  @keyframes dropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-dropdown {
+    animation: dropdown 0.2s ease-out forwards;
+  }
+</style>
