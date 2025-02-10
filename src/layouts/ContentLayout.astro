@@ -3,6 +3,7 @@ import MainLayout from './MainLayout.astro';
 import PageTitle from '../components/core/typography/Pagetitle.astro';
 import type { Game } from '../types/Game';
 import { games } from '../data/Navigation';
+import MainFooter from '../components/core/footer/MainFooter.astro';
 
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 const gameId = segments[0] as Game;
@@ -10,6 +11,7 @@ const sectionType = segments[1];
 const sectionId = segments[2];
 
 const currentGame = games.find((game) => game.game === gameId);
+
 const currentSection = currentGame?.sections[
   sectionType as keyof typeof currentGame.sections
 ]?.find((section) => section.id === sectionId);
@@ -28,6 +30,7 @@ const currentSection = currentGame?.sections[
   </div>
 
   <div class="h-24"></div>
+  <MainFooter />
 </MainLayout>
 
 <style></style>

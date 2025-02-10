@@ -35,6 +35,7 @@ export const games: GameNavigation[] = [
           id: 'endgame',
           title: 'Endgame',
           emoji: '🐉',
+          showInQuickLinks: true,
           navDescription: 'Fatalis endgame builds',
         },
       ],
@@ -43,18 +44,21 @@ export const games: GameNavigation[] = [
           id: 'combos',
           title: 'Combos',
           emoji: '🥊',
+          showInQuickLinks: true,
           navDescription: 'Optimal combos for all situations',
         },
         {
           id: 'guarding',
           title: 'Guard Mechanics',
           emoji: '🛡️',
+          showInQuickLinks: true,
           navDescription: 'Detailed explanation of guard mechanics',
         },
         {
           id: 'clutch-claw',
           title: 'Clutch Claw',
           emoji: '⚓',
+          showInQuickLinks: true,
           navDescription: 'Detailed explanation of clutch claw',
         },
         {
@@ -82,6 +86,7 @@ export const games: GameNavigation[] = [
           id: 'guard-up',
           title: 'Guard Up',
           emoji: '🛡️',
+          showInQuickLinks: true,
           navDescription: 'Guard up values for all situations',
         },
         {
@@ -131,6 +136,7 @@ export const games: GameNavigation[] = [
           id: 'endgame',
           title: 'Endgame',
           emoji: '👑',
+          showInQuickLinks: true,
           navDescription: 'Endgame meta builds',
         },
       ],
@@ -140,6 +146,7 @@ export const games: GameNavigation[] = [
           title: 'Combos',
           emoji: '🥊',
           navDescription: 'Optimal combos for all situations',
+          showInQuickLinks: true,
           pageDescription:
             'Your bread & butter Lance combos for big damage! Everything you need to know about dishing out maximum DPS',
         },
@@ -148,6 +155,7 @@ export const games: GameNavigation[] = [
           title: 'Switch Skills',
           emoji: '🔄',
           navDescription: 'Detailed explanation of switch skills',
+          showInQuickLinks: true,
         },
         {
           id: 'palamutes',
@@ -174,12 +182,14 @@ export const games: GameNavigation[] = [
           id: 'match-ups',
           title: 'Match Ups',
           emoji: '📝',
+          showInQuickLinks: true,
           navDescription: 'Full match up chart for all monsters',
         },
         {
           id: 'guard-up',
           title: 'Guard Up',
           emoji: '🛡️',
+          showInQuickLinks: true,
           navDescription: 'Recommended guard up values for all monsters',
         },
         {

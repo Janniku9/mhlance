@@ -6,10 +6,10 @@ import { Icon } from 'astro-icon/components';
   <slot />
   <button
     id="mobile-menu-toggle"
-    class="text-text hover:text-primary transition-colors p-2"
+    class="text-primary hover:text-primary-light transition-colors p-2"
     aria-label="Toggle mobile menu"
   >
-    <Icon id="menu-icon" name="mingcute:menu-line" size={26} />
-    <Icon id="close-icon" name="mingcute:close-line" size={26} class="hidden" />
+    <Icon id="menu-icon" name="mingcute:menu-line" size={26} class="text-primary" />
+    <Icon id="close-icon" name="mingcute:close-line" size={26} class="text-primary hidden" />
   </button>
 </div>

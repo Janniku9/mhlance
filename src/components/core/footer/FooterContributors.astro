@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import type { Contributor } from '../../../types/Contributors';
+
+interface Props {
+  contributors: Contributor[];
+}
+
+const { contributors } = Astro.props;
+
+// Duplicate the array to create seamless loop
+const scrollContributors = [...contributors, ...contributors];
+---
+
+<div class="w-full overflow-hidden py-4 bg-background-dark/50">
+  <div class="contributor-scroll flex gap-8">
+    {
+      scrollContributors.map((contributor, index) => (
+        <div
+          class="flex items-center gap-2 shrink-0 px-4"
+          style={`animation-delay: ${index * 0.2}s`}
+        >
+          {contributor.image ? (
+            <Image src={contributor.image} alt={contributor.name} class="w-8 h-8 rounded-full" />
+          ) : (
+            <div class="w-8 h-8 rounded-full bg-text/5 flex items-center justify-center">
+              <span class="text-sm">{contributor.name[0]}</span>
+            </div>
+          )}
+          <div class="flex gap-2 items-center">
+            <span class="text-sm font-medium">{contributor.name}</span>
+            <span class="text-xs text-text/60">•</span>
+            <span class="text-xs text-text/60">{contributor.role}</span>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .contributor-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause animation on hover */
+  .contributor-scroll:hover {
+    animation-play-state: paused;
+  }
+</style>

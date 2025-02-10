@@ -3,38 +3,37 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import NavigationButton from './buttons/NavigationButton.astro';
 ---
 
-<MainLayout title="404 - Page Not Found">
-  <div class="container mx-auto px-4">
-    <div class="min-h-screen flex flex-col items-center justify-center py-20 relative">
-      <!-- Large Emoji -->
-      <div class="text-7xl sm:text-8xl animate-float mb-8">😿</div>
+<div class="container mx-auto px-4">
+  <div class="min-h-screen flex flex-col items-center justify-center py-20 relative">
+    <!-- Large Emoji -->
+    <div class="text-7xl sm:text-8xl animate-float mb-8">😿</div>
 
-      <!-- Error Message -->
-      <h1
-        class="text-5xl sm:text-6xl font-bold mb-4 text-primary transition-all duration-300 hover:scale-110 hover:text-warning"
-      >
-        404
-      </h1>
+    <!-- Error Message -->
+    <h1
+      class="text-5xl sm:text-6xl font-bold mb-4 text-primary transition-all duration-300 hover:scale-110 hover:text-warning"
+    >
+      404
+    </h1>
 
-      <!-- Description with Lance emoji -->
-      <p class="text-xl sm:text-2xl text-text/80 mb-4 text-center">
-        <span>Your lance</span>
-        <span class="inline-block animate-spin-slow">🎯</span>
-        <span>missed its mark...</span>
-      </p>
+    <!-- Description with Lance emoji -->
+    <p class="text-xl sm:text-2xl text-text/80 mb-4 text-center">
+      <span>Your lance</span>
+      <span class="inline-block animate-spin-slow">🎯</span>
+      <span>missed its mark...</span>
+    </p>
 
-      <p class="text-lg sm:text-xl text-text/60 mb-12">Even the best hunters get lost sometimes!</p>
+    <p class="text-lg sm:text-xl text-text/60 mb-12">Even the best hunters get lost sometimes!</p>
 
-      <!-- Navigation Button -->
-      <NavigationButton href="/" text="Return to Base Camp" icon="mingcute:campground-fill" />
+    <!-- Navigation Button -->
+    <NavigationButton href="/" text="Return to Base Camp" icon="mingcute:campground-fill" />
 
-      <!-- Background Stars -->
-      <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        {
-          Array.from({ length: 50 }).map((_, i) => (
-            <div
-              class="absolute rounded-full bg-white animate-twinkle"
-              style={`
+    <!-- Background Stars -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      {
+        Array.from({ length: 50 }).map((_, i) => (
+          <div
+            class="absolute rounded-full bg-white animate-twinkle"
+            style={`
               left: ${Math.random() * 100}%;
               top: ${Math.random() * 100}%;
               width: ${Math.random() * 3 + 1}px;
@@ -42,53 +41,52 @@ import NavigationButton from './buttons/NavigationButton.astro';
               opacity: ${Math.random() * 0.5 + 0.5};
               animation-delay: ${Math.random() * 3}s;
             `}
-            />
-          ))
-        }
-      </div>
+          />
+        ))
+      }
     </div>
   </div>
+</div>
 
-  <style>
-    @keyframes twinkle {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.3;
-      }
+<style>
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 1;
     }
+    50% {
+      opacity: 0.3;
+    }
+  }
 
-    @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
     }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
 
-    .animate-twinkle {
-      animation: twinkle 3s ease-in-out infinite;
-    }
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
 
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
 
-    .animate-spin-slow {
-      animation: spin 4s linear infinite;
-    }
+  .animate-spin-slow {
+    animation: spin 4s linear infinite;
+  }
 
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
     }
-  </style>
-</MainLayout>
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
