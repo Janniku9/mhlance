@@ -29,7 +29,9 @@ export type PlaystationKey =
   | 'DpadLeft'
   | 'DpadRight'
   | 'Share'
-  | 'Options';
+  | 'Options'
+  | 'LBack';
+
 export type XboxKey =
   | 'Y'
   | 'B'
@@ -46,7 +48,8 @@ export type XboxKey =
   | 'DpadLeft'
   | 'DpadRight'
   | 'View'
-  | 'Menu';
+  | 'Menu'
+  | 'LSBack';
 export type PCKey =
   | 'W'
   | 'A'
@@ -60,6 +63,10 @@ export type PCKey =
   | 'MouseMiddle'
   | 'MouseButton4'
   | 'MouseButton5';
+
+export type ControllerKey = PlaystationKey | XboxKey | PCKey;
+
+export type Platform = 'playstation' | 'xbox' | 'pc';
 
 export interface ComboInput {
   notes: string;

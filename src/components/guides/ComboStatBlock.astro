@@ -1,0 +1,37 @@
+---
+interface Props {
+  label: string;
+  value: number;
+  perSecond: number;
+  icon: string;
+  class?: string;
+  valueColor?: string;
+  perSecondUnit?: string;
+}
+
+const {
+  label,
+  value,
+  perSecond,
+  icon,
+  class: className,
+  valueColor = 'text-text',
+  perSecondUnit = '/s',
+} = Astro.props;
+
+const formattedValue = Number.isInteger(value) ? value : value.toFixed(1);
+const formattedPerSecond = perSecond.toFixed(1);
+---
+
+<div class:list={['flex flex-col gap-1', className]}>
+  <span class="text-sm text-text/60">{label}</span>
+  <div class="flex items-center gap-2">
+    <div class="w-8 h-8 flex items-center justify-center">
+      {icon}
+    </div>
+    <div class="flex flex-col">
+      <span class:list={['text-lg font-medium', valueColor]}>{formattedValue}</span>
+      <span class="text-xs text-text/60">{formattedPerSecond}{perSecondUnit}</span>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,107 @@
 ---
+import Section from '../../../components/core/layout/Section.astro';
+import Combo from '../../../components/guides/Combo.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { ComboTag } from '../../../types/guides/Combo';
 ---
 
-<ContentLayout> hi </ContentLayout>
+<ContentLayout>
+  <Section>
+    <p>
+      Combos are the heart and soul of Monster Hunter Rise's combat system. Mastering them is
+      essential for maximizing your damage output and becoming a proficient hunter. While every
+      weapon has its unique combo patterns, Lance stands out with its distinctive rhythm of blocks
+      and counters.
+    </p>
+
+    <p>
+      At its core, Lance's gameplay revolves around a simple yet elegant dance: block incoming
+      attacks, then strike back with precision. Don't let this straightforward approach fool you
+      though - there's incredible depth to Lance's defensive options and follow-up attacks. A
+      skilled Lance user knows exactly when to counter-attack and, just as importantly, when to hold
+      back to maintain defensive positioning.
+    </p>
+
+    <p>
+      Rise gives Lance hunters an impressive defensive moveset to choose from:
+      <ul>
+        <li>Normal Guard: Your reliable fallback for multi-hit attacks or tricky timing windows</li>
+        <li>Instablock: Perfect for well-telegraphed attacks with clear wind-ups</li>
+        <li>Guard Dash: Quick repositioning while maintaining defense</li>
+        <li>Shield Tackle: Great for interrupting faster attacks</li>
+        <li>Anchor Rage: Turns powerful hits into damage buffs</li>
+        <li>Spiral Thrust: Excellent counter with built-in mobility</li>
+        <li>Counter Thrust: Classic counter-attack with generous timing</li>
+        <li>Sheathing Retreat: Your escape option for unblockable attacks</li>
+      </ul>
+    </p>
+
+    <p>
+      After successfully defending, you'll want to capitalize with your offensive options. Your
+      bread-and-butter attacks are Cross Slash for general use, Charged Wide Sweep for raw damage
+      builds, and Leaping Thrust for elemental setups. The key to high-level Lance play is reading
+      the monster's recovery animations to know exactly how many attacks you can safely fit in.
+      Sometimes you'll have time for a full Cross Slash into Charged Wide Sweep combo, while other
+      openings might only allow for a quick Cross Slash or a single poke. Remember - it's better to
+      land one safe hit and maintain your defensive position than to get greedy and eat a
+      counter-attack.
+    </p>
+  </Section>
+
+  <Section title="combo overview" emoji="💡">
+    <p>
+      When a monster is down, paralyzed, or immobilized, you have several powerful loop options. The
+      table above breaks down the main combos with their respective Raw damage, Element/Status
+      application, Sharpness consumption, and Hits per second. The choice between these depends
+      primarily on your build type:
+    </p>
+
+    <ul>
+      <li>Raw builds benefit most from the LT + CWS + GD loop</li>
+      <li>Element/Status builds excel with Leaping Thrust only loops</li>
+      <li>For sharpness efficiency, consider CWS + ST</li>
+    </ul>
+
+    <p>
+      Since we'll cover the detailed execution and situational use of these combos later, just keep
+      in mind that your Hit/second ratio will affect how quickly you can stack effects like Powder
+      Mantle or Intrepid Heart.
+    </p>
+
+    <Section title="guard dash raw combos" emoji="🏃‍♂️">
+      <Combo
+        combo={{
+          title: 'LT + CWS',
+          longTitle: 'Leaping Thrust + Charged Wide Sweep',
+          stats: {
+            motionValue: 148,
+            elementModifier: 4.7,
+            sharpnessCost: 2,
+            duration: 3.4,
+          },
+          tags: [ComboTag.DamageRaw, ComboTag.OpportunityLong],
+          gif: 'https://giphy.com/embed/wGUSPNOX5NR90d035L',
+          strengths: [
+            'Abuses High Raw motion value from Charged Wide Sweep',
+            'Guard Dash Leaping Thrust is the most optimal way to loop Charged Wide Sweeps',
+            'Low Sharpness consumption',
+          ],
+          considerations: [
+            'Can be difficult to consistently hit CWS on monster weak spots',
+            'Requires positioning practice to land attacks effectively',
+          ],
+          inputs: {
+            notes: 'Guard Dash',
+            PlaystationInput: [['Circle', 'Triangle'], ['R2', 'Triangle', 'LBack'], ['Circle']],
+            XboxInput: [['B', 'Y'], ['RT', 'Y', 'LSBack'], ['B']],
+            PCInput: [
+              ['MouseLeft', 'MouseRight'],
+              ['MouseButton4', 'MouseLeft', 'S'],
+              ['MouseRight'],
+            ],
+          },
+        }}
+      />
+    </Section>
+  </Section>
+</ContentLayout>
