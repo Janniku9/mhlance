@@ -187,7 +187,7 @@ export const riseMatchups: Matchups[] = [
       {
         buildName: 'Thunder',
         emoji: '⚡',
-        color: '#f59e0b',
+        color: '#f2f540',
         monsters: [
           {
             name: 'Aknosom',

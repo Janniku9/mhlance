@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import StatBlock from './StatBlock.astro';
 import SharpnessBar from './SharpnessBar.astro';
+import Tooltip from '../core/ToolTip.astro';
 
 import type { Build, AugmentType } from '../../types/builds/Build';
 import { Image } from 'astro:assets';
@@ -133,11 +134,9 @@ const { build, class: className } = Astro.props;
             <span class="text-sm text-text/60 block mb-2">AUGMENTS</span>
             <div class="flex flex-wrap gap-1">
               {build.augments.map((augment: AugmentType) => (
-                <div class="group/augment relative" title={getAugmentTooltip(augment)}>
+                <div class="group/monster relative">
                   <div class:list={['hexagon', 'w-8 h-8', getAugmentColor(augment)]} />
-                  <div class="absolute opacity-0 group-hover/augment:opacity-100 transition-opacity bg-background-darker text-sm text-white p-2 rounded-lg -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap z-10 pointer-events-none">
-                    {augment}
-                  </div>
+                  <Tooltip text={getAugmentTooltip(augment)} />
                 </div>
               ))}
             </div>
