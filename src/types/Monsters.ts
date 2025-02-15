@@ -19,3 +19,9 @@ export interface MonsterPriority {
   name: string;
   buildPriority?: number;
 }
+
+export interface GuardUp {
+  name: string;
+  guardUp?: string[];
+  trueUnblockable?: string[];
+}

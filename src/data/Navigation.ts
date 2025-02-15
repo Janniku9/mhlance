@@ -183,14 +183,17 @@ export const games: GameNavigation[] = [
           title: 'Match Ups',
           emoji: '📝',
           showInQuickLinks: true,
-          navDescription: 'Full match up chart for all monsters',
+          navDescription: 'Optimal builds for every monster matchup',
+          pageDescription: 'Complete matchup guide showing the best builds for every monster! ',
         },
         {
           id: 'guard-up',
           title: 'Guard Up',
           emoji: '🛡️',
           showInQuickLinks: true,
-          navDescription: 'Recommended guard up values for all monsters',
+          navDescription: 'All blockable & unblockable attacks',
+          pageDescription:
+            'Complete list of attacks requiring Guard Up and truly unblockable moves! ',
         },
         {
           id: 'anomaly-materials',

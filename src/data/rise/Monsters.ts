@@ -389,48 +389,4 @@ export const riseMonsters: Monster[] = [
     name: 'Zinogre',
     image: zinogre,
   },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
-  {
-    name: 'Zinogre',
-    image: zinogre,
-  },
 ];
