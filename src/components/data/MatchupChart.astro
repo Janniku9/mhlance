@@ -42,11 +42,17 @@ const getMonsterImage = (monsterName: string) => {
 
           <div class="space-y-4">
             {matchup.effectiveAgainst.map((build) => (
-              <div class="grid grid-cols-[200px_1fr] items-center gap-4">
+              <div class="grid grid-cols-[200px_1fr] items-center gap-4 relative">
+                {/* Color bar that extends across */}
+                <div
+                  class="absolute top-0 left-[200px] h-full w-[calc(100%-200px)] border-t-8 rounded-r-2xl"
+                  style={`border-color: ${build.color}30;`}
+                />
+
                 {/* Build name section - fixed width */}
                 <div
-                  class="flex items-center gap-3 border border-text/10 rounded-lg p-2 h-full"
-                  style={`background-color: ${build.color}66;`}
+                  class="flex items-center gap-3 rounded-l-2xl p-2 h-full z-10"
+                  style={`background-color: ${build.color}30;`}
                 >
                   <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
                     {build.emoji}
@@ -55,13 +61,13 @@ const getMonsterImage = (monsterName: string) => {
                 </div>
 
                 {/* Monsters grid section */}
-                <div class="flex flex-wrap gap-2 justify-end">
+                <div class="flex flex-wrap gap-2 justify-end relative pr-2 pt-4">
                   {build.monsters.map((monster) => {
                     const monsterImage = getMonsterImage(monster.name);
                     return (
                       monsterImage && (
                         <div class="relative group/monster">
-                          <div class="relative w-12 h-12 bg-background rounded-lg overflow-hidden border border-text/10 transition-transform duration-300 hover:scale-110">
+                          <div class="relative w-12 h-12 bg-background rounded-lg overflow-hidden transition-transform duration-300 hover:scale-110">
                             <Image
                               src={monsterImage}
                               alt={monster.name}
