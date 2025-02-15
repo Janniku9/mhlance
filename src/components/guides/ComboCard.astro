@@ -1,0 +1,53 @@
+---
+import type { Combo } from '../../types/guides/Combo';
+
+interface Props {
+  combo: Combo;
+  class?: string;
+  reversed?: boolean;
+}
+
+const { combo, class: className, reversed = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
+    'transition-all duration-300 hover:bg-background-darker',
+    'hover:shadow-2xl hover:shadow-primary/5',
+    className,
+  ]}
+>
+  <!-- Gradient overlay -->
+  <div
+    class:list={[
+      'absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent',
+      'opacity-0 group-hover:opacity-100 group-[.is-centered]:opacity-100',
+      'transition-all duration-300',
+    ]}
+  >
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    <!-- Left Column -->
+    <div
+      class:list={[
+        'p-6 md:p-8 border-b md:border-b-0 md:border-r border-text/10 bg-secondary/5',
+        reversed ? 'md:order-2 md:border-l md:border-r-0' : 'md:order-1',
+      ]}
+    >
+      <h3
+        class:list={[
+          'text-xl font-bold mb-4',
+          'group-hover:text-primary group-[.is-centered]:text-primary',
+          'transition-colors',
+        ]}
+      >
+        {combo.longTitle}
+      </h3>
+
+      <!-- Rest of your combo card content -->
+      ...
+    </div>
+  </div>
+</div>

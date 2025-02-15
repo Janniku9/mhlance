@@ -1,0 +1,135 @@
+---
+import { getButtonClass, getButtonEmoji } from '../../utils/ComboUtils';
+import type { Platform } from '../../types/guides/Combo';
+import InputSequence from './InputSequence.astro';
+
+interface Props {
+  inputs: {
+    PlaystationInput: any[][];
+    XboxInput: any[][];
+    PCInput: any[][];
+    notes?: string;
+  };
+}
+
+const { inputs } = Astro.props;
+---
+
+<div class="combo-inputs space-y-3 relative z-10" data-platform-selector>
+  <div class="flex items-center gap-2">
+    <button
+      class="platform-btn px-3 py-1.5 rounded-lg text-sm bg-background-darker border border-primary text-primary
+               hover:bg-primary/5 transition-colors relative z-10"
+      data-platform="playstation"
+    >
+      PlayStation
+    </button>
+    <button
+      class="platform-btn px-3 py-1.5 rounded-lg text-sm bg-background-darker border border-text/10
+               hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors relative z-10"
+      data-platform="xbox"
+    >
+      Xbox
+    </button>
+    <button
+      class="platform-btn px-3 py-1.5 rounded-lg text-sm bg-background-darker border border-text/10
+               hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors relative z-10"
+      data-platform="pc"
+    >
+      PC
+    </button>
+  </div>
+
+  <div class="input-displays">
+    <div class="platform-inputs" data-platform="playstation">
+      <div class="flex flex-wrap gap-2">
+        {
+          inputs.PlaystationInput.map((sequence, i) => (
+            <InputSequence
+              sequence={sequence}
+              platform="playstation"
+              isLastSequence={i === inputs.PlaystationInput.length - 1}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="platform-inputs hidden" data-platform="xbox">
+      <div class="flex flex-wrap gap-2">
+        {
+          inputs.XboxInput.map((sequence, i) => (
+            <InputSequence
+              sequence={sequence}
+              platform="xbox"
+              isLastSequence={i === inputs.XboxInput.length - 1}
+            />
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="platform-inputs hidden" data-platform="pc">
+      <div class="flex flex-wrap gap-2">
+        {
+          inputs.PCInput.map((sequence, i) => (
+            <InputSequence
+              sequence={sequence}
+              platform="pc"
+              isLastSequence={i === inputs.PCInput.length - 1}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {inputs.notes && <p class="text-xs text-text/60 mt-2">{inputs.notes}</p>}
+</div>
+
+<script>
+  import { platformStore } from '../../store/PlatformStore';
+  import type { Platform } from '../../types/guides/Combo';
+
+  // Find all platform selectors on the page
+  const platformSelectors = document.querySelectorAll('[data-platform-selector]');
+
+  platformSelectors.forEach((selector) => {
+    // Initial state
+    updateUI(selector, platformStore.getPlatform());
+
+    // Setup button listeners
+    const buttons = selector.querySelectorAll('.platform-btn');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const platform = button.getAttribute('data-platform');
+        if (platform) {
+          platformStore.setPlatform(platform as Platform);
+        }
+      });
+    });
+
+    // Subscribe to store changes
+    platformStore.subscribe((platform) => {
+      updateUI(selector, platform);
+    });
+  });
+
+  function updateUI(selector: Element, platform: string) {
+    // Update buttons
+    const buttons = selector.querySelectorAll('.platform-btn');
+    buttons.forEach((button) => {
+      const isActive = button.getAttribute('data-platform') === platform;
+      button.classList.toggle('border-primary', isActive);
+      button.classList.toggle('text-primary', isActive);
+      button.classList.toggle('border-text/10', !isActive);
+    });
+
+    // Update input displays
+    const inputs = selector.querySelectorAll('.platform-inputs');
+    inputs.forEach((input) => {
+      const isActive = input.getAttribute('data-platform') === platform;
+      input.classList.toggle('hidden', !isActive);
+    });
+  }
+</script>

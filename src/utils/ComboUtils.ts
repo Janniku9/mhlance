@@ -95,8 +95,28 @@ export function getButtonEmoji(button: ControllerKey, platform: Platform): strin
 }
 
 export function getButtonClass(button: ControllerKey, platform: Platform): string {
-  const baseClass =
-    'w-10 h-10 flex items-center justify-center rounded-lg border text-sm font-medium';
+  const baseClass = 'w-10 h-10 flex items-center justify-center border text-sm font-medium';
+
+  // Default to round buttons
+  let shapeClass = 'rounded-full';
+
+  // Define which buttons should be rectangular
+  const rectangularButtons = {
+    playstation: ['L1', 'L2', 'R1', 'R2', 'Share', 'Options'], // Removed L3/R3
+    xbox: ['LB', 'LT', 'RB', 'RT', 'View', 'Menu'], // Removed LS/RS
+    pc: ['Space', 'Shift', 'Ctrl', 'W', 'A', 'S', 'D'], // Keep keyboard keys rectangular
+  };
+
+  // Check if button should be rectangular
+  if (platform === 'playstation' && rectangularButtons.playstation.includes(button as string)) {
+    shapeClass = 'rounded-lg';
+  }
+  if (platform === 'xbox' && rectangularButtons.xbox.includes(button as string)) {
+    shapeClass = 'rounded-lg';
+  }
+  if (platform === 'pc' && rectangularButtons.pc.includes(button as string)) {
+    shapeClass = 'rounded-lg';
+  }
 
   let colorClass = 'bg-gray-500/20 border-gray-500/30 text-gray-400';
 
@@ -110,7 +130,7 @@ export function getButtonClass(button: ControllerKey, platform: Platform): strin
     colorClass = PC_COLOR_MAP[button as PCKey] || colorClass;
   }
 
-  return `${baseClass} ${colorClass}`;
+  return `${baseClass} ${shapeClass} ${colorClass}`;
 }
 
 export function getComboTagColor(tag: ComboTag): string {
