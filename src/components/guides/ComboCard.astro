@@ -107,7 +107,7 @@ const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
           {
             combo.strengths.map((strength) => (
               <li class="text-sm text-text/80 flex items-start gap-2">
-                <Icon name="mingcute:plus-fill" class="w-4 h-4 text-primary flex-shrink-0" />
+                <Icon name="mingcute:plus-fill" class="w-4 h-4 text-success flex-shrink-0" />
                 {strength}
               </li>
             ))
@@ -123,10 +123,7 @@ const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
             <ul class="space-y-2">
               {combo.considerations.map((consideration) => (
                 <li class="text-sm text-text/80 flex items-start gap-2">
-                  <Icon
-                    name="mingcute:minimize-fill"
-                    class="w-4 h-4 text-secondary flex-shrink-0"
-                  />
+                  <Icon name="mingcute:minimize-fill" class="w-4 h-4 text-error flex-shrink-0" />
                   {consideration}
                 </li>
               ))}

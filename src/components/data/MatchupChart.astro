@@ -1,0 +1,101 @@
+---
+import type { Matchups, Monster } from '../../types/Monsters';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  matchups: Matchups[];
+  monsters: Monster[];
+}
+
+const { matchups, monsters } = Astro.props;
+
+const getPriorityLabel = (priority: number | undefined) => {
+  if (!priority) return '';
+  return `${priority}`;
+};
+
+const getMonsterImage = (monsterName: string) => {
+  const monster = monsters.find((m) => m.name === monsterName);
+  if (!monster) {
+    console.error(`Monster not found: ${monsterName}`);
+    return null;
+  }
+  return monster.image;
+};
+---
+
+<div
+  class="group relative bg-background-dark border border-text/10 rounded-xl overflow-hidden transition-all duration-300 hover:bg-background-darker hover:shadow-2xl hover:shadow-primary/5"
+>
+  {/* Hover gradient overlay */}
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"
+  >
+  </div>
+
+  <div class="p-6">
+    {
+      matchups.map((matchup) => (
+        <div class="mb-8 last:mb-0">
+          <h2 class="text-xl font-bold text-primary mb-4 text-center">{matchup.title}</h2>
+
+          <div class="space-y-4">
+            {matchup.effectiveAgainst.map((build) => (
+              <div class="grid grid-cols-[200px_1fr] items-center gap-4">
+                {/* Build name section - fixed width */}
+                <div
+                  class="flex items-center gap-3 border border-text/10 rounded-lg p-2 h-full"
+                  style={`background-color: ${build.color}66;`}
+                >
+                  <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
+                    {build.emoji}
+                  </span>
+                  <h3 class="text-base font-bold text-text/90">{build.buildName}</h3>
+                </div>
+
+                {/* Monsters grid section */}
+                <div class="flex flex-wrap gap-2 justify-end">
+                  {build.monsters.map((monster) => {
+                    const monsterImage = getMonsterImage(monster.name);
+                    return (
+                      monsterImage && (
+                        <div class="relative group/monster">
+                          <div class="relative w-12 h-12 bg-background rounded-lg overflow-hidden border border-text/10 transition-transform duration-300 hover:scale-110">
+                            <Image
+                              src={monsterImage}
+                              alt={monster.name}
+                              class="w-14 h-14 object-contain absolute -top-1 -left-1"
+                            />
+
+                            {monster.buildPriority && (
+                              <div class="absolute bottom-0 right-0 w-4 h-4 bg-primary text-background rounded-tl-md text-[10px] font-bold flex items-center justify-center shadow-md">
+                                {getPriorityLabel(monster.buildPriority)}
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Tooltip */}
+                          <div class="absolute pointer-events-none bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover/monster:opacity-100 transition-all duration-200 z-50">
+                            <div class="bg-background-darker text-text px-3 py-1.5 rounded-lg text-sm border border-text/10 shadow-xl whitespace-nowrap">
+                              {monster.name}
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="text-sm text-text/60 flex items-center gap-2 mt-6">
+      <Icon name="mingcute:information-line" class="w-4 h-4" />
+      Numbers indicate build priority (1 being the strongest)
+    </div>
+  </div>
+</div>

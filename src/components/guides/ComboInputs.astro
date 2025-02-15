@@ -18,6 +18,13 @@ const { inputs } = Astro.props;
 <div class="combo-inputs space-y-3 relative z-10" data-platform-selector>
   <div class="flex items-center gap-2">
     <button
+      class="platform-btn px-3 py-1.5 rounded-lg text-sm bg-background-darker border border-text/10
+             hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors relative z-10"
+      data-platform="pc"
+    >
+      PC
+    </button>
+    <button
       class="platform-btn px-3 py-1.5 rounded-lg text-sm bg-background-darker border border-primary text-primary
                hover:bg-primary/5 transition-colors relative z-10"
       data-platform="playstation"
@@ -30,13 +37,6 @@ const { inputs } = Astro.props;
       data-platform="xbox"
     >
       Xbox
-    </button>
-    <button
-      class="platform-btn px-3 py-1.5 rounded-lg text-sm bg-background-darker border border-text/10
-               hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors relative z-10"
-      data-platform="pc"
-    >
-      PC
     </button>
   </div>
 

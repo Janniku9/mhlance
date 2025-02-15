@@ -1,8 +1,12 @@
 ---
 import Section from '../../../components/core/layout/Section.astro';
+import ImageCard from '../../../components/core/media/ImageCard.astro';
 import ComboCard from '../../../components/guides/ComboCard.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import { ComboTag } from '../../../types/guides/Combo';
+
+import ComboOverview from '../../../assets/rise/guides/combos/combo_comparison.png';
+import StyledList from '../../../components/core/lists/StyledList.astro';
 ---
 
 <ContentLayout>
@@ -24,16 +28,40 @@ import { ComboTag } from '../../../types/guides/Combo';
 
     <p>
       Rise gives Lance hunters an impressive defensive moveset to choose from:
-      <ul>
-        <li>Normal Guard: Your reliable fallback for multi-hit attacks or tricky timing windows</li>
-        <li>Instablock: Perfect for well-telegraphed attacks with clear wind-ups</li>
-        <li>Guard Dash: Quick repositioning while maintaining defense</li>
-        <li>Shield Tackle: Great for interrupting faster attacks</li>
-        <li>Anchor Rage: Turns powerful hits into damage buffs</li>
-        <li>Spiral Thrust: Excellent counter with built-in mobility</li>
-        <li>Counter Thrust: Classic counter-attack with generous timing</li>
-        <li>Sheathing Retreat: Your escape option for unblockable attacks</li>
-      </ul>
+
+      <StyledList
+        variant="compact"
+        items={[
+          {
+            text: 'Normal Guard: Your reliable fallback for multi-hit attacks or tricky timing windows',
+            emoji: '🔰',
+          },
+          {
+            text: 'Instablock: Perfect for well-telegraphed attacks with clear wind-ups',
+            emoji: '💯',
+          },
+          {
+            text: 'Guard Dash: Quick repositioning while maintaining defense',
+            emoji: '🏃‍♂️',
+          },
+          {
+            text: 'Shield Tackle: Great for interrupting faster attacks',
+            emoji: '🛡️',
+          },
+          {
+            text: 'Spiral Thrust: Excellent counter with built-in mobility',
+            emoji: '〰️',
+          },
+          {
+            text: 'Counter Thrust: Classic counter-attack with generous timing',
+            emoji: '⏪',
+          },
+          {
+            text: 'Sheathing Retreat: Your escape option for unblockable attacks',
+            emoji: '💨',
+          },
+        ]}
+      />
     </p>
 
     <p>
@@ -56,11 +84,27 @@ import { ComboTag } from '../../../types/guides/Combo';
       primarily on your build type:
     </p>
 
-    <ul>
-      <li>Raw builds benefit most from the LT + CWS + GD loop</li>
-      <li>Element/Status builds excel with Leaping Thrust only loops</li>
-      <li>For sharpness efficiency, consider CWS + ST</li>
-    </ul>
+    <StyledList
+      variant="compact"
+      items={[
+        {
+          text: 'Raw builds benefit most from the LT + CWS + GD loop',
+        },
+        {
+          text: 'Element/Status builds excel with Leaping Thrust only loops',
+        },
+        {
+          text: 'For sharpness efficiency, consider CWS + ST',
+        },
+      ]}
+    />
+
+    <ImageCard
+      src={ComboOverview}
+      alt="Combo Overview"
+      caption="Shows the raw damage, element/status application, sharpness consumption, and hits per second for each combo."
+      maxWidth="700px"
+    />
 
     <p>
       Since we'll cover the detailed execution and situational use of these combos later, just keep

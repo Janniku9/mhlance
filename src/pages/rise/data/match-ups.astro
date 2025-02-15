@@ -1,0 +1,18 @@
+---
+import Section from '../../../components/core/layout/Section.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import MatchupChart from '../../../components/data/MatchupChart.astro';
+import { riseMatchups } from '../../../data/rise/Matchups';
+import { riseMonsters } from '../../../data/rise/Monsters';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Match-ups are a crucial aspect of Monster Hunter Rise. Understanding how your weapon performs
+      against different monsters is key to becoming a proficient hunter.
+    </p>
+
+    <MatchupChart matchups={riseMatchups} monsters={riseMonsters} />
+  </Section>
+</ContentLayout>
