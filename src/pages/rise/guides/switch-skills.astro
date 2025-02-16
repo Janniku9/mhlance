@@ -1,0 +1,236 @@
+---
+import Section from '../../../components/core/layout/Section.astro';
+import StyledList from '../../../components/core/lists/StyledList.astro';
+import SectionSubTitle from '../../../components/core/typography/SectionSubTitle.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <h1>Switch Skills</h1>
+
+    <p>
+      Switch Skills add a significant amount of depth to Lance. Depending on which skills you choose
+      you can change the playstyle of Lance drastically. In this Guide I will go over all the Switch
+      Skills and explain what they do and how they work. I will also give my opinion on which Switch
+      Skills are the best and which ones are not worth using.
+    </p>
+  </Section>
+
+  <Section title="Normal Guard Vs Instablock (IB)">
+    <p>
+      Instablock is a straight upgrade to normal guarding in almost all situations. It has the same
+      startup as Normal Guard but with the added benefit of being able to completely negate all Chip
+      Damage and Knockback if you press it right before you get hit. On a successful parry you get
+      access to one of lance's highest damaging moves: the Cross Slash.
+    </p>
+
+    <p>
+      there are also many other options you can perform after a successful Instablock. For example
+      you can Instablock again to Counter chain Attacks, or use one of your Switch Skill moves like
+      Anchor Rage or Spiral Thrust.
+    </p>
+
+    <p>
+      If you press the Guard button too early you end up doing a Normal Guard instead, meaning you
+      aren't getting punished for pressing it too early at all. So what's the downside of running
+      Instablock? Well certain Attacks have multihits that are hard to block using Instablock
+      because you have to time the parry for every hit. Mastering the timing for these Attacks can
+      be very difficult but it's the most satisfying feeling in the game when you finally get it
+      down.
+    </p>
+  </Section>
+
+  <Section title="Dash Attack Vs Shield Charge">
+    <p>
+      Dash Attack is the iconic Lance charge known from older games like Monster Hunter World. It
+      let's you charge forwards until your Stamina runs out and is therefore really good to close
+      the distance to the monster. You can also cancel The Dash with a strong finisher attack that
+      deals a lot of Damage.
+    </p>
+
+    <p>
+      Shield Charge on the other hand is very different. It only lets you dash a short fixed
+      distance but since you are holding up your shield during the charge you can block incoming
+      Attacks. Additionally you can cancel the charge into the strong finishing thrust as well as a
+      shield bash that deals a lot of KO Damage.
+    </p>
+
+    <p>
+      Both of these moves are pretty good and honestly it just comes down to Personal Preference.
+      Are you looking for a move that let's you close Long Distances or would you rather be able to
+      run through Attacks with your shield out while also having access to one of the best KO
+      buildup Attacks?
+    </p>
+  </Section>
+
+  <Section title="Guard Dash Vs Shield Tackle">
+    <p>
+      Guard Dash as well as Shield Tackle are very good moves that have it's own advantages and
+      disadvantages. So it all comes down to Personal Preference. For elemental Lance Guard Dash is
+      pretty much a requirement though because of it's easy access to Leaping Thrust.
+    </p>
+
+    <p>
+      Both moves can be used to block fast incoming Attacks. They also both have built in Knockback
+      reduction equal to the armor skill Guard level 2. Which means you can Guard Dash or Shield
+      Tackle Attacks that would normally knock you back without getting Knocked Back at all.
+    </p>
+
+    <SectionSubTitle title="Guard Dash" />
+    <p>
+      Guard Dash gives you easy access to Leaping Thrust which is one of lance's best Dps Moves. The
+      move itself has a long window where you block incoming Damage. Use it to block Attacks that
+      are difficult or too fast to block with Instablock and follow up with Leaping Thrust.
+    </p>
+
+    <p>
+      When Teostra does his spin attack you can Guard Dash the first paw swipe, follow up with a
+      Leaping Thrust and then Guard Dash the second paw swipe. Follow up with Anchor Rage or Hop
+      Instablock to block the spin attack.
+    </p>
+
+    <SectionSubTitle title="Shield Tackle" />
+    <p>
+      By using Shield Tackle you lose easy access to lance's best Dps Move the Leaping Thrust.
+      Instead you get a very fast block that can turn you into Any Direction. The move also deals
+      blunt and KO Damage and puts you into Neutral State. Being in Neutral State is really good
+      because it means you can Instablock right out of Shield Tackle. After Guard dashing you won't
+      be in neutral so you have less follow up options.
+    </p>
+
+    <p>
+      In the clip above we can see how we use Shield Tackle to block the first punch from Rajang
+      while also repositioning ourselves to the side. Because Shield Tackle leaves us in Neutral
+      State we are able to follow up with an Instablock on the second punch.
+    </p>
+  </Section>
+
+  <Section title="Anchor Rage Vs Spiral Thrust Vs Skyward Thrust">
+    <SectionSubTitle title="Anchor Rage" />
+    <p>
+      Anchor Rage is a very flexible move that can be used against all monsters. It costs 1 Wirebug
+      and enters you into a Counter state that blocks the next attack and follows up with a strong
+      Poke. You will also receive a Raw Buff whose strength depends on the power of the attack you
+      blocked. The buff lasts for 30 seconds or until you sheathe your weapon.
+    </p>
+
+    <p>The buff can be determined by the color of the glow around your weapon:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Red: 5%',
+          emoji: '🔴',
+        },
+        {
+          text: 'Orange: 10%',
+          emoji: '🟠',
+        },
+        {
+          text: 'Yellow: 15%',
+          emoji: '🟡',
+        },
+      ]}
+    />
+
+    <p>
+      Similar to Instablock you will also receive no Chip Damage and Knockback, but unlike
+      Instablock you don't have to be in Neutral State to perform this move, which makes it a really
+      good panic option. The only problem is if the incoming attack consists of more than one hit.
+      In that case you will be locked into the animation and most likely get hit.
+    </p>
+
+    <SectionSubTitle title="Spiral Thrust" />
+    <p>
+      Spiral Thrust costs 1 Wirebug and let's the hunter perform two dashes into Any Direction. The
+      startup of the first dash has a built in Guard Point that let's you block incoming Attacks. If
+      you successfully block an Attacks your Lance will start glowing blue for 10 seconds giving you
+      a 10% Raw Buff.
+    </p>
+
+    <p>
+      The two dashes both have hitboxes that have 50MV and 80MV respectively. After the second dash
+      you can follow up with a strong Finishing Attack that has a impressive 90MV. Most people don't
+      know about this follow up and as you can see it's by far the strongest hit of the Combo. So
+      make sure to not forget about it.
+    </p>
+
+    <p>
+      In theory, if you manage to land all 3 hits on the monster's Weakspot, Spiral Thrust is one of
+      the best Dps Moves Lance offers. In practice this turns out the surprisingly difficult though.
+      Therefore many people prefer Anchor Rage with it's more consistent high Raw Buff.
+    </p>
+
+    <p>It's still a lot of fun to use so I would recommend trying it out for yourself.</p>
+
+    <SectionSubTitle title="Skyward Thrust" />
+    <p>
+      Skyward Thrust is a very flashy looking move. It costs 1 Wirebug and let's you fly into the
+      sky and perform a strong diving attack that can Pierce The Monster.
+    </p>
+
+    <p>
+      The upwards move deals only 40MV. The downwards move on the other hand can Tick 1-3 Times
+      depending on the monster's size. Each tick deals 80MV, so at max ticks that's an impressive
+      240MV. When landing there's an additional small hit that deals 30MV.
+    </p>
+
+    <p>
+      This makes Skyward Thrust the strongest move Lance has to offer. The problem is just that it
+      doesn't work on all monsters. But on the monsters it does work on it's a lot of fun to use.
+    </p>
+
+    <p>
+      Here's a list of some monsters that have easy skyward opening: Chameleos enrage + risen
+      transform + body slam, Malzeno roar, Rathian flip, Narwa sac topple, Valstrax inhale + all
+      wing slams, Bazelgeuse roar ...
+    </p>
+
+    <p>
+      The list goes on and on. I personally just keep it equipped on my Secondary Scroll and just
+      switch to it when I see an easy opening.
+    </p>
+  </Section>
+
+  <Section title="Twin Vine Vs Sheathing Retreat">
+    <p>
+      Twin Vine and Sheathing Retreat are both very good moves that have their own advantages and
+    </p>
+
+    <SectionSubTitle title="Twin Vine" />
+    <p>
+      Twin Vine costs 1 Wirebug and let's you stab your kunai into the monster. On a hit you will be
+      connected to the monster with a Silkbind Wire. You can then press the roll button to pull
+      yourself towards the monster. Addiionally as long as the wire is connected you will receive
+      Knockback reduction equal to the armor skill Guard Level 3.
+    </p>
+
+    <p>
+      In my opinion this move is pretty bad. There's not really a reason to use it when there's many
+      better gap closers like Dash Attack, Shield Charge, Guard Dash, Spiral Thrust or even
+      Sheathing Retreat. The extra Knockback recution is nice but it's super conditional and the
+      wire breaks easily so it's just better to slot more Guard in your set if you want more
+      Knockback reduction.
+    </p>
+
+    <SectionSubTitle title="Sheathing Retreat" />
+    <p>
+      Sheathing Retreat costs 1 Wirebug as well and let's you sheathe your weapon immediately while
+      also performing a jump backwards. Getting you out of Potentially Dangerous Situations.
+    </p>
+
+    <p>
+      The move also has 40 iframes (@60 fps) on it's start up. Letting you evade Attacks that are
+      difficult or impossible to block. For example if you time it with flaming Espinas stomp you
+      can completely evade his nova, or you can evade rajang's lightning beam.
+    </p>
+
+    <p>
+      It can also be used as a Gap Closer by turning around first, then sheathing retreating +
+      buffering a mid air jump. Or you can use it to quickly access certain items mid air like flash
+      Bombs. Overall it's a really good move that offers a lot of Utility and is definitely worth
+      using.
+    </p>
+  </Section>
+</ContentLayout>

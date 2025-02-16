@@ -11,7 +11,7 @@ export default function fadeInDirective(element: HTMLElement) {
       });
     },
     {
-      rootMargin: window.innerWidth < 768 ? '0px 0px -100px 0px' : '0px 0px -200px 0px',
+      rootMargin: window.innerWidth < 768 ? '0px 0px -100px 0px' : '0px 0px -400px 0px',
       threshold: 0,
     }
   );
