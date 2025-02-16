@@ -1,13 +1,13 @@
 ---
 interface GifProps {
   src: string;
-  thumbnail?: string;
   title?: string;
-  description?: string;
+  maxWidth?: string;
   class?: string;
+  reversed?: boolean;
 }
 
-const { src, thumbnail, title, description, class: className } = Astro.props;
+const { src, title, maxWidth, class: className, reversed = false } = Astro.props;
 ---
 
 <div
@@ -25,27 +25,36 @@ const { src, thumbnail, title, description, class: className } = Astro.props;
   >
   </div>
 
-  <div class="p-4">
+  <div class="p-4 flex flex-col gap-6 md:grid md:grid-cols-2">
+    <!-- Title (mobile only) -->
     {
       title && (
-        <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors px-2">
+        <h3 class="text-xl font-bold md:hidden group-hover:text-primary transition-colors">
           {title}
         </h3>
       )
     }
 
-    <div class="relative rounded-lg overflow-hidden">
+    <!-- Content wrapper with conditional order -->
+    <div
+      class:list={['relative rounded-lg overflow-hidden', reversed ? 'md:order-2' : 'md:order-1']}
+      style={maxWidth ? `max-width: ${maxWidth};` : ''}
+    >
       <iframe src={src} class="w-full aspect-video" frameborder="0" allowfullscreen></iframe>
     </div>
 
-    {
-      description && (
-        <div class="mt-3 px-2">
-          <p class="text-sm text-text/80 group-hover:text-primary/80 transition-colors">
-            {description}
-          </p>
-        </div>
-      )
-    }
+    <div class:list={['flex flex-col justify-center', reversed ? 'md:order-1' : 'md:order-2']}>
+      {
+        title && (
+          <h3 class="hidden md:block text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+            {title}
+          </h3>
+        )
+      }
+
+      <p class="text-sm text-text/80 group-hover:text-primary/80 transition-colors">
+        <slot />
+      </p>
+    </div>
   </div>
 </div>
