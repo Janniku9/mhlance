@@ -1,0 +1,353 @@
+---
+import { makeIssue } from 'astro:schema';
+import Section from '../../../components/core/layout/Section.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import StyledList from '../../../components/core/lists/StyledList.astro';
+import GifCard from '../../../components/core/media/GifCard.astro';
+import ImageGrid from '../../../components/core/media/ImageGrid.astro';
+
+import chains from '../../../assets/rise/guides/palamutes/chains.png';
+import healing from '../../../assets/rise/guides/palamutes/healing.png';
+
+import eleSkills from '../../../assets/rise/guides/palamutes/skills_element.png';
+import statusSkills from '../../../assets/rise/guides/palamutes/skills_status.png';
+
+import fire from '../../../assets/rise/guides/palamutes/dog_fire.png';
+import water from '../../../assets/rise/guides/palamutes/dog_water.png';
+import thunder from '../../../assets/rise/guides/palamutes/dog_thunder.png';
+import ice from '../../../assets/rise/guides/palamutes/dog_ice.png';
+import dragon from '../../../assets/rise/guides/palamutes/dog_dragon.png';
+
+import poison from '../../../assets/rise/guides/palamutes/dog_poison.png';
+import blast from '../../../assets/rise/guides/palamutes/dog_blast.png';
+import paralysis from '../../../assets/rise/guides/palamutes/dog_para.png';
+import sleep from '../../../assets/rise/guides/palamutes/dog_sleep.png';
+import SectionSubTitle from '../../../components/core/typography/SectionSubTitle.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Monster Hunter Rise's buddy system introduces a revolutionary addition to hunting: Palamutes.
+      These combat-focused companions work alongside the traditional Palicos to create dynamic
+      hunting compositions that can significantly impact your hunt times and overall strategy.
+    </p>
+
+    <p>
+      Palamutes excel at consistent damage output and mobility, capable of contributing up to 30% of
+      a monster's total HP in optimal scenarios. Since they synchronize their attacks with the
+      hunter, fast hitting weapons like Lance benefit greatly from Palamutes.
+    </p>
+
+    <p>
+      Palicos, while dealing less direct damage, provide invaluable utility through buffs, healing,
+      traps, and status effects. The Fighter and Gathering specializations stand out:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Fighter Palicos provide crucial Affinity buffs, apply elemental blights, and grant extra Wirebugs for increased mobility and silkbind attack opportunities',
+          emoji: '⚔️',
+        },
+        {
+          text: 'Gathering Palicos excel at material collection and come equipped with the Pilfer ability, significantly improving rare drop acquisition',
+          emoji: '💎',
+        },
+      ]}
+    />
+
+    <p>
+      For pure damage optimization, double Palamute setups have become the meta standard,
+      particularly in speedruns where their consistent DPS proves invaluable. While this guide
+      focuses on maximizing Palamute potential, consider your hunting style and needs when choosing
+      your buddy composition.
+    </p>
+  </Section>
+
+  <Section title="Why are the chains so strong?">
+    <p>
+      The evolution of Palamute gear meta has seen significant shifts throughout Rise's updates.
+      While Ranged-centric builds with Silkbinders dominated early Sunbreak, Title Update 3
+      introduced a fundamental change in optimal setups. The current meta revolves around
+      Melee-centric builds utilizing Dual-bladed Chains, offering even higher damage potential
+      through their unique mechanics.
+    </p>
+
+    <GifCard src="https://giphy.com/embed/wGDIeoKPHh1aA0yYII" title="Chain Synergy Demonstration">
+      This clip demonstrates the powerful synergy between Lance's Anchor Rage and Palamute chain
+      attacks. The successful counter triggers an immediate Whirlwind Spin from both Palamutes.
+    </GifCard>
+
+    <SectionSubTitle title="Weapon Synergy" />
+    <p>
+      Palamute attack patterns closely mirror hunter actions, creating unique synergies with
+      different weapon types. Fast-hitting weapons like Lance benefit tremendously from this
+      mechanic, as each successful counter or offensive move can trigger companion attacks. In
+      contrast, slower weapons like Greatsword see reduced Palamute damage output due to lower
+      attack frequency.
+    </p>
+
+    <p>
+      The Whirlwind Spin Attack is by far the most damaging move in the Palamute arsenal. This op
+      move can be triggered by specific hunter actions across various weapon types:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Lance: Anchor Rage counter, Spiral Thrust impact',
+          emoji: '🛡️',
+        },
+        {
+          text: 'Switch Axe: Element Burst Counter (EBC), Zero Sum Discharge (ZSD)',
+          emoji: '⚔️',
+        },
+        {
+          text: 'Charge Blade: Super Amped Element Discharge (SAED)',
+          emoji: '🔋',
+        },
+        {
+          text: 'Sword and Shield: Metsu Shoryugeki, Windmill',
+          emoji: '🗡️',
+        },
+        {
+          text: 'Hammer: Courage Style combo loops',
+          emoji: '🔨',
+        },
+        {
+          text: 'Gunlance: Hailcutter Silkbind',
+          emoji: '🔫',
+        },
+      ]}
+    />
+
+    <p>
+      The exceptional damage output of Whirlwind Spin has changed strategies across weapon types.
+      Many speedrunners now prioritize moves that trigger Palamute spins, even if these moves aren't
+      typically optimal for pure hunter DPS.
+    </p>
+  </Section>
+
+  <Section title="How to Activate The Chains">
+    <p>
+      Getting your Palamutes to use their chains quickly can make a big difference in hunt times.
+      There are several ways to trigger the chains, and knowing these helps you start dealing good
+      damage right from the start of a hunt.
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Status effects like Paralysis, Sleep, Stun or Poison will trigger the chains',
+          emoji: '💫',
+        },
+        {
+          text: 'Using Shock or Pitfall traps works great for activation',
+          emoji: '🪤',
+        },
+        {
+          text: 'Flash bombs or Dung bombs will make them pull out the chains',
+          emoji: '💡',
+        },
+        {
+          text: 'Using elemental beetles (fire/water/thunder/ice) on the monster triggers chain attacks',
+          emoji: '🐛',
+        },
+      ]}
+    />
+
+    <p>
+      This is why you'll often see speedrunners start their hunts with a flash bomb or trap. These
+      quick triggers get your Palamutes dealing high damage right away. Elemental beetles are
+      especially handy since you can find them around the map and they're quick to use.
+    </p>
+  </Section>
+
+  <Section title="Best Palamute Equipment">
+    <p>Let's look at what gear your Palamutes should use to deal the most damage.</p>
+
+    <ImageGrid
+      title="Best Palamute Gear"
+      maxCols={2}
+      maxWidth="350px"
+      images={[
+        {
+          src: chains,
+          alt: 'Dual-bladed Chains',
+          title: 'Dual-bladed Chains',
+        },
+        {
+          src: healing,
+          alt: 'Healing Blade Scroll',
+          title: 'Healing Blade Scroll',
+        },
+      ]}
+    >
+      The Dual-bladed Chains are your main damage dealer, while the Healing Blade Scroll keeps both
+      you and your dogs healthy during tough fights.
+    </ImageGrid>
+
+    <p>
+      The Dual-bladed Chains are your best choice for the main weapon slot. They hit hard and can
+      trigger those powerful spin attacks we talked about earlier.
+    </p>
+
+    <p>For the second slot, I recommend the Healing Blade Scroll. It helps in two ways:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Heals everyone nearby, including you, which means less time using potions',
+          emoji: '💚',
+        },
+        {
+          text: 'Keeps your Palamutes healthy so they spend more time attacking and less time healing themselves',
+          emoji: '⚔️',
+        },
+      ]}
+    />
+
+    <p>
+      This becomes really important in higher-level hunts where monsters hit harder. Without healing
+      support, your Palamutes might spend too much time trying to heal instead of helping you deal
+      damage. The free healing also means you can stay aggressive instead of backing off to use
+      potions.
+    </p>
+  </Section>
+
+  <Section title="Palamute Skills">
+    <p>
+      Your Palamutes have 8 skill slots, and four of these should always be filled with core skills.
+      Melee-Centric boosts your dog's physical attacks, Counter and Artful Dodger help them stay
+      alive and fighting, and either Element Attack Up or Status Attack Up rounds out the core build
+      depending on what weapon they're using.
+    </p>
+
+    <ImageGrid
+      title="Palamute Skills"
+      maxCols={2}
+      maxWidth="300px"
+      images={[
+        {
+          src: eleSkills,
+          alt: 'Element Attack Up',
+          title: 'Element',
+        },
+        {
+          src: statusSkills,
+          alt: 'Status Attack Up',
+          title: 'Status',
+        },
+      ]}
+    >
+      The element build (left) focuses on raw damage with element boost, while the status build
+      (right) trades some damage for status effects.
+    </ImageGrid>
+
+    <p>
+      When using element weapons, you'll have one extra skill slot free. Attack Up (S) is always a
+      solid choice for more damage, but don't overlook defensive options like Health Up or Defense
+      Up, especially in tougher fights where keeping your dogs alive matters more than pure damage.
+    </p>
+
+    <p>
+      Some monsters call for specific defensive skills. If you're using a Water Palamute against
+      Magnamalo, Deflagration Relief is worth considering, it stops your dog from jumping around
+      with hellfire, keeping them in the fight. Similarly, when facing monsters like Chameleos or
+      Gold Rathian with your Fire, Thunder, or Ice dogs, Negate Poison can help maintain consistent
+      damage instead of having them waste time rolling around trying to cure poison.
+    </p>
+  </Section>
+
+  <Section title="Palamute Weapons">
+    <p>
+      The best way to get good damage from your Palamutes is to match their weapon's element to what
+      the monster is weak to. While this means you'll need to swap weapons often, the damage boost
+      is worth it.
+    </p>
+
+    <p>
+      Here's something interesting: even monsters that seem resistant to elements often have weak
+      spots on their legs. Since Palamutes mostly attack the legs, they can deal great elemental
+      damage even when you wouldn't expect it. For example, Mizutsune's claws are weak to Thunder,
+      Valstrax's legs are weak to Water, and Scorned Magnamalo's back legs are weak to Water.
+    </p>
+
+    <ImageGrid
+      title="Palamute Weapons"
+      maxCols={3}
+      maxWidth="250px"
+      images={[
+        {
+          src: fire,
+          alt: 'Fire',
+          title: '🔥 Fire',
+          caption: 'rathalos',
+        },
+        {
+          src: water,
+          alt: 'Water',
+          title: '💧 Water',
+          caption: 'almudron',
+        },
+        {
+          src: thunder,
+          alt: 'Thunder',
+          title: '⚡️ Thunder',
+          caption: 'zinogre',
+        },
+        {
+          src: ice,
+          alt: 'Ice',
+          title: '🧊 Ice',
+          caption: 'kushala daora',
+        },
+        {
+          src: dragon,
+          alt: 'Dragon',
+          title: '🐉 Dragon',
+          caption: 'primordial malzeno',
+        },
+      ]}
+    />
+
+    <p>
+      If you don't want to swap weapons all the time, status weapons are a good alternative. They do
+      less damage overall, but they work well against most monsters and can help create openings for
+      your team.
+    </p>
+
+    <ImageGrid
+      title="Palamute Weapons"
+      maxCols={3}
+      maxWidth="250px"
+      images={[
+        {
+          src: poison,
+          alt: 'Poison',
+          title: '☠️ Poison',
+          caption: 'red',
+        },
+        {
+          src: paralysis,
+          alt: 'Paralysis',
+          title: '⚡⚡ Paralysis',
+          caption: 'jelly x',
+        },
+        {
+          src: sleep,
+          alt: 'Sleep',
+          title: '💤 Sleep',
+          caption: 'barking x',
+        },
+        {
+          src: blast,
+          alt: 'Blast',
+          title: '💥 Blast',
+          caption: 'seething bazelgeuse',
+        },
+      ]}
+    />
+  </Section>
+</ContentLayout>
