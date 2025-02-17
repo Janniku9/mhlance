@@ -1,0 +1,110 @@
+---
+import Section from '../../../components/core/layout/Section.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import ImageGrid from '../../../components/core/media/ImageGrid.astro';
+
+import hinoa from '../../../assets/rise/guides/followers/hinoa.png';
+import utsushi from '../../../assets/rise/guides/followers/utsushi.png';
+import luchika from '../../../assets/rise/guides/followers/luchika.png';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Monster Hunter Rise introduces an new feature: Followers. The story characters can join you on
+      hunts, bringing unique weapons and skills to your team. Unlike multiplayer hunts, bringing
+      Followers doesn't increase monster health, therefore speeding up your hunts if used properly.
+    </p>
+
+    <p>
+      Followers help you by: Dealing consistent damage throughout the hunt, mounting and riding
+      monsters when opportunities arise. Beyond just damage, they'll support you with healing items,
+      and especially buffs, they can even set up traps and bombs at good moments.
+    </p>
+  </Section>
+
+  <Section title="Best Comfort Setup" emoji="🛡️">
+    <p>
+      For comfortable hunting, the duo of Hinoa and Utsushi with their Hunting Horns provides an
+      excellent mix of damage and support. Together, they keep you buffed with Attack Up most of the
+      hunt, while providing extra defensive options and healing when needed.
+    </p>
+
+    <p>
+      Utsushi focuses on offensive support. His Attack Up and Element Up songs boost your damage
+      output significantly, while his Blight Negated song helps you stay aggressive against monsters
+      with blights. Having these buffs without needing to slot in resistances can really free up
+      your build options.
+    </p>
+
+    <p>
+      Hinoa brings defensive utility without sacrificing damage. She'll play Attack Up like Utsushi,
+      but adds Defense Up and healing songs to her rotation. She's particularly helpful in tough
+      fights, using healing items and antidotes to keep you healthy while maintaining good damage
+      output.
+    </p>
+
+    <ImageGrid
+      title="Best Comfort Setup"
+      maxCols={2}
+      maxWidth="400px"
+      images={[
+        {
+          src: hinoa,
+          alt: 'Hinoa',
+          title: 'Hinoa',
+          caption: 'Hunting Horn',
+        },
+        {
+          src: utsushi,
+          alt: 'Utsushi',
+          title: 'Utsushi',
+          caption: 'Hunting Horn',
+        },
+      ]}
+    >
+      This combination provides constant buffs while keeping you safe through heals and defensive
+      songs
+    </ImageGrid>
+
+    <Section title="Best Damage Setup" emoji="⚔️">
+      <p>
+        If you're comfortable with the fight and want to speed up your hunts slightly more, swapping
+        Hinoa for Luchika creates a more aggressive team. While you lose some defensive utility, you
+        gain slightly more damage and cc.
+      </p>
+
+      <p>
+        Luchika's Heavy Bowgun brings more damage and status effects to the table. Her trap usage is
+        particularly good, creating more cc.
+      </p>
+
+      <p>
+        Keeping Utsushi ensures you still have Attack Up and Element Up buffs, which help both you
+        and Luchika deal more damage.
+      </p>
+
+      <ImageGrid
+        title="Best Damage Setup"
+        maxCols={2}
+        maxWidth="400px"
+        images={[
+          {
+            src: luchika,
+            alt: 'Luchika',
+            title: 'Luchika',
+            caption: 'Heavy Bowgun',
+          },
+          {
+            src: utsushi,
+            alt: 'Utsushi',
+            title: 'Utsushi',
+            caption: 'Hunting Horn',
+          },
+        ]}
+      >
+        This pair excels at creating and capitalizing on openings while maintaining core buffs
+      </ImageGrid>
+    </Section>
+  </Section>
+</ContentLayout>
