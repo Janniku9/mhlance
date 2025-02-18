@@ -1,0 +1,176 @@
+---
+import Section from '../../../components/core/layout/Section.astro';
+import StyledList from '../../../components/core/lists/StyledList.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import weakener from '../../../assets/rise/guides/dangos/dango_weakener.png';
+import booster from '../../../assets/rise/guides/dangos/dango_booster.png';
+import moxie from '../../../assets/rise/guides/dangos/dango_moxie.png';
+import fighter from '../../../assets/rise/guides/dangos/dango_fighter.png';
+import driver from '../../../assets/rise/guides/dangos/dango_driver.png';
+import defender from '../../../assets/rise/guides/dangos/dango_defender.png';
+import super_recovery from '../../../assets/rise/guides/dangos/dango_super_recovery.png';
+import feet from '../../../assets/rise/guides/dangos/dango_feet.png';
+import ImageGrid from '../../../components/core/media/ImageGrid.astro';
+import DangoCard from '../../../components/guides/DangoCard.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Dango skills are a crucial part of hunt preparation in Rise. While there are many options
+      available, only a handful make a meaningful impact on hunt performance. This guide focuses on
+      the most effective combinations that complement lance gameplay.
+    </p>
+  </Section>
+
+  <Section title="My Favourite Setups">
+    <p>So here are my most used Dango setups:</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <DangoCard
+        title="Anomaly Investigation Setup"
+        description="Balanced setup focusing on survivability and consistent damage output."
+        dangos={{
+          lvl4: {
+            text: 'Dango Booster',
+            emoji: '💪',
+          },
+          lvl3: {
+            text: 'Dango Moxie',
+            emoji: '👼',
+          },
+          lvl1: {
+            text: 'Dango Defender',
+            emoji: '🛡️',
+          },
+        }}
+      />
+
+      <DangoCard
+        title="Dereliction Setup"
+        description="Super recovery offsets health drain while maintaining offensive capabilities."
+        dangos={{
+          lvl4: {
+            text: 'Dango Super Recovery',
+            emoji: '🩹',
+          },
+          lvl3: {
+            text: 'Dango Moxie',
+            emoji: '👼',
+          },
+          lvl1: {
+            text: 'Dango Booster',
+            emoji: '💪',
+          },
+        }}
+      />
+
+      <DangoCard
+        title="Weakener Setup"
+        description="Maximizes efficiency when hosting non-Anomaly quests."
+        dangos={{
+          lvl4: {
+            text: 'Dango Weakener',
+            emoji: '🔪',
+          },
+          lvl3: {
+            text: 'Dango Moxie',
+            emoji: '👼',
+          },
+          lvl1: {
+            text: 'Dango Booster',
+            emoji: '💪',
+          },
+        }}
+      />
+    </div>
+
+    <Section title="How To Decide Which Dango To Use">
+      <p>
+        Using Hopping Skewer is almost always worth it. So here's a Guide on what your Dango setup
+        could look like:
+      </p>
+
+      <StyledList
+        items={[
+          {
+            text: 'Weakener for hosted non-anomaly quests, otherwise Booster/Defender based on matchup difficulty',
+            emoji: '4️⃣',
+          },
+          {
+            text: 'Moxie for one-shot protection, Booster if confident in the matchup',
+            emoji: '3️⃣',
+          },
+          {
+            text: 'Feet for multiplayer without Flinch Free, Fighter for stamina-heavy matchups, otherwise Booster/Defender',
+            emoji: '1️⃣',
+          },
+        ]}
+      />
+    </Section>
+
+    <Section title="Which Are The Best Dangos?">
+      <ImageGrid
+        images={[
+          {
+            src: weakener,
+            alt: 'Dango Weakener',
+            title: 'Weakener',
+            caption:
+              'Forces lower monster HP values when hosting non-anomaly quests. Can reduce target monster HP by up to 10%',
+          },
+          {
+            src: booster,
+            alt: 'Booster',
+            title: 'Booster',
+            caption:
+              'Gives 6/9/12/15 Raw and 10/15/20/30 defense at lvl 1/2/3/4. Free stat boost :)',
+          },
+          {
+            src: moxie,
+            alt: 'Moxie',
+            title: 'Moxie',
+            caption:
+              'One-shot prevention above health threshold. Essential for challenging content, unreliable below level 3.',
+          },
+          {
+            src: fighter,
+            alt: 'Dango Fighter',
+            title: 'Fighter',
+            caption:
+              'Reduces stamina costs for blocking and dodging. Particularly valuable for guard-heavy playstyles.',
+          },
+          {
+            src: driver,
+            alt: 'Driver',
+            title: 'Driver',
+            caption:
+              'Increases the amount of recoverable red health when taking damage. Particularly effective with recovery skills, Bloodlust, or Strife builds.',
+          },
+          {
+            src: defender,
+            alt: 'Defender',
+            title: 'Defender',
+            caption:
+              'Flat defense boost with chance to reduce damage. Super comfy if you get hit a lot.',
+          },
+          {
+            src: super_recovery,
+            alt: 'Super Recovery',
+            title: 'Super Recovery',
+            caption:
+              'Gradual health regeneration. Primarily used to offset Dereliction/Berserk drain, requires level 4 for meaningful impact.',
+          },
+          {
+            src: feet,
+            alt: 'Feet',
+            title: 'Feet',
+            caption:
+              'Grants Flinch Free at level 1. Essential for multiplayer if not slotted in armor.',
+          },
+        ]}
+      />
+    </Section>
+  </Section>
+</ContentLayout>
