@@ -4,7 +4,7 @@ import Section from '../../../components/core/layout/Section.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import StyledList from '../../../components/core/lists/StyledList.astro';
 import GifCard from '../../../components/core/media/GifCard.astro';
-import ImageGrid from '../../../components/core/media/ImageGrid.astro';
+import ImageGridCard from '../../../components/core/media/ImageGridCard.astro';
 
 import chains from '../../../assets/rise/guides/palamutes/chains.png';
 import healing from '../../../assets/rise/guides/palamutes/healing.png';
@@ -28,50 +28,24 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
 <ContentLayout>
   <Section>
     <p>
-      Monster Hunter Rise's buddy system introduces a revolutionary addition to hunting: Palamutes.
-      These combat-focused companions work alongside the traditional Palicos to create dynamic
-      hunting compositions that can significantly impact your hunt times and overall strategy.
+      Palamutes are a game-changer in Rise's hunting system. These combat-focused companions can
+      contribute up to 30% of a monster's total HP in optimal setups, making them especially potent
+      with fast-hitting weapons like Lance. While Palicos offer great utility through buffs and
+      support abilities, double Palamute setups have become the go-to for pure damage output.
     </p>
 
     <p>
-      Palamutes excel at consistent damage output and mobility, capable of contributing up to 30% of
-      a monster's total HP in optimal scenarios. Since they synchronize their attacks with the
-      hunter, fast hitting weapons like Lance benefit greatly from Palamutes.
-    </p>
-
-    <p>
-      Palicos, while dealing less direct damage, provide invaluable utility through buffs, healing,
-      traps, and status effects. The Fighter and Gathering specializations stand out:
-    </p>
-
-    <StyledList
-      items={[
-        {
-          text: 'Fighter Palicos provide crucial Affinity buffs, apply elemental blights, and grant extra Wirebugs for increased mobility and silkbind attack opportunities',
-          emoji: '⚔️',
-        },
-        {
-          text: 'Gathering Palicos excel at material collection and come equipped with the Pilfer ability, significantly improving rare drop acquisition',
-          emoji: '💎',
-        },
-      ]}
-    />
-
-    <p>
-      For pure damage optimization, double Palamute setups have become the meta standard,
-      particularly in speedruns where their consistent DPS proves invaluable. While this guide
-      focuses on maximizing Palamute potential, consider your hunting style and needs when choosing
-      your buddy composition.
+      If you're not chasing speedrun times, a Fighter Palico (for Affinity buffs and extra Wirebugs)
+      or Gathering Palico (for rare material farming) paired with a Palamute offers a solid balance
+      of damage and utility.
     </p>
   </Section>
 
   <Section title="Why are the chains so strong?">
     <p>
-      The evolution of Palamute gear meta has seen significant shifts throughout Rise's updates.
-      While Ranged-centric builds with Silkbinders dominated early Sunbreak, Title Update 3
-      introduced a fundamental change in optimal setups. The current meta revolves around
-      Melee-centric builds utilizing Dual-bladed Chains, offering even higher damage potential
-      through their unique mechanics.
+      With the silkbinder gun dog nerf and the chain buff in Title Update 3, the optimal palamute
+      setup changed. The current meta revolves around Melee-centric builds utilizing Dual-bladed
+      Chains, offering even higher damage potential through their unique mechanics.
     </p>
 
     <GifCard src="https://giphy.com/embed/wGDIeoKPHh1aA0yYII" title="Chain Synergy Demonstration">
@@ -81,11 +55,10 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
 
     <SectionSubTitle title="Weapon Synergy" />
     <p>
-      Palamute attack patterns closely mirror hunter actions, creating unique synergies with
-      different weapon types. Fast-hitting weapons like Lance benefit tremendously from this
-      mechanic, as each successful counter or offensive move can trigger companion attacks. In
-      contrast, slower weapons like Greatsword see reduced Palamute damage output due to lower
-      attack frequency.
+      Palamute attack patterns closely mirror hunter actions, fast-hitting weapons like Lance
+      benefit tremendously from this mechanic, as each successful counter or offensive move can
+      trigger companion attacks. In contrast, slower weapons like Greatsword see reduced Palamute
+      damage output due to lower attack frequency.
     </p>
 
     <p>
@@ -123,9 +96,8 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
     />
 
     <p>
-      The exceptional damage output of Whirlwind Spin has changed strategies across weapon types.
-      Many speedrunners now prioritize moves that trigger Palamute spins, even if these moves aren't
-      typically optimal for pure hunter DPS.
+      Many speedrunners now prioritize moves that trigger the Palamute spins, even if these moves
+      aren't typically optimal for pure hunter DPS.
     </p>
   </Section>
 
@@ -167,7 +139,7 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
   <Section title="Best Palamute Equipment">
     <p>Let's look at what gear your Palamutes should use to deal the most damage.</p>
 
-    <ImageGrid
+    <ImageGridCard
       title="Best Palamute Gear"
       maxCols={2}
       maxWidth="350px"
@@ -185,15 +157,13 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
       ]}
     >
       The Dual-bladed Chains are your main damage dealer, while the Healing Blade Scroll keeps both
-      you and your dogs healthy during tough fights.
-    </ImageGrid>
+      you and your dogs healthy during fights.
+    </ImageGridCard>
 
     <p>
-      The Dual-bladed Chains are your best choice for the main weapon slot. They hit hard and can
-      trigger those powerful spin attacks we talked about earlier.
+      The Dual-bladed Chains are the best dps option. For the second slot, I recommend the Healing
+      Blade Scroll. It helps in two ways:
     </p>
-
-    <p>For the second slot, I recommend the Healing Blade Scroll. It helps in two ways:</p>
 
     <StyledList
       items={[
@@ -224,7 +194,7 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
       depending on what weapon they're using.
     </p>
 
-    <ImageGrid
+    <ImageGridCard
       title="Palamute Skills"
       maxCols={2}
       maxWidth="300px"
@@ -243,20 +213,15 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
     >
       The element build (left) focuses on raw damage with element boost, while the status build
       (right) trades some damage for status effects.
-    </ImageGrid>
+    </ImageGridCard>
 
     <p>
-      When using element weapons, you'll have one extra skill slot free. Attack Up (S) is always a
-      solid choice for more damage, but don't overlook defensive options like Health Up or Defense
-      Up, especially in tougher fights where keeping your dogs alive matters more than pure damage.
-    </p>
-
-    <p>
-      Some monsters call for specific defensive skills. If you're using a Water Palamute against
-      Magnamalo, Deflagration Relief is worth considering, it stops your dog from jumping around
-      with hellfire, keeping them in the fight. Similarly, when facing monsters like Chameleos or
-      Gold Rathian with your Fire, Thunder, or Ice dogs, Negate Poison can help maintain consistent
-      damage instead of having them waste time rolling around trying to cure poison.
+      Some monsters matchups benefit from having specific defensive skills. If you're using a Water
+      Palamute against Magnamalo, Deflagration Relief is worth considering, it stops your dog from
+      jumping around with hellfire, keeping them in the fight. Similarly, when facing monsters like
+      Chameleos or Gold Rathian with your Fire, Thunder, or Ice dogs, Negate Poison can help
+      maintain consistent damage instead of having them waste time rolling around trying to cure
+      poison.
     </p>
   </Section>
 
@@ -264,7 +229,7 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
     <p>
       The best way to get good damage from your Palamutes is to match their weapon's element to what
       the monster is weak to. While this means you'll need to swap weapons often, the damage boost
-      is worth it.
+      is worth it. (I personally have 10 dogs, 2 for each element)
     </p>
 
     <p>
@@ -274,7 +239,7 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
       Valstrax's legs are weak to Water, and Scorned Magnamalo's back legs are weak to Water.
     </p>
 
-    <ImageGrid
+    <ImageGridCard
       title="Palamute Weapons"
       maxCols={3}
       maxWidth="250px"
@@ -318,7 +283,7 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
       your team.
     </p>
 
-    <ImageGrid
+    <ImageGridCard
       title="Palamute Weapons"
       maxCols={3}
       maxWidth="250px"
