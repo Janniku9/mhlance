@@ -207,6 +207,21 @@ export const games: GameNavigation[] = [
           emoji: '🧬',
           navDescription: 'Anti species decoration match ups',
         },
+        {
+          id: 'monster-data',
+          title: 'Monster Database',
+          emoji: '👾',
+          navDescription: 'HP, Hitzone, weaknesses, and more!',
+          externalLink: 'https://robomeche.github.io/MHRise-Database/',
+        },
+        {
+          id: 'motion-values',
+          title: 'Motion Values',
+          emoji: '🔍',
+          navDescription: 'Motion values for all weapons',
+          externalLink:
+            'https://docs.google.com/spreadsheets/d/1KSH0Uf-DsbFixdldQvcH-5zFXpX303dIzThTYMVH33Q/edit?gid=1642215220#gid=1642215220',
+        },
       ],
     },
   },

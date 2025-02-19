@@ -22,7 +22,9 @@ const { title, items, baseUrl } = Astro.props;
           items.map((item) => (
             <li>
               <a
-                href={`${baseUrl}/${item.id}`}
+                href={item.externalLink ? item.externalLink : `${baseUrl}/${item.id}`}
+                target={item.externalLink ? '_blank' : undefined}
+                rel={item.externalLink ? 'noopener noreferrer' : undefined}
                 class="group block hover:bg-primary/10 px-4 py-3 transition-colors"
               >
                 <div class="flex items-center gap-3">

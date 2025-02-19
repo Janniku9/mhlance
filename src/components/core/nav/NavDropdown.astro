@@ -36,7 +36,9 @@ const { title, items, baseUrl } = Astro.props;
               style={`transition-delay: ${index * 50}ms`}
             >
               <a
-                href={`${baseUrl}/${item.id}`}
+                href={item.externalLink ? item.externalLink : `${baseUrl}/${item.id}`}
+                target={item.externalLink ? '_blank' : undefined}
+                rel={item.externalLink ? 'noopener noreferrer' : undefined}
                 class="group block hover:bg-primary/10 rounded-lg p-3 transition-colors"
               >
                 <div class="flex items-center gap-3">
