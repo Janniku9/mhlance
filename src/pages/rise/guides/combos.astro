@@ -7,6 +7,7 @@ import { ComboTag } from '../../../types/guides/Combo';
 
 import ComboOverview from '../../../assets/rise/guides/combos/combo_comparison.png';
 import StyledList from '../../../components/core/lists/StyledList.astro';
+import GifCard from '../../../components/core/media/GifCard.astro';
 ---
 
 <ContentLayout>
@@ -17,6 +18,15 @@ import StyledList from '../../../components/core/lists/StyledList.astro';
       weapon has its unique combo patterns, Lance stands out with its distinctive rhythm of blocks
       and counters.
     </p>
+
+    <GifCard
+      src="https://www.youtube.com/embed/i_pwlLPwpOk?si=Vwg5_3aSUZ0kn_qP"
+      alt="Everything you need to know about Combos"
+      title="Everything you need to know about Combos"
+      maxWidth="700px"
+    >
+      Combo Explanation video by J9 MH
+    </GifCard>
 
     <p>
       At its core, Lance's gameplay revolves around a simple yet elegant dance: block incoming
@@ -78,10 +88,8 @@ import StyledList from '../../../components/core/lists/StyledList.astro';
 
   <Section title="combo overview" emoji="💡">
     <p>
-      When a monster is down, paralyzed, or immobilized, you have several powerful loop options. The
-      table above breaks down the main combos with their respective Raw damage, Element/Status
-      application, Sharpness consumption, and Hits per second. The choice between these depends
-      primarily on your build type:
+      When a monster is toppled or immobilized, you have several powerful combo options. The
+      comparison below breaks down each combo's metrics:
     </p>
 
     <StyledList
@@ -102,50 +110,247 @@ import StyledList from '../../../components/core/lists/StyledList.astro';
     <ImageCard
       src={ComboOverview}
       alt="Combo Overview"
-      caption="Shows the raw damage, element/status application, sharpness consumption, and hits per second for each combo."
+      caption="Comparative analysis of raw damage, element/status application, sharpness consumption, and hits per second."
       maxWidth="700px"
     />
 
     <p>
-      Since we'll cover the detailed execution and situational use of these combos later, just keep
-      in mind that your Hit/second ratio will affect how quickly you can stack effects like Powder
-      Mantle or Intrepid Heart.
+      Your Hit/second ratio directly impacts how quickly you can stack effects like Powder Mantle
+      and Intrepid Heart, making it an consideration beyond damage.
     </p>
 
-    <Section title="guard dash raw combos" emoji="🏃‍♂️">
-      <ComboCard
-        combo={{
-          title: 'LT + CWS',
-          longTitle: 'Leaping Thrust + Charged Wide Sweep',
-          stats: {
-            motionValue: 148,
-            elementModifier: 4.7,
-            sharpnessCost: 2,
-            duration: 3.4,
-          },
-          tags: [ComboTag.DamageRaw, ComboTag.OpportunityLong],
-          gif: 'https://giphy.com/embed/wGUSPNOX5NR90d035L',
-          strengths: [
-            'Abuses High Raw motion value from Charged Wide Sweep',
-            'Guard Dash Leaping Thrust is the most optimal way to loop Charged Wide Sweeps',
-            'Low Sharpness consumption',
+    <p>
+      Lance requires a reset after every third attack. Using just pokes, you can reset by waiting
+      (inefficient), hopping (fast but no damage), or using Guard Dash/Shield Tackle (optimal). The
+      following sections detail the best combos for each reset option.
+    </p>
+  </Section>
+
+  <Section title="guard dash raw combos" emoji="🏃‍♂️">
+    <p>
+      Guard Dash provides both defensive repositioning and access to Leaping Thrust, making it the
+      optimal reset choice for most situations. The move's versatility allows for effective combo
+      loops while maintaining defensive capabilities.
+    </p>
+
+    <p>
+      For raw damage builds, Charged Wide Sweep delivers the highest motion values. The ideal combo
+      incorporates Guard Dash and Leaping Thrust to loop CWS efficiently.
+    </p>
+
+    <ComboCard
+      combo={{
+        title: 'LT + CWS',
+        longTitle: 'Leaping Thrust + Charged Wide Sweep',
+        stats: {
+          motionValue: 148,
+          elementModifier: 4.7,
+          sharpnessCost: 2,
+          duration: 3.4,
+        },
+        tags: [ComboTag.DamageRaw, ComboTag.OpportunityLong],
+        gif: 'https://giphy.com/embed/wGUSPNOX5NR90d035L',
+        strengths: [
+          "Abuses Charged Wide Sweep's high raw motion value",
+          'Guard Dash Leaping Thrust is the most optimal way to loop Charged Wide Sweeps',
+          'Low Sharpness consumption',
+        ],
+        considerations: ['Requires good positioning to consistently hit weak spots with CWS'],
+        inputs: {
+          notes: 'can initiate with a guard dash',
+          PlaystationInput: [['Circle', 'Triangle'], ['R2', 'Triangle', 'LBack'], ['Circle']],
+          XboxInput: [['B', 'Y'], ['RT', 'Y', 'LSBack'], ['B']],
+          PCInput: [
+            ['MouseLeft', 'MouseRight'],
+            ['MouseButton4', 'MouseLeft', 'S'],
+            ['MouseRight'],
           ],
-          considerations: [
-            'Can be difficult to consistently hit CWS on monster weak spots',
-            'Requires positioning practice to land attacks effectively',
+        },
+      }}
+    />
+
+    <p>
+      When monster positioning makes landing Charged Wide Sweep difficult, switch to a double High
+      Thrust approach. This three-attack sequence (Leaping Thrust + 2 High Thrusts) provides
+      reliable damage with the added benefit of the third hit's increased damage modifier.
+    </p>
+
+    <ComboCard
+      combo={{
+        title: 'Lt + HT + HT',
+        longTitle: 'Leaping Thrust + High Thrust + High Thrust',
+        stats: {
+          motionValue: 124,
+          elementModifier: 5.9,
+          sharpnessCost: 3,
+          duration: 2.9,
+        },
+        tags: [ComboTag.DamageHybrid, ComboTag.ExecutionSimple],
+        gif: 'https://giphy.com/embed/SdqNE3j1fywpClWB37',
+        strengths: ['Better for awkward positioning', 'Balanced raw and elemental damage output'],
+        considerations: ['Lower overall DPS than CWS loop', 'Higher sharpness consumption'],
+        inputs: {
+          PlaystationInput: [['R2', 'Triangle', 'LBack'], ['Circle'], ['Circle'], ['Circle']],
+          XboxInput: [['RT', 'Y', 'LSBack'], ['B'], ['B'], ['B']],
+          PCInput: [
+            ['MouseButton4', 'MouseLeft', 'S'],
+            ['MouseRight'],
+            ['MouseRight'],
+            ['MouseRight'],
           ],
-          inputs: {
-            notes: 'Guard Dash',
-            PlaystationInput: [['Circle', 'Triangle'], ['R2', 'Triangle', 'LBack'], ['Circle']],
-            XboxInput: [['B', 'Y'], ['RT', 'Y', 'LSBack'], ['B']],
-            PCInput: [
-              ['MouseLeft', 'MouseRight'],
-              ['MouseButton4', 'MouseLeft', 'S'],
-              ['MouseRight'],
-            ],
-          },
-        }}
-      />
-    </Section>
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Shield Tackle Combos">
+    <p>
+      Without easy access to Leaping Thrust, Shield Tackle builds use different loop strategies.
+      Shield Tackle provides KO potential and modest damage while serving as an effective combo
+      reset tool.
+    </p>
+
+    <p>
+      The optimal Shield Tackle combo incorporates as many Charged Wide Sweeps as possible within
+      the three-attack limit before resetting with Shield Tackle.
+    </p>
+
+    <ComboCard
+      combo={{
+        title: 'ST + CWS + HT + CWS',
+        longTitle: 'Shield Tackle + Charged Wide Sweep + High Thrust + Charged Wide Sweep',
+        stats: {
+          motionValue: 215,
+          elementModifier: 3.4,
+          sharpnessCost: 3,
+          duration: 5.1,
+        },
+        tags: [ComboTag.DamageRaw, ComboTag.ExecutionComplex, ComboTag.OpportunityLong],
+        gif: 'https://giphy.com/embed/fNZ1BMmv7tmPTyALRe',
+        strengths: ['Does good raw damage', 'Low sharpness consumption', 'Adds a little bit of KO'],
+        considerations: [
+          'Lower DPS than Guard Dash loops',
+          'Requires extended damage windows',
+          'Suboptimal for elemental builds',
+        ],
+        inputs: {
+          PlaystationInput: [
+            ['R2', 'Triangle', 'LBack'],
+            ['Circle', 'Triangle'],
+            ['Circle'],
+            ['Circle', 'Triangle'],
+          ],
+          XboxInput: [['RT', 'Y', 'LSBack'], ['B', 'Y'], ['B'], ['B', 'Y']],
+          PCInput: [
+            ['MouseButton4', 'MouseLeft', 'S'],
+            ['MouseRight', 'MouseLeft'],
+            ['MouseRight'],
+            ['MouseRight', 'MouseLeft'],
+          ],
+        },
+      }}
+    />
+
+    <p>
+      For shorter openings, a simplified Shield Tackle + Charged Wide Sweep loop offers superior
+      positioning flexibility, KO buildup, and sharpness efficiency at the cost of raw damage
+      output.
+    </p>
+
+    <ComboCard
+      combo={{
+        title: 'ST + CWS',
+        longTitle: 'Shield Tackle + Charged Wide Sweep',
+        stats: {
+          motionValue: 98,
+          elementModifier: 1.2,
+          sharpnessCost: 1,
+          duration: 2.6,
+        },
+        tags: [ComboTag.DamageRaw, ComboTag.ExecutionSimple, ComboTag.OpportunityShort],
+        gif: 'https://giphy.com/embed/CnxTDBaPFdpYGo3r7H',
+        strengths: ['Better mobility', 'Very low sharpness consumption', 'Good amount of KO'],
+        considerations: ['Lower overall damage output', 'Low hit count'],
+        inputs: {
+          PlaystationInput: [
+            ['R2', 'Triangle', 'LBack'],
+            ['Circle', 'Triangle'],
+          ],
+          XboxInput: [
+            ['RT', 'Y', 'LSBack'],
+            ['B', 'Y'],
+          ],
+          PCInput: [
+            ['MouseButton4', 'MouseLeft', 'S'],
+            ['MouseRight', 'MouseLeft'],
+          ],
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Elemental Combos">
+    <p>
+      Elemental builds have a clear winner: Leaping Thrust spam. This straightforward approach
+      delivers exceptional elemental damage through multi-hit attacks while maintaining low
+      sharpness consumption.
+    </p>
+
+    <ComboCard
+      combo={{
+        title: 'LT',
+        longTitle: 'Leaping Thrust Spam',
+        stats: {
+          motionValue: 64,
+          elementModifier: 3.5,
+          sharpnessCost: 1,
+          duration: 1.6,
+        },
+        tags: [ComboTag.DamageElemental, ComboTag.ExecutionSimple],
+        gif: 'https://giphy.com/embed/T466hTuYxEXeHsUJwj',
+        strengths: [
+          'Efficient sharpness cost',
+          'High elemental damage application',
+          'Super easy to execute',
+        ],
+        considerations: ['Suboptimal for pure raw builds'],
+        inputs: {
+          PlaystationInput: [['R2', 'Triangle', 'LBack'], ['Circle']],
+          XboxInput: [['RT', 'Y', 'LSBack'], ['B']],
+          PCInput: [['MouseButton4', 'MouseLeft', 'S'], ['MouseRight']],
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Spiral Thrust Combos">
+    <p>
+      Spiral Thrust delivers impressive raw damage when all three hits connect with a weak point.
+      However, this can be challenging even against downed monsters. Additionally, using Spiral
+      Thrust means giving up Anchor Rage, which provides more consistent damage bonuses over longer
+      periods.
+    </p>
+
+    <ComboCard
+      combo={{
+        title: 'Spiral Thrust',
+        longTitle: 'Spiral Thrust Gaming',
+        stats: {
+          motionValue: 220,
+          elementModifier: 3,
+          sharpnessCost: 3,
+          duration: 4.5,
+        },
+        tags: [ComboTag.DamageRaw, ComboTag.ExecutionComplex],
+        gif: 'https://giphy.com/embed/8U4nLMLyRiOufm9MRd',
+        strengths: ['Highest potential motion value', 'Includes repositioning', 'Fun'],
+        considerations: ['Very hard to master', 'Competes with Anchor Rage switch skill slot'],
+        inputs: {
+          PlaystationInput: [['L2', 'Circle'], ['L'], ['L'], ['Triangle']],
+          XboxInput: [['LT', 'B'], ['LS'], ['LS'], ['Y']],
+          PCInput: [['MouseMiddle', 'MouseRight'], ['WASD'], ['WASD'], ['MouseLeft']],
+        },
+      }}
+    />
   </Section>
 </ContentLayout>

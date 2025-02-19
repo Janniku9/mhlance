@@ -7,4 +7,5 @@ export interface Section {
   showInQuickLinks?: boolean;
   navDescription?: string;
   pageDescription?: string;
+  externalLink?: string;
 }

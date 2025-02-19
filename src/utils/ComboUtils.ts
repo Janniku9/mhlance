@@ -14,10 +14,10 @@ export const PLAYSTATION_BUTTON_MAP: Record<PlaystationKey, string> = {
   Square: '□',
   L1: 'L1',
   L2: 'L2',
-  L3: 'L3',
+  L: 'L',
   R1: 'R1',
   R2: 'R2',
-  R3: 'R3',
+  R: 'R',
   DpadUp: '⯅',
   DpadDown: '⯆',
   DpadLeft: '⯇',
@@ -52,6 +52,7 @@ const PC_BUTTON_MAP: Record<PCKey, string> = {
   A: 'A',
   S: 'S',
   D: 'D',
+  WASD: 'WASD',
   Space: '␣',
   Shift: '⇧',
   Ctrl: '⌃',
@@ -104,7 +105,7 @@ export function getButtonClass(button: ControllerKey, platform: Platform): strin
   const rectangularButtons = {
     playstation: ['L1', 'L2', 'R1', 'R2', 'Share', 'Options'], // Removed L3/R3
     xbox: ['LB', 'LT', 'RB', 'RT', 'View', 'Menu'], // Removed LS/RS
-    pc: ['Space', 'Shift', 'Ctrl', 'W', 'A', 'S', 'D'], // Keep keyboard keys rectangular
+    pc: ['Space', 'Shift', 'Ctrl', 'W', 'A', 'S', 'D', 'WASD'], // Keep keyboard keys rectangular
   };
 
   // Check if button should be rectangular

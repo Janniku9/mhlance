@@ -20,10 +20,10 @@ export type PlaystationKey =
   | 'Square'
   | 'L1'
   | 'L2'
-  | 'L3'
+  | 'L'
   | 'R1'
   | 'R2'
-  | 'R3'
+  | 'R'
   | 'DpadUp'
   | 'DpadDown'
   | 'DpadLeft'
@@ -55,6 +55,7 @@ export type PCKey =
   | 'A'
   | 'S'
   | 'D'
+  | 'WASD'
   | 'Space'
   | 'Shift'
   | 'Ctrl'
@@ -69,7 +70,7 @@ export type ControllerKey = PlaystationKey | XboxKey | PCKey;
 export type Platform = 'playstation' | 'xbox' | 'pc';
 
 export interface ComboInput {
-  notes: string;
+  notes?: string;
   PCInput: PCKey[][];
   PlaystationInput: PlaystationKey[][];
   XboxInput: XboxKey[][];
