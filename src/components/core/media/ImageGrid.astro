@@ -19,7 +19,6 @@ const { images, maxCols = 3, class: className, maxWidth } = Astro.props;
 ---
 
 <div
-  data-image-grid-auto-hover
   class:list={[
     'grid gap-6 w-full',
     'grid-cols-1',
@@ -32,6 +31,7 @@ const { images, maxCols = 3, class: className, maxWidth } = Astro.props;
   {
     images.map((image) => (
       <div
+        data-image-grid-auto-hover
         class:list={[
           'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-2xl overflow-hidden',
           'transition-all duration-300 hover:bg-background-darker',

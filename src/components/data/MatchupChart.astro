@@ -27,6 +27,7 @@ const getMonsterImage = (monsterName: string) => {
 ---
 
 <div
+  data-matchup-chart-auto-hover
   class="group relative bg-background-dark border border-text/10 rounded-xl overflow-hidden transition-all duration-300 hover:bg-background-darker hover:shadow-2xl hover:shadow-primary/5"
 >
   {/* Hover gradient overlay */}
@@ -101,3 +102,10 @@ const getMonsterImage = (monsterName: string) => {
     </div>
   </div>
 </div>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-matchup-chart-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>
