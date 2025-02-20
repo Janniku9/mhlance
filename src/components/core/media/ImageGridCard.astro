@@ -20,6 +20,7 @@ const { images, title, maxCols = 3, class: className, maxWidth } = Astro.props;
 ---
 
 <div
+  data-image-grid-card-auto-hover
   class:list={[
     'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
     'transition-all duration-300 hover:bg-background-darker',
@@ -95,3 +96,10 @@ const { images, title, maxCols = 3, class: className, maxWidth } = Astro.props;
     </div>
   </div>
 </div>
+
+<script>
+  import autoHoverDirective from '../../../directives/auto-hover';
+  document.querySelectorAll('[data-image-grid-card-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

@@ -20,6 +20,7 @@ const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
 ---
 
 <div
+  data-combo-card-auto-hover
   class:list={[
     'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
     'transition-all duration-300 hover:bg-background-darker',
@@ -144,3 +145,10 @@ const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
     </div>
   </div>
 </div>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-combo-card-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

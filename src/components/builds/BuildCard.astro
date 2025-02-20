@@ -23,6 +23,7 @@ const { build, class: className } = Astro.props;
 ---
 
 <div
+  data-build-card-auto-hover
   class:list={[
     'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
     'transition-all duration-300 hover:bg-background-darker hover:scale-[1.02]',
@@ -214,3 +215,10 @@ const { build, class: className } = Astro.props;
     animation: fade-in 0.5s ease-out forwards;
   }
 </style>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-build-card-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

@@ -19,6 +19,7 @@ const { images, maxCols = 3, class: className, maxWidth } = Astro.props;
 ---
 
 <div
+  data-image-grid-auto-hover
   class:list={[
     'grid gap-6 w-full',
     'grid-cols-1',
@@ -71,3 +72,10 @@ const { images, maxCols = 3, class: className, maxWidth } = Astro.props;
     ))
   }
 </div>
+
+<script>
+  import autoHoverDirective from '../../../directives/auto-hover';
+  document.querySelectorAll('[data-image-grid-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

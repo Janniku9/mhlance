@@ -22,7 +22,7 @@ const { title, description, dangos, class: className } = Astro.props;
 ---
 
 <div
-  data-auto-hover
+  data-dango-card-auto-hover
   class:list={[
     'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
     'transition-all duration-300 hover:bg-background-darker hover:scale-[1.02]',
@@ -89,7 +89,7 @@ const { title, description, dangos, class: className } = Astro.props;
 
 <script>
   import autoHoverDirective from '../../directives/auto-hover';
-  document.querySelectorAll('[data-auto-hover]').forEach((element) => {
+  document.querySelectorAll('[data-dango-card-auto-hover]').forEach((element) => {
     if (element instanceof HTMLElement) autoHoverDirective(element);
   });
 </script>
