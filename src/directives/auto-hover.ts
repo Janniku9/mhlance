@@ -16,39 +16,49 @@ export default function autoHoverDirective(element: HTMLElement) {
 
       if (entry.isIntersecting && entry.intersectionRatio >= getThreshold()) {
         element.classList.add('is-visible');
-        // Select all elements to check for group-hover classes
-        element.querySelectorAll('*').forEach((el) => {
+        // Handle hover classes for all elements including the container
+        [element, ...Array.from(element.querySelectorAll('[class*="hover"]'))].forEach((el) => {
           const classes = Array.from(el.classList);
 
-          // Get classes that start with 'group-hover:'
-          const hoverClasses = classes
-            .filter((c) => c.startsWith('group-hover:'))
-            .map((c) => c.replace('group-hover:', ''));
+          // Special handling for shadow classes that work together
+          const shadowClasses = classes
+            .filter((c) => c.startsWith('hover:shadow-'))
+            .map((c) => c.replace('hover:', ''));
 
-          // Apply the hover classes
-          el.classList.add(...hoverClasses);
+          // Regular hover classes
+          const otherHoverClasses = classes
+            .filter((c) => c.includes('hover:') && !c.startsWith('hover:shadow-'))
+            .map((c) => c.split('hover:')[1]);
+
+          // Add all classes
+          el.classList.add(...shadowClasses, ...otherHoverClasses);
         });
       } else {
         element.classList.remove('is-visible');
-        // Remove hover classes from all elements
-        element.querySelectorAll('*').forEach((el) => {
+        // Remove hover classes
+        [element, ...Array.from(element.querySelectorAll('[class*="hover"]'))].forEach((el) => {
           const classes = Array.from(el.classList);
 
-          // Get classes that start with 'group-hover:'
-          const hoverClasses = classes
-            .filter((c) => c.startsWith('group-hover:'))
-            .map((c) => c.replace('group-hover:', ''));
+          // Special handling for shadow classes
+          const shadowClasses = classes
+            .filter((c) => c.startsWith('hover:shadow-'))
+            .map((c) => c.replace('hover:', ''));
 
-          // Remove the hover classes
-          el.classList.remove(...hoverClasses);
+          // Regular hover classes
+          const otherHoverClasses = classes
+            .filter((c) => c.includes('hover:') && !c.startsWith('hover:shadow-'))
+            .map((c) => c.split('hover:')[1]);
+
+          // Remove all classes
+          el.classList.remove(...shadowClasses, ...otherHoverClasses);
         });
       }
     });
   };
 
   const observer = new IntersectionObserver(observerCallback, {
-    threshold: [0.4, 0.6, 0.8, 1], // Added 1 for very small cards
-    rootMargin: '-10% 0px', // Small top margin to prevent edge-case triggers
+    threshold: [0.05, 0.4, 0.6, 0.8, 1],
+    rootMargin: '-10% 0px',
   });
 
   observer.observe(element);

@@ -5,9 +5,10 @@ interface Props {
   href: string;
   text: string;
   icon?: string;
+  emoji?: string;
 }
 
-const { href, text, icon } = Astro.props;
+const { href, text, icon, emoji } = Astro.props;
 ---
 
 <a
@@ -25,6 +26,7 @@ const { href, text, icon } = Astro.props;
       <Icon name={icon} class="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-primary transition-colors" />
     )
   }
+  {emoji && <span class="text-2xl animate-subtle-float">{emoji}</span>}
   <span class="group-hover:text-primary transition-colors">{text}</span>
   <Icon
     name="mingcute:arrow-right-line"

@@ -1,0 +1,293 @@
+---
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import MHRChefInfoBox from '../../../components/builds/MHRChefInfoBox.astro';
+import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
+import Section from '../../../components/core/layout/Section.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import mr1Star from '../../../assets/rise/builds/master-rank/mr_1Star.png';
+import mr2Star from '../../../assets/rise/builds/master-rank/mr_2Star.png';
+import mr3Star from '../../../assets/rise/builds/master-rank/mr_3Star.png';
+import mr4Star from '../../../assets/rise/builds/master-rank/mr_4Star.png';
+import mr5Star from '../../../assets/rise/builds/master-rank/mr_5Star.png';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      So you've made it to Master Rank, congrats! Things are going to get significantly more
+      challenging from here. Monsters are more aggressive with new movesets, hit considerably
+      harder, and have much larger health pools.
+    </p>
+
+    <MHRChefInfoBox />
+  </Section>
+
+  <Section title="Setting Off To Elgado - 1⭐">
+    <p>
+      So you've made it to Master Rank, congrats! Things are gonna get a bit more difficult from
+      here. Monsters will hit harder, attack faster and are also more tanky. But don't worry,
+      because in this section we'll go over some builds that will help you get through the Sunbreak
+      story.
+    </p>
+
+    <p>
+      Master Rank weapons no longer have rampage skills. Instead they have rampage slots and there's
+      Rampage Decorations that can be slotted into them. We can already craft some really powerful
+      ones at MR1. The ones we want are the anti-species ones: anti air, anti aquatic, anti Dragon
+      and anti fanged. If using the correct one against a monster we get a 5% Raw Damage boost. Here
+      you can find a chart that shows which Decoration works against which monster:
+    </p>
+
+    <NavigationButton href="/rise/data/anti-species" text="Anti Species Chart" emoji="🧬" />
+
+    <p>
+      After reaching Elgado, Utsushi will teach us Scroll swapping as well as new Switch Skills. For
+      Lance we get an alternative to Guard Dash called Shield Tackle. It's quite useful and can
+      change the way we play the weapon. So if you are interested in trying it out, make sure to
+      check out the Switch Skills Guide:
+    </p>
+
+    <NavigationButton href="/rise/guides/switch-skills" text="Switch Skills Guide" emoji="🔄" />
+
+    <p>
+      After defeating a Daimyo Hermitaur we'll arrive at the Elgado Outpost. Soon after we'll unlock
+      a new locale: The Jungle. The first few quests encourage us to explore The Jungle and gather
+      some materials.
+    </p>
+
+    <p>
+      We want to mine as many Outcrops as possible so we can craft our first Master Rank Lance. Once
+      again we'll be switching back to the Ore Tree with the Elder Babel Spear+.
+    </p>
+
+    <p>
+      For the armor we'll be mostly using Barroth armor. It's really good since it comes with most
+      Core Skills we want. Some of the armor pieces are so good we're gonna be using them for a long
+      time.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Master Rank Starter Set',
+        description: [
+          'Almost full Barroth armor gives us Attack Boost, Guard and Offensive Guard right from the start all our core skills in one set.',
+          'White sharpness with Protective Polish helps us maintain damage output, while using the right Rampage Decoration against each monster gives us a nice damage boost.',
+        ],
+        image: mr1Star,
+        imageAlt: 'Master Rank Starter Set',
+        stats: {
+          raw: 579,
+          sharpness: {
+            hits: 0,
+            type: 'white',
+          },
+          affinity: {
+            avg: 60,
+            peak: 60,
+          },
+        },
+        rampageDeco: 'anti-species',
+      }}
+    />
+  </Section>
+
+  <Section title="Careful! It's Gonna Blow - 2⭐">
+    <p>
+      After hunting a Blood Orange Bishaten we'll get to two stars. After completing the first few
+      Key Quests we'll be tasked with hunting an Anjanath. After completing this quest there's
+      multiple things we want to do.
+    </p>
+
+    <p>
+      We unlock Master Rank Jyuratodus which lets us craft Ironwall+3 jewels. We can also get
+      Purecrystals now from mining in the Flooded Forest and use them to craft the Master Rank Ingot
+      Greaves, a really solid leg piece we've used before.
+    </p>
+
+    <p>
+      Follower Quests also unlock here, letting us bring NPCs from Kamura Village and Elgado on
+      hunts with us. We want to follow this questline by completing 'An Audience with the Queen' and
+      'Flicker in the Night' which unlocks the Squire armor set. The coil is particularly good and
+      we'll be using it in our build.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Early Powerhouse Set',
+        description: [
+          'The Ingot Greaves and Squire pieces help us max out Attack Boost, a huge damage boost this early.',
+          'Keeping Protective Polish lets us maintain that nice white sharpness uptime. Remember to try and use the right Anti-Species deco for each monster.',
+        ],
+        image: mr2Star,
+        imageAlt: 'Early Powerhouse Set',
+        stats: {
+          raw: 602,
+          sharpness: {
+            hits: 0,
+            type: 'white',
+          },
+          affinity: {
+            avg: 60,
+            peak: 60,
+          },
+        },
+        rampageDeco: 'anti-species',
+      }}
+    />
+  </Section>
+
+  <Section title="The Golem In The Swamp - 3⭐">
+    <p>
+      Garangolm is the first of the Three Lords of Elgado. Successfully hunting it brings us to
+      Three Stars. With Garangolm comes a new locale: The Citadel, featuring a huge ruined castle, a
+      thick muddy swamp and icy caves.
+    </p>
+
+    <p>
+      We can get new materials from Bonepiles and Mining Outcrops in The Citadel. Using these we'll
+      upgrade our Lance to the Lost Babel Lance.
+    </p>
+
+    <p>
+      After doing the first few Key Quests we'll also unlock Aurora Somnacanth, a new Subspecies.
+      Since there's not really much to craft at this rank we'll just focus on completing the
+      remaining Key Quests.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Lost Babel Set',
+        description: [
+          'Lost Babel Lance is our only big upgrade here, significantly higher Raw damage makes it worth the grind.',
+          'Keeping the same armor setup since it works perfectly fine for this rank.',
+        ],
+        image: mr3Star,
+        imageAlt: 'Lost Babel Set',
+        stats: {
+          raw: 708,
+          sharpness: {
+            hits: 0,
+            type: 'white',
+          },
+          affinity: {
+            avg: 60,
+            peak: 60,
+          },
+        },
+        rampageDeco: 'anti-species',
+      }}
+    />
+  </Section>
+
+  <Section title="Ice Wolf, Red Moon - 4⭐">
+    <p>
+      We're gonna get to fight the second lord of Elgado: the icy wolf Lunagaron. We want to craft
+      its weapon and some armor pieces, so be prepared to hunt it a few times. The Lunagaron Lance
+      is gonna be our first Lance with purple Sharpness.
+    </p>
+
+    <p>
+      Diablos shows up in the Key Quests here. Back in High Rank we used his chest piece for Guard
+      and Offensive Guard. The Master Rank version is pretty much an upgraded version of it so we
+      definitely want to craft it.
+    </p>
+
+    <p>
+      After completing a few Key Quests we'll unlock an Urgent Quest that brings back Astalos. Once
+      you beat it, Utsushi will give you the final Switch Skills: Skyward Thrust and Sheathing
+      Retreat. Check out the Switch Skills Guide to see how they work:
+    </p>
+
+    <NavigationButton href="/rise/guides/switch-skills" text="Switch Skills Guide" emoji="🔄" />
+
+    <p>
+      After doing some more Key Quests, there's one more Urgent Quest. This time it's Espinas, a new
+      monster from Frontier.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Lunagaron Frost Set',
+        description: [
+          'Our affinity is getting pretty solid now. Combined with Critical Boost 2, we are hitting way harder than before.',
+          'Protective Polish is crucial here to maintain that sweet purple sharpness, it makes a difference in longer fights.',
+        ],
+        image: mr4Star,
+        imageAlt: 'Lunagaron Frost Set',
+        stats: {
+          raw: 731,
+          sharpness: {
+            hits: 0,
+            type: 'purple',
+          },
+          element: {
+            value: 35,
+            type: 'ice',
+          },
+          affinity: {
+            avg: 70,
+            peak: 70,
+          },
+        },
+        rampageDeco: 'anti-species',
+      }}
+    />
+  </Section>
+
+  <Section title="Vampire Lord By Moonlight - 5⭐">
+    <p>
+      To reach 5 stars we need to beat the third lord: the Elder Dragon Malzeno. He's the flagship
+      monster of Sunbreak and one of the coolest fights in the game. All we do in this rank is use
+      his materials to upgrade our Lunagaron Lance one more time.
+    </p>
+
+    <p>
+      After that we just need to complete the remaining Key Quests and Urgent Quests to finish the
+      story. We still have Shagaru Magala and the final boss left to tackle.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Story Finale Set',
+        description: [
+          "Using Elder Dragon materials to boost our Lance's raw damage even further while keeping that nice 70% affinity.",
+          'This setup will carry you through the final story fights without any problems.',
+        ],
+        image: mr5Star,
+        imageAlt: 'Story Finale  Set',
+        stats: {
+          raw: 796,
+          sharpness: {
+            hits: 0,
+            type: 'purple',
+          },
+          element: {
+            value: 39,
+            type: 'ice',
+          },
+          affinity: {
+            avg: 70,
+            peak: 70,
+          },
+        },
+        rampageDeco: 'anti-species',
+      }}
+    />
+  </Section>
+
+  <Section title="The Qurios Are Released - 6⭐">
+    <p>
+      With beating Gaismagorm, the final boss of Sunbreak, we'll unlock 6 star quests. But don't
+      worry, the game is far from over. There's still a lot of new monsters left to hunt. Risen
+      Elders, new Subspecies, returning monsters and most importantly Anomaly Investigations.
+    </p>
+
+    <p>
+      Our next objective is to reach MR10 which will unlock a lot of new content and build options.
+      Go check out the post story build section to see what we can do next:
+    </p>
+
+    <NavigationButton href="/rise/builds/post-story" text="Post Story Builds" emoji="🩸" />
+  </Section>
+</ContentLayout>
