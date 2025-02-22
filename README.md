@@ -1,4 +1,4 @@
-# MHLance.com
+# mhlance.com
 
 A comprehensive resource for Monster Hunter Lance guides, builds, and strategies. Built with Astro, this open-source project aims to provide in-depth lance-focused content across different Monster Hunter titles.
 
@@ -61,13 +61,15 @@ src/
 
 ### Content Guidelines
 
-look at existing pages for examples of how to structure your content
-basic layout:
+Reference existing pages in the repository for detailed examples of content structure. Each page uses a standard layout pattern:
 
 ```
 ---
-// your page
+// imports go here
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import Section from '../../../components/core/layout/Section.astro';
 ---
+
 <ContentLayout>
   <Section>
     <p>Content</p>
