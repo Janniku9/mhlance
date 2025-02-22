@@ -1,0 +1,31 @@
+---
+// src/components/LegacyRedirect.astro
+---
+
+<script>
+  // legacy mapping
+  const legacyRoutes = {
+    '/builds/rise/low_rank': '/rise/builds/low-rank',
+    '/builds/rise/high_rank': '/rise/builds/high-rank',
+    '/builds/rise/master_rank': '/rise/builds/master-rank',
+    '/builds/rise/post_story': '/rise/builds/post-story',
+    '/builds/rise/end_game': '/rise/builds/endgame',
+    '/guides/rise/switch_skills': '/rise/guides/switch-skills',
+    '/info/rise/matchup': '/rise/data/match-ups',
+    '/info/rise/guard_up': '/rise/data/guard-up',
+    '/info/rise/anti_species': '/rise/data/anti-species',
+  };
+
+  function redirectLegacyRoute() {
+    // Remove the '#' if present
+    const path = window.location.hash.replace('#', '');
+
+    if (path && legacyRoutes[path as keyof typeof legacyRoutes]) {
+      window.location.replace(legacyRoutes[path as keyof typeof legacyRoutes]);
+    }
+  }
+
+  // Check on initial load and hash changes
+  redirectLegacyRoute();
+  window.addEventListener('hashchange', redirectLegacyRoute);
+</script>

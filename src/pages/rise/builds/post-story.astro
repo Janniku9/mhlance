@@ -1,0 +1,37 @@
+---
+import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
+import Section from '../../../components/core/layout/Section.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      After completing the story, we want to reach Master Rank 10 as fast as possible. This is where
+      we unlock most of the endgame content. We finally get access to anomaly research and new
+      monsters.
+    </p>
+  </Section>
+
+  <Section title="New & Old Monsters - MR10🎖️">
+    <p>
+      At MR10 we get an introduction to Anomaly Investigations. They are pretty much random quests
+      that have Afflicted Monsters as the main target. Afflicted Monsters are stronger and a lot
+      tankier than their regular counterparts. They also drop afflicted materials which are used to
+      craft Decorations, augment weapons and armor. There's an Anomaly Rank, we call it AR, which
+      you need to level up to unlock higher level materials. To check what material you get from
+      what monster and at which level, you can check the Anomaly Material Page:
+    </p>
+
+    <NavigationButton href="/rise/anomaly-materials" text="Anomaly Materials" emoji="🔍" />
+  </Section>
+
+  <Section title="Anomaly Rank - AR🎖️">
+    <p>
+      To unlock higher level materials we need to level up our Anomaly Rank. This is done by
+      completing Anomaly Investigations.
+    </p>
+
+    <NavigationButton href="/rise/endgame" text="Endgame Builds" emoji="👑" />
+  </Section>
+</ContentLayout>
