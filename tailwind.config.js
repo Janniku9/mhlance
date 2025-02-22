@@ -60,7 +60,8 @@ export default {
         },
         background: {
           DEFAULT: '#1e181c',
-          dark: '#191418',
+          dark: '#141014',
+          //dark: '#191418',
           darker: '#141014',
         },
       },

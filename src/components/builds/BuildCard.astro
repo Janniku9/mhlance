@@ -145,46 +145,48 @@ const { build, class: className } = Astro.props;
         )
       }
 
-      <!-- Scroll with Image -->
-      {
-        build.scroll && (
-          <div class="mb-6">
-            <span class="text-sm text-text/60 block mb-2">SCROLL</span>
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 relative">
-                <Image
-                  src={getScrollImage(build.scroll)}
-                  alt={build.scroll}
-                  class="w-full h-full"
-                />
-              </div>
-              <span class="text-sm font-medium">{build.scroll.toLocaleLowerCase()} scroll</span>
-            </div>
-          </div>
-        )
-      }
-
-      <!-- Rampage Decorations -->
-      {
-        build.rampageDeco && (
-          <div class="mb-6">
-            <span class="text-sm text-text/60 block mb-2">RAMPAGE DECORATION</span>
-            <div class="flex flex-wrap gap-2">
-              {Array.isArray(build.rampageDeco) ? (
-                build.rampageDeco.map((deco) => (
+      <div class="flex justify-between">
+        <!-- Rampage Decorations -->
+        {
+          build.rampageDeco && (
+            <div class="mb-6">
+              <span class="text-sm text-text/60 block mb-2">RAMPAGE DECORATION</span>
+              <div class="flex flex-wrap gap-2">
+                {Array.isArray(build.rampageDeco) ? (
+                  build.rampageDeco.map((deco) => (
+                    <span class="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary">
+                      {deco}
+                    </span>
+                  ))
+                ) : (
                   <span class="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary">
-                    {deco}
+                    {build.rampageDeco}
                   </span>
-                ))
-              ) : (
-                <span class="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary">
-                  {build.rampageDeco}
-                </span>
-              )}
+                )}
+              </div>
             </div>
-          </div>
-        )
-      }
+          )
+        }
+
+        <!-- Scroll with Image -->
+        {
+          build.scroll && (
+            <div class="mb-6">
+              <span class="text-sm text-text/60 block mb-2">SCROLL</span>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 relative">
+                  <Image
+                    src={getScrollImage(build.scroll)}
+                    alt={build.scroll}
+                    class="w-full h-full"
+                  />
+                </div>
+                <span class="text-sm font-medium">{build.scroll.toLocaleLowerCase()} scroll</span>
+              </div>
+            </div>
+          )
+        }
+      </div>
     </div>
   </div>
 </div>
