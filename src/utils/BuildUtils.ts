@@ -59,13 +59,13 @@ const getAugmentColor = (type: AugmentType): string => {
 
 const getAugmentTooltip = (type: AugmentType): string => {
   const tooltips = {
-    attack: 'Attack',
-    element: 'Element',
-    status: 'Status',
-    sharpness: 'Sharpness',
-    affinity: 'Affinity',
-    rampage_slot: 'Rampage Slot',
-    defense: 'Defense',
+    attack: 'attack',
+    element: 'element',
+    status: 'status',
+    sharpness: 'sharpness',
+    affinity: 'affinity',
+    rampage_slot: 'rampage_slot',
+    defense: 'defense',
   };
   return tooltips[type];
 };

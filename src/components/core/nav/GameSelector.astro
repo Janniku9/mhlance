@@ -12,9 +12,9 @@ const { games, currentGame } = Astro.props;
 
 <div class="relative group/nav">
   <button
-    class="bg-primary hover:bg-primary-dark text-background px-4 py-2 rounded transition-colors flex items-center gap-2"
+    class="bg-primary hover:bg-primary-dark text-background px-4 py-2 rounded transition-colors flex items-center gap-2 uppercase"
   >
-    {currentGame?.title.toUpperCase() || 'SELECT GAME'}
+    {currentGame?.title || 'SELECT GAME'}
     <Icon
       name="mingcute:down-fill"
       class="w-5 h-5 transition-transform duration-200 group-hover/nav:rotate-180"
@@ -37,7 +37,7 @@ const { games, currentGame } = Astro.props;
               <a
                 href={`/${game.game}`}
                 class:list={[
-                  'group flex items-center gap-3 p-3 rounded-lg transition-colors',
+                  'group flex items-center gap-3 p-3 rounded-lg transition-colors uppercase',
                   game.game === currentGame?.game
                     ? 'bg-primary/10 text-primary'
                     : 'text-text hover:bg-primary/10 hover:text-primary',
@@ -46,7 +46,7 @@ const { games, currentGame } = Astro.props;
                 <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
                   {game.emoji}
                 </span>
-                {game.title.toUpperCase()}
+                {game.title}
               </a>
             </li>
           ))

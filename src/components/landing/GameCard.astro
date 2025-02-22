@@ -47,8 +47,10 @@ const keyMap = {
       >{game.emoji}</span
     >
     <div class="text-center">
-      <h2 class="text-3xl font-bold transition-all duration-300 group-hover:text-primary mb-4">
-        {game.title.toUpperCase()}
+      <h2
+        class="text-3xl font-bold transition-all duration-300 group-hover:text-primary mb-4 uppercase"
+      >
+        {game.title}
       </h2>
       {
         hasContent(game) ? (

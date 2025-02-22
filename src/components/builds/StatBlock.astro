@@ -10,7 +10,7 @@ const { label, value, icon, class: className } = Astro.props;
 ---
 
 <div class:list={['flex flex-col gap-1', className]}>
-  <span class="text-sm text-text/60">{label}</span>
+  <span class="text-sm text-text/60 uppercase">{label}</span>
   <div class="flex items-center gap-2">
     <div class="w-8 h-8 flex items-center justify-center">
       {icon}

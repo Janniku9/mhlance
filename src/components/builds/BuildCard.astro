@@ -44,8 +44,8 @@ const { build, class: className } = Astro.props;
       <!-- Title and Stats Row -->
       <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
         <!-- Title -->
-        <h3 class="text-xl font-bold group-hover:text-primary transition-colors">
-          {build.title.toLocaleUpperCase()}
+        <h3 class="text-xl font-bold group-hover:text-primary transition-colors uppercase">
+          {build.title}
         </h3>
       </div>
 
@@ -104,7 +104,7 @@ const { build, class: className } = Astro.props;
           {
             build.stats.element && (
               <StatBlock
-                label={`${build.stats.element.type.toLocaleUpperCase()} ELEMENT`}
+                label={`${build.stats.element.type} ELEMENT`}
                 value={build.stats.element.value}
                 icon={getElementEmoji(build.stats.element.type)}
               />
@@ -114,7 +114,7 @@ const { build, class: className } = Astro.props;
           {
             build.stats.status && (
               <StatBlock
-                label={`${build.stats.status.type.toLocaleUpperCase()} STATUS`}
+                label={`${build.stats.status.type} STATUS`}
                 value={build.stats.status.value}
                 icon={getStatusEmoji(build.stats.status.type)}
               />
@@ -159,7 +159,7 @@ const { build, class: className } = Astro.props;
                     </span>
                   ))
                 ) : (
-                  <span class="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary">
+                  <span class="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary uppercase">
                     {build.rampageDeco}
                   </span>
                 )}
