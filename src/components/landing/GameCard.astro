@@ -14,6 +14,13 @@ const hasContent = (game: GameNavigation) => {
     game.sections.data.length > 0
   );
 };
+
+// map keys to display text
+const keyMap = {
+  builds: 'builds',
+  guides: 'guides',
+  data: 'resources',
+};
 ---
 
 <a
@@ -50,7 +57,7 @@ const hasContent = (game: GameNavigation) => {
               ([key, items]) =>
                 items.length > 0 && (
                   <span class="text-sm px-3 py-1 bg-text/5 rounded-full transition-all duration-300 hover:scale-110 hover:bg-text/10">
-                    {items.length} {key}
+                    {items.length} {keyMap[key as keyof typeof keyMap]}
                   </span>
                 )
             )}
