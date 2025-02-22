@@ -3,7 +3,6 @@ import Image from 'astro/components/Image.astro';
 import FontLoader from '../components/core/FontLoader.astro';
 
 import LanceSVG from '../assets/lance.svg';
-import { socials } from '../data/Socials';
 import LegacyRedirect from '../components/core/LegacyRedirect.astro';
 
 interface Props {
@@ -21,7 +20,7 @@ const { title } = Astro.props;
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/j9mh.ico" />
     <FontLoader />
-    <LegacyRedirect client:load />
+    <LegacyRedirect />
   </head>
   <body class="bg-background text-text min-h-screen font-mono">
     <main class="min-h-screen relative">

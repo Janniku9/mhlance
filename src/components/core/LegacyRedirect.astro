@@ -1,9 +1,11 @@
 ---
-// src/components/LegacyRedirect.astro
+// src/components/core/LegacyRedirect.astro
 ---
 
+// This component is used to ensure old links on reddit/discord/etc. are redirected to the new page.
+// This is a client-side script, so it will not work on the server.
 <script>
-  // legacy mapping
+  // legacy route mapping
   const legacyRoutes = {
     '/builds/rise/low_rank': '/rise/builds/low-rank',
     '/builds/rise/high_rank': '/rise/builds/high-rank',
@@ -14,18 +16,20 @@
     '/info/rise/matchup': '/rise/data/match-ups',
     '/info/rise/guard_up': '/rise/data/guard-up',
     '/info/rise/anti_species': '/rise/data/anti-species',
-  };
+  } as const;
 
+  // redirect legacy route
   function redirectLegacyRoute() {
-    // Remove the '#' if present
     const path = window.location.hash.replace('#', '');
 
-    if (path && legacyRoutes[path as keyof typeof legacyRoutes]) {
+    if (path && Object.prototype.hasOwnProperty.call(legacyRoutes, path)) {
       window.location.replace(legacyRoutes[path as keyof typeof legacyRoutes]);
     }
   }
 
-  // Check on initial load and hash changes
+  // Check on initial load
   redirectLegacyRoute();
-  window.addEventListener('hashchange', redirectLegacyRoute);
+
+  // Check on hash change
+  window.addEventListener('hashchange', redirectLegacyRoute, { passive: true });
 </script>
