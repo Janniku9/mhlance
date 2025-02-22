@@ -1,48 +1,112 @@
-# Astro Starter Kit: Basics
+# MHLance.com
 
-```sh
-npm create astro@latest -- --template basics
+A comprehensive resource for Monster Hunter Lance guides, builds, and strategies. Built with Astro, this open-source project aims to provide in-depth lance-focused content across different Monster Hunter titles.
+
+## Contributing
+
+We welcome contributions to both the codebase and guide content! Here's how to get started:
+
+### Setup & Development
+
+1. **Prerequisites**
+
+   - Node.js (around v22)
+   - npm (Node Package Manager)
+
+2. **Local Development**
+
+   ```bash
+   # Install dependencies
+   npm install
+
+   # Start development server
+   npm run dev   # Site runs at http://localhost:4321
+
+   # Build and test
+   npm run build    # Verify build
+   npm run preview  # Preview build locally
+   ```
+
+### Project Structure
+
+```
+src/
+├── assets/           # Images and static files
+├── components/       # Reusable astro components
+│   ├── builds/      # Build-specific components (BuildCard, SharpnessBar, etc.)
+│   ├── core/        # Shared UI components (buttons, layout, alerts, headers, footers, etc.)
+│   ├── data/        # Data-specific components (GuardUp, MatchUps, etc.)
+│   ├── guides/      # Guide-specific components (ComboCard, ComboInputs, etc.)
+│   └── landing/     # Landing page components (GameCard, LandingFooter, etc.)
+├── data/            # Site configuration and game data
+│   ├── rise/        # Monster Hunter Rise data
+│   ├── world/       # Monster Hunter World data
+│   ├── wilds/       # Monster Hunter Wilds data
+│   ├── Contributors.ts  # List of project contributors
+│   ├── Navigation.ts    # Site navigation configuration !IMPORTANT!
+│   └── Socials.ts       # Social links
+├── layouts/         # Page layouts (Content, Landing, Main)
+├── pages/           # Route pages and game content
+│   ├── rise/        # Rise-specific content
+│   │   ├── builds/  # Build guides
+│   │   ├── guides/  # Gameplay guides
+│   │   ├── data/    # Game data
+│   │   └── index.astro  # Rise homepage
+│   ├── world/       # World-specific content
+│   ├── wilds/       # Wilds-specific content
+│   └── index.astro  # Homepage
+├── types/           # TypeScript interfaces
+└── utils/           # Helper functions
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Content Guidelines
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+look at existing pages for examples of how to structure your content
+basic layout:
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+```
+---
+// your page
+---
+<ContentLayout>
+  <Section>
+    <p>Content</p>
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+    <CustomCard>
+      <p>Content</p>
+    </CustomCard>
+  </Section>
+</ContentLayout>
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- **Builds**: Progression guides/builds go to `pages/[game]/builds/`
+- **Guides**: Gameplay guides go to `pages/[game]/guides/`
+- **Data**: Game data goes to `src/data/[game]/`, type interfaces go to `types/[game]/`
+- Use Prettier for formatting, [Tailwind CSS](https://tailwindcss.com/), [MingCute icons](https://icon-sets.iconify.design/mingcute/) + Emojis for styling
 
-## 🧞 Commands
+### Before Submitting
 
-All commands are run from the root of the project, from a terminal:
+1. Run development server: `npm run dev`
+2. Format code with Prettier: `npm run format`
+3. Verify build: `npm run build` or `npm run preview`
+4. Test across different screen sizes (1080p and mobile, very easy to do with [chrome dev tools](https://developer.chrome.com/docs/devtools/device-mode))
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Deployment
 
-## 👀 Want to learn more?
+The site deploys automatically to [Vercel](https://vercel.com) from the main branch.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- All contributors to the project
+- The Monster Hunter community
+- [Astro](https://astro.build)
+- [Tailwind CSS](https://tailwindcss.com)
+- [MingCute Icons](https://www.mingcute.com)
+
+---
+
+Made with ❤️ by the Monster Hunter Lance community
