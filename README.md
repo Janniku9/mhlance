@@ -2,16 +2,18 @@
 
 A comprehensive resource for Monster Hunter Lance guides, builds, and strategies. Built with Astro, this open-source project aims to provide in-depth lance-focused content across different Monster Hunter titles.
 
-## Contributing
+Visit the site at [mhlance.com](https://mhlance.com)
+
+## 🤝 Contributing
 
 We welcome contributions to both the codebase and guide content! Here's how to get started:
 
-### Setup & Development
+### 🚀 Setup & Development
 
 1. **Prerequisites**
 
    - Node.js (around v22)
-   - npm (Node Package Manager)
+   - Fork the repository and clone it to your local machine
 
 2. **Local Development**
 
@@ -27,7 +29,7 @@ We welcome contributions to both the codebase and guide content! Here's how to g
    npm run preview  # Preview build locally
    ```
 
-### Project Structure
+### 📁 Project Structure
 
 ```
 src/
@@ -59,7 +61,7 @@ src/
 └── utils/           # Helper functions
 ```
 
-### Content Guidelines
+### 📝 Content Guidelines
 
 Reference existing pages in the repository for detailed examples of content structure. Each page uses a standard layout pattern:
 
@@ -93,15 +95,15 @@ import Section from '../../../components/core/layout/Section.astro';
 3. Verify build: `npm run build` or `npm run preview`
 4. Test across different screen sizes (1080p and mobile, very easy to do with [chrome dev tools](https://developer.chrome.com/docs/devtools/device-mode))
 
-## Deployment
+## 🚀 Deployment
 
 The site deploys automatically to [Vercel](https://vercel.com) from the main branch.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## ⭐ Acknowledgments
 
 - All contributors to the project
 - The Monster Hunter community
