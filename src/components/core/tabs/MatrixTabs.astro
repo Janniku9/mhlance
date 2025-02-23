@@ -108,6 +108,9 @@ function getColorClasses(rowIndex: number): ColorConfig {
 </div>
 
 <script define:vars={{ tabRows }}>
+  // Get the current matrix component element
+  const matrixComponent = document.currentScript.parentElement;
+
   let selectedOptions = new Array(tabRows.length).fill(null);
   selectedOptions[0] = tabRows[0][0].id;
   selectedOptions[1] = tabRows[1][0].id;
@@ -135,10 +138,11 @@ function getColorClasses(rowIndex: number): ColorConfig {
     },
   };
 
-  const buttons = document.querySelectorAll('button[data-row]');
+  // Scope buttons to this component
+  const buttons = matrixComponent.querySelectorAll('button[data-row]');
 
-  // Hide all content except the initial combination
-  document.querySelectorAll('[id*="-"]').forEach((content) => {
+  // Hide all content except the initial combination - scoped to this component
+  matrixComponent.querySelectorAll('.build-content [id*="-"]').forEach((content) => {
     if (content.id !== `${selectedOptions[0]}-${selectedOptions[1]}`) {
       content.classList.add('hidden');
     }
@@ -149,11 +153,12 @@ function getColorClasses(rowIndex: number): ColorConfig {
 
     const combinationId = selectedOptions.join('-');
 
-    document.querySelectorAll('[id*="-"]').forEach((content) => {
+    // Scope content queries to this component
+    matrixComponent.querySelectorAll('.build-content [id*="-"]').forEach((content) => {
       content.classList.add('hidden');
     });
 
-    const selectedContent = document.getElementById(combinationId);
+    const selectedContent = matrixComponent.querySelector(`#${combinationId}`);
     if (selectedContent) {
       selectedContent.classList.remove('hidden');
     }
@@ -169,8 +174,8 @@ function getColorClasses(rowIndex: number): ColorConfig {
       // Get colors for this row
       const colors = rowColors[rowIndex] || rowColors[0];
 
-      // Update active states in this row
-      document.querySelectorAll(`button[data-row="${rowIndex}"]`).forEach((btn) => {
+      // Update active states in this row - scoped to this component
+      matrixComponent.querySelectorAll(`button[data-row="${rowIndex}"]`).forEach((btn) => {
         if (btn === button) {
           btn.classList.add(...colors.active);
           btn.querySelector('.bg-gradient-to-br')?.classList.add(colors.gradient);

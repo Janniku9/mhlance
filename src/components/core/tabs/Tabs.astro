@@ -6,7 +6,7 @@ interface Props {
 const { labels } = Astro.props;
 ---
 
-<div class="w-full">
+<div class="w-full tab-component">
   <div class="relative">
     <div class="flex flex-wrap justify-center gap-3 pb-4 pt-2">
       {
@@ -46,40 +46,46 @@ const { labels } = Astro.props;
 </div>
 
 <script>
-  const tabs = document.querySelectorAll('[data-tab]');
+  // Get all tab components
+  const tabComponents = document.querySelectorAll('.tab-component');
 
-  // Hide all except first content
-  tabs.forEach((tab) => {
-    const id = tab.getAttribute('data-tab');
-    const content = document.getElementById(id || '');
-    if (content && id !== tabs[0].getAttribute('data-tab')) {
-      content.classList.add('hidden');
-    }
-  });
+  // Initialize each tab component separately
+  tabComponents.forEach((tabComponent) => {
+    const tabs = tabComponent.querySelectorAll('[data-tab]');
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const targetId = tab.getAttribute('data-tab');
+    // Hide all except first content within this component
+    tabs.forEach((tab) => {
+      const id = tab.getAttribute('data-tab');
+      const content = tabComponent.querySelector(`#${id}`);
+      if (content && id !== tabs[0].getAttribute('data-tab')) {
+        content.classList.add('hidden');
+      }
+    });
 
-      // Update tabs
-      tabs.forEach((t) => {
-        if (t === tab) {
-          t.classList.add('text-primary', 'border-primary/30', 'bg-background-darker');
-          t.querySelector('.bg-gradient-to-br')?.classList.add('opacity-100');
-        } else {
-          t.classList.remove('text-primary', 'border-primary/30', 'bg-background-darker');
-          t.querySelector('.bg-gradient-to-br')?.classList.remove('opacity-100');
-        }
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-tab');
 
-        // Show/hide content
-        const content = document.getElementById(t.getAttribute('data-tab') || '');
-        if (content) {
+        // Update tabs within this component only
+        tabs.forEach((t) => {
           if (t === tab) {
-            content.classList.remove('hidden');
+            t.classList.add('text-primary', 'border-primary/30', 'bg-background-darker');
+            t.querySelector('.bg-gradient-to-br')?.classList.add('opacity-100');
           } else {
-            content.classList.add('hidden');
+            t.classList.remove('text-primary', 'border-primary/30', 'bg-background-darker');
+            t.querySelector('.bg-gradient-to-br')?.classList.remove('opacity-100');
           }
-        }
+
+          // Show/hide content within this component
+          const content = tabComponent.querySelector(`#${t.getAttribute('data-tab')}`);
+          if (content) {
+            if (t === tab) {
+              content.classList.remove('hidden');
+            } else {
+              content.classList.add('hidden');
+            }
+          }
+        });
       });
     });
   });
