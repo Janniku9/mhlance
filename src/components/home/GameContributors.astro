@@ -1,0 +1,91 @@
+---
+import type { Game } from '../../types/Game';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import { contributors } from '../../data/Contributors';
+import HomeComponent from './HomeComponent.astro';
+import TwitchIcon from '../../components/icons/Twitch.astro';
+
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const gameId = segments[0] as Exclude<Game, null>;
+
+// Filter contributors who have contributed to this game
+const gameContributors = contributors.filter((contributor) => contributor.contributions[gameId]);
+
+const getSocialIcon = (platform: string) => {
+  switch (platform) {
+    case 'youtube':
+      return { type: 'icon', name: 'mingcute:youtube-fill' };
+    case 'twitch':
+      return { type: 'custom' };
+    case 'twitter':
+      return { type: 'icon', name: 'mingcute:social-x-line' };
+    default:
+      return null;
+  }
+};
+---
+
+<HomeComponent title="Contributors" emoji="👥">
+  <div class="flex flex-col gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {
+        gameContributors.map((contributor) => (
+          <div class="group bg-background-dark hover:bg-primary/10 rounded-lg p-4 transition-all duration-200 border border-text/10 hover:shadow-xl hover:shadow-primary/5">
+            <div class="flex items-center gap-4">
+              {contributor.image ? (
+                <Image
+                  src={contributor.image}
+                  alt={contributor.name}
+                  class="w-12 h-12 rounded-lg bg-text/5 object-cover group-hover:scale-110 transition-transform"
+                />
+              ) : (
+                <div class="w-12 h-12 rounded-lg bg-text/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Icon
+                    name="mingcute:user-2-fill"
+                    class="w-6 h-6 text-text/80 group-hover:text-primary transition-colors"
+                  />
+                </div>
+              )}
+
+              <div class="flex-1">
+                <span class="block text-base text-text group-hover:text-primary transition-colors uppercase">
+                  {contributor.name}
+                </span>
+                <p class="text-sm text-text/60 group-hover:text-primary/60 transition-colors mt-1">
+                  {contributor.contributions[gameId]}
+                </p>
+              </div>
+
+              {/* Social links */}
+              <div class="flex gap-2">
+                {Object.entries(contributor.socials).map(([platform, url]) => {
+                  const socialIcon = getSocialIcon(platform);
+                  return (
+                    url && (
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="p-2 rounded-lg bg-text/5 hover:bg-primary/20 transition-colors"
+                      >
+                        {socialIcon?.type === 'icon' ? (
+                          <Icon
+                            name={socialIcon.name}
+                            class="w-5 h-5 text-text/80 group-hover:text-primary transition-colors"
+                          />
+                        ) : (
+                          <TwitchIcon class="w-5 h-5 text-text/80 group-hover:text-primary transition-colors" />
+                        )}
+                      </a>
+                    )
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</HomeComponent>

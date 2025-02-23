@@ -108,6 +108,7 @@ export const games: GameNavigation[] = [
           id: 'low-rank',
           title: 'Low Rank',
           emoji: '🏯',
+          showInQuickLinks: true,
           navDescription: 'Low rank progression builds',
           pageDescription:
             'Easy-to-follow builds for crushing the early game! Get geared up fast as you progress through Low Rank',
@@ -124,6 +125,7 @@ export const games: GameNavigation[] = [
           id: 'master-rank',
           title: 'Master Rank',
           emoji: '🏰',
+          showInQuickLinks: true,
           navDescription: 'Master rank progression builds',
         },
         {
@@ -161,6 +163,7 @@ export const games: GameNavigation[] = [
           id: 'palamutes',
           title: 'Palamutes',
           emoji: '🐕‍',
+          showInQuickLinks: true,
           navDescription: 'Best palamute equipment and skills',
         },
         {

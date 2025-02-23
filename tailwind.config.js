@@ -3,6 +3,10 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+      },
       spacing: {
         104: '26rem',
         128: '32rem',

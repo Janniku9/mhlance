@@ -1,0 +1,81 @@
+---
+import HomeComponent from './HomeComponent.astro';
+import { games } from '../../data/Navigation';
+
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const gameId = segments[0];
+const sectionId = segments[2];
+
+// Get current game data
+const currentGame = games.find((g) => g.game === gameId);
+
+// Get quicklinks grouped by section
+const quickLinkSections = currentGame
+  ? Object.entries(currentGame.sections)
+      .map(([sectionType, items]) => ({
+        sectionType,
+        items: items.filter((item) => item.showInQuickLinks),
+      }))
+      .filter((section) => section.items.length > 0)
+  : [];
+---
+
+<HomeComponent title="Quick Links" emoji="🔗">
+  <div class="flex flex-col gap-8">
+    {
+      quickLinkSections.map(({ sectionType, items }) => (
+        <div class="space-y-4">
+          <h3 class="text-sm font-medium text-text/60 uppercase">{sectionType}</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {items.map((item) => (
+              <a
+                href={
+                  item.externalLink ? item.externalLink : `/${gameId}/${sectionType}/${item.id}`
+                }
+                target={item.externalLink ? '_blank' : undefined}
+                rel={item.externalLink ? 'noopener noreferrer' : undefined}
+                class:list={[
+                  'group block bg-background-dark hover:bg-primary/10 rounded-lg p-4 transition-all duration-200',
+                  'border border-text/10 hover:shadow-xl hover:shadow-primary/5',
+                  sectionId === item.id && 'bg-primary/10',
+                ]}
+              >
+                <div class="flex items-center gap-3">
+                  {item.emoji && (
+                    <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      {item.emoji}
+                    </span>
+                  )}
+                  <div>
+                    <span
+                      class:list={[
+                        'block text-base transition-colors uppercase',
+                        sectionId === item.id
+                          ? 'text-primary'
+                          : 'text-text group-hover:text-primary',
+                      ]}
+                    >
+                      {item.title}
+                    </span>
+                    {item.navDescription && (
+                      <span
+                        class:list={[
+                          'block text-sm mt-1 transition-colors',
+                          sectionId === item.id
+                            ? 'text-primary/60'
+                            : 'text-text/60 group-hover:text-primary/60',
+                        ]}
+                      >
+                        {item.navDescription}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</HomeComponent>
