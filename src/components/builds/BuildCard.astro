@@ -2,6 +2,7 @@
 import StatBlock from './StatBlock.astro';
 import SharpnessBar from './SharpnessBar.astro';
 import Tooltip from '../core/ToolTip.astro';
+import type { Game } from '../../types/Game';
 
 import type { Build, AugmentType } from '../../types/builds/Build';
 import { Image } from 'astro:assets';
@@ -18,6 +19,10 @@ interface Props {
   build: Build;
   class?: string;
 }
+
+// get game from url
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const gameId = segments[0] as Game;
 
 const { build, class: className } = Astro.props;
 ---
@@ -136,7 +141,7 @@ const { build, class: className } = Astro.props;
             <div class="flex flex-wrap gap-1">
               {build.augments.map((augment: AugmentType) => (
                 <div class="group/monster relative">
-                  <div class:list={['hexagon', 'w-8 h-8', getAugmentColor(augment)]} />
+                  <div class:list={['hexagon', 'w-8 h-8', getAugmentColor(augment, gameId)]} />
                   <Tooltip text={getAugmentTooltip(augment)} />
                 </div>
               ))}

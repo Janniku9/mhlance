@@ -5,6 +5,7 @@ export type StatusType = 'poison' | 'sleep' | 'paralysis' | 'blast';
 export type SharpnessType = 'red' | 'orange' | 'yellow' | 'green' | 'blue' | 'white' | 'purple';
 
 export type AugmentType =
+  | 'health'
   | 'attack'
   | 'element'
   | 'status'
