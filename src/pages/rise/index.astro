@@ -12,29 +12,37 @@ import HomeFooter from '../../components/home/HomeFooter.astro';
 <MainLayout title="J9 MH - Rise/Sunbreak">
   <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-24">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-y-24 gap-x-8">
-      <QuickLinks />
+      <div class="md:order-1 order-2">
+        <QuickLinks />
+      </div>
 
-      <News
-        title="New TU6 Endgame Builds"
-        image={{
-          src: tu6Thumbnail,
-          alt: 'TU6 Endgame Builds',
-        }}
-        description="Check out the new TU6 endgame builds for Rise/Sunbreak!"
-        link={{
-          href: '/rise/builds/endgame',
-          text: 'View Builds',
-          emoji: '🔍',
-        }}
-      />
+      <div class="md:order-2 order-1">
+        <News
+          title="New TU6 Endgame Builds"
+          image={{
+            src: tu6Thumbnail,
+            alt: 'TU6 Endgame Builds',
+          }}
+          description="Check out the new TU6 endgame builds for Rise/Sunbreak!"
+          link={{
+            href: '/rise/builds/endgame',
+            text: 'View Builds',
+            emoji: '🔍',
+          }}
+        />
+      </div>
 
-      <PlaylistCard
-        playlistId="PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4"
-        playlistName="Rise/Sunbreak Speedrun Playlist"
-        playlistDescription="A playlist of cool Lance runs to watch"
-      />
+      <div class="md:order-3 order-3">
+        <PlaylistCard
+          playlistId="PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4"
+          playlistName="Rise/Sunbreak Speedrun Playlist"
+          playlistDescription="A playlist of cool Lance runs to watch"
+        />
+      </div>
 
-      <GameContributors />
+      <div class="md:order-4 order-4">
+        <GameContributors />
+      </div>
     </div>
   </div>
 

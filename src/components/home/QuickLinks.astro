@@ -21,12 +21,12 @@ const quickLinkSections = currentGame
 ---
 
 <HomeComponent title="Quick Links" emoji="🔗">
-  <div class="flex flex-col gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {
       quickLinkSections.map(({ sectionType, items }) => (
-        <div class="space-y-4">
-          <h3 class="text-sm font-medium text-text/60 uppercase">{sectionType}</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-background-dark rounded-xl border border-text/10 p-4">
+          <h3 class="text-sm font-medium text-text/60 uppercase mb-3">{sectionType}</h3>
+          <div class="grid grid-cols-1 gap-2">
             {items.map((item) => (
               <a
                 href={
@@ -35,42 +35,19 @@ const quickLinkSections = currentGame
                 target={item.externalLink ? '_blank' : undefined}
                 rel={item.externalLink ? 'noopener noreferrer' : undefined}
                 class:list={[
-                  'group block bg-background-dark hover:bg-primary/10 rounded-lg p-4 transition-all duration-200',
-                  'border border-text/10 hover:shadow-xl hover:shadow-primary/5',
-                  sectionId === item.id && 'bg-primary/10',
+                  'group flex items-center gap-2 p-2 rounded-lg transition-all duration-200',
+                  'hover:bg-primary/10',
+                  sectionId === item.id ? 'bg-primary/10 text-primary' : 'text-text',
                 ]}
               >
-                <div class="flex items-center gap-3">
-                  {item.emoji && (
-                    <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      {item.emoji}
-                    </span>
-                  )}
-                  <div>
-                    <span
-                      class:list={[
-                        'block text-base transition-colors uppercase',
-                        sectionId === item.id
-                          ? 'text-primary'
-                          : 'text-text group-hover:text-primary',
-                      ]}
-                    >
-                      {item.title}
-                    </span>
-                    {item.navDescription && (
-                      <span
-                        class:list={[
-                          'block text-sm mt-1 transition-colors',
-                          sectionId === item.id
-                            ? 'text-primary/60'
-                            : 'text-text/60 group-hover:text-primary/60',
-                        ]}
-                      >
-                        {item.navDescription}
-                      </span>
-                    )}
-                  </div>
-                </div>
+                {item.emoji && (
+                  <span class="text-xl bg-text/5 rounded-lg p-1.5 w-9 h-9 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    {item.emoji}
+                  </span>
+                )}
+                <span class="font-medium text-sm uppercase group-hover:text-primary">
+                  {item.title}
+                </span>
               </a>
             ))}
           </div>
