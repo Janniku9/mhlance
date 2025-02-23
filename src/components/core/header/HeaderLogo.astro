@@ -4,12 +4,15 @@ import { LOGO_DIMENSIONS } from '../../../types/Header';
 
 import LargeLogo from '../../../assets/logo_large.png';
 import SmallLogo from '../../../assets/logo_small.png';
+
+import LargeLanceLogo from '../../../assets/lance_logo_large3.png';
+import SmallLanceLogo from '../../../assets/lance_logo_small.png';
 ---
 
 <div class="flex items-center">
   <a href="/" class="block">
     <Image
-      src={LargeLogo}
+      src={LargeLanceLogo}
       alt="Logo"
       width={LOGO_DIMENSIONS.large.width}
       height={LOGO_DIMENSIONS.large.height}
@@ -18,7 +21,7 @@ import SmallLogo from '../../../assets/logo_small.png';
       decoding="async"
     />
     <Image
-      src={SmallLogo}
+      src={SmallLanceLogo}
       alt="Logo"
       width={LOGO_DIMENSIONS.small.width}
       height={LOGO_DIMENSIONS.small.height}

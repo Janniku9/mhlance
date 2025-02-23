@@ -34,7 +34,7 @@ export const games: GameNavigation[] = [
         {
           id: 'endgame',
           title: 'Endgame',
-          emoji: '🐉',
+          emoji: '👑',
           showInQuickLinks: true,
           navDescription: 'Fatalis endgame builds',
         },
