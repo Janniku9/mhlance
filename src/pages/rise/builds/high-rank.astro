@@ -314,7 +314,12 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
       perfect weapon for the endgame.
     </p>
 
-    <Tabs labels={['comfy', 'dragonheart']}>
+    <Tabs
+      labels={[
+        { id: 'comfy', display: 'Comfy' },
+        { id: 'dragonheart', display: 'Dragonheart' },
+      ]}
+    >
       <div id="comfy">
         <BuildCard
           build={{

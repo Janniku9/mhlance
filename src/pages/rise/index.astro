@@ -1,5 +1,29 @@
 ---
+import News from '../../components/home/News.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
+
+import tu6Thumbnail from '../../assets/rise/tu6.png';
+import PlaylistCard from '../../components/home/PlaylistCard.astro';
 ---
 
-<MainLayout title="J9 MH - Rise/Sunbreak"> rise </MainLayout>
+<MainLayout title="J9 MH - Rise/Sunbreak">
+  <News
+    title="New TU6 Endgame Builds"
+    image={{
+      src: tu6Thumbnail,
+      alt: 'TU6 Endgame Builds',
+    }}
+    description="Check out the new TU6 endgame builds for Rise/Sunbreak!"
+    link={{
+      href: '/rise/builds/endgame',
+      text: 'View Builds',
+      emoji: '🔍',
+    }}
+  />
+
+  <PlaylistCard
+    playlistId="PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4"
+    playlistName="Rise/Sunbreak Speedrun Playlist"
+    playlistDescription="A playlist of cool Lance runs to watch"
+  />
+</MainLayout>

@@ -1,0 +1,45 @@
+---
+import NavigationButton from '../core/buttons/NavigationButton.astro';
+import ImageCard from '../core/media/ImageCard.astro';
+import HomeComponent from './HomeComponent.astro';
+
+interface Props {
+  title: string;
+  image: {
+    src: ImageMetadata;
+    alt: string;
+    caption?: string;
+    maxWidth?: string;
+    class?: string;
+  };
+  description: string;
+  link: {
+    href: string;
+    text: string;
+    emoji?: string;
+  };
+}
+
+const { title, image, description, link }: Props = Astro.props;
+---
+
+<HomeComponent title={title} emoji="📰">
+  <div class="space-y-6">
+    {/* Image Card */}
+    <ImageCard
+      src={image.src}
+      alt={image.alt}
+      caption={image.caption}
+      maxWidth={image.maxWidth}
+      class={image.class}
+    />
+
+    {/* Description */}
+    <p class="text-lg">{description}</p>
+
+    {/* Link */}
+    <div class="mt2">
+      <NavigationButton href={link.href} text={link.text} emoji={link.emoji} />
+    </div>
+  </div>
+</HomeComponent>
