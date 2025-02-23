@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
 import StatBlock from './StatBlock.astro';
 import SharpnessBar from './SharpnessBar.astro';
 import Tooltip from '../core/ToolTip.astro';
@@ -12,6 +11,7 @@ import {
   getAugmentColor,
   getAugmentTooltip,
   getScrollImage,
+  getRampageDecoColor,
 } from '../../utils/BuildUtils';
 
 interface Props {
@@ -148,19 +148,21 @@ const { build, class: className } = Astro.props;
       <div class="flex justify-between">
         <!-- Rampage Decorations -->
         {
-          build.rampageDeco && (
+          build.rampageDecos && (
             <div class="mb-6">
               <span class="text-sm text-text/60 block mb-2">RAMPAGE DECORATION</span>
               <div class="flex flex-wrap gap-2">
-                {Array.isArray(build.rampageDeco) ? (
-                  build.rampageDeco.map((deco) => (
-                    <span class="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary">
+                {Array.isArray(build.rampageDecos) ? (
+                  build.rampageDecos.map((deco) => (
+                    <span
+                      class:list={['px-3 py-1 rounded-full text-sm', getRampageDecoColor(deco)]}
+                    >
                       {deco}
                     </span>
                   ))
                 ) : (
                   <span class="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary uppercase">
-                    {build.rampageDeco}
+                    {build.rampageDecos}
                   </span>
                 )}
               </div>

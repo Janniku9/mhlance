@@ -1,0 +1,186 @@
+---
+interface Props {
+  tabRows: { id: string; display: string }[][];
+}
+
+const { tabRows } = Astro.props;
+
+// Define types for color configuration
+type ColorConfig = {
+  active: string;
+  hover: string;
+  gradient: string;
+};
+
+type RowColors = Record<number, ColorConfig>;
+
+// Function to get color classes based on row index
+function getColorClasses(rowIndex: number): ColorConfig {
+  const colors: RowColors = {
+    0: {
+      active: 'text-primary border-primary/30',
+      hover: 'group-hover:text-primary',
+      gradient: 'from-primary/5',
+    },
+    1: {
+      active: 'text-secondary border-secondary/30',
+      hover: 'group-hover:text-secondary',
+      gradient: 'from-secondary/5',
+    },
+    2: {
+      active: 'text-error border-error/30',
+      hover: 'group-hover:text-error',
+      gradient: 'from-error/5',
+    },
+    3: {
+      active: 'text-warning border-warning/30',
+      hover: 'group-hover:text-warning',
+      gradient: 'from-warning/5',
+    },
+    4: {
+      active: 'text-info border-info/30',
+      hover: 'group-hover:text-info',
+      gradient: 'from-info/5',
+    },
+  };
+
+  return colors[rowIndex as keyof typeof colors] || colors[0];
+}
+---
+
+<div class="w-full">
+  {
+    tabRows.map((rowOptions, rowIndex) => {
+      const colors = getColorClasses(rowIndex);
+      return (
+        <div class="relative ">
+          <div class="flex flex-wrap justify-center gap-3 pb-4 pt-2">
+            {rowOptions.map((option, optionIndex) => (
+              <button
+                data-row={rowIndex}
+                data-option-id={option.id}
+                class:list={[
+                  'group relative bg-background-dark border border-text/10 px-6 py-3',
+                  'transition-all duration-300 rounded-xl',
+                  'flex items-center gap-2',
+                  optionIndex === 0
+                    ? `${colors.active} bg-background-darker`
+                    : 'hover:bg-background-darker hover:scale-105 hover:shadow-xl hover:shadow-primary/5',
+                ]}
+              >
+                <div
+                  class:list={[
+                    'absolute inset-0 bg-gradient-to-br to-transparent rounded-xl',
+                    colors.gradient,
+                    'opacity-0 group-hover:opacity-100 transition-all duration-300',
+                    optionIndex === 0 ? 'opacity-100' : '',
+                  ]}
+                />
+                <span
+                  class:list={[
+                    'relative text-sm font-medium transition-colors uppercase',
+                    colors.hover,
+                  ]}
+                >
+                  {option.display}
+                </span>
+              </button>
+            ))}
+          </div>
+          {/* Separator */}
+
+          <div
+            class:list={[
+              'w-full h-[10px] border-t border-text/10 ',
+              rowIndex === tabRows.length - 1
+                ? 'rounded-t-full pb-4'
+                : 'rounded-t-none border-dashed',
+            ]}
+          />
+        </div>
+      );
+    })
+  }
+
+  <div class="build-content relative">
+    <slot />
+  </div>
+</div>
+
+<script define:vars={{ tabRows }}>
+  let selectedOptions = new Array(tabRows.length).fill(null);
+  selectedOptions[0] = tabRows[0][0].id;
+  selectedOptions[1] = tabRows[1][0].id;
+
+  const rowColors = {
+    0: {
+      active: ['text-primary', 'border-primary/30', 'bg-background-darker'],
+      gradient: 'opacity-100',
+    },
+    1: {
+      active: ['text-secondary', 'border-secondary/30', 'bg-background-darker'],
+      gradient: 'opacity-100',
+    },
+    2: {
+      active: ['text-error', 'border-error/30', 'bg-background-darker'],
+      gradient: 'opacity-100',
+    },
+    3: {
+      active: ['text-warning', 'border-warning/30', 'bg-background-darker'],
+      gradient: 'opacity-100',
+    },
+    4: {
+      active: ['text-info', 'border-info/30', 'bg-background-darker'],
+      gradient: 'opacity-100',
+    },
+  };
+
+  const buttons = document.querySelectorAll('button[data-row]');
+
+  // Hide all content except the initial combination
+  document.querySelectorAll('[id*="-"]').forEach((content) => {
+    if (content.id !== `${selectedOptions[0]}-${selectedOptions[1]}`) {
+      content.classList.add('hidden');
+    }
+  });
+
+  function updateContent() {
+    if (selectedOptions.some((opt) => opt === null)) return;
+
+    const combinationId = selectedOptions.join('-');
+
+    document.querySelectorAll('[id*="-"]').forEach((content) => {
+      content.classList.add('hidden');
+    });
+
+    const selectedContent = document.getElementById(combinationId);
+    if (selectedContent) {
+      selectedContent.classList.remove('hidden');
+    }
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const rowIndex = parseInt(button.getAttribute('data-row') || '0');
+      const optionId = button.getAttribute('data-option-id');
+
+      selectedOptions[rowIndex] = optionId;
+
+      // Get colors for this row
+      const colors = rowColors[rowIndex] || rowColors[0];
+
+      // Update active states in this row
+      document.querySelectorAll(`button[data-row="${rowIndex}"]`).forEach((btn) => {
+        if (btn === button) {
+          btn.classList.add(...colors.active);
+          btn.querySelector('.bg-gradient-to-br')?.classList.add(colors.gradient);
+        } else {
+          btn.classList.remove(...colors.active);
+          btn.querySelector('.bg-gradient-to-br')?.classList.remove(colors.gradient);
+        }
+      });
+
+      updateContent();
+    });
+  });
+</script>

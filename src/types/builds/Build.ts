@@ -10,7 +10,7 @@ export type AugmentType =
   | 'status'
   | 'sharpness'
   | 'affinity'
-  | 'rampage_slot'
+  | 'rampage-slot'
   | 'defense';
 
 export type ScrollType = 'red' | 'blue';
@@ -43,6 +43,6 @@ export interface Build {
   };
   augments?: AugmentType[];
   scroll?: ScrollType;
-  rampageDeco?: RampageDecoType;
+  rampageDecos?: RampageDecoType[];
   additionalNotes?: Record<string, string>;
 }

@@ -14,7 +14,7 @@ import eightStar from '../../../assets/rise/builds/high-rank/regular_8star.png';
 import comfyEndgame from '../../../assets/rise/builds/high-rank/comfy_endgame.png';
 import dragonheartEndgame from '../../../assets/rise/builds/high-rank/dheart_endgame.png';
 import BuildCard from '../../../components/builds/BuildCard.astro';
-import BuildTabs from '../../../components/builds/BuildTabs.astro';
+import Tabs from '../../../components/core/tabs/Tabs.astro';
 ---
 
 <ContentLayout>
@@ -314,7 +314,7 @@ import BuildTabs from '../../../components/builds/BuildTabs.astro';
       perfect weapon for the endgame.
     </p>
 
-    <BuildTabs labels={['comfy', 'dragonheart']}>
+    <Tabs labels={['comfy', 'dragonheart']}>
       <div id="comfy">
         <BuildCard
           build={{
@@ -372,7 +372,7 @@ import BuildTabs from '../../../components/builds/BuildTabs.astro';
           }}
         />
       </div>
-    </BuildTabs>
+    </Tabs>
 
     <p>
       With these endgame builds, you're now fully equipped to handle everything High Rank has to

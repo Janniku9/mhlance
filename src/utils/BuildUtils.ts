@@ -51,7 +51,7 @@ const getAugmentColor = (type: AugmentType): string => {
     status: 'bg-green-500',
     sharpness: 'bg-cyan-500',
     affinity: 'bg-yellow-500',
-    rampage_slot: 'bg-dark-blue-500',
+    'rampage-slot': 'bg-dark-blue-500',
     defense: 'bg-brown-500',
   };
   return colors[type];
@@ -64,7 +64,7 @@ const getAugmentTooltip = (type: AugmentType): string => {
     status: 'status',
     sharpness: 'sharpness',
     affinity: 'affinity',
-    rampage_slot: 'rampage_slot',
+    'rampage-slot': 'rampage slot upgrade',
     defense: 'defense',
   };
   return tooltips[type];
@@ -72,20 +72,20 @@ const getAugmentTooltip = (type: AugmentType): string => {
 
 const getRampageDecoTooltip = (type: RampageDecoType): string => {
   const tooltips = {
-    'anti-species': 'Anti-Species',
-    elembane: 'Elembane',
-    bloodening: 'Bloodening',
-    'teostra-soul': 'Teostra Soul',
+    'anti-species': 'anti species',
+    elembane: 'elembane',
+    bloodening: 'bloodening',
+    'teostra-soul': 'teostra soul',
   };
   return tooltips[type];
 };
 
 const getRampageDecoColor = (type: RampageDecoType): string => {
   const colors = {
-    'anti-species': 'bg-purple-500',
-    elembane: 'bg-blue-500',
-    bloodening: 'bg-red-500',
-    'teostra-soul': 'bg-red-500',
+    'anti-species': 'bg-purple-500/70',
+    elembane: 'bg-blue-500/70',
+    bloodening: 'bg-red-500/70',
+    'teostra-soul': 'bg-red-500/70',
   };
   return colors[type];
 };
@@ -105,5 +105,6 @@ export {
   getAugmentColor,
   getAugmentTooltip,
   getRampageDecoTooltip,
+  getRampageDecoColor,
   getScrollImage,
 };
