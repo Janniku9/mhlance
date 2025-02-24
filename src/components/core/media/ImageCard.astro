@@ -17,7 +17,7 @@ const { src, alt, caption, class: className, maxWidth } = Astro.props;
   class:list={[
     'group relative bg-background-dark border border-text/10 rounded-xl overflow-hidden',
     'transition-all duration-300 hover:bg-background-darker',
-    'hover:shadow-2xl hover:shadow-primary/5',
+    'hover:shadow-2xl hover:shadow-primary/5 full-h',
     className,
   ]}
 >
@@ -36,13 +36,16 @@ const { src, alt, caption, class: className, maxWidth } = Astro.props;
       <Image src={src} alt={alt} class="w-full h-auto transition-transform duration-300" />
     </div>
 
-    {
-      caption && (
-        <div class="mt-3 px-2">
-          <p class="text-sm text-text/80 group-hover:text-primary transition-colors">{caption}</p>
-        </div>
-      )
-    }
+    <div class="flex flex-col gap-4">
+      {
+        caption && (
+          <div class="mt-3 px-2">
+            <p class="text-sm text-text/80 group-hover:text-primary transition-colors">{caption}</p>
+          </div>
+        )
+      }
+      <slot />
+    </div>
   </div>
 </div>
 

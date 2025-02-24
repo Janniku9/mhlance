@@ -1,0 +1,30 @@
+---
+import HomeComponent from './HomeComponent.astro';
+import FAQCard from './FAQCard.astro';
+import type { FAQ } from '../../types/faq.ts';
+
+interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<HomeComponent title="Frequently Asked Questions" emoji="❓">
+  <div class="space-y-2">
+    <p class="text-text/70 mb-6">Find the answers to the most asked questions here</p>
+
+    <div class="faq-container">
+      {
+        faqs.map((faq, index) => (
+          <FAQCard
+            question={faq.question}
+            answer={faq.answer}
+            link={faq.link}
+            isOpen={index === 0}
+          />
+        ))
+      }
+    </div>
+  </div>
+</HomeComponent>

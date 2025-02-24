@@ -1,8 +1,11 @@
 import type { Contributor } from '../types/Contributors';
 
+import J9 from '../assets/contributors/j9.jpg';
+
 export const contributors: Contributor[] = [
   {
     name: 'J9',
+    image: J9,
     contributions: {
       overall: 'design + hosting',
       world: 'progression + guides',

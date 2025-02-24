@@ -4,7 +4,7 @@ export const socials: Social[] = [
   {
     name: 'GitHub',
     description: 'Contribute today!',
-    url: 'https://github.com/j9-mh/j9mh',
+    url: 'https://github.com/Janniku9/mhlance',
     icon: 'mingcute:github-fill',
   },
   {
