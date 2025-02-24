@@ -1,0 +1,259 @@
+---
+import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
+import Section from '../../../components/core/layout/Section.astro';
+import StyledList from '../../../components/core/lists/StyledList.astro';
+import GifCard from '../../../components/core/media/GifCard.astro';
+import SectionSubTitle from '../../../components/core/typography/SectionSubTitle.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Lance's identity in Monster Hunter World revolves around its exceptional defensive
+      capabilities. While other weapons need to sheathe and dodge, Lance users stand their ground
+      through a diverse array of guarding options. Mastering these defensive techniques is essential
+      for maintaining aggressive pressure and turning monster attacks into counter-offensive
+      opportunities.
+    </p>
+
+    <p>
+      This guide breaks down each guarding option, explaining their mechanics, strengths, and
+      optimal usage situations to help you develop an impenetrable defense against any monster.
+    </p>
+  </Section>
+
+  <Section title="Guard Mechanics">
+    <p>
+      Before diving into specific techniques, let's understand how guarding works in Monster Hunter
+      World. Each monster attack has a specific "Power Value" that determines how difficult it is to
+      block.
+    </p>
+
+    <GifCard
+      src="https://giphy.com/embed/JoBkKHgYP2gEZY8HVR"
+      title="The Shield Experience: Different guard levels in action"
+      alt="knockback comparison"
+      width="720px"
+    >
+      Understanding knockback levels is crucial for Lance mastery. This comparison shows how
+      different guard levels affect your ability to maintain offensive pressure after blocking.
+    </GifCard>
+
+    <SectionSubTitle title="Guard Thresholds" />
+
+    <StyledList
+      variant="compact"
+      items={[
+        {
+          text: 'Guard 1 increases threshold to 50',
+          emoji: '🛡️',
+        },
+        {
+          text: 'Guard 3 increases threshold to 60',
+          emoji: '🛡️🛡️',
+        },
+        {
+          text: 'Guard 5 increases threshold to 70',
+          emoji: '🛡️🛡️🛡️',
+        },
+      ]}
+    />
+
+    <p>
+      When blocking an attack, the game compares its Power Value to your Guard Threshold, resulting
+      in three possible outcomes:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'No Knockback: Power Value < Guard Threshold. No chip damage, minimal stamina cost, immediate follow-up possible.',
+          emoji: '✅',
+        },
+        {
+          text: 'Medium Knockback: Guard Threshold ≤ Power Value < (Guard Threshold + 10). 10% chip damage, moderate stamina cost, brief recovery animation.',
+          emoji: '⚠️',
+        },
+        {
+          text: 'Heavy Knockback: Power Value ≥ (Guard Threshold + 10). 20% chip damage, high stamina cost, lengthy recovery animation.',
+          emoji: '❌',
+        },
+      ]}
+    />
+
+    <p>
+      Higher Guard skill levels let you comfortably block stronger attacks, reducing both chip
+      damage and stamina consumption. For most hunts, Guard 3 offers an excellent balance between
+      investment and protection, while Guard 5 is worth considering for particularly hard-hitting
+      monsters.
+    </p>
+  </Section>
+
+  <Section title="Counter Thrust">
+    <p>
+      Counter Thrust is your bread-and-butter defensive response, transforming incoming attacks into
+      immediate offensive opportunities. Perform it by pressing Guard + High Poke simultaneously,
+      creating a brief counter window that, when triggered by an attack, automatically follows with
+      a powerful thrust.
+    </p>
+
+    <p>
+      This Counter is your Bread And Butter Block you want to use most of the time when fighting a
+      monster. It's very fast and low commitment. You mostly want to input as many pokes as you can
+      before the monster Attacks and then Counter. It's gonna look something like this: Poke, Poke,
+      Poke, Counter, Poke, Counter, etc.
+    </p>
+
+    <GifCard
+      src="https://giphy.com/embed/EMVdjqULKTuTaDw3Y5"
+      title="Counter Thrust Example vs Alatreon"
+      alt="CT example"
+      width="720px"
+      reversed
+    >
+      Against precision attacks like Alatreon's elemental strikes, Counter Thrust allows you to
+      maintain an aggressive rhythm of pokes and counters. Notice how each successful counter
+      creates an immediate opening for additional damage.
+    </GifCard>
+
+    <p>
+      This move excels in creating a rhythm of continuous offense: Poke, Poke, Poke, Counter, Poke,
+      Counter. When executed successfully against an attack, you can even chain directly into
+      another Counter Thrust for consecutive hits.
+    </p>
+
+    <p>
+      The technique's main limitation is that Heavy Knockback attacks will prevent the follow-up
+      thrust. However, as we'll cover later, Power Guard can help overcome this limitation.
+    </p>
+  </Section>
+
+  <Section title="Guard Dash">
+    <p>
+      Guard Dash provides controlled mobility while maintaining defensive protection. Perform it by
+      pressing Guard + Low Poke, allowing you to move in any direction while keeping your shield
+      raised. This technique bridges the gap between offense and defense, letting you reposition
+      without becoming vulnerable.
+    </p>
+
+    <GifCard
+      src="https://giphy.com/embed/Rqq8hMlsnLGj0Gb0b3"
+      title="Gap closing while blocking with Guard Dash"
+      alt="guard dash"
+      width="720px"
+    >
+      This clip demonstrates ideal Guard Dash usage: closing distance while defensively handling a
+      roar. This technique shines when you need controlled movement without sacrificing protection.
+    </GifCard>
+
+    <p>While Guard Dash is powerful for repositioning, it has some limitations:</p>
+
+    <StyledList
+      variant="compact"
+      items={[
+        {
+          text: 'Heavy Knockback will stop the dash completely',
+        },
+        {
+          text: 'Follow-up attacks (Leaping Thrust/Shield Bash) are weaker in World compared to Rise',
+        },
+        {
+          text: 'To dash backward or sideways from neutral position, you must first aim with the slinger',
+        },
+      ]}
+    />
+
+    <p>
+      Guard Dash is most effective for closing short distances while maintaining defense,
+      particularly when you anticipate an incoming attack. For unobstructed mobility, the standard
+      dash attack is often more efficient.
+    </p>
+  </Section>
+
+  <Section title="Power Guard">
+    <p>
+      Power Guard represents your ultimate defensive stance, trading chip damage for unparalleled
+      protection and counter-attack potential. Activate it by entering Counter Thrust stance and
+      pressing the hop button, creating a specialized guarding position with unique properties.
+    </p>
+
+    <GifCard
+      src="https://giphy.com/embed/2PLl1d9Dqiu6lM8FZs"
+      title="Power Guard Cancel"
+      alt="pgc"
+      width="720px"
+      reversed
+    >
+      This clip showcases Power Guard's advanced application: canceling knockback recovery
+      animations into powerful counter thrusts. This technique transforms defensive disadvantage
+      into offensive opportunity.
+    </GifCard>
+
+    <p>Power Guard offers several exceptional advantages:</p>
+
+    <StyledList
+      items={[
+        {
+          text: "360° blocking angle (vs. normal guard's 220°)",
+          emoji: '🔄',
+        },
+        {
+          text: 'Eliminates stamina loss from blocking (instead drains stamina over time)',
+          emoji: '💪',
+        },
+        {
+          text: 'Reduced knockback distance from heavy attacks',
+          emoji: '🏋️',
+        },
+        {
+          text: 'Powerful directional Counter Thrust in any direction',
+          emoji: '🎯',
+        },
+        {
+          text: 'After 1.2 seconds, grants Guard Up effect (blocks unblockable attacks)',
+          emoji: '✨',
+        },
+      ]}
+    />
+
+    <p>
+      These benefits come with one significant trade-off: Power Guard increases chip damage by 10%
+      compared to Normal Guard. However, this downside is often overshadowed by allowing: knockback
+      cancels, blocking stamina intensive multi-hit attacks and allowing a counter in all
+      directions.
+    </p>
+
+    <p>
+      For optimal efficiency, most experienced Lance users prefer to start with Counter Thrust and
+      transition to Power Guard only if needed, rather than entering Power Guard directly. This
+      approach minimizes chip damage while maintaining access to Power Guard's benefits.
+    </p>
+  </Section>
+
+  <Section title="Guard Shot & Counter Claw">
+    <p>
+      Iceborne introduced two clutch-based defensive techniques that expand Lance's toolkit with
+      unique utility: Guard Shot and Counter Claw. These options integrate the clutch claw mechanic
+      with Lance's defensive identity.
+    </p>
+
+    <SectionSubTitle title="Guard Shot" />
+    <p>
+      Guard Shot provides quick access to slinger ammunition during defensive play. This technique
+      lets you block an incoming attack and immediately follow with either a clutch claw grapple or
+      slinger burst, adding ranged options to your defensive repertoire.
+    </p>
+
+    <SectionSubTitle title="Counter Claw" />
+    <p>
+      Counter Claw is one of Lance's most satisfying techniques, allowing you to convert a blocked
+      attack directly into a clutch claw grapple. This move creates unique tenderizing and wallbang
+      opportunities that would be impossible with other weapons.
+    </p>
+
+    <p>Both of these techniques are covered in depth in our dedicated Clutch Claw guide:</p>
+
+    <NavigationButton href="world/guides/clutch-claw" text="Clutch Claw Guide" emoji="⚓" />
+  </Section>
+</ContentLayout>
