@@ -1,5 +1,49 @@
 ---
+import GameContributors from '../../components/home/GameContributors.astro';
+import HomeFAQ from '../../components/home/HomeFAQ.astro';
+import HomeFooter from '../../components/home/HomeFooter.astro';
+import News from '../../components/home/News.astro';
+import PlaylistCard from '../../components/home/PlaylistCard.astro';
+import QuickLinks from '../../components/home/QuickLinks.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
+
+import iprog from '../../assets/world/iprog.png';
+import { worldFaqs } from '../../data/world/FAQs';
 ---
 
-<MainLayout title="MH Lance - World/Iceborne"> world </MainLayout>
+<MainLayout title="MH Lance - World/Iceborne">
+  <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-12 md:gap-y-24 gap-x-8">
+      <News
+        title="New World/Iceborne Progression Guide"
+        image={{
+          src: iprog,
+          alt: 'World/Iceborne Progression Guide',
+        }}
+        description="Check out the new Iceborne Progression Guide, from Low Rank, all the way to Fatalis."
+        link={{
+          href: '/world/builds/low-rank',
+          text: 'View Builds',
+          emoji: '🔍',
+        }}
+      />
+
+      <QuickLinks />
+
+      <div>
+        <HomeFAQ faqs={worldFaqs} />
+      </div>
+
+      <PlaylistCard
+        playlistId="PLMgaMGsEoNvmMAOMQ8PFmnGvaGuLO_nVd"
+        playlistName="Rise/Sunbreak Speedrun Playlist"
+        playlistDescription="A playlist of cool Lance runs to watch"
+      />
+
+      <GameContributors />
+    </div>
+  </div>
+
+  <div class="h-24"></div>
+  <HomeFooter />
+</MainLayout>
