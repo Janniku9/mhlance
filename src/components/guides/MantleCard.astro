@@ -11,7 +11,7 @@ interface Props {
   effects?: string[];
   class?: string;
   reversed?: boolean;
-  imageMaxWidth?: string;
+  imageTargetWidth?: string;
 }
 
 const {
@@ -23,7 +23,7 @@ const {
   effects = [],
   class: className,
   reversed = false,
-  imageMaxWidth = '300px',
+  imageTargetWidth = '200px',
 } = Astro.props;
 ---
 
@@ -43,11 +43,12 @@ const {
   >
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2">
-    <!-- Image Column -->
+  <div class="flex flex-col md:flex-row">
+    <!-- Image Column (40%) -->
     <div
       class:list={[
         'p-6 border-b md:border-b-0 md:border-r border-text/10 bg-secondary/5',
+        'md:w-2/5' /* This creates the 40% width */,
         reversed ? 'md:order-2 md:border-l md:border-r-0' : 'md:order-1',
       ]}
     >
@@ -57,7 +58,7 @@ const {
 
       <!-- Image -->
       <div class="flex justify-center mb-6">
-        <div class="relative rounded-lg overflow-hidden" style={`max-width: ${imageMaxWidth};`}>
+        <div class="relative rounded-lg overflow-hidden" style={`width: ${imageTargetWidth};`}>
           <Image
             src={image}
             alt={`${name} mantle`}
@@ -71,7 +72,7 @@ const {
         <div class="p-3 rounded-lg bg-text/5">
           <span class="text-sm text-text/60 block mb-1">COOLDOWN</span>
           <div class="flex items-center gap-2">
-            <Icon name="mingcute:time-fill" class="w-4 h-4 text-primary" />
+            <Icon name="mingcute:time-duration-fill" class="w-4 h-4 text-primary" />
             <span class="text-sm font-medium">{cooldown}</span>
           </div>
         </div>
@@ -79,15 +80,21 @@ const {
         <div class="p-3 rounded-lg bg-text/5">
           <span class="text-sm text-text/60 block mb-1">DURATION</span>
           <div class="flex items-center gap-2">
-            <Icon name="mingcute:time-duration-fill" class="w-4 h-4 text-primary" />
+            <Icon name="mingcute:time-fill" class="w-4 h-4 text-primary" />
             <span class="text-sm font-medium">{duration}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Content Column -->
-    <div class:list={['p-6 md:p-8', reversed ? 'md:order-1' : 'md:order-2']}>
+    <!-- Content Column (60%) -->
+    <div
+      class:list={[
+        'p-6 md:p-8',
+        'md:w-3/5' /* This creates the 60% width */,
+        reversed ? 'md:order-1' : 'md:order-2',
+      ]}
+    >
       <!-- Description -->
       <div class="mb-6">
         <span class="text-sm text-text/60 block mb-2">DESCRIPTION</span>
