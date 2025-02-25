@@ -7,9 +7,9 @@ export const contributors: Contributor[] = [
     name: 'J9',
     image: J9,
     contributions: {
-      overall: 'design + hosting',
-      world: 'progression + guides',
-      rise: 'endgame + post story',
+      overall: 'Website design, development and hosting',
+      world: 'Progression guides and lance mechanics',
+      rise: 'Endgame optimization and post-story content',
     },
     socials: {
       youtube: 'https://www.youtube.com/@J9_MH',
@@ -18,9 +18,9 @@ export const contributors: Contributor[] = [
   {
     name: 'Chef',
     contributions: {
-      overall: 'progression guides for rise and world',
-      world: 'helped with progression guides',
-      rise: 'early game progression guide',
+      overall: 'Comprehensive progression guides for Rise and World',
+      world: 'Early and mid-game progression support',
+      rise: 'Early game progression guide',
     },
     socials: {
       twitch: 'https://www.twitch.tv/ch3f_',
@@ -29,8 +29,16 @@ export const contributors: Contributor[] = [
   {
     name: 'Kenny',
     contributions: {
-      overall: 'guard up sheets',
-      rise: 'tested all attacks for guard up',
+      overall: 'Guard Up mechanics research',
+      rise: 'Tested all monster attacks against Guard Up mechanics',
+    },
+    socials: {},
+  },
+  {
+    name: 'Noxvenator',
+    contributions: {
+      overall: 'Guard Up mechanics research',
+      world: 'Tested all monster attacks against Guard Up mechanics',
     },
     socials: {},
   },
