@@ -56,6 +56,7 @@ import rakna_kadaki from '../../assets/rise/monsters/rakna-kadaki.png';
 import rathalos from '../../assets/rise/monsters/rathalos.png';
 import rathian from '../../assets/rise/monsters/rathian.png';
 import risen_chameleos from '../../assets/rise/monsters/risen_chameleos.png';
+import risen_crimson_glow_valstrax from '../../assets/rise/monsters/risen_valstrax.png';
 import risen_kushala_daora from '../../assets/rise/monsters/risen_kushala_daora.png';
 import risen_shagaru_magala from '../../assets/rise/monsters/risen_shagaru_magala.png';
 import risen_teostra from '../../assets/rise/monsters/risen_teostra.png';
@@ -170,7 +171,7 @@ export const riseMonsters: Monster[] = [
     image: crimson_glow_valstrax,
   },
   {
-    name: 'Daimyo Hermitau',
+    name: 'Daimyo Hermitaur',
     image: daimyo_hermitaur,
   },
   {
@@ -304,6 +305,10 @@ export const riseMonsters: Monster[] = [
   {
     name: 'Risen Chameleos',
     image: risen_chameleos,
+  },
+  {
+    name: 'Risen Crimson Glow Valstrax',
+    image: risen_crimson_glow_valstrax,
   },
   {
     name: 'Risen Kushala Daora',
