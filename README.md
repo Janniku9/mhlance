@@ -8,6 +8,10 @@ Visit the site at [mhlance.com](https://mhlance.com)
 
 We welcome contributions to both the codebase and guide content! Here's how to get started:
 
+### 📣 Before Creating New Content
+
+If you're planning to contribute new guides or substantial content (rather than fixes to existing content), we recommend reaching out on our Discord first. This helps ensure your effort aligns with the site's direction and prevents duplication of work. We value all contributions and want to make sure your time is well spent!
+
 ### 🚀 Setup & Development
 
 1. **Prerequisites**
