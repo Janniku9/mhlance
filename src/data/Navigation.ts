@@ -25,6 +25,7 @@ export const games: GameNavigation[] = [
           id: 'master-rank',
           title: 'Master Rank',
           emoji: '❄️',
+          showInQuickLinks: true,
           navDescription: 'Master rank progression builds',
           pageDescription:
             "Tackle Iceborne's challenges with powerful Master Rank progression builds.",
@@ -33,6 +34,7 @@ export const games: GameNavigation[] = [
           id: 'post-story',
           title: 'Post-Story',
           emoji: '🐲',
+          showInQuickLinks: true,
           navDescription: 'Post story & guiding lands builds',
           pageDescription: 'Optimized builds for the post story and guiding lands!',
         },

@@ -1,15 +1,25 @@
 ---
 interface Props {
   tabRows: { id: string; display: string }[][];
+  title?: string;
+  initialSelected?: string[]; // Array of initially selected tab IDs, one per row
 }
 
-const { tabRows } = Astro.props;
+const { tabRows, title, initialSelected = [] } = Astro.props;
 
-// Define types for color configuration
+// Function to determine if a tab should be initially selected
+function isInitiallySelected(rowIndex: number, tabId: string): boolean {
+  if (initialSelected && initialSelected[rowIndex]) {
+    return tabId === initialSelected[rowIndex];
+  }
+  // Default to first tab if no initial selection provided
+  return tabId === (tabRows[rowIndex][0]?.id || '');
+}
 type ColorConfig = {
   active: string;
   hover: string;
   gradient: string;
+  underline: string;
 };
 
 type RowColors = Record<number, ColorConfig>;
@@ -19,28 +29,33 @@ function getColorClasses(rowIndex: number): ColorConfig {
   const colors: RowColors = {
     0: {
       active: 'text-primary border-primary/30',
-      hover: 'group-hover:text-primary',
+      hover: 'hover:text-primary',
       gradient: 'from-primary/5',
+      underline: 'bg-primary'
     },
     1: {
       active: 'text-secondary border-secondary/30',
-      hover: 'group-hover:text-secondary',
+      hover: 'hover:text-secondary',
       gradient: 'from-secondary/5',
+      underline: 'bg-secondary'
     },
     2: {
       active: 'text-error border-error/30',
-      hover: 'group-hover:text-error',
+      hover: 'hover:text-error',
       gradient: 'from-error/5',
+      underline: 'bg-error'
     },
     3: {
       active: 'text-warning border-warning/30',
-      hover: 'group-hover:text-warning',
+      hover: 'hover:text-warning',
       gradient: 'from-warning/5',
+      underline: 'bg-warning'
     },
     4: {
       active: 'text-info border-info/30',
-      hover: 'group-hover:text-info',
+      hover: 'hover:text-info',
       gradient: 'from-info/5',
+      underline: 'bg-info'
     },
   };
 
@@ -48,93 +63,139 @@ function getColorClasses(rowIndex: number): ColorConfig {
 }
 ---
 
-<div class="w-full">
-  {
-    tabRows.map((rowOptions, rowIndex) => {
-      const colors = getColorClasses(rowIndex);
-      return (
-        <div class="relative ">
-          <div class="flex flex-wrap justify-center gap-3 pb-4 pt-2">
-            {rowOptions.map((option, optionIndex) => (
-              <button
-                data-row={rowIndex}
-                data-option-id={option.id}
-                class:list={[
-                  'group relative bg-background-dark border border-text/10 px-6 py-3',
-                  'transition-all duration-300 rounded-xl',
-                  'flex items-center gap-2',
-                  optionIndex === 0
-                    ? `${colors.active} bg-background-darker`
-                    : 'hover:bg-background-darker hover:scale-105 hover:shadow-xl hover:shadow-primary/5',
-                ]}
-              >
-                <div
+<div class="tab-card group relative border border-text/10 rounded-3xl overflow-hidden transition-all duration-300 hover:border-text/20">
+  <!-- Card header with tabs -->
+  <div class="bg-background-dark">
+    {title && <h3 class="px-6 pt-5 text-md font-medium mb-2 text-text/80">{title}</h3>}
+    
+    {
+      tabRows.map((rowOptions, rowIndex) => {
+        const colors = getColorClasses(rowIndex);
+        return (
+          <div class="relative">
+            <div class="flex flex-wrap justify-center gap-3 pt-3 px-6">
+              {rowOptions.map((option, optionIndex) => (
+                <button
+                  data-row={rowIndex}
+                  data-option-id={option.id}
                   class:list={[
-                    'absolute inset-0 bg-gradient-to-br to-transparent rounded-xl',
-                    colors.gradient,
-                    'opacity-0 group-hover:opacity-100 transition-all duration-300',
-                    optionIndex === 0 ? 'opacity-100' : '',
-                  ]}
-                />
-                <span
-                  class:list={[
-                    'relative text-sm font-medium transition-colors uppercase',
-                    colors.hover,
+                    'relative bg-background-dark border border-text/10 px-6 py-3',
+                    'transition-all duration-300 rounded-xl',
+                    'flex items-center gap-2 hover:bg-background-darker',
+                    option.id === (isInitiallySelected(rowIndex, option.id) ? option.id : '')
+                      ? colors.active
+                      : 'hover:shadow-sm',
                   ]}
                 >
-                  {option.display}
-                </span>
-              </button>
-            ))}
+                  <div
+                    class:list={[
+                      'absolute inset-0 bg-gradient-to-br to-transparent rounded-xl',
+                      colors.gradient,
+                      'opacity-0 hover:opacity-100 transition-all duration-300',
+                      option.id === (isInitiallySelected(rowIndex, option.id) ? option.id : '') ? 'opacity-100' : '',
+                    ]}
+                  />
+                  <span
+                    class:list={[
+                      'relative text-sm font-medium transition-colors uppercase',
+                      colors.hover,
+                    ]}
+                  >
+                    {option.display}
+                  </span>
+                  
+                  <!-- Active indicator (bottom border instead of underline) -->
+                  <div 
+                    class:list={[
+                      'absolute bottom-0 left-0 h-1 w-full rounded-t-full transition-all duration-200',
+                      colors.underline,
+                      isInitiallySelected(rowIndex, option.id) ? 'opacity-100' : 'opacity-0'
+                    ]}
+                  ></div>
+                </button>
+              ))}
+            </div>
+            
+            <!-- Row Separator with margin to handle wrapping -->
+            <div
+              class:list={[
+                'w-full border-t border-text/10 mt-4',
+                rowIndex === tabRows.length - 1
+                  ? 'border-solid'
+                  : 'border-dashed'
+              ]}
+            />
           </div>
-          {/* Separator */}
+        );
+      })
+    }
+  </div>
 
-          <div
-            class:list={[
-              'w-full h-[10px] border-t border-text/10 ',
-              rowIndex === tabRows.length - 1
-                ? 'rounded-t-full pb-4'
-                : 'rounded-t-none border-dashed',
-            ]}
-          />
-        </div>
-      );
-    })
-  }
-
-  <div class="build-content relative">
+  <!-- Card content area -->
+  <div class="build-content p-6 bg-background-dark/30">
     <slot />
   </div>
 </div>
 
-<script define:vars={{ tabRows }}>
+<style>
+  .tab-card {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script define:vars={{ tabRows, initialSelected }}>
   // Get the current matrix component element
   const matrixComponent = document.currentScript.parentElement;
 
   let selectedOptions = new Array(tabRows.length).fill(null);
-  selectedOptions[0] = tabRows[0][0].id;
-  selectedOptions[1] = tabRows[1][0].id;
+  
+  // Initialize with selected options from props, or first option in each row
+  tabRows.forEach((row, index) => {
+    if (row.length > 0) {
+      if (initialSelected && initialSelected[index]) {
+        selectedOptions[index] = initialSelected[index];
+      } else {
+        selectedOptions[index] = row[0].id;
+      }
+    }
+  });
 
   const rowColors = {
     0: {
-      active: ['text-primary', 'border-primary/30', 'bg-background-darker'],
-      gradient: 'opacity-100',
+      active: ['text-primary', 'border-primary/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
     },
     1: {
-      active: ['text-secondary', 'border-secondary/30', 'bg-background-darker'],
-      gradient: 'opacity-100',
+      active: ['text-secondary', 'border-secondary/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
     },
     2: {
-      active: ['text-error', 'border-error/30', 'bg-background-darker'],
-      gradient: 'opacity-100',
+      active: ['text-error', 'border-error/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
     },
     3: {
-      active: ['text-warning', 'border-warning/30', 'bg-background-darker'],
-      gradient: 'opacity-100',
+      active: ['text-warning', 'border-warning/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
     },
     4: {
-      active: ['text-info', 'border-info/30', 'bg-background-darker'],
-      gradient: 'opacity-100',
+      active: ['text-info', 'border-info/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
     },
   };
 
@@ -142,20 +203,16 @@ function getColorClasses(rowIndex: number): ColorConfig {
   const buttons = matrixComponent.querySelectorAll('button[data-row]');
 
   // Hide all content except the initial combination - scoped to this component
-  matrixComponent.querySelectorAll('.build-content [id*="-"]').forEach((content) => {
-    if (content.id !== `${selectedOptions[0]}-${selectedOptions[1]}`) {
-      content.classList.add('hidden');
-    }
-  });
-
   function updateContent() {
     if (selectedOptions.some((opt) => opt === null)) return;
 
     const combinationId = selectedOptions.join('-');
 
     // Scope content queries to this component
-    matrixComponent.querySelectorAll('.build-content [id*="-"]').forEach((content) => {
-      content.classList.add('hidden');
+    matrixComponent.querySelectorAll('.build-content > *').forEach((content) => {
+      if (content.id) {
+        content.classList.add('hidden');
+      }
     });
 
     const selectedContent = matrixComponent.querySelector(`#${combinationId}`);
@@ -164,28 +221,47 @@ function getColorClasses(rowIndex: number): ColorConfig {
     }
   }
 
+  // Initialize content visibility
+  updateContent();
+
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const rowIndex = parseInt(button.getAttribute('data-row') || '0');
       const optionId = button.getAttribute('data-option-id');
 
-      selectedOptions[rowIndex] = optionId;
+      // Only update if a different option was selected
+      if (selectedOptions[rowIndex] !== optionId) {
+        selectedOptions[rowIndex] = optionId;
 
-      // Get colors for this row
-      const colors = rowColors[rowIndex] || rowColors[0];
+        // Get colors for this row
+        const colors = rowColors[rowIndex] || rowColors[0];
 
-      // Update active states in this row - scoped to this component
-      matrixComponent.querySelectorAll(`button[data-row="${rowIndex}"]`).forEach((btn) => {
-        if (btn === button) {
-          btn.classList.add(...colors.active);
-          btn.querySelector('.bg-gradient-to-br')?.classList.add(colors.gradient);
-        } else {
-          btn.classList.remove(...colors.active);
+        // Reset all buttons in this row first
+        matrixComponent.querySelectorAll(`button[data-row="${rowIndex}"]`).forEach((btn) => {
+          colors.active.forEach(cls => btn.classList.remove(cls));
           btn.querySelector('.bg-gradient-to-br')?.classList.remove(colors.gradient);
-        }
-      });
+          
+          // Force hide the underline by setting opacity-0
+          const underline = btn.querySelector('div:last-child');
+          if (underline) {
+            underline.classList.remove('opacity-100');
+            underline.classList.add('opacity-0');
+          }
+        });
 
-      updateContent();
+        // Then set the active state only for the clicked button
+        colors.active.forEach(cls => button.classList.add(cls));
+        button.querySelector('.bg-gradient-to-br')?.classList.add(colors.gradient);
+        
+        // Force show the underline
+        const activeUnderline = button.querySelector('div:last-child');
+        if (activeUnderline) {
+          activeUnderline.classList.remove('opacity-0');
+          activeUnderline.classList.add('opacity-100');
+        }
+
+        updateContent();
+      }
     });
   });
 </script>
