@@ -12,24 +12,29 @@ export const games: GameNavigation[] = [
           title: 'Low Rank',
           emoji: '🌋',
           navDescription: 'Low rank progression builds',
+          pageDescription: 'Start your lance journey with these efficient early builds! ',
         },
         {
           id: 'high-rank',
           title: 'High Rank',
           emoji: '💠',
           navDescription: 'High rank progression builds',
+          pageDescription: 'Optimized lance builds for High Rank progression! ',
         },
         {
           id: 'master-rank',
           title: 'Master Rank',
           emoji: '❄️',
           navDescription: 'Master rank progression builds',
+          pageDescription:
+            "Tackle Iceborne's challenges with powerful Master Rank progression builds.",
         },
         {
           id: 'post-story',
           title: 'Post-Story',
           emoji: '🐲',
           navDescription: 'Post story & guiding lands builds',
+          pageDescription: 'Optimized builds for the post story and guiding lands!',
         },
         {
           id: 'endgame',
@@ -37,6 +42,7 @@ export const games: GameNavigation[] = [
           emoji: '👑',
           showInQuickLinks: true,
           navDescription: 'Fatalis endgame builds',
+          pageDescription: 'Harness the true power of Fatalis with these ultimate lance builds.',
         },
       ],
       guides: [
@@ -46,6 +52,8 @@ export const games: GameNavigation[] = [
           emoji: '🥊',
           showInQuickLinks: true,
           navDescription: 'Optimal combos for all situations',
+          pageDescription:
+            "Master lance's key combos and attack patterns for maximum damage in every situation!",
         },
         {
           id: 'guarding',
@@ -53,6 +61,7 @@ export const games: GameNavigation[] = [
           emoji: '🛡️',
           showInQuickLinks: true,
           navDescription: 'Detailed explanation of guard mechanics',
+          pageDescription: 'Everything you need to know about guard levels.',
         },
         {
           id: 'clutch-claw',
@@ -60,24 +69,29 @@ export const games: GameNavigation[] = [
           emoji: '⚓',
           showInQuickLinks: true,
           navDescription: 'Detailed explanation of clutch claw',
+          pageDescription: 'Learn to integrate clutch claw attacks into your lance gameplay!',
         },
         {
           id: 'mantles',
           title: 'Mantles',
           emoji: '🧥',
           navDescription: 'Detailed explanation of mantles',
+          pageDescription:
+            'Discover the best mantles for lance and how to utilize them effectively! ',
         },
         {
           id: 'palico',
           title: 'Palico',
           emoji: '🐈',
           navDescription: 'Best palico equipment and skills',
+          pageDescription: 'Optimize your hunting companion with the best gadgets and equipment! ',
         },
         {
           id: 'food-skills',
           title: 'Food Skills',
           emoji: '🥩',
           navDescription: 'Best food skills for all situations',
+          pageDescription: 'Fuel your hunts with the most beneficial food skills.',
         },
       ],
       tools: [],
@@ -88,6 +102,8 @@ export const games: GameNavigation[] = [
           emoji: '🛡️',
           showInQuickLinks: true,
           navDescription: 'Guard up values for all situations',
+          pageDescription:
+            'Complete reference of all attacks requiring Guard Up and truly unblockables.',
         },
         /*
         {
@@ -129,12 +145,16 @@ export const games: GameNavigation[] = [
           emoji: '🏰',
           showInQuickLinks: true,
           navDescription: 'Master rank progression builds',
+          pageDescription:
+            "Conquer Sunbreak's toughest monsters with these powerful progression builds! ",
         },
         {
           id: 'post-story',
           title: 'Post-Story',
           emoji: '🩸',
           navDescription: 'Post story & anomaly progression builds',
+          pageDescription:
+            'Dominate Anomaly Investigations with specialized builds for efficient farming!',
         },
         {
           id: 'endgame',
@@ -142,6 +162,7 @@ export const games: GameNavigation[] = [
           emoji: '👑',
           showInQuickLinks: true,
           navDescription: 'Endgame meta builds',
+          pageDescription: 'Best lance builds for every playstyle! ',
         },
       ],
       guides: [
@@ -159,6 +180,7 @@ export const games: GameNavigation[] = [
           title: 'Switch Skills',
           emoji: '🔄',
           navDescription: 'Detailed explanation of switch skills',
+          pageDescription: 'Master the new Switch Skills system!',
           showInQuickLinks: true,
         },
         {
@@ -167,18 +189,22 @@ export const games: GameNavigation[] = [
           emoji: '🐕‍',
           showInQuickLinks: true,
           navDescription: 'Best palamute equipment and skills',
+          pageDescription: 'Turn your dogs into dps machines!',
         },
         {
           id: 'dango',
           title: 'Dango',
           emoji: '🍡',
           navDescription: 'Best dango combos for all situations',
+          pageDescription: 'Power up with the perfect meal!',
         },
+
         {
           id: 'followers',
           title: 'Followers',
           emoji: '📯‍',
           navDescription: 'Best followers combos for solo hunting',
+          pageDescription: 'Hunt faster with NPC followers!',
         },
       ],
       tools: [],
@@ -205,12 +231,14 @@ export const games: GameNavigation[] = [
           title: 'Anomaly Materials',
           emoji: '🦴',
           navDescription: 'Anomaly material drop tables',
+          pageDescription: 'Quick reference guide for all anomaly materials!',
         },
         {
           id: 'anti-species',
           title: 'Anti-Species',
           emoji: '🧬',
           navDescription: 'Anti species decoration match ups',
+          pageDescription: 'Maximize your damage with the right anti-species decoration.',
         },
         {
           id: 'monster-data',
