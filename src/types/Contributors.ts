@@ -10,5 +10,6 @@ export interface Contributor {
     youtube?: string;
     twitch?: string;
     twitter?: string;
+    discord?: string;
   };
 }

@@ -1,10 +1,359 @@
 ---
+import BuildCard from '../../../components/builds/BuildCard.astro';
 import Section from '../../../components/core/layout/Section.astro';
+import StyledList from '../../../components/core/lists/StyledList.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+// image imports
+import mr24 from '../../../assets/world/builds/post-story/mr24.png';
+import mr70 from '../../../assets/world/builds/post-story/mr70.png';
+import mr100 from '../../../assets/world/builds/post-story/mr100.png';
+import antiAlatreon from '../../../assets/world/builds/post-story/anti_alatreon.png';
+import antiFatalis from '../../../assets/world/builds/post-story/anti_fatalis.png';
+import SectionSubTitle from '../../../components/core/typography/SectionSubTitle.astro';
+import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
 ---
 
 <ContentLayout>
   <Section>
-    <p>a</p>
+    <p>
+      Yay, you've beaten the story! Now it's time to start with the Endgame Grind. Specifically
+      we're gonna be focusing on 3 things:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Leveling up the Guiding Lands to get special materials for Augmenting our weapons and upgrading our charms.',
+        },
+        {
+          text: 'Farming Decorations to get the skills we need for our builds.',
+        },
+        {
+          text: 'Clearing Special Assignments to unlock new monsters and level up our Master Rank.',
+        },
+      ]}
+    />
+  </Section>
+
+  <Section title="Welcome To The Grinding Lands - MR 24🎖️">
+    <p>
+      The first thing we're gonna do is put together a strong set that helps us farm the Guiding
+      Lands and clear the first few Special Assignments.
+    </p>
+
+    <p>
+      If you're able to clear the Frostfang Barioth event quest(available at MR24) you can craft
+      it's weapon since it's a straight upgrade to the Kulu Lance. It's the first Lance with purple
+      Sharpness and it comes with Ice element, which is great because the next few monsters are all
+      weak to Ice.
+    </p>
+
+    <p>
+      A lot of monsters from here on are also gonna be hitting a lot harder and it starts becoming
+      more important to have Guard 5 and Guard Up. Therefore we're gonna be including both in our
+      build. If you don't have a Guard Up Decoration you can get one from the Elder melder (only
+      after beating the story). Since we're most likely lacking Decorations at this point we're
+      gonna be using the Seething Bazelgeuse mail to get Guard 5.
+    </p>
+
+    <p>
+      From here on we're also gonna be including Fortify in our builds. It's a really good skill for
+      the Guiding Lands since there's no faint limit and the Damage is boost is pretty significant
+      and lasts for 50 minutes.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Guiding Lands Set',
+        description: [
+          "We're upgrading our weapon to the Frostfang Barioth Lance, which comes with purple Sharpness and very high Raw. To keep the purple Sharpness we're still using 3 piece Teostra. With the remaining 2 pieces and the charm we're gonna try to get Guard 5 and Offensive Guard 3. We're also gonna add a level of Fortify to our build, which will give us a nice Damage boost for the Guiding Lands.",
+        ],
+        image: mr24,
+        imageAlt: 'MR 24 Set',
+        stats: {
+          raw: 587,
+          sharpness: {
+            hits: 30,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 95,
+            peak: 95,
+          },
+          element: {
+            type: 'ice',
+            value: 68,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Climbing The Ranks - MR 50-70🎖️">
+    <p>Until MR 100 there's a lot of different things we wanna complete. Focus on the following:</p>
+
+    <SectionSubTitle title="MR 50 Goals" />
+
+    <p>There's a few things you ideally want to have done before reaching MR50:</p>
+
+    <StyledList
+      items={[
+        {
+          text: "Go to the Guiding Lands where you can find new materials from Outcrops and Bonepiles. It's also a good place to farm fuel for the Steamworks. When using the Steamworks during an event you'll get a lot of melding tickets, which you can use to get missing HR Decorations.",
+        },
+        {
+          text: 'Fight a Radobaan in the Guiding Lands to craft the Ironside Charm IV.',
+        },
+        {
+          text: " Get the forest region to Level 3 and unlock Yian Garuga. We're gonna be crafting it's greaves for our next build.",
+        },
+        {
+          text: "Complete the Special Assignments 'Sterling Pride' (Kirin) and 'Reveal Thyself, Destroyer' (rajang).",
+        },
+      ]}
+    />
+
+    <SectionSubTitle title="MR 70 Goals" />
+    <p>At MR 70 you want to do the following:</p>
+
+    <StyledList
+      items={[
+        {
+          text: "Get the forest region to level 6 and unlock Scarred Yian Garuga. With it's materials we can get the Health Augment for our weapon.",
+        },
+        {
+          text: "Complete the Special Assignments 'Across the Lost Path' (stygian zinogre). This will unlock the final region of the Guiding Lands: the tundra.",
+        },
+        {
+          text: "Farm Decorations and augment materials.The best way to Farm Decorations is by doing the Event Quest 'the wrath of Thunder descends' (tempered zinogre). We're looking for to stock up on High Rank decos like Crit Boost, Tenderizers and Ironwall jewels as well as Combo decos like guardian/expert or guardian/attack, challenger/vitality or flawless/vitality.",
+        },
+      ]}
+    />
+
+    <p>the following build is a reference build for what a good build at MR 70 could look like.</p>
+
+    <BuildCard
+      build={{
+        title: 'MR 70 Set',
+        description: [
+          "This is a straight upgrade from the previous starter set. Using the new armor pieces from Yian Garuga and Rajang we're able to fit Crit Boost 3. The old armor pieces came with a lot of Guard, so to make up for that we're using the Guard charm.",
+          'This set is also the first with Health Augment. This is a really powerful upgrade since it makes dealing with Chip Damage so much more comfortable.',
+        ],
+        image: mr70,
+        imageAlt: 'MR 70 Set',
+        stats: {
+          raw: 671,
+          sharpness: {
+            hits: 30,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 100,
+            peak: 100,
+          },
+          element: {
+            type: 'ice',
+            value: 68,
+          },
+        },
+        augments: ['health', 'health', 'health'],
+        additionalNotes: {
+          'Weapon Augments':
+            "We're getting our first health augment helping us dealing with chip damage.",
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="The Final MR Cap - MR 100🎖️">
+    <p>At around MR 100 you want to do the following:</p>
+
+    <StyledList
+      items={[
+        {
+          text: "Do the Special Assignment '...And My Rage for All' (raging brachydios). We're gonna be crafting it's weapon and a few armor pieces.",
+        },
+        {
+          text: 'Get the Coral Highlands region to level 7 and get tempered Namielle materials for Rarity 12 Health Augments.',
+        },
+        {
+          text: "Do the Special Assignment 'Point of No Return' (safi'jiiva recon).",
+        },
+        {
+          text: 'Get the rotten vale region to Level 4, get tempered oilshell+ and upgrade our charm to Ironside Charm V.',
+        },
+        {
+          text: ' Get the Wildspire Waste region to level 7 and craft the Challenger Charm V.',
+        },
+        {
+          text: "Farm more Decorations. The best way after MR 100 is by doing the Event Quest 'Day of Ruin' (Tempered Teostra).",
+        },
+      ]}
+    />
+
+    <p>
+      The following build is a reference for what you could work towards. After that we'll start
+      preparing for Alatreon and Fatalis.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Teo RBrachy Mixed Raw Set',
+        description: [
+          "We're using a mixed set of Teostra and Raging Brachydios to get Master's Touch and Agitator secret. Agitator is really strong in Iceborne because with the Clutch Claw Wallbangs it's very easy to keep it active. Now that we are MR100 we have access to the Challenger Charm V, which makes maxing out Agitator much easier. Then we're also using Master's Touch for easy Sharpness management. And yes, we have Weakness Exploit 4 but this is the best armor combination unless we get 2 super rare Ironwall+ decos.",
+        ],
+        image: mr100,
+        imageAlt: 'MR 100 Set',
+        stats: {
+          raw: 790,
+          sharpness: {
+            hits: 30,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 100,
+            peak: 100,
+          },
+          status: {
+            type: 'blast',
+            value: 31,
+          },
+        },
+        augments: ['health', 'health', 'health', 'affinity', 'affinity', 'defense'],
+        additionalNotes: {
+          'Weapon Augments':
+            "We're getting a health augment helping us dealing with chip damage and an affinity augment to get to 100%. With the last slot we're just getting a defense augment.",
+          Decorations:
+            'You can replace the fortitude/attack deco on the weapon with whatever you still need.',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="The Master Of All Elements - MR 100🎖️">
+    <p>
+      After doing the Safi'jiiva recon we unlock the Alatreon Special Assignment. Alatreon can be a
+      real challenge to tackle if you aren't prepared well enough. He has 3 different forms: Fire,
+      Ice and Dragon. In the assignment he'l always start in Fire where he's weakest to Ice. After a
+      while he's transforming into Dragon where he eventually does his nova the escaton judgement.
+      If you didn't deal enough Elemental Damage to him you'll die to this attack. After the Escaton
+      Judgment he'll then switch to Ice mode unless you break his Horns. If you manage to break his
+      Horns he'll go back to Fire mode again.
+    </p>
+
+    <p>
+      Therefore our game plan is to use an Ice weapon and deal enough Elemental Damage to weaken his
+      escation judgement. We also need to break his Horns so he won't switch to Ice mode where we
+      won't be dealing any Damage.
+    </p>
+
+    <p>
+      For the weapon we choose the Frostfang Barioth Lance. It has enough Ice to get the Elemental
+      Topple and has high Raw. Funnily enough alatreon's hitzones are actually better for Raw Damage
+      than for Elemental Damage. So we don't want sacrifice too much Raw for element, just the right
+      amount to get the topple. Now if you are having troubles getting the Elemental Topple you can
+      farm the Safi or Kjarr Ice Lance. They are random drops though so it might take a while to get
+      them.
+    </p>
+
+    <p>
+      If you feel comfortable with his moveset and know the Tenderize openings you can just go with
+      the MR100 Raw build and slap on the Frostfang Lance. Otherwise I put together a more comfy
+      build that doesn't sacrifice too much Damage but adds a lot of survivability. The biggest
+      advantage of this build is that you hit 100% Affinity without tenderizing parts which is
+      really nice in this fight since keeping Alatreon Tenderized can be a bit tricky.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Anti Alatreon Set',
+        description: [
+          "We're bringing back the Frostfang Barioth Lance. As we already know, it's a pretty good weapon and it comes with enough Ice to get the Elemental Topple. For the set we use 3 piece Teostra for Master's Touch paired with the Rbrachy greaves and the Frostfang Barioth helm.We use this piece combination to fit the skills to make it wexless.",
+          "The four empty 1 slots can be used for whatever you need. You can get blight resistance 3 to negate all blights. Dragon blight is especially annoying because it makes you deal 0 Elemental Damage and you need Elemental Damage to survive escaton judgement. Ice and Water blight are also annoying because they make you consume Stamina faster and we need Stamina to block. Then you could also get Divine Blessing 3 to reduce Damage taken. And if you're not struggling with any of these you can just add Attack Boost 4.",
+        ],
+        image: antiAlatreon,
+        imageAlt: 'Anti Alatreon Set',
+        stats: {
+          raw: 671,
+          sharpness: {
+            hits: 30,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 100,
+            peak: 100,
+          },
+          element: {
+            type: 'ice',
+            value: 71,
+          },
+        },
+        augments: ['health', 'health', 'health', 'affinity', 'affinity', 'element'],
+        additionalNotes: {
+          'Weapon Augments':
+            "We're getting a health augment helping us dealing with chip damage and an affinity augment to get to 100%. With the last slot we're just getting a element augment.",
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="The Legendary Black Dragon - MR 100🎖️">
+    <p>
+      Fatalis is considered the Hardest Monster in the game. He has a lot of really powerful Attacks
+      that can straight up Oneshot you if you're not careful. Breaking his head will weaken his Fire
+      Attacks in the last phase. It can be broken twice and if you manage to do so the fight becomes
+      a lot easier.
+    </p>
+
+    <p>
+      If you feel comfortable with his moveset you can just go with the MR100 Raw build we've seen
+      earlier. Otherwise I put together a super defensive build without sacrificing too much Damage.
+      For the build we're gonna use alatreon's Lance. It has less Raw than the Lightbreak Lance but
+      comes with Dragon element (which is Fatalis weakness) and an insane Sharpness bar. It's
+      Sharpness allows us to drop Master's Touch and add Divine Blessing secret for some extra
+      survivability. This works really well in this fight because he's gonna give us a lot of
+      opportunities to sharpen our weapon (2x phase transition, 3x mini nova, flying ...).
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Anti Fatalis Set',
+        description: [
+          "We're using 3 piece Raging Brachydios for Agitator secret and 2 piece Gold Rathian for Divine Blessing secret. Coalescence is a really strong skill in this fight because you're gonna be on Fire a lot. We're also using the Sharp Jewel to make sure we keep our Sharpness until we get the next opportunity to sharpen.",
+          'Use Heavy Artillery in one of your Mantles to get the roaming ballista knockdown.',
+        ],
+        image: antiFatalis,
+        imageAlt: 'Anti Fatalis Set',
+        stats: {
+          raw: 773,
+          sharpness: {
+            hits: 90,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 100,
+            peak: 100,
+          },
+          element: {
+            type: 'dragon',
+            value: 90,
+          },
+        },
+        augments: ['health', 'health', 'health', 'affinity', 'affinity', 'element'],
+        additionalNotes: {
+          'Weapon Augments':
+            "We're getting a health augment helping us dealing with chip damage and an affinity augment to get to 100%. With the last slot we're just getting an element augment.",
+        },
+      }}
+    />
+
+    <p>
+      After beating Fatalis you are ready to start making End Game Builds and take on the final
+      challenge of the game: Arch Tempered Velkhana. You can find the End Game Builds section by
+      clicking the link below.
+    </p>
+
+    <NavigationButton href="world/builds/endgame" text="End Game Builds" emoji="👑" />
   </Section>
 </ContentLayout>

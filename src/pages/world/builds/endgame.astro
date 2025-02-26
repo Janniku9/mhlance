@@ -1,10 +1,171 @@
 ---
 import Section from '../../../components/core/layout/Section.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+// image imports
+import fatalis from '../../../assets/world/builds/endgame/fatalis.png';
+import alatreonFire from '../../../assets/world/builds/endgame/alatreon_fire.png';
+import alatreonIce from '../../../assets/world/builds/endgame/alatreon_ice.png';
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import Tabs from '../../../components/core/tabs/Tabs.astro';
 ---
 
 <ContentLayout>
   <Section>
-    <p>a</p>
+    <p>
+      You finally beat the last monster of the game, Fatalis. Congratulations! Now you just need to
+      farm him for his armor and weapons. But what should you build? Here are some suggestions.
+    </p>
+  </Section>
+
+  <Section title="The Fatalis Empire" emoji="🐉">
+    <p>
+      The Fatalis Lance is by far the best Lance in the game. It has the highest Raw and although it
+      has a lot of negative Affinity, the Fatalis armor makes it possible to reach 100% Affinity
+      anyways. These Fatalis Raw builds are the best option for pretty much every monster in the
+      game. Except for maybe Alatreon.
+    </p>
+
+    <p>
+      The armor has so many slots that you can fit in pretty much every skill you want. I wanna
+      share a template that has high damage but also some comfort and defensive skills.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Fatalis Raw Damage',
+        description: [
+          "The Fatalis Lance Raw has insane Raw at the cost of having negative Affinity. Therefore we're gonna need to use a lot of Affinity skills to reach 100% Affinity.",
+          "We're using 4 pieces of Fatalis to get inheritance and Transcendence. Transcendence is a new set bonus that gives us Max Hp and Stamina as well as True Razor Sharp for Sharpness management. Inheritance on the other hand unlocks all skill secrets. This allows us to fit Agitator 7 without needing to wear 2 pieces of Raging Brachydios. The set has so many slots we can fit pretty much any skill we want.",
+          'For the legs we use the Arch Tempered Velkhana legs to get Peak Performance 3.',
+        ],
+        image: fatalis,
+        imageAlt: 'Fatalis Armor and Lance',
+        stats: {
+          raw: 1027,
+          sharpness: {
+            hits: 60,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 100,
+            peak: 100,
+          },
+          element: {
+            type: 'dragon',
+            value: 19,
+          },
+        },
+        augments: ['health', 'health', 'health', 'affinity', 'affinity', 'defense'],
+        additionalNotes: {
+          'Weapon Augments':
+            'We get a health augment to help with chip damage and peak performance uptime. Then we also get an affinity augment so we can reach 100% affinity. And with the last augment slot we get the defense augment because the damage increase from the element augment is not noticeable.',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Anti Alatreon Sets" emoji="🐲">
+    <p>
+      Alatreon is a very weird monster when it comes to his hitzones. He actually has really good
+      Raw Hitzones while his Elemental Hitzones aren't that great, especially if he's in his Dragon
+      form.
+    </p>
+
+    <p>
+      This means that the fastest way to kill him is actually by using a Raw weapon. The problem
+      with that is that you need to deal enough Elemental Damage to weaken his escaton judgement if
+      you want to survive it. Now what you can do is just slot in Fortify and cart to escaton
+      judgement or use one of the following elemental sets.
+    </p>
+
+    <p>
+      We are using the Safi Awakenings to control the amount of element we get. It is possible to
+      get the Elemental Topple with no element awakening, although it's really really difficult. I
+      recommend using 2-4 element awakenings, but it really depends on your aggression and
+      proficiency in the fight. Generally anything with 400+ display element should be good enough.
+    </p>
+
+    <Tabs
+      labels={[
+        { id: 'fire', display: 'fire' },
+        { id: 'ice', display: 'ice' },
+      ]}
+    >
+      <div id="fire">
+        <BuildCard
+          build={{
+            title: 'Anti Alatreon Fire Set 🔥',
+            description: [
+              "The Safi Fire Lance is the best Fire Lance with it's high Raw and good Sharpness.",
+              "Notice that we are overcapping on Affinity. This is because now we're still gonna reach 100% Affinity on non Tenderized Parts. Keeping Alatreon Tenderized can turn out to be quite difficult if you don't know the openings well enough. Which is why making a non Tenderized build is a good idea.",
+              "We're using 4 pieces of Fatalis to get inheritance and Transcendence. Transcendence is a new set bonus that gives us Max Hp and Stamina as well as True Razor Sharp for Sharpness management. Inheritance on the other hand unlocks all skill secrets. This allows us to fit Agitator 7 without needing to wear 2 pieces of Raging Brachydios. The set has so many slots we can fit pretty much any skill we want.",
+              'For the legs we use the Arch Tempered Velkhana legs to get Peak Performance 3.',
+            ],
+            image: alatreonFire,
+            imageAlt: 'Alatreon Fire Lance',
+            stats: {
+              raw: 804,
+              sharpness: {
+                hits: 60,
+                type: 'purple',
+              },
+              affinity: {
+                avg: 100,
+                peak: 100,
+              },
+              element: {
+                type: 'fire',
+                value: 64,
+              },
+            },
+            augments: ['health', 'health', 'health', 'affinity', 'affinity', 'element'],
+            additionalNotes: {
+              'Weapon Augments':
+                'We get a health augment to help with chip damage and peak performance uptime. Then we also get an affinity augment so we can reach 100% affinity. And with the last augment slot we get the element augment to get the most out of our Safi Awakenings.',
+              'Safi Awakenings':
+                "For the safi awakenings we're gonna be using 3 element 5 awakenings, an attack 5 and an attack 6 augment.",
+            },
+          }}
+        />
+      </div>
+      <div id="ice">
+        <BuildCard
+          build={{
+            title: 'Anti Alatreon Ice Set 🧊',
+            description: [
+              'The Safi Ice Lance is slightly stronger than the Frostfang Barioth Lance because it has more customizable and we therefore can get more Raw.',
+              "Notice that we are overcapping on Affinity. This is because now we're still gonna reach 100% Affinity on non Tenderized Parts. Keeping Alatreon Tenderized can turn out to be quite difficult if you don't know the openings well enough. Which is why making a non Tenderized build is a good idea.",
+              "We're using 4 pieces of Fatalis to get inheritance and Transcendence. Transcendence is a new set bonus that gives us Max Hp and Stamina as well as True Razor Sharp for Sharpness management. Inheritance on the other hand unlocks all skill secrets. This allows us to fit Agitator 7 without needing to wear 2 pieces of Raging Brachydios. The set has so many slots we can fit pretty much any skill we want.",
+              'For the legs we use the Arch Tempered Velkhana legs to get Peak Performance 3.',
+            ],
+            image: alatreonIce,
+            imageAlt: 'Alatreon Ice Lance',
+            stats: {
+              raw: 804,
+              sharpness: {
+                hits: 60,
+                type: 'purple',
+              },
+              affinity: {
+                avg: 100,
+                peak: 100,
+              },
+              element: {
+                type: 'ice',
+                value: 64,
+              },
+            },
+            augments: ['health', 'health', 'health', 'affinity', 'affinity', 'element'],
+            additionalNotes: {
+              'Weapon Augments':
+                'We get a health augment to help with chip damage and peak performance uptime. Then we also get an affinity augment so we can reach 100% affinity. And with the last augment slot we get the element augment to get the most out of our Safi Awakenings.',
+              'Safi Awakenings':
+                "For the safi awakenings we're gonna be using 3 element 5 awakenings, an attack 5 and an attack 6 augment.",
+            },
+          }}
+        />
+      </div>
+    </Tabs>
   </Section>
 </ContentLayout>

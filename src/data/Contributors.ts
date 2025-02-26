@@ -13,6 +13,7 @@ export const contributors: Contributor[] = [
     },
     socials: {
       youtube: 'https://www.youtube.com/@J9_MH',
+      discord: 'https://discordapp.com/users/180715438634827777',
     },
   },
   {

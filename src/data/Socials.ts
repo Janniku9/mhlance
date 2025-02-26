@@ -9,7 +9,7 @@ export const socials: Social[] = [
   },
   {
     name: 'Discord',
-    description: 'Come chat with us in the #lance channel!',
+    description: 'Chat with us in #lance!',
     url: 'https://discord.gg/monsterhunter',
     icon: 'mingcute:discord-fill',
   },
