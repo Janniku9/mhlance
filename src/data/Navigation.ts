@@ -89,12 +89,14 @@ export const games: GameNavigation[] = [
           showInQuickLinks: true,
           navDescription: 'Guard up values for all situations',
         },
+        /*
         {
           id: 'guiding-lands',
           title: 'Guiding Lands',
           emoji: '🏞️',
           navDescription: 'Detailed explanation of guiding lands',
         },
+        */
       ],
     },
   },

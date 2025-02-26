@@ -13,31 +13,34 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
 <ContentLayout>
   <Section>
     <p>
-      You finally beat the last monster of the game, Fatalis. Congratulations! Now you just need to
-      farm him for his armor and weapons. But what should you build? Here are some suggestions.
+      Congratulations on conquering Fatalis, the ultimate challenge of Monster Hunter World! Now
+      that you've defeated the legendary Black Dragon, it's time to harness its power by crafting
+      the game's strongest equipment. This section showcases the definitive endgame builds for
+      lance.
     </p>
   </Section>
 
   <Section title="The Fatalis Empire" emoji="🐉">
     <p>
-      The Fatalis Lance is by far the best Lance in the game. It has the highest Raw and although it
-      has a lot of negative Affinity, the Fatalis armor makes it possible to reach 100% Affinity
-      anyways. These Fatalis Raw builds are the best option for pretty much every monster in the
-      game. Except for maybe Alatreon.
+      The Fatalis Lance stands uncontested as the premier weapon for lance users. Its exceptional
+      raw damage overcomes the negative affinity penalty through the equally powerful Fatalis armor
+      set. This combination represents the pinnacle of lance builds, optimal for virtually every
+      monster in the game with the possible exception of Alatreon.
     </p>
 
     <p>
-      The armor has so many slots that you can fit in pretty much every skill you want. I wanna
-      share a template that has high damage but also some comfort and defensive skills.
+      Fatalis armor's abundance of decoration slots allows for unprecedented build flexibility. The
+      template below balances peak damage output with practical defensive skills, creating a
+      comfortable yet powerful endgame experience.
     </p>
 
     <BuildCard
       build={{
-        title: 'Fatalis Raw Damage',
+        title: 'Black Dragon Sovereign',
         description: [
-          "The Fatalis Lance Raw has insane Raw at the cost of having negative Affinity. Therefore we're gonna need to use a lot of Affinity skills to reach 100% Affinity.",
-          "We're using 4 pieces of Fatalis to get inheritance and Transcendence. Transcendence is a new set bonus that gives us Max Hp and Stamina as well as True Razor Sharp for Sharpness management. Inheritance on the other hand unlocks all skill secrets. This allows us to fit Agitator 7 without needing to wear 2 pieces of Raging Brachydios. The set has so many slots we can fit pretty much any skill we want.",
-          'For the legs we use the Arch Tempered Velkhana legs to get Peak Performance 3.',
+          'The Fatalis Lance boasts unmatched raw damage at the cost of negative affinity. We mitigate this through multiple affinity-boosting skills to reach the 100% critical hit cap for consistent damage.',
+          'Four pieces of Fatalis armor provide two game-changing set bonuses: Transcendence grants maximum health and stamina caps plus True Razor Sharp for effortless sharpness management, while Inheritance unlocks all skill secrets without requiring specific armor combinations.',
+          "We complement the Fatalis pieces with Arch-Tempered Velkhana legs for Peak Performance 3, adding substantial attack power that's easily maintained through our health augment. This combination delivers the perfect balance of offensive potential and practical comfort for all endgame content.",
         ],
         image: fatalis,
         imageAlt: 'Fatalis Armor and Lance',
@@ -67,23 +70,23 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
 
   <Section title="Anti Alatreon Sets" emoji="🐲">
     <p>
-      Alatreon is a very weird monster when it comes to his hitzones. He actually has really good
-      Raw Hitzones while his Elemental Hitzones aren't that great, especially if he's in his Dragon
-      form.
+      Alatreon presents a unique endgame challenge with its unusual hitzone values. Despite common
+      assumptions, Alatreon actually features excellent raw hitzones while its elemental hitzones
+      are less impressive, especially during Dragon active state.
     </p>
 
     <p>
-      This means that the fastest way to kill him is actually by using a Raw weapon. The problem
-      with that is that you need to deal enough Elemental Damage to weaken his escaton judgement if
-      you want to survive it. Now what you can do is just slot in Fortify and cart to escaton
-      judgement or use one of the following elemental sets.
+      This creates an interesting optimization puzzle: the fastest kill times come from raw-focused
+      weapons, but you must deal sufficient elemental damage to survive the Escaton Judgment. While
+      experienced hunters might choose to run Fortify and simply accept the cart from Escaton, these
+      specialized elemental builds offer a more consistent approach.
     </p>
 
     <p>
-      We are using the Safi Awakenings to control the amount of element we get. It is possible to
-      get the Elemental Topple with no element awakening, although it's really really difficult. I
-      recommend using 2-4 element awakenings, but it really depends on your aggression and
-      proficiency in the fight. Generally anything with 400+ display element should be good enough.
+      The Safi'jiiva weapons provide ideal customization through their awakening system. By
+      carefully balancing elemental and raw awakenings, we can meet the elemental threshold while
+      maintaining strong raw damage. Any lance with 400+ displayed element should comfortably reach
+      the topple threshold with aggressive play.
     </p>
 
     <Tabs
@@ -95,12 +98,12 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
       <div id="fire">
         <BuildCard
           build={{
-            title: 'Anti Alatreon Fire Set 🔥',
+            title: 'Dawn Harbinger 🔥',
             description: [
-              "The Safi Fire Lance is the best Fire Lance with it's high Raw and good Sharpness.",
-              "Notice that we are overcapping on Affinity. This is because now we're still gonna reach 100% Affinity on non Tenderized Parts. Keeping Alatreon Tenderized can turn out to be quite difficult if you don't know the openings well enough. Which is why making a non Tenderized build is a good idea.",
-              "We're using 4 pieces of Fatalis to get inheritance and Transcendence. Transcendence is a new set bonus that gives us Max Hp and Stamina as well as True Razor Sharp for Sharpness management. Inheritance on the other hand unlocks all skill secrets. This allows us to fit Agitator 7 without needing to wear 2 pieces of Raging Brachydios. The set has so many slots we can fit pretty much any skill we want.",
-              'For the legs we use the Arch Tempered Velkhana legs to get Peak Performance 3.',
+              "The Safi'jiiva Fire Lance provides the perfect balance of raw damage and fire element when customized with appropriate awakenings. This makes it ideal for Alatreon's Ice active state.",
+              'We intentionally overcap on affinity to maintain 100% critical hit rate without tenderizing - a significant quality-of-life improvement against Alatreon, where maintaining tenderized parts can be challenging due to his mobility and attack patterns.',
+              "Fatalis armor's Transcendence bonus ensures our sharpness remains manageable throughout the fight, while Inheritance allows access to Agitator 7 without restrictive armor combinations. The set's abundant decoration slots accommodate all our core damage skills plus elemental attack and comfort options.",
+              'The AT Velkhana greaves complete the build with Peak Performance 3, providing additional raw damage that synergizes perfectly with our health augment.',
             ],
             image: alatreonFire,
             imageAlt: 'Alatreon Fire Lance',
@@ -132,12 +135,12 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
       <div id="ice">
         <BuildCard
           build={{
-            title: 'Anti Alatreon Ice Set 🧊',
+            title: 'Frost Sovereign 🧊',
             description: [
-              'The Safi Ice Lance is slightly stronger than the Frostfang Barioth Lance because it has more customizable and we therefore can get more Raw.',
-              "Notice that we are overcapping on Affinity. This is because now we're still gonna reach 100% Affinity on non Tenderized Parts. Keeping Alatreon Tenderized can turn out to be quite difficult if you don't know the openings well enough. Which is why making a non Tenderized build is a good idea.",
-              "We're using 4 pieces of Fatalis to get inheritance and Transcendence. Transcendence is a new set bonus that gives us Max Hp and Stamina as well as True Razor Sharp for Sharpness management. Inheritance on the other hand unlocks all skill secrets. This allows us to fit Agitator 7 without needing to wear 2 pieces of Raging Brachydios. The set has so many slots we can fit pretty much any skill we want.",
-              'For the legs we use the Arch Tempered Velkhana legs to get Peak Performance 3.',
+              "The Safi'jiiva Ice Lance edges out Frostfang Barioth's weapon through customization flexibility, allowing for higher raw damage while maintaining sufficient ice element. This makes it the premier choice for Alatreon's Fire active state.",
+              'Our affinity skills are calibrated to reach 100% critical hit rate without tenderizing - particularly valuable against Alatreon where maintaining tenderized parts requires precise timing and positioning knowledge.',
+              'The four-piece Fatalis armor grants both Transcendence for sharpness management and extended health/stamina caps, plus Inheritance to access skill secrets without restrictive armor combinations. This flexibility lets us incorporate both raw damage maximizers and comfort skills.',
+              "AT Velkhana greaves round out the build with Peak Performance 3, adding substantial raw damage that's easily maintained through our health augment.",
             ],
             image: alatreonIce,
             imageAlt: 'Alatreon Ice Lance',
