@@ -15,12 +15,12 @@ export const riseFaqs = [
       'These are endgame fights that require good gear and decorations typically obtained by MR 160.',
   },
   {
-    question: 'Why use Guard 3?',
+    question: 'Why only use Guard 3?',
     answer:
       'Guard Dash and Shield Tackle have built-in Guard 2, making Guard 3 effectively Guard 5 when using these moves.',
   },
   {
-    question: 'Why not use Embolden?',
+    question: 'Why do the builds not use Embolden?',
     answer:
       "Embolden only works when you're the target, making it unreliable in multiplayer hunts.",
   },
