@@ -21,7 +21,7 @@ import logo from '../assets/lance_logo_large3.png';
         decoding="async"
       />
       <p
-        class="text-xl text-text/80 mb-16 text-center max-w-2xl animate-title [animation-delay:200ms]"
+        class="text-xl text-text/80 mb-8 md:mb-16 text-center max-w-2xl animate-title [animation-delay:200ms]"
       >
         A collection of builds, guides, and data for Monster Hunter <span
           class="text-primary relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary after:origin-left hover:after:scale-x-100 after:scale-x-0 after:transition-transform"
@@ -29,12 +29,12 @@ import logo from '../assets/lance_logo_large3.png';
         > players.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-7xl w-full">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap:12 max-w-7xl w-full">
         {games.map((game) => <GameCard game={game} />)}
       </div>
 
       <!-- Footer -->
-      <LandingFooter class="mt-32" />
+      <LandingFooter class="mt-16 md:mt-32" />
     </div>
   </div>
 </LandingLayout>

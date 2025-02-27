@@ -5,9 +5,9 @@ import { socials } from '../../data/Socials';
 const classList = Astro.props.class;
 ---
 
-<footer class={`w-full ${classList}`}>
-  <div class="flex flex-col items-center justify-center gap-8">
-    <div class="flex items-center gap-6">
+<footer class={`w-full px-4 py-6 md:py-8 ${classList}`}>
+  <div class="flex flex-col items-center justify-center gap-6 md:gap-8">
+    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
       {
         socials.map((social) => {
           return (
@@ -15,20 +15,20 @@ const classList = Astro.props.class;
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col items-center gap-2 transition-colors hover:text-primary"
+              class="group flex flex-col items-center gap-1 md:gap-2 transition-colors hover:text-primary"
               aria-label={`Check out the ${social.name}`}
             >
-              <div class="relative bg-background-dark rounded-full p-3 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-primary/5">
+              <div class="relative bg-background-dark rounded-full p-2 md:p-3 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-primary/5">
                 <div
                   class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent 
                          rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
                 />
                 <Icon
                   name={social.icon}
-                  class="w-8 h-8 relative z-10 group-hover:text-primary transition-colors"
+                  class="w-6 h-6 md:w-8 md:h-8 relative z-10 group-hover:text-primary transition-colors"
                 />
               </div>
-              <span class="text-sm group-hover:text-primary transition-colors">
+              <span class="text-xs md:text-sm group-hover:text-primary transition-colors">
                 {social.description}
               </span>
             </a>
@@ -36,6 +36,8 @@ const classList = Astro.props.class;
         })
       }
     </div>
-    <p class="text-sm text-text/60">Made with ❤️ by the Monster Hunter Lance community</p>
+    <p class="text-xs md:text-sm text-text/60 text-center">
+      Made with ❤️ by the Monster Hunter Lance community
+    </p>
   </div>
 </footer>

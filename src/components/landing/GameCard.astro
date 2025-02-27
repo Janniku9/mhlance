@@ -26,11 +26,12 @@ const keyMap = {
 <a
   href={hasContent(game) ? `/${game.game}` : '#'}
   class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-3xl p-12 transition-all duration-300',
+    'group relative bg-background-dark border border-text/10 rounded-3xl transition-all duration-300',
     'animate-fade-in hover:z-10',
     hasContent(game)
-      ? 'hover:bg-background-darker hover:scale-105  hover:shadow-2xl hover:shadow-primary/5'
+      ? 'hover:bg-background-darker hover:scale-105 hover:shadow-2xl hover:shadow-primary/5'
       : 'cursor-not-allowed opacity-80',
+    'p-12 md:p-12 p-6', // Less padding on mobile
   ]}
 >
   <div
@@ -39,26 +40,29 @@ const keyMap = {
   </div>
   <div
     class:list={[
-      'relative flex flex-col items-center gap-8',
+      'relative flex flex-row md:flex-col items-center gap-4 md:gap-8', // Row on mobile, column on desktop
       hasContent(game) ? 'hover:scale-105 transition-transform' : '',
     ]}
   >
-    <span class="text-7xl bg-text/5 rounded-2xl p-8 transition-transform group-hover:animate-float"
-      >{game.emoji}</span
+    <span
+      class="text-5xl md:text-7xl bg-text/5 rounded-2xl p-4 md:p-8 transition-transform group-hover:animate-float"
     >
-    <div class="text-center">
+      {game.emoji}
+    </span>
+    <div class="text-left md:text-center">
+      <!-- Left align on mobile, center on desktop -->
       <h2
-        class="text-3xl font-bold transition-all duration-300 group-hover:text-primary mb-4 uppercase"
+        class="text-xl md:text-3xl font-bold transition-all duration-300 group-hover:text-primary mb-2 md:mb-4 uppercase"
       >
         {game.title}
       </h2>
       {
         hasContent(game) ? (
-          <div class="flex flex-wrap gap-3 justify-center text-text/60">
+          <div class="flex flex-wrap gap-2 md:gap-3 md:justify-center text-text/60">
             {Object.entries(game.sections).map(
               ([key, items]) =>
                 items.length > 0 && (
-                  <span class="text-sm px-3 py-1 bg-text/5 rounded-full transition-all duration-300 hover:scale-110 hover:bg-text/10">
+                  <span class="text-xs md:text-sm px-2 md:px-3 py-1 bg-text/5 rounded-full transition-all duration-300 hover:scale-110 hover:bg-text/10">
                     {items.length} {keyMap[key as keyof typeof keyMap]}
                   </span>
                 )
