@@ -12,7 +12,7 @@ const scrollContributors = [...contributors, ...contributors, ...contributors, .
 ---
 
 <div class="w-full overflow-hidden py-4 bg-background-dark/50 relative">
-  <div class="contributor-scroll-container">
+  <a href="/contributors" class="contributor-scroll-container">
     <div class="contributor-scroll flex gap-8">
       {
         scrollContributors.map((contributor, index) => (
@@ -33,7 +33,7 @@ const scrollContributors = [...contributors, ...contributors, ...contributors, .
         ))
       }
     </div>
-  </div>
+  </a>
 </div>
 
 <style>

@@ -34,7 +34,7 @@ const getSocialIcon = (platform: string) => {
       {
         gameContributors.map((contributor) => (
           <div class="group bg-background-dark hover:bg-primary/10 rounded-lg p-4 transition-all duration-200 border border-text/10 hover:shadow-xl hover:shadow-primary/5">
-            <div class="flex items-center gap-4">
+            <a href="/contributors" class="flex items-center gap-4">
               {contributor.image ? (
                 <Image
                   src={contributor.image}
@@ -84,7 +84,7 @@ const getSocialIcon = (platform: string) => {
                   );
                 })}
               </div>
-            </div>
+            </a>
           </div>
         ))
       }
