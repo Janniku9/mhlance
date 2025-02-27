@@ -105,7 +105,7 @@ The site deploys automatically to [Vercel](https://vercel.com) from the main bra
 
 ## 📝 Licenses
 
-This project's code and original content are openly available under the [MIT License](LICENSE). Monster Hunter and related properties are trademarks of CAPCOM CO., LTD. This is a fan project and is not affiliated with or endorsed by CAPCOM.
+This project's code is openly available under the [MIT License](LICENSE). Monster Hunter and related properties are trademarks of CAPCOM CO., LTD. This is a fan project and is not affiliated with or endorsed by CAPCOM.
 
 Feel free to contribute guides and code improvements! By contributing, you agree to share your contributions under these same terms.
 

@@ -68,6 +68,10 @@ export default {
           //dark: '#191418',
           darker: '#141014',
         },
+        fontSize: {
+          sectionpc: '1.12rem',
+          sectionmobile: '1rem',
+        },
       },
       fontFamily: {
         mono: ['Geist Mono', 'monospace'],
