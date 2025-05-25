@@ -39,6 +39,11 @@ const sectionSlug = slug || (title ? generateSlug(title) : undefined);
 </section>
 
 <style>
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* Make content visible by default (no JS fallback) */
   section {
     opacity: 0;
@@ -59,6 +64,13 @@ const sectionSlug = slug || (title ? generateSlug(title) : undefined);
     transform: translateY(0);
   }
 
+  /* Skip animation for hash targets */
+  section.fade-in-no-animation {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
   /* Scroll margin for fixed headers */
   section {
     scroll-margin-top: 5rem; /* Adjust based on your header height */
@@ -74,8 +86,12 @@ const sectionSlug = slug || (title ? generateSlug(title) : undefined);
 </style>
 
 <script>
-  import fadeIn from '../../directives/fade-in.ts';
+  import fadeIn, { handleHashNavigation } from '../../directives/fade-in.ts';
 
+  // Initialize hash navigation handling
+  handleHashNavigation();
+
+  // Initialize fade-in for all elements
   const elements = document.querySelectorAll('[data-fade-in]');
   elements.forEach((element) => {
     if (element instanceof HTMLElement) fadeIn(element);

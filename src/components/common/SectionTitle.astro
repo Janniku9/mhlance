@@ -23,7 +23,7 @@ const { emoji, title, slug } = Astro.props;
   {
     slug && (
       <button
-        class="opacity-0 group-hover:opacity-100 ml-2 p-1 text-text/40 hover:text-text/80"
+        class="opacity-0 group-hover:opacity-100 p-1 text-text/40 hover:text-text/80 text-lg md:text-2xl"
         onclick={`navigator.clipboard.writeText(window.location.origin + window.location.pathname + '#${slug}'); this.textContent = '✓'; setTimeout(() => this.textContent = '🔗', 1000)`}
         title="Copy link"
       >
