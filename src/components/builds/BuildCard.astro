@@ -1,10 +1,12 @@
 ---
 import StatBlock from './StatBlock.astro';
 import SharpnessBar from './SharpnessBar.astro';
+import ImageModal from '../common/ImageModal.astro';
 import type { Game } from '../../types/Game';
 
 import type { Build, AugmentType } from '../../types/builds/Build';
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 import {
   getElementEmoji,
   getStatusEmoji,
@@ -28,6 +30,9 @@ const segments = Astro.url.pathname.split('/').filter(Boolean);
 const gameId = segments[0] as Game;
 
 const { build, class: className } = Astro.props;
+
+// Generate unique modal ID for this build
+const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCase()}`;
 ---
 
 <BaseCard
@@ -45,15 +50,27 @@ const { build, class: className } = Astro.props;
         <BaseCardTitle title={build.title} />
       </div>
 
-      <!-- Image -->
+      <!-- Image with Expand Button -->
       {
         build.image && (
-          <div class="max-w-2xl mx-auto relative rounded-lg overflow-hidden">
+          <div class="max-w-2xl mx-auto relative rounded-lg overflow-hidden group">
             <Image
               src={build.image}
               alt={build.imageAlt || build.title}
               class="object-contain w-full"
             />
+            <!-- Expand Button -->
+            <button
+              type="button"
+              class="absolute top-3 right-3 bg-background-dark/80 backdrop-blur-sm border border-text/10 rounded-xl p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-background-darker hover:scale-105"
+              aria-label="Expand image"
+              data-expand-image={modalId}
+            >
+              <Icon
+                name="mingcute:fullscreen-line"
+                class="w-4 h-4 text-text/70 hover:text-primary transition-colors duration-300"
+              />
+            </button>
           </div>
         )
       }
@@ -186,6 +203,19 @@ const { build, class: className } = Astro.props;
   </div>
 </BaseCard>
 
+<!-- Reusable Image Modal -->
+{
+  build.image && (
+    <ImageModal id={modalId}>
+      <Image
+        src={build.image}
+        alt={build.imageAlt || build.title}
+        class="object-contain max-w-full max-h-[90vh] w-auto h-auto"
+      />
+    </ImageModal> 
+  )
+}
+
 <style>
   .hexagon {
     position: relative;
@@ -200,6 +230,8 @@ const { build, class: className } = Astro.props;
 
 <script>
   import autoHoverDirective from '../../directives/auto-hover';
+  
+  // Auto hover functionality
   document.querySelectorAll('[data-build-card-auto-hover]').forEach((element) => {
     if (element instanceof HTMLElement) autoHoverDirective(element);
   });
