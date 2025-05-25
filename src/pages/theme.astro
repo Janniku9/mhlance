@@ -1,0 +1,68 @@
+---
+import SectionTitle from '../components/common/SectionTitle.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
+
+const BoxSize = 'w-24 h-24';
+const BoxStyle = 'text-background';
+---
+
+<LandingLayout title="MH Lance - Theme">
+  {/* Colors */}
+  <SectionTitle title="colors" emoji="🎨" />
+
+  <div class="flex justify-center gap-4">
+    <div>
+      <h3 class="mb-2">primary</h3>
+      <div class=`bg-primary-lighter ${BoxSize} ${BoxStyle}`>lighter</div>
+      <div class=`bg-primary-light ${BoxSize} ${BoxStyle}`>light</div>
+      <div class=`bg-primary ${BoxSize} ${BoxStyle}`>default</div>
+      <div class=`bg-primary-dark ${BoxSize} ${BoxStyle}`>dark</div>
+      <div class=`bg-primary-darker ${BoxSize} ${BoxStyle}`>darker</div>
+    </div>
+
+    <div>
+      <h3 class="mb-2">secondary</h3>
+      <div class=`bg-secondary-lighter ${BoxSize} ${BoxStyle}`>lighter</div>
+      <div class=`bg-secondary-light ${BoxSize} ${BoxStyle}`>light</div>
+      <div class=`bg-secondary ${BoxSize} ${BoxStyle}`>default</div>
+      <div class=`bg-secondary-dark ${BoxSize} ${BoxStyle}`>dark</div>
+      <div class=`bg-secondary-darker ${BoxSize} ${BoxStyle}`>darker</div>
+    </div>
+
+    <div>
+      <h3 class="mb-2">info</h3>
+      <div class=`bg-info-lighter ${BoxSize} ${BoxStyle}`>lighter</div>
+      <div class=`bg-info-light ${BoxSize} ${BoxStyle}`>light</div>
+      <div class=`bg-info ${BoxSize} ${BoxStyle}`>default</div>
+      <div class=`bg-info-dark ${BoxSize} ${BoxStyle}`>dark</div>
+      <div class=`bg-info-darker ${BoxSize} ${BoxStyle}`>darker</div>
+    </div>
+
+    <div>
+      <h3 class="mb-2">success</h3>
+      <div class=`bg-success-lighter ${BoxSize} ${BoxStyle}`>lighter</div>
+      <div class=`bg-success-light ${BoxSize} ${BoxStyle}`>light</div>
+      <div class=`bg-success ${BoxSize} ${BoxStyle}`>default</div>
+      <div class=`bg-success-dark ${BoxSize} ${BoxStyle}`>dark</div>
+      <div class=`bg-success-darker ${BoxSize} ${BoxStyle}`>darker</div>
+    </div>
+
+    <div>
+      <h3 class="mb-2">warning</h3>
+      <div class=`bg-warning-lighter ${BoxSize} ${BoxStyle}`>lighter</div>
+      <div class=`bg-warning-light ${BoxSize} ${BoxStyle}`>light</div>
+      <div class=`bg-warning ${BoxSize} ${BoxStyle}`>default</div>
+      <div class=`bg-warning-dark ${BoxSize} ${BoxStyle}`>dark</div>
+      <div class=`bg-warning-darker ${BoxSize} ${BoxStyle}`>darker</div>
+    </div>
+
+    <div>
+      <h3 class="mb-2">error</h3>
+      <div class=`bg-error-lighter ${BoxSize} ${BoxStyle}`>lighter</div>
+      <div class=`bg-error-light ${BoxSize} ${BoxStyle}`>light</div>
+      <div class=`bg-error ${BoxSize} ${BoxStyle}`>default</div>
+      <div class=`bg-error-dark ${BoxSize} ${BoxStyle}`>dark</div>
+      <div class=`bg-error-darker ${BoxSize} ${BoxStyle}`>darker</div>
+    </div>
+  </div>
+</LandingLayout>

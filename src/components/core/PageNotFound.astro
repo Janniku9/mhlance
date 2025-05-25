@@ -1,0 +1,93 @@
+---
+import NavigationButton from '../common/NavigationButton.astro';
+---
+
+<div class="container mx-auto px-4">
+  <div class="mt-8 md:mt-16 flex flex-col items-center justify-center py-20 relative">
+    <!-- Large Emoji -->
+    <div class="text-7xl sm:text-8xl animate-float mb-8">
+      {['😿', '🙀'].at(Math.floor(Math.random() * 2))}
+    </div>
+
+    <!-- Error Message -->
+    <h1
+      class="text-5xl sm:text-6xl font-bold mb-4 text-primary transition-all duration-300 hover:scale-110 hover:text-warning"
+    >
+      404
+    </h1>
+
+    <!-- Description with Lance emoji -->
+    <p class="text-xl sm:text-2xl text-text/80 mb-4 text-center">
+      <span>Meow! Your palico scratches its head in confusion...</span>
+    </p>
+
+    <p class="text-lg sm:text-xl text-text/60 mb-12">
+      Looks like this location doesn't exist in any field guide!
+    </p>
+
+    <!-- Navigation Button -->
+    <NavigationButton href="/" text="Return to Base Camp" icon="mingcute:campground-fill" />
+
+    <!-- Background Stars -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      {
+        Array.from({ length: 50 }).map((_, i) => (
+          <div
+            class="absolute rounded-full bg-white animate-twinkle"
+            style={`
+              left: ${Math.random() * 100}%;
+              top: ${Math.random() * 100}%;
+              width: ${Math.random() * 3 + 1}px;
+              height: ${Math.random() * 3 + 1}px;
+              opacity: ${Math.random() * 0.5 + 0.5};
+              animation-delay: ${Math.random() * 3}s;
+            `}
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 4s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

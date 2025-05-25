@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  href: string;
+  text: string;
+  icon?: string;
+  emoji?: string;
+  class?: string;
+}
+
+const { href, text, icon, emoji, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    'group relative bg-background-dark border border-text/10 rounded-full px-6 sm:px-8 py-3 sm:py-4',
+    'transition-all duration-300 hover:bg-background-darker hover:scale-105 hover:shadow-2xl',
+    'hover:shadow-primary/5 flex items-center justify-center gap-3',
+    className,
+  ]}
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
+  >
+  </div>
+  {
+    icon && (
+      <Icon name={icon} class="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-primary transition-colors" />
+    )
+  }
+  {emoji && <span class="text-2xl animate-subtle-float">{emoji}</span>}
+  <span class="group-hover:text-primary transition-colors">{text}</span>
+  <Icon
+    name="mingcute:arrow-right-line"
+    class="w-5 h-5 sm:w-6 sm:h-6 transform group-hover:translate-x-2 group-hover:text-primary transition-all duration-300"
+  />
+</a>
