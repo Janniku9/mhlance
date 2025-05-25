@@ -1,0 +1,412 @@
+---
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
+import Section from '../../../components/core/layout/Section.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+// import images
+import mr10 from '../../../assets/rise/builds/post-story/mr10.png';
+import ar70 from '../../../assets/rise/builds/post-story/ar70.png';
+import mr110 from '../../../assets/rise/builds/post-story/mr110.png';
+import mr140 from '../../../assets/rise/builds/post-story/mr140.png';
+import mr160 from '../../../assets/rise/builds/post-story/mr160.png';
+import StyledList from '../../../components/core/lists/StyledList.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      After completing the story, we want to reach Master Rank 10 as fast as possible. This is where
+      most of the endgame content unlocks, including Anomaly Research and new powerful monsters.
+    </p>
+  </Section>
+
+  <Section title="New & Old Monsters - MR10🎖️">
+    <p>
+      At MR10 we get our first taste of Anomaly Investigations. These are basically random quests
+      with Afflicted Monsters as targets. Afflicted Monsters hit harder and have way more health
+      than normal ones. They drop special materials used for crafting Decorations and augmenting
+      both weapons and armor. There's also an Anomaly Rank (AR) that you need to level up to unlock
+      better materials. Check out this page to see what materials you get from which monster and at
+      what level:
+    </p>
+
+    <NavigationButton href="/rise/anomaly-materials" text="Anomaly Materials" emoji="🔍" />
+
+    <p>
+      We also unlock a bunch of new monsters. Some like Amatsu or Primordial Malzeno were added in
+      later updates, I'd recommend avoiding these for now even if they're available.
+    </p>
+
+    <p>The monsters we want to focus on first are:</p>
+
+    <StyledList
+      items={[
+        {
+          text: "Violet Mizutsune: A new explosive subspecies of Mizutsune. His boots are amazing and we'll use them for a long time.",
+        },
+        {
+          text: "Chaotic Gore Magala: After beating it you unlock Aurora Melding which guarantees one skill on your charm. Use this to get a Critical Eye 3 charm with at least a level 2 slot. Its chest piece is also one of the best we'll get.",
+        },
+        {
+          text: 'Velkhana: The returning Iceborne flagship is a bit tougher but gives us a solid upgrade over our Lunagaron Lance.',
+        },
+      ]}
+    />
+
+    <p>
+      For this build we also need a Chain Jewel to add Burst. It's a great skill that boosts Raw and
+      Element damage when you hit the monster repeatedly. Craft it using Violet Mizutsune parts and
+      a Sovereign Jewel from 1★ Anomaly Investigations.
+    </p>
+
+    <BuildCard
+      build={{
+        title: "Velkhana's Might",
+        description: [
+          "Velkhana Lance brings purple sharpness, high raw, and good slots. It's a solid upgrade across the board.",
+          "Finally switching to Master's Touch since we can hit 90% affinity. With Handicraft 1 we get 30 hits of purple, which is plenty for most hunts.",
+          'Violet Mizutsune boots are a huge upgrade with double Offensive Guard and Weakness Exploit. This setup is gonna carry us for quite a while.',
+        ],
+        image: mr10,
+        imageAlt: "Velkhana's Might",
+        stats: {
+          raw: 963,
+          element: {
+            value: 53,
+            type: 'ice',
+          },
+          sharpness: {
+            hits: 30,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 90,
+            peak: 90,
+          },
+        },
+        rampageDecos: ['anti-species'],
+      }}
+    />
+  </Section>
+
+  <Section title="The Anomaly Research Begins - AR71+🎖️">
+    <p>
+      After getting our first post-story set built, we want to focus on Anomaly Investigations. The
+      goal is to hit AR70 as fast as possible since that unlocks materials for Handicraft+4 and
+      Mastery+4 jewels. These decorations help free up space in our builds.
+    </p>
+
+    <p>We'll also start augmenting our weapons. For now we just want the first attack augment.</p>
+
+    <p>
+      Armor Augments become available with Anomaly Materials and they're super powerful - you can
+      get almost any skill on any armor piece. The downside? It's completely random what you get,
+      which can be pretty frustrating. For now we'll avoid relying on them for Core Skills. One
+      easy-to-get augment though is a slot upgrade on the Teostra Crown, making it a really solid
+      piece.
+    </p>
+
+    <p>To level up AR quickly:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Spam quests close to your current AR level',
+        },
+        {
+          text: 'Pick investigations with the highest star rating monsters available',
+        },
+        {
+          text: '- Lower faints = more Anomaly XP (if you can handle it)',
+        },
+        {
+          text: 'Reduced quest time means less monster HP and faster clears',
+        },
+        {
+          text: "Quest player limit doesn't affect HP or XP gain",
+        },
+      ]}
+    />
+
+    <p>
+      For the coil we want the Buff Body piece from Hazard Rajang. It's a great piece we'll use for
+      ages, and with our Ice Lance it shouldn't be too hard to farm.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'First Anomaly Set',
+        description: [
+          'Slot upgrade and Buff armor let us fit in more Attack Boost and push our affinity higher.',
+          'Switching to an Attack Boost 3 charm with a level 2 slot. Should be pretty easy to get with Aurora Melding.',
+          'Bazelgeuse arms give us Agitator. Not the best skill in Rise, but it helps reach 100% affinity when the monster is enraged.',
+        ],
+        image: ar70,
+        imageAlt: 'First Anomaly Set',
+        stats: {
+          raw: 1006,
+          element: {
+            value: 56,
+            type: 'ice',
+          },
+          sharpness: {
+            hits: 40,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 93.25,
+            peak: 100,
+          },
+        },
+        augments: ['attack', 'attack'],
+        rampageDecos: ['anti-species'],
+        additionalNotes: {
+          'weapon augments': 'First attack augment added',
+          armor: 'Using Buff armor for extra Attack Boost and a level 2 slot',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Kaktus My Beloved - [MR110/AR71+]🎖️">
+    <p>
+      At MR110 we finally unlock Risen Elder Dragons. Chameleos is the first one, and his armor
+      brings a game-changing skill: Buildup Boost. When you apply status effects, this skill gives a
+      raw damage boost to that hit. This buff is so strong that it shapes the entire endgame raw
+      meta around status weapons.
+    </p>
+
+    <p>
+      Since our Velkhana Lance doesn't have status, we're switching to the MVP - the Flaming Espinas
+      Lance (aka Kaktus). This thing is absolutely cracked:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Good raw damage and high base affinity',
+        },
+        {
+          text: 'Solid purple sharpness and good slots',
+        },
+        {
+          text: 'Fire element AND poison status',
+        },
+      ]}
+    />
+
+    <p>
+      Yes, you heard right! It has hidden Poison which triggers Buildup Boost. Combine that with
+      many monsters being weak to fire, and how easy it is to build around thanks to its stats, and
+      you can see why this was THE meta weapon for multiple Title Updates. Even after the final
+      update, it's still one of the strongest options in the game.
+    </p>
+
+    <p>We're also starting to look at Armor Augments. The two we want:</p>
+
+    <StyledList
+      items={[
+        {
+          text: "Bloodlust: Gives you the Frenzy Virus from Gore Magala. Hit the monster enough to cure yourself and get a 20% Affinity buff for a minute. Yes it drains health if not cured, but it's a slow drain and you heal it all back after curing.",
+        },
+        {
+          text: 'Mail of Hellfire: Nice to have but not crucial. On Red Scroll we get flat raw damage at the cost of defense, while Blue Scroll gives percentage element boost but lowers elemental resistance. The raw boost is heavily frontloaded, so even just level 1 is strong.',
+        },
+      ]}
+    />
+
+    <BuildCard
+      build={{
+        title: 'Kaktus Buildup Boost',
+        description: [
+          'Kaktus (Flaming Espinas Lance) brings it all: high raw, good affinity, fire element, and that crucial poison status for Buildup Boost procs.',
+          'Risen Chameleos arms give us Buildup Boost plus Foray for extra damage on poisoned monsters. With level 3 Chameleos Blessing from decos, our poison lasts twice as long.',
+        ],
+        image: mr110,
+        imageAlt: 'Kaktus Buildup Boost',
+        stats: {
+          raw: 1056,
+          element: {
+            value: 83,
+            type: 'fire',
+          },
+          status: {
+            value: 8,
+            type: 'poison',
+          },
+          sharpness: {
+            hits: 40,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 95.5,
+            peak: 100,
+          },
+        },
+        augments: ['attack', 'attack', 'attack', 'attack'],
+        rampageDecos: ['anti-species'],
+        scroll: 'red',
+        additionalNotes: {
+          'weapon augments': 'Four attack augments at AR71+',
+          'preferred scroll': 'Stay on red scroll for the raw damage boost from Mail of Hellfire',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="The Emperor Of Flame - [MR140/AR111+]🎖️">
+    <p>
+      At MR120 we get Risen Kushala Daora, but his armor doesn't bring anything exciting for Lance.
+      The real upgrade comes at MR140 with Risen Teostra. His armor introduces Powder Mantle - a
+      crazy strong skill that's going to be in all our builds from now on.
+    </p>
+
+    <p>Here's how Powder Mantle works:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Hitting the monster creates powder around you',
+        },
+        {
+          text: 'After 20 seconds it turns blue and your next attack deals 125% of your displayed raw damage',
+        },
+        {
+          text: 'Higher levels just reduce hits needed for powder, so level 1 is usually enough',
+        },
+      ]}
+    />
+
+    <p>We can also craft Flamescale Jewels now for Teostra Blessing.</p>
+
+    <BuildCard
+      build={{
+        title: 'Kaktus Kaiser Setup',
+        description: [
+          'Adding Powder Mantle and sneaking in some Agitator makes this notably stronger than our previous build.',
+          "We're now pushing close to 100% affinity while maintaining all our key damage skills.",
+        ],
+        image: mr140,
+        imageAlt: 'Kaktus Kaiser Setup',
+        stats: {
+          raw: 1088,
+          element: {
+            value: 86,
+            type: 'fire',
+          },
+          status: {
+            value: 8,
+            type: 'poison',
+          },
+          sharpness: {
+            hits: 40,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 98,
+            peak: 100,
+          },
+        },
+        augments: ['attack', 'attack', 'attack', 'attack', 'attack', 'attack'],
+        rampageDecos: ['anti-species'],
+        scroll: 'red',
+        additionalNotes: {
+          'weapon augments': 'Six attack augments at AR111+',
+
+          'preferred scroll': 'Stay on red scroll for Mail of Hellfire raw boost',
+
+          'armor augments':
+            'Only Bloodlust is crucial. If you get a Buildup Boost roll, swap to Gold Rathian Arms',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="The Comet Of Doom Returns - [MR160/AR181+]🎖️">
+    <p>
+      This is our final progression build. It's a really powerful setup that'll carry you through
+      all remaining endgame content.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Final Progression Set',
+        description: [
+          'The Risen Valstrax legs are a pretty nice upgrade. By getting at least 1 Buildup Boost augment we can switch the arms to Gold Rathian that are slightly more efficient.',
+        ],
+        image: mr160,
+        imageAlt: 'Final Progression Set',
+        stats: {
+          raw: 1161,
+          element: {
+            value: 83,
+            type: 'fire',
+          },
+          status: {
+            value: 8,
+            type: 'poison',
+          },
+          sharpness: {
+            hits: 40,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 98,
+            peak: 100,
+          },
+        },
+        augments: ['attack', 'attack', 'attack', 'attack', 'attack', 'attack', 'attack', 'attack'],
+        rampageDecos: ['anti-species'],
+        scroll: 'red',
+        additionalNotes: {
+          'weapon augments':
+            'We are just augment for more raw. At AR 181+ we can have a total of 8 slots.',
+          'preferred scroll':
+            'We want to stay on red scroll to get the raw damage boost from mail of hellfire.',
+          'armor augments':
+            "The intrepid heart is pretty much just extra since we can't craft the deco yet. A very nice quality of life skill to have.",
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="What's Next?">
+    <p>There's still plenty of challenges ahead:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'MR180 unlocks Risen Shagaru Magala, the toughest of the Risen Elder Dragons',
+        },
+        {
+          text: 'Amatsu and Primordial Malzeno await as the true final bosses',
+        },
+      ]}
+    />
+
+    <p>All of these monsters have powerful armor pieces we'll use in our endgame builds</p>
+
+    <p>Anomaly Research continues too:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Higher AR levels unlock new materials for maxing out weapon slots and augments',
+        },
+        {
+          text: 'You can craft powerful decorations like Attack+4 and Expert+4 jewels',
+        },
+      ]}
+    />
+
+    <p>AR caps at 300, but no new unlocks after AR241</p>
+
+    <p>
+      Once you've increased your AR and taken down these remaining monsters, you're ready to check
+      out the final endgame builds:
+    </p>
+
+    <NavigationButton href="/rise/builds/endgame" text="Endgame Builds" emoji="👑" />
+  </Section>
+</ContentLayout>

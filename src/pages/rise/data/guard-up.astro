@@ -1,0 +1,40 @@
+---
+import InfoBox from '../../../components/core/alert/InfoBox.astro';
+import ExternalLinkButton from '../../../components/core/buttons/ExternalLinkButton.astro';
+import Section from '../../../components/core/layout/Section.astro';
+import GuardUpList from '../../../components/data/GuardUpList.astro';
+import { riseGuardUp } from '../../../data/rise/GuardUp';
+import { riseMonsters } from '../../../data/rise/Monsters';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Guard Up underwent significant changes in Monster Hunter Rise. Unlike previous games where a
+      single level would fully block special attacks, it now requires three levels and still lets
+      through at least 20% of the attack's damage. This makes the skill much less efficient for your
+      builds.
+    </p>
+
+    <p>
+      In the endgame especially, even with Guard Up 3, these special attacks can still hit
+      devastatingly hard. Most of these powerful moves have clear telegraph animations or voice
+      lines, giving you time to position yourself safely out of the way.
+    </p>
+
+    <p>
+      Rise also introduced more truly unblockable attacks that can't be defended against even with
+      Guard Up. Given this, plus the high skill investment needed for Guard Up 3, you're usually
+      better off learning each monster's tells and planning your positioning accordingly. Save those
+      precious skill slots for more impactful defensive options like Guard, Intrepid Heart or
+      Heaven-Sent or offensive skills that'll help you end the hunt faster.
+    </p>
+    <InfoBox>
+      <p>The Guard Up list is based on kenny_yc's Guard Up Sheet 🙏</p>
+      <ExternalLinkButton href="https://imgur.com/fxa2ymI" name="Original Guard Up Sheet" />
+    </InfoBox>
+
+    <GuardUpList guardUpData={riseGuardUp} monsterData={riseMonsters} />
+  </Section>
+</ContentLayout>

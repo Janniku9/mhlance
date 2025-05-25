@@ -1,0 +1,267 @@
+---
+interface Props {
+  tabRows: { id: string; display: string }[][];
+  title?: string;
+  initialSelected?: string[]; // Array of initially selected tab IDs, one per row
+}
+
+const { tabRows, title, initialSelected = [] } = Astro.props;
+
+// Function to determine if a tab should be initially selected
+function isInitiallySelected(rowIndex: number, tabId: string): boolean {
+  if (initialSelected && initialSelected[rowIndex]) {
+    return tabId === initialSelected[rowIndex];
+  }
+  // Default to first tab if no initial selection provided
+  return tabId === (tabRows[rowIndex][0]?.id || '');
+}
+type ColorConfig = {
+  active: string;
+  hover: string;
+  gradient: string;
+  underline: string;
+};
+
+type RowColors = Record<number, ColorConfig>;
+
+// Function to get color classes based on row index
+function getColorClasses(rowIndex: number): ColorConfig {
+  const colors: RowColors = {
+    0: {
+      active: 'text-primary border-primary/30',
+      hover: 'hover:text-primary',
+      gradient: 'from-primary/5',
+      underline: 'bg-primary'
+    },
+    1: {
+      active: 'text-secondary border-secondary/30',
+      hover: 'hover:text-secondary',
+      gradient: 'from-secondary/5',
+      underline: 'bg-secondary'
+    },
+    2: {
+      active: 'text-error border-error/30',
+      hover: 'hover:text-error',
+      gradient: 'from-error/5',
+      underline: 'bg-error'
+    },
+    3: {
+      active: 'text-warning border-warning/30',
+      hover: 'hover:text-warning',
+      gradient: 'from-warning/5',
+      underline: 'bg-warning'
+    },
+    4: {
+      active: 'text-info border-info/30',
+      hover: 'hover:text-info',
+      gradient: 'from-info/5',
+      underline: 'bg-info'
+    },
+  };
+
+  return colors[rowIndex as keyof typeof colors] || colors[0];
+}
+---
+
+<div class="tab-card group relative border border-text/10 rounded-3xl overflow-hidden transition-all duration-300 hover:border-text/20">
+  <!-- Card header with tabs -->
+  <div class="bg-background-dark">
+    {title && <h3 class="px-6 pt-5 text-md font-medium mb-2 text-text/80">{title}</h3>}
+    
+    {
+      tabRows.map((rowOptions, rowIndex) => {
+        const colors = getColorClasses(rowIndex);
+        return (
+          <div class="relative">
+            <div class="flex flex-wrap justify-center gap-3 pt-3 px-6">
+              {rowOptions.map((option, optionIndex) => (
+                <button
+                  data-row={rowIndex}
+                  data-option-id={option.id}
+                  class:list={[
+                    'relative bg-background-dark border border-text/10 px-6 py-3',
+                    'transition-all duration-300 rounded-xl',
+                    'flex items-center gap-2 hover:bg-background-darker',
+                    option.id === (isInitiallySelected(rowIndex, option.id) ? option.id : '')
+                      ? colors.active
+                      : 'hover:shadow-sm',
+                  ]}
+                >
+                  <div
+                    class:list={[
+                      'absolute inset-0 bg-gradient-to-br to-transparent rounded-xl',
+                      colors.gradient,
+                      'opacity-0 hover:opacity-100 transition-all duration-300',
+                      option.id === (isInitiallySelected(rowIndex, option.id) ? option.id : '') ? 'opacity-100' : '',
+                    ]}
+                  />
+                  <span
+                    class:list={[
+                      'relative text-sm font-medium transition-colors uppercase',
+                      colors.hover,
+                    ]}
+                  >
+                    {option.display}
+                  </span>
+                  
+                  <!-- Active indicator (bottom border instead of underline) -->
+                  <div 
+                    class:list={[
+                      'absolute bottom-0 left-0 h-1 w-full rounded-t-full transition-all duration-200',
+                      colors.underline,
+                      isInitiallySelected(rowIndex, option.id) ? 'opacity-100' : 'opacity-0'
+                    ]}
+                  ></div>
+                </button>
+              ))}
+            </div>
+            
+            <!-- Row Separator with margin to handle wrapping -->
+            <div
+              class:list={[
+                'w-full border-t border-text/10 mt-4',
+                rowIndex === tabRows.length - 1
+                  ? 'border-solid'
+                  : 'border-dashed'
+              ]}
+            />
+          </div>
+        );
+      })
+    }
+  </div>
+
+  <!-- Card content area -->
+  <div class="build-content p-2 sm:p-4 md:p-6 bg-background-dark/30">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .tab-card {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script define:vars={{ tabRows, initialSelected }}>
+  // Get the current matrix component element
+  const matrixComponent = document.currentScript.parentElement;
+
+  let selectedOptions = new Array(tabRows.length).fill(null);
+  
+  // Initialize with selected options from props, or first option in each row
+  tabRows.forEach((row, index) => {
+    if (row.length > 0) {
+      if (initialSelected && initialSelected[index]) {
+        selectedOptions[index] = initialSelected[index];
+      } else {
+        selectedOptions[index] = row[0].id;
+      }
+    }
+  });
+
+  const rowColors = {
+    0: {
+      active: ['text-primary', 'border-primary/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
+    },
+    1: {
+      active: ['text-secondary', 'border-secondary/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
+    },
+    2: {
+      active: ['text-error', 'border-error/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
+    },
+    3: {
+      active: ['text-warning', 'border-warning/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
+    },
+    4: {
+      active: ['text-info', 'border-info/30'],
+      underline: 'opacity-100',
+      gradient: 'opacity-100'
+    },
+  };
+
+  // Scope buttons to this component
+  const buttons = matrixComponent.querySelectorAll('button[data-row]');
+
+  // Hide all content except the initial combination - scoped to this component
+  function updateContent() {
+    if (selectedOptions.some((opt) => opt === null)) return;
+
+    const combinationId = selectedOptions.join('-');
+
+    // Scope content queries to this component
+    matrixComponent.querySelectorAll('.build-content > *').forEach((content) => {
+      if (content.id) {
+        content.classList.add('hidden');
+      }
+    });
+
+    const selectedContent = matrixComponent.querySelector(`#${combinationId}`);
+    if (selectedContent) {
+      selectedContent.classList.remove('hidden');
+    }
+  }
+
+  // Initialize content visibility
+  updateContent();
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const rowIndex = parseInt(button.getAttribute('data-row') || '0');
+      const optionId = button.getAttribute('data-option-id');
+
+      // Only update if a different option was selected
+      if (selectedOptions[rowIndex] !== optionId) {
+        selectedOptions[rowIndex] = optionId;
+
+        // Get colors for this row
+        const colors = rowColors[rowIndex] || rowColors[0];
+
+        // Reset all buttons in this row first
+        matrixComponent.querySelectorAll(`button[data-row="${rowIndex}"]`).forEach((btn) => {
+          colors.active.forEach(cls => btn.classList.remove(cls));
+          btn.querySelector('.bg-gradient-to-br')?.classList.remove(colors.gradient);
+          
+          // Force hide the underline by setting opacity-0
+          const underline = btn.querySelector('div:last-child');
+          if (underline) {
+            underline.classList.remove('opacity-100');
+            underline.classList.add('opacity-0');
+          }
+        });
+
+        // Then set the active state only for the clicked button
+        colors.active.forEach(cls => button.classList.add(cls));
+        button.querySelector('.bg-gradient-to-br')?.classList.add(colors.gradient);
+        
+        // Force show the underline
+        const activeUnderline = button.querySelector('div:last-child');
+        if (activeUnderline) {
+          activeUnderline.classList.remove('opacity-0');
+          activeUnderline.classList.add('opacity-100');
+        }
+
+        updateContent();
+      }
+    });
+  });
+</script>

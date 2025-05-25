@@ -1,0 +1,60 @@
+---
+import SectionTitle from './SectionTitle.astro';
+
+interface Props {
+  title?: string;
+  emoji?: string;
+  className?: string;
+  delay?: number;
+}
+
+const { title, emoji, className, delay = 50 } = Astro.props;
+---
+
+<section
+  class:list={['flex flex-col gap-4 md:gap-8 text-sectionmobile md:text-lgsectionpc', className]}
+  data-fade-in
+  style={`--animation-delay: ${delay}ms`}
+>
+  {title && <SectionTitle title={title} emoji={emoji} />}
+  <slot />
+</section>
+
+<style>
+  /* Make content visible by default (no JS fallback) */
+  section {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Only apply initial hidden state after JS initializes */
+  section.fade-in-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out var(--animation-delay),
+      transform 0.6s ease-out var(--animation-delay);
+  }
+
+  section.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    section {
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+</style>
+
+<script>
+  import fadeIn from '../../directives/fade-in.ts';
+
+  const elements = document.querySelectorAll('[data-fade-in]');
+  elements.forEach((element) => {
+    if (element instanceof HTMLElement) fadeIn(element);
+  });
+</script>

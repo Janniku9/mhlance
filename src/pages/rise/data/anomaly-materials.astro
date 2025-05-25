@@ -1,0 +1,30 @@
+---
+import InfoBox from '../../../components/core/alert/InfoBox.astro';
+import ExternalLinkButton from '../../../components/core/buttons/ExternalLinkButton.astro';
+import Section from '../../../components/core/layout/Section.astro';
+import ImageCard from '../../../components/core/media/ImageCard.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import afflictedMaterials from '../../../assets/rise/data/afflicted_materials.png';
+---
+
+<ContentLayout>
+  <Section>
+    <p>Here's a quick overview of which monster drops what afflicted materials at what level</p>
+
+    <InfoBox>
+      <p>Thank you Gaudium for the original image!!</p>
+      <ExternalLinkButton
+        href="https://ko-fi.com/album/MHRS--Infographs-U7U5VJ80P"
+        name="Original Image"
+      />
+    </InfoBox>
+
+    <ImageCard
+      src={afflictedMaterials}
+      title="Afflicted Materials"
+      alt="Afflicted Materials"
+      maxWidth="1000px"
+    />
+  </Section>
+</ContentLayout>
