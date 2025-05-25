@@ -1,0 +1,12 @@
+---
+interface Props {
+  title: string;
+  class?: string;
+}
+
+const { title, class: className } = Astro.props;
+---
+
+<h3 class:list={['text-sm text-secondary-light group-hover:text-secondary uppercase', className]}>
+  {title}
+</h3>

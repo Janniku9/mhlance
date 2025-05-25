@@ -1,0 +1,206 @@
+---
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+// image imports
+import mr1 from '../../../assets/world/builds/master-rank/budget_mr1.png';
+import mr3 from '../../../assets/world/builds/master-rank/budget_mr3.png';
+import mr4 from '../../../assets/world/builds/master-rank/budget_mr4.png';
+import mr5 from '../../../assets/world/builds/master-rank/budget_mr5.png';
+import Section from '../../../components/common/Section.astro';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Welcome to Master Rank! Iceborne introduces tougher challenges with monsters hitting harder,
+      moving faster, and having significantly more health. The builds in this guide will help you
+      navigate through the expansion's story with minimal decoration requirements.
+    </p>
+
+    <p>
+      These progression builds only use easily obtainable decorations: the free Attack Boost and
+      Expert+ jewels from the story, Vitality jewels from the Elder Melder, plus one each of
+      Tenderizer, Elementless, and Expert jewels. No rare decorations required.
+    </p>
+  </Section>
+
+  <Section title="Snowstorm Ahead - 1⭐">
+    <p>
+      Master Rank begins in the new Hoarfrost Reach region. As always, start by gathering materials
+      from bone piles and mining outcrops while exploring and fighting new monsters. After
+      completing "Banbaro Blockade" (the second assigned quest), you'll unlock several powerful
+      early armor pieces and weapons.
+    </p>
+
+    <p>
+      You can also find Master Rank versions of familiar monsters in expeditions and optional
+      quests, allowing you to craft improved versions of their equipment right away.
+    </p>
+
+    <p>
+      Our initial target is Master Rank Kulu-Ya-Ku to craft the Minqar Al-Nasr I lance and its
+      greaves. Next, hunt Barroth for its helmet and coil, then focus on the new monster Banbaro for
+      its excellent vambraces and mail.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Frozen Foundations',
+        description: [
+          'The Kulu-Ya-Ku Lance becomes our new weapon of choice for Master Rank progression, offering impressive affinity, solid raw damage, and easy access to white sharpness - a perfect replacement for our High Rank Odogaron Lance.',
+          'This mixed set from Barroth, Banbaro, and Kulu-Ya-Ku introduces us to Offensive Guard, a game-changing skill for lance that boosts attack power after perfectly timed guards. Combined with Critical Eye and Non-elemental Boost, we achieve 100% affinity on weak spots while maintaining reliable guard capability.',
+        ],
+        image: mr1,
+        imageAlt: 'Budget Master Rank Set 1',
+        stats: {
+          raw: 468,
+          sharpness: {
+            hits: 30,
+            type: 'white',
+          },
+          affinity: {
+            avg: 100,
+            peak: 100,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Discovering New Subspecies - 2⭐">
+    <p>
+      During MR 2 star quests, you'll encounter various subspecies of familiar monsters.
+      Unfortunately, none of them offer particularly useful lance or armor pieces at this point.
+      Focus on completing the assigned quests to advance the story while gathering materials for
+      future upgrades.
+    </p>
+  </Section>
+
+  <Section title="Here Come The New Wyverns - 3⭐">
+    <p>
+      MR 3 star introduces several powerful returning monsters: Barioth, Nargacuga, Glavenus,
+      Tigrex, and Brachydios. Nargacuga is particularly important for us, as its materials allow
+      upgrading to the Minqar Al-Nasr II.
+
+      <p>
+        For armor, search for Master Rank Uragaan in investigations or optional quests to craft its
+        greaves. Also hunt Brachydios for its helmet, which offers Agitator and useful decoration
+        slots.
+      </p>
+
+      <BuildCard
+        build={{
+          title: 'Perfect Guard Specialist',
+          description: [
+            'The upgraded Kulu Lance adds significant raw power and extends its white sharpness, making it considerably stronger than our previous version. This will comfortably carry us through mid-Iceborne.',
+            "Uragaan greaves are a lance user's dream, providing both Guard and Offensive Guard in a single piece. This efficiency allows us to replace the Barroth helm with Brachydios for Agitator, which activates when monsters are enraged - perfectly complementing our counter-heavy playstyle.",
+          ],
+          image: mr3,
+          imageAlt: 'Budget Master Rank Set 2',
+          stats: {
+            raw: 571,
+            sharpness: {
+              hits: 60,
+              type: 'white',
+            },
+            affinity: {
+              avg: 77,
+              peak: 77,
+            },
+          },
+        }}
+      />
+    </p>
+
+    <Section title="The Icy Dragon - 4⭐">
+      <p>
+        After your first encounter with Velkhana, you'll face several new monsters: Shrieking
+        Legiana, Fulgur Anjanath, Ebony Odogaron, and Acidic Glavenus.
+      </p>
+
+      <p>
+        Complete the housekeeping quests "The Purr-fect Room: Stone" and "The Purr-fect Room: Light
+        Iron" to obtain the Razor Sharp Charm, which solves our sharpness management issues. Since
+        we're changing charms, we need a new source of Weakness Exploit - farm Rathalos for its
+        chest piece.
+      </p>
+
+      <BuildCard
+        build={{
+          title: 'Mid Master Rank Set',
+          description: [
+            'The Razor Sharp Charm effectively doubles our white sharpness duration, solving one of the biggest limitations of the Kulu Lance. This quality-of-life improvement significantly reduces downtime spent sharpening during hunts.',
+            'With our charm slot now occupied, we switch to the Rathalos chest for Weakness Exploit. Despite reshuffling, we maintain almost 100% affinity on weak spots while gaining much better sharpness management - a net improvement in both comfort and damage output.',
+          ],
+          image: mr4,
+          imageAlt: 'Mid Master Rank Set',
+          stats: {
+            raw: 572,
+            sharpness: {
+              hits: 60,
+              type: 'white',
+            },
+            affinity: {
+              avg: 97,
+              peak: 97,
+            },
+          },
+        }}
+      />
+    </Section>
+
+    <Section title="The Elders Are Back - 5⭐">
+      <p>
+        At Master Rank 19, you'll encounter Master Rank versions of base game Elder Dragons. This
+        means we can finally hunt Teostra again and access the invaluable Master's Touch set bonus.
+      </p>
+
+      <p>
+        We'll also craft the Offensive Guard Charm II, which requires a Phantom Core Ore. The most
+        reliable way to obtain this material is through mantle upgrade quests: either "A Nasty Flesh
+        Wound" (Bandit Mantle) or "Proud White Knight" (Evasion Mantle).
+      </p>
+
+      <BuildCard
+        build={{
+          title: "Teostra's Disciple",
+          description: [
+            "The return to Master's Touch marks a significant upgrade in our build's efficiency. Using three Teostra pieces, we prevent sharpness loss on critical hits - and with our near-perfect affinity, this means virtually infinite white sharpness without needing the Razor Sharp charm.",
+            'With the charm slot freed, we switch to the Offensive Guard charm to maintain our damage boost from perfect guards. Combining this with the Guard skills from Barroth coil and Uragaan greaves creates a balanced build that excels at both offense and defense.',
+          ],
+          image: mr5,
+          imageAlt: 'Master Rank Set',
+          stats: {
+            raw: 586,
+            sharpness: {
+              hits: 60,
+              type: 'white',
+            },
+            affinity: {
+              avg: 100,
+              peak: 100,
+            },
+          },
+        }}
+      />
+    </Section>
+
+    <Section title="The Earth Singing Dragon - 6⭐">
+      <p>
+        MR 6★ contains just two quests before facing the final boss, Shara Ishvalda, and reaching
+        Master Rank 24. Neither quest provides worthwhile equipment upgrades for our build, so we'll
+        complete the story using our current setup.
+      </p>
+
+      <p>
+        Defeating Shara Ishvalda is just the beginning, you'll unlock the Guiding Lands and various
+        Special Assignments, opening up the true endgame. The builds we've developed will serve as a
+        solid foundation as you begin tackling the challenging post-story content.
+      </p>
+
+      <NavigationButton href="/world/builds/post-story" text="Post Story" emoji="🐲" />
+    </Section>
+  </Section>
+</ContentLayout>

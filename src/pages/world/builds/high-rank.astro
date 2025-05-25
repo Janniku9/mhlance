@@ -1,0 +1,286 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import regular6star from '../../../assets/world/builds/high-rank/regular_6star.png';
+import regular7star from '../../../assets/world/builds/high-rank/regular_6star.png';
+import regular8star from '../../../assets/world/builds/high-rank/regular_8star.png';
+import regularDrachen9star from '../../../assets/world/builds/high-rank/regular_drachen_9star.png';
+import regularKaiser9star from '../../../assets/world/builds/high-rank/regular_kaiser_9star.png';
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
+import Tabs from '../../../components/common/Tabs.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Welcome to High Rank! This is where Monster Hunter World truly opens up with meaningful
+      equipment choices and skill combinations. You'll now obtain decorations and have access to
+      both alpha (more skills) and beta (more slots) armor versions.
+    </p>
+
+    <p>
+      First priority: purchase the Power and Armor Charms from the Tradeyard. These provide flat
+      stat increases just by being in your inventory. After encountering Bazelgeuse (the new invader
+      monster), you can upgrade them to Power and Armor Talons. The charms and talons stack, so
+      ideally you'll carry all four items for maximum benefit.
+    </p>
+
+    <p>
+      The builds on this page follow your progression through the story and include endgame setups
+      for decoration farming and Iceborne preparation. Due to the random nature of decoration drops,
+      the progression builds only include decorations you receive from the story itself.
+    </p>
+
+    <SectionSubTitle title="Defender/Guardian Gear" />
+
+    <p>
+      Defender Weapons and Guardian Armor were added to help players rush to Iceborne. While
+      extremely powerful and easy to craft, using this gear bypasses the genuine Monster Hunter
+      experience of gradually building your arsenal and learning monster patterns. I recommend
+      avoiding it for your first playthrough, but the choice is yours.
+    </p>
+
+    <SectionSubTitle title="Multiplayer Tip: Flinch Free" />
+    <p>
+      If you play with others regularly, consider including Flinch Free in your build. Just one
+      level prevents most teammate knockbacks, allowing you to maintain your offensive pressure in
+      crowded situations. You can either use a level 3 decoration (once you find one) or replace the
+      helmets in these builds with Gastodon or later Xeno'jiiva for built-in Flinch Free.
+    </p>
+  </Section>
+
+  <Section title="Entering High Rank - 6⭐">
+    <p>
+      After your first High Rank Pukei-Pukei encounter, you'll need to gather Rathian tracks. Use
+      optional quests to collect tracks while gathering new High Rank materials from bone piles, ore
+      outcrops, and small monsters.
+    </p>
+
+    <p>
+      With enough quality bones, it's time to switch from the Bone Lance to the Odogaron tree. You
+      can either roll back your Hard Bone Lance II or craft a fresh Bone Lance to follow the
+      Odogaron path up to the Garon Lance II. This switch is worth the investment, as the Odogaron
+      Lance offers excellent affinity and blue sharpness, making it significantly stronger than
+      continuing the Bone tree.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Red Dog Rising',
+        description: [
+          'The Odogaron Lance brings substantial affinity and blue sharpness, immediately outperforming our previous Bone Lance. This weapon tree remains strong throughout High Rank, culminating in natural white sharpness and high critical rate - making now the perfect time to switch.',
+          "For armor, we're essentially upgrading to High Rank versions of our previous pieces. While skill options remain limited at this stage, the increased defense helps against harder-hitting monsters. Health Boost and Attack Boost remain our priority skills until we access better offensive options soon.",
+        ],
+        image: regular6star,
+        imageAlt: 'Regular 6 Star Build',
+        stats: {
+          raw: 228,
+          sharpness: { hits: 20, type: 'blue' },
+          affinity: {
+            avg: 25,
+            peak: 25,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Exploring Elder's Recess - 7⭐">
+    <p>
+      Upon reaching Elder's Recess, you'll need to collect Nergigante tracks. Use this opportunity
+      to hunt the new region's monsters and gather unique materials. The Elder's Recess mining spots
+      provide ore for crafting the High Rank Ingot Vambraces, a direct upgrade to your armor set.
+    </p>
+
+    <p>
+      Many Low Rank monsters now appear with High Rank versions, dropping materials for stronger
+      armor. Focus first on hunting High Rank Odogaron to craft its coil and upgrade your lance to
+      Garon Dhara I. Next, hunt Rathalos for its helm, mail, and greaves to round out your set with
+      powerful offensive skills.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Weakness Exploiter',
+        description: [
+          'With our upgraded Garon Dhara I, we gain more affinity and extended blue sharpness. The real game-changer is the Rathalos armor combination, which provides Weakness Exploit 3 - granting 50% bonus affinity when hitting monster weak spots. This transforms our lance from solid to exceptional.',
+          "The Ingot Vambraces give us Health Boost 2, providing crucial survivability as we prepare to face Elder Dragons. This mixed set balances impressive damage output with enough defense to handle High Rank's tougher challenges.",
+        ],
+        image: regular7star,
+        imageAlt: 'Regular 7 Star Build',
+        stats: {
+          raw: 278,
+          sharpness: { hits: 40, type: 'blue' },
+          affinity: {
+            avg: 90,
+            peak: 90,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Facing The Elder Dragons - 8⭐">
+    <p>
+      After defeating Nergigante, you gain access to the Dober Mail, an excellent offensive chest
+      piece that we'll incorporate into our build.
+    </p>
+
+    <p>
+      Your next assignment involves collecting Elder Dragon tracks before facing them directly. Each
+      Elder Dragon provides unique materials for powerful equipment:
+    </p>
+
+    <StyledList
+      items={[
+        { text: 'Vaal Hazak: Allows upgrading to Ironside Charm III for Guard 3', emoji: '🌫️' },
+        {
+          text: "Teostra: Provides access to the powerful Master's Touch set bonus and materials for the final Odogaron Lance upgrade",
+          emoji: '🦁',
+        },
+        { text: "Kushala Daora: Unfortunately doesn't offer much for lance builds", emoji: '🌪️' },
+      ]}
+    />
+
+    <p>
+      Defeating Vaal Hazak allows us to upgrade our charm to the Ironside Charm III. Teostra will
+      give us access to some really powerful armor pieces. With the Teostra material we can get the
+      final Lance upgrade. Lastly there's Kushala Daora, which doesn't give us anything useful for
+      Lance.
+    </p>
+
+    <BuildCard
+      build={{
+        title: "White Sharpness Master's Touch",
+        description: [
+          "This build leverages three Teostra armor pieces to unlock the game-changing Master's Touch set bonus, which prevents sharpness loss on critical hits. Combined with our high affinity Odogaron Lance, we can maintain white sharpness for extended periods, significantly increasing our damage output.",
+          'Replacing the Rathalos chest with the Dober Mail gives us Attack Boost 5, further boosting our raw damage. Meanwhile, the Ironside Charm III provides Guard 3, making blocking more comfortable while reducing stamina consumption. For players confident in their defensive skills, the Expert Charm III offers an alternative, pushing our affinity to 100% on weak spots.',
+        ],
+        image: regular8star,
+        imageAlt: 'Regular 8 Star Build',
+        stats: {
+          raw: 344,
+          sharpness: { hits: 30, type: 'white' },
+          affinity: {
+            avg: 85,
+            peak: 85,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Preparing For Iceborne - 9⭐">
+    <p>
+      After defeating Xeno'jiiva, you've completed Monster Hunter World's base story. You now have
+      two options:
+    </p>
+
+    <StyledList
+      items={[
+        { text: "Continue with base World's endgame content" },
+        { text: 'Start the Iceborne expansion' },
+      ]}
+    />
+
+    <SectionSubTitle title="Starting Iceborne" />
+
+    <p>
+      Beginning Iceborne immediately makes story progression slightly more challenging, but you'll
+      reach Master Rank's endgame faster with access to better decorations and gear. You can always
+      return later with stronger equipment to unlock remaining content and mantles.
+    </p>
+
+    <NavigationButton href="/world/builds/master-rank" text="Iceborne Builds" emoji="❄️" />
+
+    <SectionSubTitle title="Continuing High Rank Endgame" />
+
+    <p>If you choose to complete High Rank content first, you can unlock powerful gear by:</p>
+
+    <StyledList
+      items={[
+        { text: 'Defeating Arch-Tempered Elder Dragons for gamma armor' },
+        { text: 'Farming Kulve Taroth for weapons' },
+        { text: 'Challenging Behemoth for Drachen armor' },
+        { text: "Farming decorations through event quests like 'The Name's Lavasioth'" },
+        {
+          text: 'Unlocking specialized mantles (Temporal, Rocksteady, etc.) via Tempered Investigations',
+        },
+      ]}
+    />
+
+    <p>For endgame armor, you have two primary options:</p>
+
+    <StyledList
+      items={[
+        {
+          text: "The best armor is the drachen armor from Behemoth. But Behemoth is a difficult fight that only has 4 player scaling. Which means it's pretty much impossible to solo. So unless you are playing with friends that are up for the challenge or are super lucky to find a online session with people that are willing to help, the second set is probably the better option. ",
+        },
+        {
+          text: "The second option is doing Arch Tempered Teostra as well as other AT Elders, which you'll unlock at HR 50. Their materials will allow you to craft the gamma version of the Teostra armor, which is a straight upgrade to the normal version. The Kaiser Gamma Set is slightly weaker than the drachen set but it only requires content that you can do solo. ",
+        },
+      ]}
+    />
+
+    <Tabs
+      labels={[
+        { id: 'drachen', display: 'Drachen/Behemoth' },
+        { id: 'kaiser', display: 'Kaiser/AT Teo' },
+      ]}
+    >
+      <div id="kaiser">
+        <BuildCard
+          noTopRounding
+          build={{
+            title: 'Fire King Perfection 🦁',
+            description: [
+              "This build revolves around Arch-Tempered Teostra's gamma armor pieces (unlocked at HR50), combined with Lunastra's beta chest and AT Nergigante greaves. While slightly weaker than the Drachen set, this armor combination can be obtained entirely solo.",
+              "We continue using the Odogaron Lance for its natural white sharpness and high affinity, which synergizes perfectly with Master's Touch. The ideal alternative would be the Taroth Crest Claw from Kulve Taroth, but since it's a random drop from a difficult multiplayer hunt, the Odogaron Lance remains a reliable choice.",
+            ],
+            image: regularKaiser9star,
+            imageAlt: 'Kaiser 9 Star Build',
+            stats: {
+              raw: 451,
+              sharpness: { hits: 30, type: 'white' },
+              affinity: { avg: 100, peak: 100 },
+            },
+            augments: ['health', 'affinity'],
+            additionalNotes: {
+              'weapon augments':
+                "The health augment significantly improves lance sustainability by healing through chip damage and enabling easier maintenance of Peak Performance. The affinity augment pushes us to 100% critical hit rate, ensuring we never lose sharpness with Master's Touch active.",
+            },
+          }}
+        />
+      </div>
+
+      <div id="drachen">
+        <BuildCard
+          noTopRounding
+          build={{
+            title: 'Drachen Lancer 🐉',
+            description: [
+              "The Drachen armor from Behemoth represents the pinnacle of High Rank gear, offering an unmatched combination of Critical Boost, Attack Boost, and Master's Touch. However, Behemoth is designed exclusively for 4-player teams and is exceptionally difficult to defeat solo.",
+              "This set maximizes our Odogaron Lance's potential with 100% affinity on weak spots, permanent white sharpness through Master's Touch, and Attack Boost 4. The additional critical boost levels significantly increase our damage ceiling compared to the Kaiser set.",
+            ],
+            image: regularDrachen9star,
+            imageAlt: 'Drachen 9 Star Build',
+            stats: {
+              raw: 462,
+              sharpness: { hits: 30, type: 'white' },
+              affinity: { avg: 100, peak: 100 },
+            },
+            augments: ['health', 'attack'],
+            additionalNotes: {
+              'weapon augments':
+                'Health augment remains essential for lance sustainability, counteracting chip damage and maintaining Peak Performance uptime. With 100% affinity already achieved, we opt for an attack augment to further boost our raw damage.',
+            },
+          }}
+        />
+      </div>
+    </Tabs>
+  </Section>
+</ContentLayout>

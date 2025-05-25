@@ -1,0 +1,139 @@
+---
+import { Icon } from 'astro-icon/components';
+import ComboStatBlock from './ComboStatBlock.astro';
+import ComboInputs from './ComboInputs.astro';
+import type { Combo } from '../../types/guides/Combo';
+import { getComboTagColor } from '../../utils/ComboUtils';
+import BaseCard from '../common/BaseCard.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
+
+interface Props {
+  combo: Combo;
+  class?: string;
+  reversed?: boolean;
+}
+
+const { combo, class: className, reversed = false } = Astro.props;
+
+// Calculate per-second values
+const rawPerSecond = combo.stats.motionValue / combo.stats.duration;
+const elementPerSecond = combo.stats.elementModifier / combo.stats.duration;
+const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
+---
+
+<BaseCard class={className} dataAttribute="data-combo-card-auto-hover">
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    <!-- Left Column - GIF and Stats -->
+    <div
+      class:list={[
+        'p-4 sm:p-6 md:p-8 border-b md:border-b-0 md:border-r border-text/10 bg-secondary/5',
+        reversed ? 'md:order-2 md:border-l md:border-r-0' : 'md:order-1',
+      ]}
+    >
+      <BaseCardTitle title={combo.longTitle} class="mb-4" />
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        {
+          combo.tags.map((tag) => (
+            <span class:list={['px-3 py-1 rounded-full text-sm', getComboTagColor(tag)]}>
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+        <ComboStatBlock
+          label="MOTION VALUE"
+          value={combo.stats.motionValue}
+          perSecond={rawPerSecond}
+          icon="⚔️"
+          valueColor="text-primary"
+        />
+        <ComboStatBlock
+          label="ELEMENT MOD"
+          value={combo.stats.elementModifier}
+          perSecond={elementPerSecond}
+          icon="⚡"
+          perSecondUnit="/s"
+        />
+        <ComboStatBlock
+          label="SHARPNESS"
+          value={combo.stats.sharpnessCost}
+          perSecond={sharpnessPerSecond}
+          icon="🗡️"
+        />
+        <ComboStatBlock
+          label="DURATION"
+          value={combo.stats.duration}
+          perSecond={1}
+          icon="⏱️"
+          perSecondUnit="s"
+        />
+      </div>
+
+      <!-- GIF -->
+      {
+        combo.gif && (
+          <div class="relative rounded-lg overflow-hidden mb-6">
+            <iframe src={combo.gif} class="w-full aspect-video" frameborder="0" allowfullscreen />
+          </div>
+        )
+      }
+    </div>
+
+    <!-- Right Column -->
+    <div class:list={['p-4 sm:p-6 md:p-8', reversed ? 'md:order-1' : 'md:order-2']}>
+      <!-- Strengths -->
+      <div class="mb-6">
+        <span class="text-sm text-text/60 block mb-2">STRENGTHS</span>
+        <ul class="space-y-2">
+          {
+            combo.strengths.map((strength) => (
+              <li class="text-sm text-text/80 flex items-center gap-2">
+                <Icon name="mingcute:plus-fill" class="w-4 h-4 text-success flex-shrink-0" />
+                {strength}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Considerations -->
+      {
+        combo.considerations && (
+          <div class="mb-6">
+            <span class="text-sm text-text/60 block mb-2">CONSIDERATIONS</span>
+            <ul class="space-y-2">
+              {combo.considerations.map((consideration) => (
+                <li class="text-sm text-text/80 flex items-start gap-2">
+                  <Icon name="mingcute:minimize-fill" class="w-4 h-4 text-error flex-shrink-0" />
+                  {consideration}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      <!-- Inputs -->
+      {
+        combo.inputs && (
+          <div class="mb-6">
+            <span class="text-sm text-text/60 block mb-2">INPUTS</span>
+            <ComboInputs inputs={combo.inputs} />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</BaseCard>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-combo-card-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

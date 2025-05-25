@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import BaseCard from './BaseCard.astro';
+
+interface ImageProps {
+  src: string;
+  alt: string;
+  caption?: string;
+  maxWidth?: string;
+  class?: string;
+}
+
+const { src, alt, caption, class: className, maxWidth } = Astro.props;
+---
+
+<BaseCard class={className} dataAttribute="data-image-card-auto-hover">
+  <div class="p-4 sm:p-6">
+    <div
+      class="relative rounded-lg overflow-hidden mx-auto"
+      style={maxWidth ? `max-width: ${maxWidth};` : ''}
+    >
+      <Image src={src} alt={alt} class="w-full h-auto transition-transform duration-300" />
+    </div>
+
+    <div class="flex flex-col gap-4">
+      {
+        caption && (
+          <div class="mt-3 px-2">
+            <p class="text-sm text-text/80 group-hover:text-primary-lighter transition-colors">
+              {caption}
+            </p>
+          </div>
+        )
+      }
+      <slot />
+    </div>
+  </div>
+</BaseCard>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-image-card-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

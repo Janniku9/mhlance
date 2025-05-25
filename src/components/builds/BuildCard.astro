@@ -19,6 +19,7 @@ import ToolTip from '../common/ToolTip.astro';
 import BaseCard from '../common/BaseCard.astro';
 import Badge from '../common/Badge.astro';
 import BaseCardTitle from '../common/BaseCardTitle.astro';
+import BaseCardSubTitle from '../common/BaseCardSubTitle.astro';
 
 interface Props {
   build: Build;
@@ -146,7 +147,7 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
       {
         build.augments && (
           <div class="mb-6">
-            <span class="text-sm text-secondary-light group-hover:text-secondary block mb-2">AUGMENTS</span>
+            <BaseCardSubTitle title="AUGMENTS" class="mb-2"/>
             <div class="flex flex-wrap gap-1">
               {build.augments.map((augment: AugmentType) => (
                 <div class="group/monster relative">
@@ -164,7 +165,7 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
         {
           build.rampageDecos && (
             <div class="mb-6">
-              <span class="text-sm text-secondary-light group-hover:text-secondary block mb-2">RAMPAGE DECORATION</span>
+              <BaseCardSubTitle title="rampage decorations" class="mb-2"/>
               <div class="flex flex-wrap gap-2">
                 {Array.isArray(build.rampageDecos) ? (
                   build.rampageDecos.map((deco) => (
@@ -186,7 +187,7 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
         {
           build.scroll && (
             <div class="mb-6">
-              <span class="text-sm text-secondary-light group-hover:text-secondary block mb-2">SCROLL</span>
+              <BaseCardSubTitle title="scroll" class="mb-2"/>
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 relative">
                   <Image

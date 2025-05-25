@@ -1,0 +1,176 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+// image imports
+import fatalis from '../../../assets/world/builds/endgame/fatalis.png';
+import alatreonFire from '../../../assets/world/builds/endgame/alatreon_fire.png';
+import alatreonIce from '../../../assets/world/builds/endgame/alatreon_ice.png';
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import Section from '../../../components/common/Section.astro';
+import Tabs from '../../../components/common/Tabs.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Congratulations on conquering Fatalis, the ultimate challenge of Monster Hunter World! Now
+      that you've defeated the legendary Black Dragon, it's time to harness its power by crafting
+      the game's strongest equipment. This section showcases the definitive endgame builds for
+      lance.
+    </p>
+  </Section>
+
+  <Section title="The Fatalis Empire" emoji="🐉">
+    <p>
+      The Fatalis Lance stands uncontested as the premier weapon for lance users. Its exceptional
+      raw damage overcomes the negative affinity penalty through the equally powerful Fatalis armor
+      set. This combination represents the pinnacle of lance builds, optimal for virtually every
+      monster in the game with the possible exception of Alatreon.
+    </p>
+
+    <p>
+      Fatalis armor's abundance of decoration slots allows for unprecedented build flexibility. The
+      template below balances peak damage output with practical defensive skills, creating a
+      comfortable yet powerful endgame experience.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Black Dragon Sovereign',
+        description: [
+          'The Fatalis Lance boasts unmatched raw damage at the cost of negative affinity. We mitigate this through multiple affinity-boosting skills to reach the 100% critical hit cap for consistent damage.',
+          'Four pieces of Fatalis armor provide two game-changing set bonuses: Transcendence grants maximum health and stamina caps plus True Razor Sharp for effortless sharpness management, while Inheritance unlocks all skill secrets without requiring specific armor combinations.',
+          "We complement the Fatalis pieces with Arch-Tempered Velkhana legs for Peak Performance 3, adding substantial attack power that's easily maintained through our health augment. This combination delivers the perfect balance of offensive potential and practical comfort for all endgame content.",
+        ],
+        image: fatalis,
+        imageAlt: 'Fatalis Armor and Lance',
+        stats: {
+          raw: 1027,
+          sharpness: {
+            hits: 60,
+            type: 'purple',
+          },
+          affinity: {
+            avg: 100,
+            peak: 100,
+          },
+          element: {
+            type: 'dragon',
+            value: 19,
+          },
+        },
+        augments: ['health', 'health', 'health', 'affinity', 'affinity', 'defense'],
+        additionalNotes: {
+          'Weapon Augments':
+            'We get a health augment to help with chip damage and peak performance uptime. Then we also get an affinity augment so we can reach 100% affinity. And with the last augment slot we get the defense augment because the damage increase from the element augment is not noticeable.',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Anti Alatreon Sets" emoji="🐲">
+    <p>
+      Alatreon presents a unique endgame challenge with its unusual hitzone values. Despite common
+      assumptions, Alatreon actually features excellent raw hitzones while its elemental hitzones
+      are less impressive, especially during Dragon active state.
+    </p>
+
+    <p>
+      This creates an interesting optimization puzzle: the fastest kill times come from raw-focused
+      weapons, but you must deal sufficient elemental damage to survive the Escaton Judgment. While
+      experienced hunters might choose to run Fortify and simply accept the cart from Escaton, these
+      specialized elemental builds offer a more consistent approach.
+    </p>
+
+    <p>
+      The Safi'jiiva weapons provide ideal customization through their awakening system. By
+      carefully balancing elemental and raw awakenings, we can meet the elemental threshold while
+      maintaining strong raw damage. Any lance with 400+ displayed element should comfortably reach
+      the topple threshold with aggressive play.
+    </p>
+
+    <Tabs
+      labels={[
+        { id: 'fire', display: 'fire' },
+        { id: 'ice', display: 'ice' },
+      ]}
+    >
+      <div id="fire">
+        <BuildCard
+          noTopRounding
+          build={{
+            title: 'Dawn Harbinger 🔥',
+            description: [
+              "The Safi'jiiva Fire Lance provides the perfect balance of raw damage and fire element when customized with appropriate awakenings. This makes it ideal for Alatreon's Ice active state.",
+              'We intentionally overcap on affinity to maintain 100% critical hit rate without tenderizing - a significant quality-of-life improvement against Alatreon, where maintaining tenderized parts can be challenging due to his mobility and attack patterns.',
+              "Fatalis armor's Transcendence bonus ensures our sharpness remains manageable throughout the fight, while Inheritance allows access to Agitator 7 without restrictive armor combinations. The set's abundant decoration slots accommodate all our core damage skills plus elemental attack and comfort options.",
+              'The AT Velkhana greaves complete the build with Peak Performance 3, providing additional raw damage that synergizes perfectly with our health augment.',
+            ],
+            image: alatreonFire,
+            imageAlt: 'Alatreon Fire Lance',
+            stats: {
+              raw: 804,
+              sharpness: {
+                hits: 60,
+                type: 'purple',
+              },
+              affinity: {
+                avg: 100,
+                peak: 100,
+              },
+              element: {
+                type: 'fire',
+                value: 64,
+              },
+            },
+            augments: ['health', 'health', 'health', 'affinity', 'affinity', 'element'],
+            additionalNotes: {
+              'Weapon Augments':
+                'We get a health augment to help with chip damage and peak performance uptime. Then we also get an affinity augment so we can reach 100% affinity. And with the last augment slot we get the element augment to get the most out of our Safi Awakenings.',
+              'Safi Awakenings':
+                "For the safi awakenings we're gonna be using 3 element 5 awakenings, an attack 5 and an attack 6 augment.",
+            },
+          }}
+        />
+      </div>
+      <div id="ice">
+        <BuildCard
+          noTopRounding
+          build={{
+            title: 'Frost Sovereign 🧊',
+            description: [
+              "The Safi'jiiva Ice Lance edges out Frostfang Barioth's weapon through customization flexibility, allowing for higher raw damage while maintaining sufficient ice element. This makes it the premier choice for Alatreon's Fire active state.",
+              'Our affinity skills are calibrated to reach 100% critical hit rate without tenderizing - particularly valuable against Alatreon where maintaining tenderized parts requires precise timing and positioning knowledge.',
+              'The four-piece Fatalis armor grants both Transcendence for sharpness management and extended health/stamina caps, plus Inheritance to access skill secrets without restrictive armor combinations. This flexibility lets us incorporate both raw damage maximizers and comfort skills.',
+              "AT Velkhana greaves round out the build with Peak Performance 3, adding substantial raw damage that's easily maintained through our health augment.",
+            ],
+            image: alatreonIce,
+            imageAlt: 'Alatreon Ice Lance',
+            stats: {
+              raw: 804,
+              sharpness: {
+                hits: 60,
+                type: 'purple',
+              },
+              affinity: {
+                avg: 100,
+                peak: 100,
+              },
+              element: {
+                type: 'ice',
+                value: 64,
+              },
+            },
+            augments: ['health', 'health', 'health', 'affinity', 'affinity', 'element'],
+            additionalNotes: {
+              'Weapon Augments':
+                'We get a health augment to help with chip damage and peak performance uptime. Then we also get an affinity augment so we can reach 100% affinity. And with the last augment slot we get the element augment to get the most out of our Safi Awakenings.',
+              'Safi Awakenings':
+                "For the safi awakenings we're gonna be using 3 element 5 awakenings, an attack 5 and an attack 6 augment.",
+            },
+          }}
+        />
+      </div>
+    </Tabs>
+  </Section>
+</ContentLayout>
