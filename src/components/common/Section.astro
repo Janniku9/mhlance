@@ -1,4 +1,5 @@
 ---
+// Section.astro
 import SectionTitle from './SectionTitle.astro';
 
 interface Props {
@@ -6,17 +7,34 @@ interface Props {
   emoji?: string;
   className?: string;
   delay?: number;
+  slug?: string; // New: custom slug for anchor links
 }
 
-const { title, emoji, className, delay = 50 } = Astro.props;
+const { title, emoji, className, delay = 50, slug } = Astro.props;
+
+// Generate slug from title if not provided
+function generateSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single
+    .trim();
+}
+
+const sectionSlug = slug || (title ? generateSlug(title) : undefined);
 ---
 
 <section
-  class:list={['flex flex-col gap-4 md:gap-8 text-sectionmobile md:text-lgsectionpc', className]}
+  id={sectionSlug}
+  class:list={[
+    'flex flex-col gap-4 md:gap-8 text-sectionmobile md:text-lgsectionpc scroll-mt-20',
+    className,
+  ]}
   data-fade-in
   style={`--animation-delay: ${delay}ms`}
 >
-  {title && <SectionTitle title={title} emoji={emoji} />}
+  {title && <SectionTitle title={title} emoji={emoji} slug={sectionSlug} />}
   <slot />
 </section>
 
@@ -39,6 +57,11 @@ const { title, emoji, className, delay = 50 } = Astro.props;
   section.fade-in-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Scroll margin for fixed headers */
+  section {
+    scroll-margin-top: 5rem; /* Adjust based on your header height */
   }
 
   @media (prefers-reduced-motion: reduce) {

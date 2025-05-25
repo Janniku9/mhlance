@@ -2,12 +2,13 @@
 interface Props {
   emoji?: string;
   title: string;
+  slug?: string; // New: slug for anchor links
 }
 
-const { emoji, title } = Astro.props;
+const { emoji, title, slug } = Astro.props;
 ---
 
-<div class="flex items-center gap-3 mb-2">
+<div class="flex items-center gap-3 mb-2 group">
   {
     emoji && (
       <span class="text-2xl bg-text/5 rounded-xl p-2 inline-block animate-subtle-float">
@@ -18,6 +19,18 @@ const { emoji, title } = Astro.props;
   <h2 class="text-xl md:text-3xl font-bold text-secondary animate-title uppercase">
     {title}
   </h2>
+
+  {
+    slug && (
+      <button
+        class="opacity-0 group-hover:opacity-100 ml-2 p-1 text-text/40 hover:text-text/80"
+        onclick={`navigator.clipboard.writeText(window.location.origin + window.location.pathname + '#${slug}'); this.textContent = '✓'; setTimeout(() => this.textContent = '🔗', 1000)`}
+        title="Copy link"
+      >
+        🔗
+      </button>
+    )
+  }
 </div>
 
 <style>
