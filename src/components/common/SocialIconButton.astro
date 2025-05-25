@@ -1,0 +1,65 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  icon: string;
+  url: string;
+  name: string;
+  description: string;
+}
+
+const { icon, url, name, description } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="social-icon-button group"
+  aria-label={`Check out the ${name}`}
+>
+  <div class="icon-container">
+    <Icon
+      name={icon}
+      class="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:scale-110"
+    />
+  </div>
+  <div class="tooltip">
+    {description}
+  </div>
+</a>
+
+<style>
+  .social-icon-button {
+    @apply relative inline-flex items-center justify-center;
+  }
+
+  .icon-container {
+    @apply relative bg-background-dark/80 backdrop-blur-sm rounded-xl p-3 md:p-3.5
+           border border-primary/20 transition-all duration-300
+           hover:border-primary/60 hover:bg-background-dark hover:shadow-lg hover:shadow-primary/20;
+  }
+
+  .tooltip {
+    @apply absolute -bottom-8 left-1/2 -translate-x-1/2 
+           bg-background-dark/95 backdrop-blur-sm px-3 py-1 rounded-lg
+           text-xs whitespace-nowrap opacity-0 scale-90 
+           transition-all duration-200 pointer-events-none
+           border border-primary/20;
+  }
+
+  .social-icon-button:hover .tooltip {
+    @apply opacity-100 scale-100;
+  }
+
+  /* Subtle glow effect on hover */
+  .icon-container::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl bg-primary/20 blur-xl opacity-0 
+           transition-opacity duration-300 -z-10;
+  }
+
+  .social-icon-button:hover .icon-container::before {
+    @apply opacity-50;
+  }
+</style>

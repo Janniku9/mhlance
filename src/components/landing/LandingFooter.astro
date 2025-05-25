@@ -5,9 +5,19 @@ import { socials } from '../../data/Socials';
 const classList = Astro.props.class;
 ---
 
-<footer class={`w-full px-4 py-6 md:py-8 ${classList}`}>
-  <div class="flex flex-col items-center justify-center gap-6 md:gap-8">
-    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+<footer class={`w-full ${classList}`}>
+  <div class="flex flex-col items-center justify-center gap-8 md:gap-12">
+    {/* Attribution with softer styling */}
+    <div class="text-center">
+      <span
+        class="text-sm md:text-lg text-text/65 transition-colors duration-300 hover:text-text/70"
+      >
+        Made with ❤️ by the Monster Hunter Lance community
+      </span>
+    </div>
+
+    {/* Social links with horizontal layout */}
+    <div class="flex flex-wrap items-center justify-center gap-6 md:gap-8">
       {
         socials.map((social) => {
           return (
@@ -15,20 +25,24 @@ const classList = Astro.props.class;
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex flex-col items-center gap-1 md:gap-2 transition-colors hover:text-primary"
+              class="group flex items-center gap-3 transition-all duration-300 hover:scale-[1.02]"
               aria-label={`Check out the ${social.name}`}
             >
-              <div class="relative bg-background-dark rounded-full p-2 md:p-3 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-primary/5">
+              {/* Icon container with subtle hover effects */}
+              <div class="relative bg-background-dark border border-text/10 rounded-xl p-3 md:p-4 transition-all duration-300 group-hover:bg-background-darker group-hover:shadow-xl group-hover:shadow-primary/5">
+                {/* Subtle gradient overlay on hover */}
                 <div
                   class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent 
-                         rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
+                         rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300"
                 />
                 <Icon
                   name={social.icon}
-                  class="w-6 h-6 md:w-8 md:h-8 relative z-10 group-hover:text-primary transition-colors"
+                  class="w-5 h-5 md:w-6 md:h-6 relative z-10 text-text/70 group-hover:text-primary transition-colors duration-300"
                 />
               </div>
-              <span class="text-xs md:text-sm group-hover:text-primary transition-colors">
+
+              {/* Text label next to icon */}
+              <span class="text-sm md:text-base text-text/70 group-hover:text-primary transition-colors duration-300 font-medium">
                 {social.description}
               </span>
             </a>
@@ -36,8 +50,5 @@ const classList = Astro.props.class;
         })
       }
     </div>
-    <a href="/contributors" class="text-xs md:text-sm text-text/60 text-center">
-      Made with ❤️ by the Monster Hunter Lance community
-    </a>
   </div>
 </footer>
