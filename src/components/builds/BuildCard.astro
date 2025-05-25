@@ -22,6 +22,7 @@ import BaseCardTitle from '../common/BaseCardTitle.astro';
 
 interface Props {
   build: Build;
+  noTopRounding?: boolean;
   class?: string;
 }
 
@@ -29,7 +30,7 @@ interface Props {
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 const gameId = segments[0] as Game;
 
-const { build, class: className } = Astro.props;
+const { build, noTopRounding, class: className } = Astro.props;
 
 // Generate unique modal ID for this build
 const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCase()}`;
@@ -39,6 +40,7 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
   class={className}
   hoverable={true}
   scaled={true}
+  noTopRounding={noTopRounding}
   dataAttribute="data-build-card-auto-hover"
 >
   <!-- Header Section -->
@@ -144,11 +146,11 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
       {
         build.augments && (
           <div class="mb-6">
-            <span class="text-sm text-text/60 block mb-2">AUGMENTS</span>
+            <span class="text-sm text-secondary-light group-hover:text-secondary block mb-2">AUGMENTS</span>
             <div class="flex flex-wrap gap-1">
               {build.augments.map((augment: AugmentType) => (
                 <div class="group/monster relative">
-                  <div class:list={['hexagon', 'w-8 h-8', getAugmentColor(augment, gameId)]} />
+                  <div class:list={['hexagon', 'w-5 h-5 md:w-8 md:h-8', getAugmentColor(augment, gameId)]} />
                   <ToolTip text={getAugmentTooltip(augment)} />
                 </div>
               ))}
@@ -162,7 +164,7 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
         {
           build.rampageDecos && (
             <div class="mb-6">
-              <span class="text-sm text-text/60 block mb-2">RAMPAGE DECORATION</span>
+              <span class="text-sm text-secondary-light group-hover:text-secondary block mb-2">RAMPAGE DECORATION</span>
               <div class="flex flex-wrap gap-2">
                 {Array.isArray(build.rampageDecos) ? (
                   build.rampageDecos.map((deco) => (
@@ -184,7 +186,7 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
         {
           build.scroll && (
             <div class="mb-6">
-              <span class="text-sm text-text/60 block mb-2">SCROLL</span>
+              <span class="text-sm text-secondary-light group-hover:text-secondary block mb-2">SCROLL</span>
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 relative">
                   <Image

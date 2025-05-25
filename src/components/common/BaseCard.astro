@@ -6,6 +6,7 @@ interface Props {
   dataAttribute?: string;
   href?: string;
   disabled?: boolean;
+  noTopRounding?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   dataAttribute,
   href,
   disabled = false,
+  noTopRounding = false,
 } = Astro.props;
 
 const Component = href ? 'a' : 'div';
@@ -25,8 +27,10 @@ const linkProps = href ? { href: disabled ? '#' : href } : {};
   {...linkProps}
   {...dataAttribute ? { [dataAttribute]: '' } : {}}
   class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-2xl md:rounded-3xl overflow-hidden',
+    'group relative bg-background-dark',
+    noTopRounding ? '' : 'border border-text/10 overflow-hidden',
     'transition-all duration-300',
+    noTopRounding ? 'rounded-b-2xl md:rounded-b-3xl' : 'rounded-2xl md:rounded-3xl',
     hoverable && !disabled && 'hover:bg-background-darker',
     scaled && !disabled && 'hover:scale-[1.02]',
     hoverable && !disabled && 'hover:shadow-2xl hover:shadow-primary/5',

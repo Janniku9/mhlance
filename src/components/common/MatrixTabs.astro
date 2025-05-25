@@ -15,10 +15,10 @@ function isInitiallySelected(rowIndex: number, tabId: string): boolean {
   // Default to first tab if no initial selection provided
   return tabId === (tabRows[rowIndex][0]?.id || '');
 }
+
 type ColorConfig = {
   active: string;
   hover: string;
-  gradient: string;
   underline: string;
 };
 
@@ -28,33 +28,28 @@ type RowColors = Record<number, ColorConfig>;
 function getColorClasses(rowIndex: number): ColorConfig {
   const colors: RowColors = {
     0: {
-      active: 'text-primary border-primary/30',
+      active: 'text-primary',
       hover: 'hover:text-primary',
-      gradient: 'from-primary/5',
       underline: 'bg-primary'
     },
     1: {
-      active: 'text-secondary border-secondary/30',
+      active: 'text-secondary',
       hover: 'hover:text-secondary',
-      gradient: 'from-secondary/5',
       underline: 'bg-secondary'
     },
     2: {
-      active: 'text-error border-error/30',
+      active: 'text-error',
       hover: 'hover:text-error',
-      gradient: 'from-error/5',
       underline: 'bg-error'
     },
     3: {
-      active: 'text-warning border-warning/30',
+      active: 'text-warning',
       hover: 'hover:text-warning',
-      gradient: 'from-warning/5',
       underline: 'bg-warning'
     },
     4: {
-      active: 'text-info border-info/30',
+      active: 'text-info',
       hover: 'hover:text-info',
-      gradient: 'from-info/5',
       underline: 'bg-info'
     },
   };
@@ -66,48 +61,38 @@ function getColorClasses(rowIndex: number): ColorConfig {
 <div class="tab-card group relative border border-text/10 rounded-3xl overflow-hidden transition-all duration-300 hover:border-text/20">
   <!-- Card header with tabs -->
   <div class="bg-background-dark">
-    {title && <h3 class="px-6 pt-5 text-md font-medium mb-2 text-text/80">{title}</h3>}
+    {title && <h3 class="px-1 pt-5 pb-4 text-md font-medium text-text/80">{title}</h3>}
     
     {
       tabRows.map((rowOptions, rowIndex) => {
         const colors = getColorClasses(rowIndex);
         return (
           <div class="relative">
-            <div class="flex flex-wrap justify-center gap-3 pt-3 px-6">
+            <div class="flex w-full">
               {rowOptions.map((option, optionIndex) => (
                 <button
                   data-row={rowIndex}
                   data-option-id={option.id}
                   class:list={[
-                    'relative bg-background-dark border border-text/10 px-6 py-3',
-                    'transition-all duration-300 rounded-xl',
-                    'flex items-center gap-2 hover:bg-background-darker',
-                    option.id === (isInitiallySelected(rowIndex, option.id) ? option.id : '')
-                      ? colors.active
-                      : 'hover:shadow-sm',
+                    'relative flex-1 py-4 px-2',
+                    'transition-all duration-300',
+                    'flex items-center justify-center hover:bg-background-darker',
+                    isInitiallySelected(rowIndex, option.id) ? colors.active : '',
                   ]}
                 >
-                  <div
-                    class:list={[
-                      'absolute inset-0 bg-gradient-to-br to-transparent rounded-xl',
-                      colors.gradient,
-                      'opacity-0 hover:opacity-100 transition-all duration-300',
-                      option.id === (isInitiallySelected(rowIndex, option.id) ? option.id : '') ? 'opacity-100' : '',
-                    ]}
-                  />
                   <span
                     class:list={[
-                      'relative text-sm font-medium transition-colors uppercase',
+                      'relative text-xs md:text-sm font-medium transition-colors uppercase',
                       colors.hover,
                     ]}
                   >
                     {option.display}
                   </span>
                   
-                  <!-- Active indicator (bottom border instead of underline) -->
+                  <!-- Active indicator (bottom border) -->
                   <div 
                     class:list={[
-                      'absolute bottom-0 left-0 h-1 w-full rounded-t-full transition-all duration-200',
+                      'absolute bottom-0 left-0 h-1 w-full transition-all duration-200',
                       colors.underline,
                       isInitiallySelected(rowIndex, option.id) ? 'opacity-100' : 'opacity-0'
                     ]}
@@ -116,15 +101,10 @@ function getColorClasses(rowIndex: number): ColorConfig {
               ))}
             </div>
             
-            <!-- Row Separator with margin to handle wrapping -->
-            <div
-              class:list={[
-                'w-full border-t border-text/10 mt-4',
-                rowIndex === tabRows.length - 1
-                  ? 'border-solid'
-                  : 'border-dashed'
-              ]}
-            />
+            <!-- Row Separator -->
+            {rowIndex < tabRows.length - 1 && (
+              <div class="w-full border-t border-text/10 border-dashed" />
+            )}
           </div>
         );
       })
@@ -132,7 +112,7 @@ function getColorClasses(rowIndex: number): ColorConfig {
   </div>
 
   <!-- Card content area -->
-  <div class="build-content p-2 sm:p-4 md:p-6 bg-background-dark/30">
+  <div class="build-content bg-background-dark/30">
     <slot />
   </div>
 </div>
@@ -172,31 +152,11 @@ function getColorClasses(rowIndex: number): ColorConfig {
   });
 
   const rowColors = {
-    0: {
-      active: ['text-primary', 'border-primary/30'],
-      underline: 'opacity-100',
-      gradient: 'opacity-100'
-    },
-    1: {
-      active: ['text-secondary', 'border-secondary/30'],
-      underline: 'opacity-100',
-      gradient: 'opacity-100'
-    },
-    2: {
-      active: ['text-error', 'border-error/30'],
-      underline: 'opacity-100',
-      gradient: 'opacity-100'
-    },
-    3: {
-      active: ['text-warning', 'border-warning/30'],
-      underline: 'opacity-100',
-      gradient: 'opacity-100'
-    },
-    4: {
-      active: ['text-info', 'border-info/30'],
-      underline: 'opacity-100',
-      gradient: 'opacity-100'
-    },
+    0: { active: ['text-primary'] },
+    1: { active: ['text-secondary'] },
+    2: { active: ['text-error'] },
+    3: { active: ['text-warning'] },
+    4: { active: ['text-info'] },
   };
 
   // Scope buttons to this component
@@ -239,7 +199,6 @@ function getColorClasses(rowIndex: number): ColorConfig {
         // Reset all buttons in this row first
         matrixComponent.querySelectorAll(`button[data-row="${rowIndex}"]`).forEach((btn) => {
           colors.active.forEach(cls => btn.classList.remove(cls));
-          btn.querySelector('.bg-gradient-to-br')?.classList.remove(colors.gradient);
           
           // Force hide the underline by setting opacity-0
           const underline = btn.querySelector('div:last-child');
@@ -251,7 +210,6 @@ function getColorClasses(rowIndex: number): ColorConfig {
 
         // Then set the active state only for the clicked button
         colors.active.forEach(cls => button.classList.add(cls));
-        button.querySelector('.bg-gradient-to-br')?.classList.add(colors.gradient);
         
         // Force show the underline
         const activeUnderline = button.querySelector('div:last-child');

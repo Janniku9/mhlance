@@ -1,8 +1,4 @@
 ---
-import Tabs from '../../../components/core/tabs/Tabs.astro';
-import MatrixTabs from '../../../components/core/tabs/MatrixTabs.astro';
-import Section from '../../../components/core/layout/Section.astro';
-import SectionSubTitle from '../../../components/core/typography/SectionSubTitle.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import BuildCard from '../../../components/builds/BuildCard.astro';
 
@@ -34,7 +30,11 @@ import evasion from '../../../assets/rise/builds/endgame/fun/evasion.png';
 import para from '../../../assets/rise/builds/endgame/fun/para.png';
 import sleep from '../../../assets/rise/builds/endgame/fun/sleep.png';
 import amatsu from '../../../assets/rise/builds/endgame/fun/amatsu.png';
-import StyledList from '../../../components/core/lists/StyledList.astro';
+import Section from '../../../components/common/Section.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import Tabs from '../../../components/common/Tabs.astro';
+import MatrixTabs from '../../../components/common/MatrixTabs.astro';
 
 // note reuse
 const heavenSentMaxMightNote =
@@ -189,6 +189,7 @@ const blueScrollDerelictionNote =
     >
       <div id="heaven-sent-bazel">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Heaven-Sent - Seething Bazel 💥',
             description: [
@@ -238,6 +239,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="heaven-sent-kaktus">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Heaven-Sent - Kaktus 🌵',
             description: [
@@ -289,6 +291,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="masters-touch-teostra">
         <BuildCard
+          noTopRounding
           build={{
             title: "Master's Touch - Teostra 💥",
             description: [
@@ -335,6 +338,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="masters-touch-kaktus">
         <BuildCard
+          noTopRounding
           build={{
             title: "Master's Touch - Kaktus 🌵",
             description: [
@@ -426,6 +430,7 @@ const blueScrollDerelictionNote =
     >
       <div id="heaven-sent-fire">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Heaven-Sent - Aknosom Fire 🔥',
             description: [
@@ -472,6 +477,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="heaven-sent-water">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Heaven-Sent - Ludroth Water 💧',
             description: [
@@ -518,6 +524,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="heaven-sent-thunder">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Heaven-Sent - Narwa Thunder ⚡',
             description: [
@@ -564,6 +571,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="heaven-sent-ice">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Heaven-Sent - Zamite Ice 🧊',
             description: [
@@ -610,6 +618,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="heaven-sent-dragon">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Heaven-Sent - Primordial Dragon 🐉',
             description: [
@@ -657,6 +666,7 @@ const blueScrollDerelictionNote =
 
       <div id="masters-touch-fire">
         <BuildCard
+          noTopRounding
           build={{
             title: "Master's Touch - Kaktus Fire 🔥",
             description: [
@@ -704,6 +714,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="masters-touch-water">
         <BuildCard
+          noTopRounding
           build={{
             title: "Master's Touch - Ludroth Water 💧",
             description: [
@@ -751,6 +762,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="masters-touch-thunder">
         <BuildCard
+          noTopRounding
           build={{
             title: "Master's Touch - Narwa Thunder ⚡",
             description: [
@@ -798,6 +810,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="masters-touch-ice">
         <BuildCard
+          noTopRounding
           build={{
             title: "Master's Touch - Zamite Ice 🧊",
             description: [
@@ -845,6 +858,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="masters-touch-dragon">
         <BuildCard
+          noTopRounding
           build={{
             title: "Master's Touch - Primordial Dragon 🐉",
             description: [
@@ -893,6 +907,7 @@ const blueScrollDerelictionNote =
 
       <div id="dereliction-fire">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Dereliction - Aknosom Fire 🔥',
             description: [
@@ -940,6 +955,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="dereliction-water">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Dereliction - Ludroth Water 💧',
             description: [
@@ -987,6 +1003,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="dereliction-thunder">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Dereliction - Narwa Thunder ⚡',
             description: [
@@ -1034,6 +1051,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="dereliction-ice">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Dereliction - Zamite Ice 🧊',
             description: [
@@ -1081,6 +1099,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="dereliction-dragon">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Dereliction - Primordial Dragon 🐉',
             description: [
@@ -1147,6 +1166,7 @@ const blueScrollDerelictionNote =
     >
       <div id="evasion">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Evasion - Lucent Nargacuga 🦅',
             description: [
@@ -1194,6 +1214,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="sleep">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Sleep - Melahoa 💤',
             description: [
@@ -1241,6 +1262,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="paralysis">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Paralysis - Chaos ⚡⚡',
             description: [
@@ -1287,6 +1309,7 @@ const blueScrollDerelictionNote =
       </div>
       <div id="amatsu">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Silkbind Boost - Amatsu 🌪️',
             description: [

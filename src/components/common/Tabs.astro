@@ -11,38 +11,31 @@ const selectedId = initialSelectedId || (labels.length > 0 ? labels[0].id : null
 
 <div class="tab-card group relative border border-text/10 rounded-3xl overflow-hidden transition-all duration-300 hover:border-text/20">
   <!-- Card header with tabs -->
-  <div class="px-6 pt-5 pb-4 border-b border-text/10 bg-background-dark">
-    {title && <h3 class="text-md font-medium mb-4 text-text/80">{title}</h3>}
+  <div class="border-b border-text/10 bg-background-dark">
+    {title && <h3 class="text-md font-medium text-text/80 px-6 pt-5 pb-4">{title}</h3>}
     
-    <div class="flex flex-wrap justify-center gap-3 relative">
+    <div class="flex w-full relative">
       {
         labels.map((tab) => (
           <button
             data-tab={tab.id}
             class:list={[
-              'relative bg-background-dark border border-text/10 px-6 py-3',
-              'transition-all duration-300 rounded-xl',
-              'flex items-center gap-2 hover:bg-background-darker',
+              'relative flex-1 py-4 px-2',
+              'transition-all duration-300',
+              'flex items-center justify-center hover:bg-background-darker',
               tab.id === selectedId
-                ? 'text-primary border-primary/30'
-                : 'hover:shadow-sm hover:shadow-primary/5',
+                ? 'text-primary'
+                : '',
             ]}
           >
-            <div
-              class:list={[
-                'absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-xl',
-                'opacity-0 hover:opacity-100 transition-all duration-300',
-                tab.id === selectedId ? 'opacity-100' : '',
-              ]}
-            />
-            <span class="relative text-sm font-medium hover:text-primary transition-colors uppercase">
+            <span class="relative text-xs md:text-sm font-medium hover:text-primary transition-colors uppercase">
               {tab.display}
             </span>
             
             <!-- Active indicator (bottom border) -->
             <div 
               class:list={[
-                'absolute bottom-0 left-0 h-1 w-full rounded-t-full bg-primary transition-all duration-200',
+                'absolute bottom-0 left-0 h-1 w-full bg-primary transition-all duration-200',
                 tab.id === selectedId ? 'opacity-100' : 'opacity-0'
               ]}
             ></div>
@@ -53,7 +46,7 @@ const selectedId = initialSelectedId || (labels.length > 0 ? labels[0].id : null
   </div>
 
   <!-- Card content area -->
-  <div class="build-content p-2 sm:p-4 md:p-6 bg-background-dark/30">
+  <div class="build-content bg-background-dark/30">
     <slot />
   </div>
 </div>
@@ -95,9 +88,9 @@ const selectedId = initialSelectedId || (labels.length > 0 ? labels[0].id : null
     // If no tab is marked as active, select the first one
     if (!initialTab && tabs.length > 0) {
       initialTab = tabs[0];
-      initialTab.classList.add('text-primary', 'border-primary/30');
-      initialTab.querySelector('.bg-gradient-to-br')?.classList.add('opacity-100');
+      initialTab.classList.add('text-primary');
       initialTab.querySelector('div:last-child')?.classList.remove('opacity-0');
+      initialTab.querySelector('div:last-child')?.classList.add('opacity-100');
     }
 
     // Hide all except selected content
@@ -115,10 +108,9 @@ const selectedId = initialSelectedId || (labels.length > 0 ? labels[0].id : null
         
         // Reset all tabs first
         tabs.forEach((t) => {
-          t.classList.remove('text-primary', 'border-primary/30');
-          t.querySelector('.bg-gradient-to-br')?.classList.remove('opacity-100');
+          t.classList.remove('text-primary');
           
-          // Force hide the underline with explicit classes
+          // Force hide the underline
           const underline = t.querySelector('div:last-child');
           if (underline) {
             underline.classList.remove('opacity-100');
@@ -133,10 +125,9 @@ const selectedId = initialSelectedId || (labels.length > 0 ? labels[0].id : null
         });
         
         // Then activate only the clicked tab
-        tab.classList.add('text-primary', 'border-primary/30');
-        tab.querySelector('.bg-gradient-to-br')?.classList.add('opacity-100');
+        tab.classList.add('text-primary');
         
-        // Force show the underline with explicit classes
+        // Force show the underline
         const activeUnderline = tab.querySelector('div:last-child');
         if (activeUnderline) {
           activeUnderline.classList.remove('opacity-0');
