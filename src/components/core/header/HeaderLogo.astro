@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import { LOGO_DIMENSIONS } from '../../../types/Header';
+
+import LargeLanceLogo from '../../../assets/lance_logo_large3.png';
+import SmallLanceLogo from '../../../assets/lance_logo_small.png';
+---
+
+<div class="flex items-center">
+  <a href="/" class="block">
+    <Image
+      src={LargeLanceLogo}
+      alt="Logo"
+      width={LOGO_DIMENSIONS.large.width}
+      height={LOGO_DIMENSIONS.large.height}
+      class="hidden md:block object-contain"
+      loading="eager"
+      decoding="async"
+    />
+    <Image
+      src={SmallLanceLogo}
+      alt="Logo"
+      width={LOGO_DIMENSIONS.small.width}
+      height={LOGO_DIMENSIONS.small.height}
+      class="md:hidden object-contain"
+      loading="eager"
+      decoding="async"
+    />
+  </a>
+</div>

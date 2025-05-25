@@ -1,0 +1,38 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  url: string;
+  name: string;
+  icon: string;
+  description: string;
+}
+
+const { url, name, icon, description } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex md:flex-col items-center gap-2 transition-colors
+hover:text-primary"
+  aria-label={`Check out the ${name}`}
+>
+  <div
+    class="relative bg-background-dark rounded-full p-3 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-primary/5"
+  >
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
+             rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"
+    >
+    </div>
+    <Icon
+      name={icon}
+      class="w-6 h-6 md:w-8 md:h-8 relative z-10 group-hover:text-primary transition-colors"
+    />
+  </div>
+  <span class="text-sm group-hover:text-primary transition-colors">
+    {description}
+  </span>
+</a>
