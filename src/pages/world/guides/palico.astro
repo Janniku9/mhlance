@@ -1,0 +1,117 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import vigorWasp from '../../../assets/world/guides/palico/vigorwasp.png';
+import coralHorn from '../../../assets/world/guides/palico/horn.png';
+import meowcano from '../../../assets/world/guides/palico/volcano.png';
+
+import blastWeapon from '../../../assets/world/guides/palico/blast.png';
+import paraWeapon from '../../../assets/world/guides/palico/para.png';
+import sleepWeapon from '../../../assets/world/guides/palico/sleep.png';
+import poisonWeapon from '../../../assets/world/guides/palico/poison.png';
+import GadgetCard from '../../../components/guides/GadgetCard.astro';
+import Section from '../../../components/common/Section.astro';
+import ImageGridCard from '../../../components/common/ImageGridCard.astro';
+---
+
+<ContentLayout>
+  <Section>
+    In the beginning of the game you'll be able to create your own Palico. You can bring it on solo
+    or duo hunts where it will help you with dealing Damage, using supportive abilities and most
+    importantly stealing your aggro. For some people the aggro stealing is a deal breaker, but if
+    you love your Cat and want to bring it on your hunts here's a quick Guide on the best equipment.
+  </Section>
+
+  <Section title="Gadgets">
+    <p>
+      Palico gadgets are the most impactful part of your palico's equipment. There are a lot of
+      different gadgets that all have their own unique abilities. From Healing to buffing to Damage
+      dealing, to Cc, there's a Gadget for pretty much everything. So here's a list of the best
+      gadgets that are worth leveling up:
+    </p>
+
+    <div class="grid grid-cols-1 gap-12">
+      <!-- Vigorwasp Spray -->
+      <GadgetCard
+        name="Vigorwasp Spray"
+        image={vigorWasp}
+        description={[
+          'This is the default Gadget and it turns out to be one of the most useful ones. Especially in the early game before we have Health Augments unlocked, the Healing it provides can be a life saver.',
+          'In Master Rank it can even Revive you once per quest, preventing a cart.',
+        ]}
+        effects={[
+          'Heals the hunter when deployed',
+          'Creates healing stations that can be used when needed',
+          'Can revive the hunter once per quest (Master Rank)',
+        ]}
+      />
+
+      <!-- Coral Orchestra -->
+      <GadgetCard
+        name="Coral Orchestra"
+        image={coralHorn}
+        description={[
+          "The Coral Orchestra is a great support Gadget. Ideal for players that don't need the Healing or Revive from the Vigorwasp spray.",
+          'It provides a variety of buffs ranging from Attack Up, Defense Up, Earplugs, Windproof, Stamina reduction and a lot more. Some of these buffs, like the Attack Up, are actually quite strong.',
+          "The only downside is that it's completely random and you can't control which buff you get. In Master Rank it also will pull out a gong that can Flinch monsters out of their Attacks.",
+        ]}
+        effects={[
+          'Provides random buffs (Attack Up, Defense Up, Earplugs, etc.)',
+          'Buffs can last for a significant duration',
+          'Can flinch monsters with gong (Master Rank)',
+        ]}
+        reversed={true}
+      />
+
+      <!-- Meowlotov Cocktail -->
+      <GadgetCard
+        name="Meowlotov Cocktail"
+        image={meowcano}
+        description={[
+          'This is the best Gadget for Damage. It allows your Palico to throw Bombs at the monster.',
+          "In Master Rank it can pull out the meowcano, a giant volcano that deals a lot of Damage if it's well placed.",
+          "There's even a glitch with this Gadget allowing you to pretty much one-shot any monster in the game. But even without the glitch it's still the highest Damage dealing Gadget.",
+        ]}
+        effects={[
+          'Palico throws bombs at monsters',
+          'Deploys meowcano for high damage (Master Rank)',
+          'Highest damage potential of all gadgets',
+        ]}
+      />
+    </div>
+  </Section>
+
+  <Section title="Weapons">
+    <ImageGridCard
+      images={[
+        {
+          src: paraWeapon,
+          title: 'Paralysis ⚡⚡',
+          alt: 'Paralysis ⚡⚡',
+          caption: 'Ladybug',
+        },
+        {
+          src: sleepWeapon,
+          title: 'Sleep 💤',
+          alt: 'Sleep 💤',
+          caption: 'Radobaan',
+        },
+        {
+          src: poisonWeapon,
+          title: 'Poison 💀',
+          alt: 'Poison 💀',
+          caption: 'Rathian',
+        },
+        {
+          src: blastWeapon,
+          title: 'Blast 💥',
+          alt: 'Blast 💥',
+          caption: 'Raging Brachydios',
+        },
+      ]}
+      title="Best Palico Weapons"
+      maxCols={2}
+      maxWidth="300px"
+    />
+  </Section>
+</ContentLayout>

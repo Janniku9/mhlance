@@ -1,5 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
+import BaseCard from '../common/BaseCard.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
+import BaseCardSubTitle from '../common/BaseCardSubTitle.astro';
 
 interface Props {
   title: string;
@@ -28,6 +31,10 @@ interface Props {
   }>;
 
   class?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
 }
 
 const {
@@ -37,6 +44,10 @@ const {
   ingredients,
   skills,
   class: className,
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
 } = Astro.props;
 
 // Helper function to repeat emoji based on count
@@ -48,27 +59,17 @@ const repeatEmoji = (emoji: string, count: number) => {
 const totalIngredientCount = ingredients.reduce((sum, item) => sum + item.count, 0);
 ---
 
-<div
-  data-food-card-auto-hover
-  class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
-    'transition-all duration-300 hover:bg-background-darker hover:scale-[1.02]',
-    'hover:shadow-2xl hover:shadow-primary/5 animate-fade-in',
-    className,
-  ]}
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-food-card-auto-hover"
 >
-  <!-- Hover gradient overlay -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
-            opacity-0 group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
   <div class="p-4 sm:p-6 md:p-8 h-full flex flex-col">
     <!-- Header -->
-    <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-      {title}
-    </h3>
+    <BaseCardTitle title={title} class="mb-2" />
 
     <!-- Description -->
     <p class="text-sm text-text/80 mb-6">
@@ -136,7 +137,7 @@ const totalIngredientCount = ingredients.reduce((sum, item) => sum + item.count,
             <div>
               <div class="flex items-center gap-2 mb-1">
                 <Icon name="mingcute:lightning-fill" class="w-4 h-4 text-secondary flex-shrink-0" />
-                <span class="font-medium">{skill.name}</span>
+                <BaseCardSubTitle title={skill.name} />
               </div>
               <p class="text-sm text-text/80 pl-6">{skill.description}</p>
             </div>
@@ -145,24 +146,7 @@ const totalIngredientCount = ingredients.reduce((sum, item) => sum + item.count,
       </div>
     </div>
   </div>
-</div>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
-  }
-</style>
+</BaseCard>
 
 <script>
   import autoHoverDirective from '../../directives/auto-hover';

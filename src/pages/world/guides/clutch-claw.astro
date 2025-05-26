@@ -1,0 +1,186 @@
+---
+import GifCard from '../../../components/common/GifCard.astro';
+import Section from '../../../components/common/Section.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      The Clutch Claw is a core mechanic introduced in the Iceborne expansion that enhances every
+      hunter's toolkit. It allows for increased damage output, better monster control, and creates
+      new offensive opportunities. For Lance users, the Clutch Claw integrates naturally with your
+      defensive capabilities, offering unique advantages.
+    </p>
+
+    <p>
+      This guide covers both the universal Clutch Claw mechanics and Lance-specific techniques that
+      will improve your hunting efficiency.
+    </p>
+  </Section>
+
+  <Section title="Tenderize Attack">
+    <p>
+      Tenderizing monster parts increases their hitzone values, meaning you'll deal more damage to
+      softened areas. Additionally, the Weakness Exploit skill was adjusted in Iceborne to provide
+      30% affinity on weakspots (HZV ≥ 45) and an additional 20% on tenderized parts. To get the
+      full 50% affinity bonus, you'll need to tenderize the monster's weakpoints.
+    </p>
+
+    <GifCard
+      src="https://giphy.com/embed/R74VfUgmGh3TtrD8XI"
+      title="Tenderizing Teostra"
+      alt="Tenderizing Teostra"
+      width="720px"
+    >
+      This clip shows a tenderize attack during a Teostra's clagger animation, creating a safe
+      opportunity to soften its head.
+    </GifCard>
+
+    <p>
+      Lance performs a heavy tenderize attack that fully softens a part in one application. This is
+      more efficient than weapons that require two applications to achieve full tenderizing. While
+      Lance doesn't naturally drop slinger ammo when tenderizing (as light weapons do), this isn't a
+      significant drawback since Lance doesn't heavily rely on slinger ammo for its core gameplay.
+    </p>
+
+    <p>
+      If you do want slinger ammo drops from tenderizing, you can add the Clutch Claw Boost
+      decoration to your build.
+    </p>
+
+    <p>
+      Monsters frequently enter a "clagger" state (similar to a flinch) where they pause briefly.
+      Using the Clutch Claw during this window extends the clagger duration, giving you a safe
+      opportunity to tenderize. For already tenderized parts, you can briefly clutch on and hop off
+      to reset and extend the clagger, maintaining a safe opening for teammates.
+    </p>
+  </Section>
+
+  <Section title="Wallbangs">
+    <p>
+      The Clutch Claw enables partial control over monster movement and aggression. By clutching
+      onto a monster's head and turning it (up to 3 times), you can make it enrage. This is useful
+      for activating the Agitator skill, which is particularly strong in Iceborne due to how
+      frequently monsters can be enraged.
+    </p>
+
+    <p>Monster rage status is indicated by the eye icon on your minimap:</p>
+
+    <StyledList
+      variant="compact"
+      items={[
+        {
+          text: 'Yellow Eye: Monster is calm (can be wallbanged)',
+        },
+        {
+          text: 'Red Eye: Monster is enraged (no wallbangs possible)',
+        },
+        {
+          text: "Purple Eye: Monster hasn't detected you (Ghillie Mantle, Smoke Bomb, etc.)",
+        },
+      ]}
+    />
+
+    <GifCard
+      src="https://giphy.com/embed/QPVjUyhZRp0nxwNoI9"
+      title="Wallbanging Nergigante"
+      alt="Wallbanging Nergigante"
+      width="720px"
+      reversed
+    >
+      This clip demonstrates a successful wallbang on Nergigante, creating a significant opening for
+      damage or tenderizing.
+    </GifCard>
+
+    <p>
+      When a monster isn't enraged (yellow eye icon) and you have slinger ammo, you can clutch onto
+      its head and fire your slinger to make it run forward. If it collides with a wall, it will
+      take damage and fall down as shown in the clip above. This creates a valuable opening for
+      either dealing damage or tenderizing parts.
+    </p>
+
+    <p>
+      You can also use the flinch shot (making the monster run forward) to redirect aggro in
+      multiplayer hunts, which can be especially useful against monsters like Safi'jiiva.
+    </p>
+  </Section>
+
+  <Section title="Guard Shot">
+    <p>
+      Guard Shot is a Lance-specific technique where you hold your shield up while aiming your
+      slinger. This stance allows you to block incoming attacks while maintaining the ability to
+      quickly fire slinger ammo or transition to other techniques.
+    </p>
+
+    <GifCard
+      src="https://giphy.com/embed/bzqCAkSWh86nLPA2AJ"
+      title="Guard Shot Screamer Pod"
+      alt="Guard Shot Screamer Pod"
+      width="720px"
+    >
+      This clip shows how Guard Shot can be used to safely and quickly deploy a Screamer Pod against
+      the burrowed Diablos.
+    </GifCard>
+
+    <p>
+      Guard Shot uses your normal guard level (no additional guard boost) but offers two significant
+      advantages:
+    </p>
+
+    <StyledList
+      variant="compact"
+      items={[
+        {
+          text: 'Allows quick rotation in any direction while guarding',
+        },
+        {
+          text: 'Provides immediate access to slinger functionality without dropping your guard',
+        },
+      ]}
+    />
+
+    <p>
+      This technique is particularly useful for safely using utility slinger ammo like Flash Pods or
+      Screamer Pods, or as a setup for the Clutch Counter technique.
+    </p>
+  </Section>
+
+  <Section title="Clutch Claw Counter">
+    <p>
+      The Clutch Claw Counter is one of Lance's most useful Iceborne techniques. You can enter this
+      stance from Guard Shot by pressing the high poke button, or from a Counter stance by pressing
+      the Clutch Claw button. Similar to Power Guard, you consume stamina over time while in this
+      stance.
+    </p>
+
+    <GifCard
+      src="https://giphy.com/embed/BmTzZ0rGUXTzdr9hQb"
+      title="Clutch Claw Counter in Action"
+      alt="Clutch Claw Counter in Action"
+      width="720px"
+      reversed
+    >
+      This clip demonstrates how Clutch Claw Counter can turn a blocked attack into a tenderizing
+      opportunity, in this case targeting Nargacuga's tail.
+    </GifCard>
+
+    <p>
+      When hit by a close-range attack while in this stance, you'll block the hit and automatically
+      grapple onto the monster at the point of impact. Once attached, you can choose to tenderize,
+      or when on the head, also turn the monster or wallbang it.
+    </p>
+
+    <p>
+      What makes this technique particularly valuable is the hyper armor you gain during the
+      grapple. This reduces damage taken and prevents interruption from monster attacks, making it a
+      safe way to tenderize in situations that would normally be too risky.
+    </p>
+
+    <p>
+      Clutch Claw Counter works best against physical attacks rather than projectiles or breath
+      weapons, and is most effective when you want to tenderize the part that's attacking you.
+    </p>
+  </Section>
+</ContentLayout>

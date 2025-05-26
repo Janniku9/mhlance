@@ -1,0 +1,289 @@
+---
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import FoodCard from '../../../components/guides/FoodCard.astro';
+import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      The Food system in Monster Hunter World plays a crucial role in hunt preparation. A
+      well-selected meal can make the difference between success and failure by providing flat stat
+      increases to Health, Stamina, Defense or Attack, as well as unique skills that provide
+      significant advantages during your hunt.
+    </p>
+
+    <p>
+      This guide breaks down the Food system mechanics, explains my most used meal combinations, and
+      helps you understand how to create optimal meals for different hunting scenarios.
+    </p>
+  </Section>
+
+  <Section title="My Favourite Meals">
+    <p>Here are my most used meal combinations and when to use them:</p>
+
+    <!-- Updated Food Card Examples -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <FoodCard
+        title="All-Rounder"
+        description="My go-to meal when I don't need anything specific. Provides Attack Bonus and essential stamina management."
+        primaryIngredients={{
+          type: 'Meat',
+          count: 6,
+          emoji: '🍖',
+          bonus: '+15 Attack',
+        }}
+        ingredients={[
+          {
+            emoji: '🟣',
+            count: 2,
+            color: 'Purple',
+            tooltip: 'Purple ingredient for Felyne Groomer',
+          },
+          {
+            emoji: '🟠',
+            count: 4,
+            color: 'Orange',
+            tooltip: 'Orange ingredient for Felyne Black Belt',
+          },
+        ]}
+        skills={[
+          {
+            name: 'Felyne Blackbelt',
+            description:
+              'Reduces stamina depletion when blocking, evading, or performing stamina-intensive actions',
+          },
+          {
+            name: 'Felyne Groomer',
+            description: 'Speeds up recovery from elemental blights',
+          },
+        ]}
+      />
+
+      <FoodCard
+        title="Anti-Blights"
+        description="Perfect against monsters that inflict annoying blights. Negates elemental blights with sufficient resistance."
+        primaryIngredients={{
+          type: 'Vegetables',
+          count: 6,
+          emoji: '🥦',
+          bonus: '+15 Elemental Resistance',
+        }}
+        ingredients={[
+          { emoji: '🔴', count: 2, color: 'Red', tooltip: 'Red ingredient for Felyne Polisher' },
+          {
+            emoji: '🟠',
+            count: 4,
+            color: 'Orange',
+            tooltip: 'Orange ingredient for Felyne Black Belt',
+          },
+        ]}
+        skills={[
+          {
+            name: 'Felyne Blackbelt',
+            description:
+              'Reduces stamina depletion when blocking, evading, or performing stamina-intensive actions',
+          },
+          {
+            name: 'Felyne Polisher',
+            description: 'Increases weapon sharpening speed',
+          },
+        ]}
+      />
+
+      <FoodCard
+        title="Anti One-shot"
+        description="Survival insurance against hard-hitting monsters. Gives you a second chance if you take fatal damage."
+        primaryIngredients={{
+          type: 'Meat',
+          count: 6,
+          emoji: '🍖',
+          bonus: '+15 Attack',
+        }}
+        ingredients={[
+          { emoji: '🔵', count: 6, color: 'Blue', tooltip: 'Blue ingredient for Felyne Moxie' },
+        ]}
+        skills={[
+          {
+            name: 'Felyne Moxie',
+            description: 'Prevents fainting one time if your health is above a certain threshold',
+          },
+        ]}
+      />
+
+      <FoodCard
+        title="Safeguard"
+        description="Essential for tough multiplayer hunts. Gives your entire party an additional faint allowance."
+        primaryIngredients={{
+          type: 'Drinks',
+          count: 6,
+          emoji: '🍺',
+        }}
+        ingredients={[
+          { emoji: '🔴', count: 6, color: 'Red', tooltip: 'Red ingredient for Felyne Safeguard' },
+        ]}
+        skills={[
+          {
+            name: 'Felyne Safeguard',
+            description: 'Adds one additional faint to the quest faint limit',
+          },
+        ]}
+      />
+    </div>
+  </Section>
+
+  <Section title="How The Food System Works">
+    <p>
+      A meal in Monster Hunter World consists of 6 ingredients chosen from four categories: Meat,
+      Fish, Vegetables, and Drinks. Each ingredient has both a type and a color, which determine the
+      bonuses and skills you'll receive.
+    </p>
+
+    <SectionSubTitle title="Ingredient Types" />
+    <p>
+      Combining multiple ingredients of the same type provides flat stat bonuses depending on how
+      many you use:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: '2 ingredients: Small bonus',
+          emoji: '🔹',
+        },
+        {
+          text: '4 ingredients: Medium bonus',
+          emoji: '🔸',
+        },
+        {
+          text: '6 ingredients: Large bonus',
+          emoji: '💎',
+        },
+      ]}
+    />
+
+    <p>Each ingredient type provides different stat bonuses:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Meat: +5/+10/+15 Attack',
+          emoji: '🍖',
+        },
+        {
+          text: 'Fish: +5/+10/+15 Defense',
+          emoji: '🐟',
+        },
+        {
+          text: 'Vegetables: +5/+10/+15 Elemental Resistance',
+          emoji: '🥦',
+        },
+        {
+          text: 'Drinks: No stat bonuses (compensated with stronger skills)',
+          emoji: '🍺',
+        },
+      ]}
+    />
+
+    <p>
+      You can mix and match types to get multiple smaller bonuses. For example, eating 4 Meat and 2
+      Fish would give you +10 Attack and +5 Defense.
+    </p>
+
+    <SectionSubTitle title="Ingredient Colors" />
+    <p>
+      Similarly to types, combining ingredients of the same color provides food skills. There are 6
+      ingredients of each color, allowing you to potentially get both maximum stat bonuses and a
+      food skill simultaneously.
+    </p>
+
+    <p>
+      For example, eating 6 Red Meat would give you both +15 Attack and the associated Red skill. If
+      you don't have all 6 ingredients of a color unlocked, you can mix types while maintaining the
+      color (like 4 Red Fish + 2 Red Meat) to still get the skill.
+    </p>
+
+    <SectionSubTitle title="Ingredient Freshness" />
+    <p>
+      Skills from ingredient colors have a chance to activate based on the freshness of the
+      ingredients used:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Fresh ingredients (with green highlights) increase the activation chance',
+          emoji: '✅',
+        },
+        {
+          text: 'More fresh ingredients means higher chance of skill activation',
+          emoji: '📈',
+        },
+        {
+          text: 'Fresh ingredients also provide health and stamina boosts',
+          emoji: '❤️',
+        },
+        {
+          text: 'Using a Gourmet Voucher guarantees fresh ingredients and skill activation',
+          emoji: '🎫',
+        },
+      ]}
+    />
+
+    <p>
+      The Steamworks facility is the best way to farm Gourmet Vouchers for guaranteed skill
+      activation.
+    </p>
+
+    <SectionSubTitle title="Daily Skills" />
+    <p>
+      Beyond the skills you deliberately choose, random Daily Skills may activate when you eat a
+      meal. While these are usually less impactful, they provide nice bonuses that can occasionally
+      help your hunt.
+    </p>
+  </Section>
+
+  <Section title="Practical Tips">
+    <p>
+      Here are some practical considerations to help you decide which meal to eat for different
+      hunts:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'For most hunts, prioritize Attack bonuses from Meat ingredients',
+          emoji: '⚔️',
+        },
+        {
+          text: 'Against elemental-heavy monsters, consider using Vegetables to reach 20+ resistance to negate blights',
+          emoji: '🛡️',
+        },
+        {
+          text: 'For difficult fights, Moxie or Safeguard can be more valuable than offensive bonuses',
+          emoji: '👼',
+        },
+        {
+          text: "Don't underestimate Blackbelt for weapons with high stamina usage like Lance, Bow, or Dual Blades",
+          emoji: '💪',
+        },
+        {
+          text: 'Save Gourmet Vouchers for hunts where you absolutely need the food skill to activate',
+          emoji: '🎯',
+        },
+        {
+          text: 'If a monster inflicts Iceblight (which reduces stamina recovery), prioritize blight resistance or Groomer',
+          emoji: '❄️',
+        },
+      ]}
+    />
+
+    <p>
+      Remember that proper meal selection is an important part of hunt preparation. Taking the time
+      to choose the right combination of ingredients can significantly improve your chances of
+      success, especially against challenging monsters.
+    </p>
+  </Section>
+</ContentLayout>

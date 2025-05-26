@@ -1,5 +1,8 @@
 ---
 import { Image } from 'astro:assets';
+import BaseCard from './BaseCard.astro';
+import BaseCardTitle from './BaseCardTitle.astro';
+import BaseCardSubTitle from './BaseCardSubTitle.astro';
 
 interface ImageData {
   src: ImageMetadata;
@@ -14,37 +17,37 @@ interface Props {
   maxCols?: number;
   maxWidth?: string;
   class?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
 }
 
-const { images, title, maxCols = 3, class: className, maxWidth } = Astro.props;
+const {
+  images,
+  title,
+  maxCols = 3,
+  class: className,
+  maxWidth,
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
+} = Astro.props;
 ---
 
-<div
-  data-image-grid-card-auto-hover
-  class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
-    'transition-all duration-300 hover:bg-background-darker',
-    'hover:shadow-2xl hover:shadow-primary/5',
-    className,
-  ]}
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-image-grid-card-auto-hover"
 >
-  <!-- Hover gradient overlay -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
-            opacity-0 group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
   <div class="p-6 md:p-8">
     <!-- Global Title -->
     <div class="relative mb-6">
-      <h3 class="text-xl font-bold text-primary group-hover:text-primary transition-colors">
-        {title}
-      </h3>
-      <div
-        class="absolute bottom-0 left-0 w-1/2 h-[2px] bg-gradient-to-r from-primary/50 via-primary to-primary/50 transform origin-left scale-x-50 group-hover:scale-x-100 transition-transform duration-300"
-      >
-      </div>
+      <BaseCardTitle title={title} />
     </div>
 
     <!-- Image Grid -->
@@ -64,9 +67,7 @@ const { images, title, maxCols = 3, class: className, maxWidth } = Astro.props;
             {/* Title */}
             {image.title && (
               <div class="px-1 space-y-2 text-center">
-                <h4 class="text-lg font-medium text-secondary-light group-hover:text-secondary transition-colors">
-                  {image.title}
-                </h4>
+                <BaseCardSubTitle title={image.title} />
               </div>
             )}
 
@@ -95,10 +96,10 @@ const { images, title, maxCols = 3, class: className, maxWidth } = Astro.props;
       <slot />
     </div>
   </div>
-</div>
+</BaseCard>
 
 <script>
-  import autoHoverDirective from '../../../directives/auto-hover';
+  import autoHoverDirective from '../../directives/auto-hover';
   document.querySelectorAll('[data-image-grid-card-auto-hover]').forEach((element) => {
     if (element instanceof HTMLElement) autoHoverDirective(element);
   });

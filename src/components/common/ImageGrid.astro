@@ -46,18 +46,18 @@ const { images, maxCols = 3, class: className, maxWidth } = Astro.props;
           {/* Title */}
           {image.title && (
             <div class="relative">
-              <h4 class="text-lg font-medium text-secondary-light group-hover:text-secondary transition-colors text-center">
+              <h4 class="text-lg font-medium text-secondary-light group-hover:text-secondary transition-colors text-center uppercase">
                 {image.title}
               </h4>
             </div>
           )}
 
           {/* Image */}
-          <div class="relative rounded-lg overflow-hidden">
+          <div class="relative rounded-lg">
             <Image
               src={image.src}
               alt={image.alt}
-              class="w-full h-auto transition-transform duration-300 group-hover:scale-102"
+              class="w-full h-auto transition-transform duration-300 group-hover:scale-105 relative z-10"
             />
           </div>
 
@@ -74,7 +74,7 @@ const { images, maxCols = 3, class: className, maxWidth } = Astro.props;
 </div>
 
 <script>
-  import autoHoverDirective from '../../../directives/auto-hover';
+  import autoHoverDirective from '../../directives/auto-hover';
   document.querySelectorAll('[data-image-grid-auto-hover]').forEach((element) => {
     if (element instanceof HTMLElement) autoHoverDirective(element);
   });
