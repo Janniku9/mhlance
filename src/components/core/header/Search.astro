@@ -1,0 +1,370 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  currentGameId?: string;
+}
+
+const { currentGameId = 'world' } = Astro.props;
+---
+
+<!-- Search Button for Header -->
+<button
+  id="search-trigger"
+  class="bg-background-dark hover:bg-background-darker text-text px-3 py-2 rounded-lg transition-colors flex items-center gap-2 border border-text/10 hover:border-text/20"
+  title="Search (Ctrl+K)"
+>
+  <Icon name="mingcute:search-line" class="w-4 h-4" />
+  <span class="hidden sm:inline text-sm">Search</span>
+  <kbd
+    class="hidden md:inline-flex items-center px-1.5 py-0.5 border border-text/20 rounded text-xs bg-text/5"
+  >
+    ⌘K
+  </kbd>
+</button>
+
+<!-- Search Modal -->
+<div
+  id="search-modal"
+  class="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-200"
+>
+  <div class="flex items-start justify-center min-h-screen pt-16 px-4">
+    <div
+      id="search-container"
+      class="bg-background border border-text/10 rounded-xl shadow-2xl w-full max-w-2xl transform scale-95 transition-all duration-200"
+    >
+      <!-- Search Header -->
+      <div class="border-b border-text/10 p-4">
+        <div class="relative">
+          <Icon
+            name="mingcute:search-line"
+            class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text/60"
+          />
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search guides, builds, and resources..."
+            class="w-full bg-transparent border-none outline-none pl-10 pr-10 py-3 text-lg placeholder-text/60"
+          />
+          <button
+            id="search-close"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-text/60 hover:text-text transition-colors"
+          >
+            <Icon name="mingcute:close-line" class="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Search Results -->
+      <div id="search-results" class="max-h-96 overflow-y-auto">
+        <!-- Loading state -->
+        <div id="search-loading" class="hidden p-6 text-center">
+          <div
+            class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto mb-2"
+          >
+          </div>
+          <p class="text-text/60">Searching...</p>
+        </div>
+
+        <!-- Empty state -->
+        <div id="search-empty" class="p-6 text-center text-text/60">
+          <Icon name="mingcute:search-line" class="w-12 h-12 mx-auto mb-2 opacity-40" />
+          <p>Start typing to search...</p>
+        </div>
+
+        <!-- No results -->
+        <div id="search-no-results" class="hidden p-6 text-center text-text/60">
+          <Icon name="mingcute:file-search-line" class="w-12 h-12 mx-auto mb-2 opacity-40" />
+          <p>No results found</p>
+        </div>
+
+        <!-- Results container -->
+        <div id="search-results-list" class="hidden"></div>
+      </div>
+
+      <!-- Search Footer -->
+      <div
+        class="border-t border-text/10 p-3 text-xs text-text/60 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-4">
+          <span class="flex items-center gap-1">
+            <kbd class="px-1.5 py-0.5 border border-text/20 rounded bg-text/5">↵</kbd>
+            to select
+          </span>
+          <span class="flex items-center gap-1">
+            <kbd class="px-1.5 py-0.5 border border-text/20 rounded bg-text/5">↑↓</kbd>
+            to navigate
+          </span>
+        </div>
+        <span class="flex items-center gap-1">
+          <kbd class="px-1.5 py-0.5 border border-text/20 rounded bg-text/5">Esc</kbd>
+          to close
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ currentGameId }}>
+  class SearchModal {
+    constructor() {
+      this.modal = document.getElementById('search-modal');
+      this.container = document.getElementById('search-container');
+      this.input = document.getElementById('search-input');
+      this.trigger = document.getElementById('search-trigger');
+      this.closeBtn = document.getElementById('search-close');
+      this.resultsContainer = document.getElementById('search-results-list');
+      this.loadingEl = document.getElementById('search-loading');
+      this.emptyEl = document.getElementById('search-empty');
+      this.noResultsEl = document.getElementById('search-no-results');
+
+      this.currentGameId = currentGameId;
+      this.selectedIndex = -1;
+      this.results = [];
+      this.pagefind = null;
+
+      this.initEventListeners();
+    }
+
+    initEventListeners() {
+      // Open modal
+      this.trigger?.addEventListener('click', () => this.open());
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          this.open();
+        }
+        if (e.key === 'Escape' && this.isOpen()) {
+          this.close();
+        }
+      });
+
+      // Close modal
+      this.closeBtn?.addEventListener('click', () => this.close());
+      this.modal?.addEventListener('click', (e) => {
+        if (e.target === this.modal) this.close();
+      });
+
+      // Search input
+      this.input?.addEventListener('input', (e) => this.handleSearch(e.target.value));
+      this.input?.addEventListener('keydown', (e) => this.handleKeyNavigation(e));
+    }
+
+    async initPagefind() {
+      if (this.pagefind) return;
+
+      try {
+        // Try to import pagefind
+        this.pagefind = await import('/pagefind/pagefind.js');
+        await this.pagefind.options({
+          basePath: '/',
+          excerptLength: 20,
+        });
+      } catch (error) {
+        console.warn('Pagefind not available:', error);
+        // Fallback to basic search if pagefind isn't available
+        this.pagefind = null;
+      }
+    }
+
+    async handleSearch(query) {
+      if (!query.trim()) {
+        this.showEmpty();
+        return;
+      }
+
+      this.showLoading();
+
+      await this.initPagefind();
+
+      if (this.pagefind) {
+        await this.performPagefindSearch(query);
+      } else {
+        await this.performFallbackSearch(query);
+      }
+    }
+
+    async performPagefindSearch(query) {
+      try {
+        const search = await this.pagefind.search(query);
+
+        if (search.results.length === 0) {
+          this.showNoResults();
+          return;
+        }
+
+        // Get detailed results
+        const detailedResults = await Promise.all(search.results.map((result) => result.data()));
+
+        // Sort results: current game first, then others
+        const sortedResults = this.sortResultsByGame(detailedResults);
+        this.results = sortedResults;
+        this.selectedIndex = -1;
+        this.renderResults();
+      } catch (error) {
+        console.error('Search error:', error);
+        this.showNoResults();
+      }
+    }
+
+    sortResultsByGame(results) {
+      return results.sort((a, b) => {
+        const aIsCurrentGame = a.url.includes(`/${this.currentGameId}/`);
+        const bIsCurrentGame = b.url.includes(`/${this.currentGameId}/`);
+
+        // Current game results first
+        if (aIsCurrentGame && !bIsCurrentGame) return -1;
+        if (!aIsCurrentGame && bIsCurrentGame) return 1;
+
+        // Then sort by relevance (pagefind handles this)
+        return 0;
+      });
+    }
+
+    async performFallbackSearch(query) {
+      // Simple fallback search - you can enhance this
+      const mockResults = [];
+
+      this.results = mockResults;
+      this.selectedIndex = -1;
+      this.renderResults();
+    }
+
+    renderResults() {
+      this.hideAllStates();
+      this.resultsContainer.classList.remove('hidden');
+
+      this.resultsContainer.innerHTML = this.results
+        .map((result, index) => {
+          const isCurrentGame = result.url.includes(`/${this.currentGameId}/`);
+          const gameMatch = result.url.match(/\/([^\/]+)\//);
+          const gameName = gameMatch ? gameMatch[1].toUpperCase() : 'GENERAL';
+
+          return `
+          <div class="search-result border-b border-text/5 last:border-b-0 ${index === this.selectedIndex ? 'bg-primary/10' : ''}" data-index="${index}">
+            <a href="${result.url}" class="block p-4 hover:bg-primary/5 transition-colors">
+              <div class="flex items-start gap-3">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-1">
+                    <h3 class="font-medium text-text truncate">${result.meta?.title || 'Untitled'}</h3>
+                    ${isCurrentGame ? '<span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">Current Game</span>' : ''}
+                  </div>
+                  <p class="text-sm text-text/70 line-clamp-2 mb-1">${result.excerpt}</p>
+                  <p class="text-xs text-text/50">${gameName} • ${result.url}</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        `;
+        })
+        .join('');
+
+      // Add click handlers
+      this.resultsContainer.querySelectorAll('.search-result a').forEach((link, index) => {
+        link.addEventListener('click', () => {
+          this.close();
+        });
+      });
+    }
+
+    handleKeyNavigation(e) {
+      if (!this.results.length) return;
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          this.selectedIndex = Math.min(this.selectedIndex + 1, this.results.length - 1);
+          this.updateSelection();
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          this.selectedIndex = Math.max(this.selectedIndex - 1, -1);
+          this.updateSelection();
+          break;
+        case 'Enter':
+          e.preventDefault();
+          if (this.selectedIndex >= 0) {
+            window.location.href = this.results[this.selectedIndex].url;
+            this.close();
+          }
+          break;
+      }
+    }
+
+    updateSelection() {
+      this.resultsContainer.querySelectorAll('.search-result').forEach((el, index) => {
+        el.classList.toggle('bg-primary/10', index === this.selectedIndex);
+      });
+    }
+
+    showLoading() {
+      this.hideAllStates();
+      this.loadingEl.classList.remove('hidden');
+    }
+
+    showEmpty() {
+      this.hideAllStates();
+      this.emptyEl.classList.remove('hidden');
+    }
+
+    showNoResults() {
+      this.hideAllStates();
+      this.noResultsEl.classList.remove('hidden');
+    }
+
+    hideAllStates() {
+      this.loadingEl.classList.add('hidden');
+      this.emptyEl.classList.add('hidden');
+      this.noResultsEl.classList.add('hidden');
+      this.resultsContainer.classList.add('hidden');
+    }
+
+    open() {
+      this.modal.classList.remove('invisible', 'opacity-0');
+      this.container.classList.remove('scale-95');
+      this.container.classList.add('scale-100');
+
+      // Focus input after animation
+      setTimeout(() => {
+        this.input?.focus();
+      }, 100);
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    close() {
+      this.modal.classList.add('opacity-0');
+      this.container.classList.remove('scale-100');
+      this.container.classList.add('scale-95');
+
+      setTimeout(() => {
+        this.modal.classList.add('invisible');
+        document.body.style.overflow = '';
+        this.input.value = '';
+        this.showEmpty();
+        this.selectedIndex = -1;
+        this.results = [];
+      }, 200);
+    }
+
+    isOpen() {
+      return !this.modal.classList.contains('invisible');
+    }
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new SearchModal();
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

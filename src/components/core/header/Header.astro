@@ -6,6 +6,7 @@ import NavDropdown from '../nav/NavDropdown.astro';
 import GameSelector from '../nav/GameSelector.astro';
 import { games } from '../../../data/Navigation';
 import GitHubLink from './GitHubLink.astro';
+import Search from './Search.astro';
 
 interface Props {
   height: string;
@@ -62,6 +63,7 @@ const currentGame = games.find((g) => g.game === gameId);
             <GitHubLink />
           </div>
           <GameSelector games={games} currentGame={currentGame} />
+          <Search currentGameId={gameId} />
         </div>
 
         {/* Mobile Navigation */}

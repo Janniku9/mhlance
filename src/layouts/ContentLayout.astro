@@ -17,7 +17,7 @@ const currentSection = currentGame?.sections[
 ]?.find((section) => section.id === sectionId);
 ---
 
-<MainLayout title={`MH Lance - ${currentSection?.title ?? ''} `}>
+<MainLayout title={`MH Lance - ${currentSection?.title ?? ''} `} data-pagefind-body>
   <div class:list={['max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-24']}>
     <PageTitle
       title={currentSection?.title ?? ''}
