@@ -1,0 +1,127 @@
+---
+import type { Matchups, Monster } from '../../types/Monsters';
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import BaseCard from '../common/BaseCard.astro';
+import ToolTip from '../common/ToolTip.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
+
+interface Props {
+  matchups: Matchups[];
+  monsters: Monster[];
+  class?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
+}
+
+const {
+  matchups,
+  monsters,
+  class: className,
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
+} = Astro.props;
+
+const getPriorityLabel = (priority: number | undefined) => {
+  if (!priority) return '';
+  return `${priority}`;
+};
+
+const getMonsterImage = (monsterName: string) => {
+  const monster = monsters.find((m) => m.name === monsterName);
+  if (!monster) {
+    console.error(`Monster not found: ${monsterName}`);
+    return null;
+  }
+  return monster.image;
+};
+---
+
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-matchup-chart-auto-hover"
+>
+  <div class="p-6">
+    {
+      matchups.map((matchup) => (
+        <div class="mb-8 last:mb-0">
+          {/* centered title */}
+          <div class="flex justify-center mb-5">
+            <BaseCardTitle title={matchup.title} />
+          </div>
+
+          <div class="space-y-4">
+            {matchup.effectiveAgainst.map((build) => (
+              <div class="grid grid-cols-[120px_1fr] md:grid-cols-[200px_1fr] items-center gap-2 md:gap-4 relative">
+                {/* Color bar that extends across */}
+                <div
+                  class="absolute top-0 left-[120px] md:left-[200px] h-full w-[calc(100%-120px)] md:w-[calc(100%-200px)] border-t-8 rounded-r-2xl"
+                  style={`border-color: ${build.color}30;`}
+                />
+
+                {/* Build name section - fixed width */}
+                <div
+                  class="flex flex-col md:flex-row items-center gap-3 rounded-l-2xl p-2 h-full z-10"
+                  style={`background-color: ${build.color}30;`}
+                >
+                  <span class="text-xl md:text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
+                    {build.emoji}
+                  </span>
+                  <h3 class="text-xs md:text-base font-bold text-text/90">{build.buildName}</h3>
+                </div>
+
+                {/* Monsters grid section */}
+                <div class="flex flex-wrap gap-2 justify-end relative pr-2 pt-4">
+                  {build.monsters.map((monster) => {
+                    const monsterImage = getMonsterImage(monster.name);
+                    return (
+                      monsterImage && (
+                        <div class="relative group/monster">
+                          <div class="relative w-12 h-12 bg-background rounded-lg overflow-hidden transition-transform duration-300 hover:scale-110">
+                            <Image
+                              src={monsterImage}
+                              alt={monster.name}
+                              class="w-14 h-14 object-contain absolute -top-1 -left-1"
+                            />
+
+                            {monster.buildPriority && (
+                              <div class="absolute bottom-0 right-0 w-4 h-4 bg-primary text-background rounded-tl-md text-[10px] font-bold flex items-center justify-center shadow-md">
+                                {getPriorityLabel(monster.buildPriority)}
+                              </div>
+                            )}
+                          </div>
+
+                          <ToolTip text={monster.name} />
+                        </div>
+                      )
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="text-sm text-text/60 flex items-center gap-2 mt-6">
+      <Icon name="mingcute:information-line" class="w-4 h-4" />
+      Numbers indicate build priority (1 being the strongest)
+    </div>
+  </div>
+</BaseCard>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-matchup-chart-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>
