@@ -122,6 +122,7 @@ const { currentGameId = 'world' } = Astro.props;
       this.selectedIndex = -1;
       this.results = [];
       this.pagefind = null;
+      this.searchTimeout = null;
 
       this.initEventListeners();
     }
@@ -147,8 +148,14 @@ const { currentGameId = 'world' } = Astro.props;
         if (e.target === this.modal) this.close();
       });
 
-      // Search input
-      this.input?.addEventListener('input', (e) => this.handleSearch(e.target.value));
+      // Search input with debouncing
+      this.input?.addEventListener('input', (e) => {
+        clearTimeout(this.searchTimeout);
+        this.searchTimeout = setTimeout(() => {
+          this.handleSearch(e.target.value);
+        }, 300);
+      });
+
       this.input?.addEventListener('keydown', (e) => this.handleKeyNavigation(e));
     }
 
@@ -156,15 +163,18 @@ const { currentGameId = 'world' } = Astro.props;
       if (this.pagefind) return;
 
       try {
-        // Try to import pagefind
+        // Import the pagefind module
         this.pagefind = await import('/pagefind/pagefind.js');
+
+        // Initialize with options
         await this.pagefind.options({
-          basePath: '/',
-          excerptLength: 20,
+          basePath: '/pagefind/',
+          excerptLength: 30,
         });
+
+        console.log('Pagefind initialized successfully');
       } catch (error) {
-        console.warn('Pagefind not available:', error);
-        // Fallback to basic search if pagefind isn't available
+        console.error('Failed to initialize Pagefind:', error);
         this.pagefind = null;
       }
     }
@@ -177,12 +187,14 @@ const { currentGameId = 'world' } = Astro.props;
 
       this.showLoading();
 
+      // Initialize pagefind if not already done
       await this.initPagefind();
 
       if (this.pagefind) {
         await this.performPagefindSearch(query);
       } else {
-        await this.performFallbackSearch(query);
+        this.showNoResults();
+        console.error('Pagefind not available');
       }
     }
 
@@ -196,10 +208,21 @@ const { currentGameId = 'world' } = Astro.props;
         }
 
         // Get detailed results
-        const detailedResults = await Promise.all(search.results.map((result) => result.data()));
+        const detailedResults = await Promise.all(
+          search.results.map(async (result) => {
+            try {
+              return await result.data();
+            } catch (error) {
+              console.error('Error loading result data:', error);
+              return null;
+            }
+          })
+        );
 
-        // Sort results: current game first, then others
-        const sortedResults = this.sortResultsByGame(detailedResults);
+        // Filter out null results and sort
+        const validResults = detailedResults.filter((result) => result !== null);
+        const sortedResults = this.sortResultsByGame(validResults);
+
         this.results = sortedResults;
         this.selectedIndex = -1;
         this.renderResults();
@@ -223,15 +246,6 @@ const { currentGameId = 'world' } = Astro.props;
       });
     }
 
-    async performFallbackSearch(query) {
-      // Simple fallback search - you can enhance this
-      const mockResults = [];
-
-      this.results = mockResults;
-      this.selectedIndex = -1;
-      this.renderResults();
-    }
-
     renderResults() {
       this.hideAllStates();
       this.resultsContainer.classList.remove('hidden');
@@ -248,10 +262,10 @@ const { currentGameId = 'world' } = Astro.props;
               <div class="flex items-start gap-3">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-1">
-                    <h3 class="font-medium text-text truncate">${result.meta?.title || 'Untitled'}</h3>
+                    <h3 class="font-medium text-text truncate">${result.meta?.title || result.raw_content?.slice(0, 50) || 'Untitled'}</h3>
                     ${isCurrentGame ? '<span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">Current Game</span>' : ''}
                   </div>
-                  <p class="text-sm text-text/70 line-clamp-2 mb-1">${result.excerpt}</p>
+                  <p class="text-sm text-text/70 line-clamp-2 mb-1">${result.excerpt || result.raw_content?.slice(0, 150) || 'No preview available'}</p>
                   <p class="text-xs text-text/50">${gameName} • ${result.url}</p>
                 </div>
               </div>
@@ -262,7 +276,7 @@ const { currentGameId = 'world' } = Astro.props;
         .join('');
 
       // Add click handlers
-      this.resultsContainer.querySelectorAll('.search-result a').forEach((link, index) => {
+      this.resultsContainer.querySelectorAll('.search-result a').forEach((link) => {
         link.addEventListener('click', () => {
           this.close();
         });
@@ -297,6 +311,16 @@ const { currentGameId = 'world' } = Astro.props;
       this.resultsContainer.querySelectorAll('.search-result').forEach((el, index) => {
         el.classList.toggle('bg-primary/10', index === this.selectedIndex);
       });
+
+      // Scroll selected item into view
+      if (this.selectedIndex >= 0) {
+        const selectedEl = this.resultsContainer.querySelector(
+          `[data-index="${this.selectedIndex}"]`
+        );
+        if (selectedEl) {
+          selectedEl.scrollIntoView({ block: 'nearest' });
+        }
+      }
     }
 
     showLoading() {
