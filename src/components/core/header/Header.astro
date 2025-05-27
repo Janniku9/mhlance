@@ -58,12 +58,12 @@ const currentGame = games.find((g) => g.game === gameId);
       {/* Right Section */}
       <div class="flex items-center justify-end">
         {/* Desktop Navigation */}
-        <div class="items-center gap-4 flex">
-          <div class="hidden md:flex">
+        <div class="items-center gap-2 flex">
+          <div class="hidden md:flex h-full">
             <GitHubLink />
           </div>
+          <Search currentGameId={gameId} class="h-full" />
           <GameSelector games={games} currentGame={currentGame} />
-          <Search currentGameId={gameId} />
         </div>
 
         {/* Mobile Navigation */}

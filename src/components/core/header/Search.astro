@@ -3,19 +3,25 @@ import { Icon } from 'astro-icon/components';
 
 interface Props {
   currentGameId?: string;
+  highlightClass?: string;
+  class?: string;
 }
 
-const { currentGameId = 'world' } = Astro.props;
+const {
+  currentGameId = 'world',
+  highlightClass = 'text-primary-light',
+  class: customClass,
+} = Astro.props;
 ---
 
 <!-- Search Button for Header -->
 <button
   id="search-trigger"
-  class="bg-background-dark hover:bg-background-darker text-text px-3 py-2 rounded-lg transition-colors flex items-center gap-2 border border-text/10 hover:border-text/20"
-  title="Search (Ctrl+K)"
+  class={`h-full bg-background-dark hover:bg-background-darker text-text px-3 py-2.5 rounded-md transition-colors flex items-center gap-2 border border-text/10 hover:border-text/20 ${customClass}`}
+  title="search (ctrl+k)"
 >
   <Icon name="mingcute:search-line" class="w-4 h-4" />
-  <span class="hidden sm:inline text-sm">Search</span>
+  <span class="hidden sm:inline text-sm">search</span>
   <kbd
     class="hidden md:inline-flex items-center px-1.5 py-0.5 border border-text/20 rounded text-xs bg-text/5"
   >
@@ -28,10 +34,10 @@ const { currentGameId = 'world' } = Astro.props;
   id="search-modal"
   class="fixed inset-0 z-[60] bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-200"
 >
-  <div class="flex items-start justify-center min-h-screen pt-16 px-4">
+  <div class="flex items-start justify-center min-h-screen pt-24 px-4">
     <div
       id="search-container"
-      class="bg-background border border-text/10 rounded-xl shadow-2xl w-full max-w-2xl transform scale-95 transition-all duration-200"
+      class="bg-background border border-text/10 rounded-xl shadow-2xl w-full max-w-2xl transform scale-95 transition-all duration-200 search-modal-content"
     >
       <!-- Search Header -->
       <div class="border-b border-text/10 p-4">
@@ -43,7 +49,7 @@ const { currentGameId = 'world' } = Astro.props;
           <input
             id="search-input"
             type="text"
-            placeholder="Search guides, builds, and resources..."
+            placeholder="search guides, builds, and resources..."
             class="w-full bg-transparent border-none outline-none pl-10 pr-10 py-3 text-lg placeholder-text/60"
           />
           <button
@@ -56,26 +62,26 @@ const { currentGameId = 'world' } = Astro.props;
       </div>
 
       <!-- Search Results -->
-      <div id="search-results" class="max-h-96 overflow-y-auto">
+      <div id="search-results" class="max-h-96 overflow-y-auto modal-content">
         <!-- Loading state -->
         <div id="search-loading" class="hidden p-6 text-center">
           <div
             class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto mb-2"
           >
           </div>
-          <p class="text-text/60">Searching...</p>
+          <p class="text-text/60">searching...</p>
         </div>
 
         <!-- Empty state -->
         <div id="search-empty" class="p-6 text-center text-text/60">
           <Icon name="mingcute:search-line" class="w-12 h-12 mx-auto mb-2 opacity-40" />
-          <p>Start typing to search...</p>
+          <p>start typing to search...</p>
         </div>
 
         <!-- No results -->
         <div id="search-no-results" class="hidden p-6 text-center text-text/60">
           <Icon name="mingcute:file-search-line" class="w-12 h-12 mx-auto mb-2 opacity-40" />
-          <p>No results found</p>
+          <p>no results found</p>
         </div>
 
         <!-- Results container -->
@@ -105,7 +111,7 @@ const { currentGameId = 'world' } = Astro.props;
   </div>
 </div>
 
-<script define:vars={{ currentGameId }}>
+<script define:vars={{ currentGameId, highlightClass }}>
   class SearchModal {
     constructor() {
       this.modal = document.getElementById('search-modal');
@@ -119,10 +125,12 @@ const { currentGameId = 'world' } = Astro.props;
       this.noResultsEl = document.getElementById('search-no-results');
 
       this.currentGameId = currentGameId;
+      this.highlightClass = highlightClass;
       this.selectedIndex = -1;
       this.results = [];
       this.pagefind = null;
       this.searchTimeout = null;
+      this.currentQuery = '';
 
       this.initEventListeners();
     }
@@ -151,6 +159,7 @@ const { currentGameId = 'world' } = Astro.props;
       // Search input with debouncing
       this.input?.addEventListener('input', (e) => {
         clearTimeout(this.searchTimeout);
+        this.currentQuery = e.target.value;
         this.searchTimeout = setTimeout(() => {
           this.handleSearch(e.target.value);
         }, 300);
@@ -168,7 +177,7 @@ const { currentGameId = 'world' } = Astro.props;
 
         // Initialize with options
         await this.pagefind.options({
-          basePath: '/pagefind/',
+          basePath: '/pagefind/', // Adjust based on your setup
           excerptLength: 30,
         });
 
@@ -246,6 +255,23 @@ const { currentGameId = 'world' } = Astro.props;
       });
     }
 
+    highlightSearchTerms(text) {
+      if (!this.currentQuery || !text) return text;
+
+      const terms = this.currentQuery.trim().split(/\s+/);
+      let highlightedText = text;
+
+      terms.forEach((term) => {
+        const regex = new RegExp(`(${term})`, 'gi');
+        highlightedText = highlightedText.replace(
+          regex,
+          `<span class="${this.highlightClass}">$1</span>`
+        );
+      });
+
+      return highlightedText;
+    }
+
     renderResults() {
       this.hideAllStates();
       this.resultsContainer.classList.remove('hidden');
@@ -256,17 +282,33 @@ const { currentGameId = 'world' } = Astro.props;
           const gameMatch = result.url.match(/\/([^\/]+)\//);
           const gameName = gameMatch ? gameMatch[1].toUpperCase() : 'GENERAL';
 
+          // Format title as uppercase, no highlighting
+          const title = (
+            result.meta?.title ||
+            result.raw_content?.slice(0, 50) ||
+            'Untitled'
+          ).toUpperCase();
+
+          // Format excerpt as lowercase and highlight search terms
+          const excerpt = (
+            result.excerpt ||
+            result.raw_content?.slice(0, 150) ||
+            'No preview available'
+          )
+            .toLowerCase()
+            .replace(/<\/?mark>/g, ''); // Remove <mark> tags
+          const highlightedExcerpt = this.highlightSearchTerms(excerpt);
+
           return `
           <div class="search-result border-b border-text/5 last:border-b-0 ${index === this.selectedIndex ? 'bg-primary/10' : ''}" data-index="${index}">
             <a href="${result.url}" class="block p-4 hover:bg-primary/5 transition-colors">
               <div class="flex items-start gap-3">
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-1">
-                    <h3 class="font-medium text-text truncate">${result.meta?.title || result.raw_content?.slice(0, 50) || 'Untitled'}</h3>
-                    ${isCurrentGame ? '<span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">Current Game</span>' : ''}
+                    <h3 class="font-medium text-secondary truncate">${title}</h3>
+                    <span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full whitespace-nowrap">${gameName}</span>
                   </div>
-                  <p class="text-sm text-text/70 line-clamp-2 mb-1">${result.excerpt || result.raw_content?.slice(0, 150) || 'No preview available'}</p>
-                  <p class="text-xs text-text/50">${gameName} • ${result.url}</p>
+                  <p class="text-sm text-text/70 line-clamp-2 mb-1">${highlightedExcerpt}</p>
                 </div>
               </div>
             </a>
@@ -390,5 +432,31 @@ const { currentGameId = 'world' } = Astro.props;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Specific scrollbar styling for search modal */
+  .search-modal-content .modal-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .search-modal-content .modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
+
+  .search-modal-content .modal-content::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-primary-rgb), 0.3);
+    border-radius: 3px;
+  }
+
+  .search-modal-content .modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.5);
+  }
+
+  /* Subtle highlight for search terms */
+  :global(.text-primary-light) {
+    color: var(--color-primary-light);
+    background: transparent;
+    font-weight: inherit;
   }
 </style>
