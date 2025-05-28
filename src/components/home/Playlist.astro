@@ -1,0 +1,66 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  currentGame: {
+    playlistId?: string;
+    emoji: string;
+    title: string;
+  };
+}
+
+const { currentGame } = Astro.props;
+---
+
+{currentGame.playlistId && <section
+  id="video-guides"
+  class="py-16 px-4 md:px-8 bg-gradient-to-br from-secondary/10 via-primary/5 to-warning/10 relative"
+>
+  <!-- Curved top border -->
+  <div class="absolute top-0 left-0 w-full overflow-hidden">
+    <svg class="relative block w-full h-8" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,0V46.29c0,0,270.5,47.05,600,0s600,0,600,0V0Z" fill="hsl(var(--background-dark))"
+      ></path>
+    </svg>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto pt-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-secondary uppercase">video guides</h2>
+      <p class="text-lg text-text/70 lowercase">
+        master {currentGame.title} lance with comprehensive tutorials and speedruns
+      </p>
+    </div>
+
+    <!-- YouTube Playlist Embed -->
+    <div class="relative max-w-4xl mx-auto">
+      <div
+        class="relative w-full h-0 pb-[56.25%] rounded-2xl overflow-hidden shadow-2xl border-4 border-primary/20"
+      >
+        <iframe
+          class="absolute top-0 left-0 w-full h-full"
+          src={`https://www.youtube.com/embed/playlist?list=${currentGame.playlistId}`}
+          title={`${currentGame.title} lance guides playlist`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+
+      <!-- Playlist Info -->
+      <div class="mt-6 text-center">
+        <p class="text-text/70 mb-4 lowercase">
+          complete playlist featuring builds, guides, and speedruns for {currentGame.title}
+        </p>
+        <a
+          href={`https://www.youtube.com/playlist?list=${currentGame.playlistId}`}
+          target="_blank"
+          class="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-background px-6 py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105 uppercase"
+        >
+          <Icon name="mingcute:youtube-fill" class="w-5 h-5" />
+          open in youtube
+        </a>
+      </div>
+    </div>
+  </div>
+</section>}

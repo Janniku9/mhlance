@@ -1,0 +1,59 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { FAQ } from '../../types/faq';
+import BaseCard from '../common/BaseCard.astro';
+
+interface Props {
+  faq: FAQ[];
+  currentGame: {
+    emoji: string;
+    title: string;
+  };
+}
+
+const { faq, currentGame } = Astro.props;
+---
+
+<section class="py-16 px-4 md:px-8 bg-background-dark">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-primary uppercase">
+        frequently asked questions
+      </h2>
+      <p class="text-lg text-text/70 lowercase">
+        common questions about {currentGame.title} lance gameplay
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {
+        faq.map((faq: FAQ, _: number) => (
+          <BaseCard class="p-6" hoverable={false}>
+            <details class="group">
+              <summary class="flex items-center justify-between cursor-pointer list-none">
+                <h3 class="font-bold text-lg pr-4 uppercase">{faq.question}</h3>
+                <Icon
+                  name="mingcute:down-line"
+                  class="w-5 h-5 text-text/40 transition-transform group-open:rotate-180"
+                />
+              </summary>
+              <div class="mt-4 pt-4 border-t border-text/10">
+                <p class="text-text/80 leading-relaxed lowercase">{faq.answer}</p>
+                {faq.link && (
+                  <a
+                    href={faq.link}
+                    target="_blank"
+                    class="inline-flex items-center gap-1 mt-3 text-primary hover:text-primary-light transition-colors text-sm font-medium uppercase"
+                  >
+                    learn more
+                    <Icon name="mingcute:external-link-line" class="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            </details>
+          </BaseCard>
+        ))
+      }
+    </div>
+  </div>
+</section>

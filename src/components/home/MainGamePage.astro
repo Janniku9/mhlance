@@ -1,0 +1,59 @@
+---
+import { contributors } from '../../data/Contributors';
+import { games } from '../../data/Navigation';
+import { news } from '../../data/News';
+import { riseFaqs } from '../../data/rise/FAQs';
+import { socials } from '../../data/Socials';
+import { wildsFaqs } from '../../data/wilds/FAQs';
+import { worldFaqs } from '../../data/world/FAQs';
+import Contributors from './Contributors.astro';
+import Faq from './Faq.astro';
+import FeaturedLinks from './FeaturedLinks.astro';
+import Footer from './Footer.astro';
+import Hero from './Hero.astro';
+import News from './News.astro';
+import Playlist from './Playlist.astro';
+
+// Get game from URL - replace with your actual game detection logic
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+const gameId = segments[0] as 'world' | 'rise' | 'wilds';
+
+// Find the current game data
+const currentGame = games.find((game) => game.game === gameId);
+if (!currentGame) {
+  throw new Error(`Game not found: ${gameId}`);
+}
+
+// Get game-specific contributors
+const gameContributors = contributors.filter(
+  (contributor) => contributor.contributions[gameId] || contributor.contributions.overall
+);
+
+// Get game-specific faq
+const gameFaq = () => {
+  switch (gameId) {
+    case 'world':
+      return worldFaqs;
+    case 'rise':
+      return riseFaqs;
+    case 'wilds':
+      return wildsFaqs;
+    default:
+      return [];
+  }
+};
+const currentFaq = gameFaq();
+
+// Get game-specific news
+const gameNews = news.filter((item) => item.game === gameId);
+---
+
+<>
+  <Hero gameId={gameId} currentGame={currentGame} />
+  <FeaturedLinks currentGame={currentGame} />
+  <News currentNews={gameNews} currentGame={currentGame} />
+  <Playlist currentGame={currentGame} />
+  <Faq currentGame={currentGame} faq={currentFaq} />
+  <Contributors currentGame={currentGame} contributors={gameContributors} gameId={gameId} />
+  <Footer socials={socials} currentGame={currentGame} />
+</>

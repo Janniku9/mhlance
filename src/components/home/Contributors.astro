@@ -1,0 +1,110 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Contributor } from '../../types/Contributors';
+import BaseCard from '../common/BaseCard.astro';
+import { Image } from 'astro:assets';
+import type { Game } from '../../types/Game';
+
+interface Props {
+  contributors: Contributor[];
+  gameId: Game;
+  currentGame: {
+    emoji: string;
+    title: string;
+  };
+}
+
+const { contributors, gameId, currentGame } = Astro.props;
+---
+
+<section
+  class="py-16 px-4 md:px-8 bg-gradient-to-br from-background via-background-dark to-background"
+>
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-warning uppercase">contributors</h2>
+      <p class="text-lg text-text/70 lowercase">
+        hunters who helped build this {currentGame.title} guide
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        contributors.map((contributor: Contributor) => (
+          <BaseCard class="p-6">
+            <div class="flex items-start gap-4">
+              {contributor.image && (
+                <div class="w-16 h-16 rounded-xl overflow-hidden bg-text/5 flex-shrink-0">
+                  <Image
+                    src={contributor.image}
+                    alt={contributor.name}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              {!contributor.image && (
+                <div class="w-16 h-16 rounded-xl bg-text/5 flex items-center justify-center flex-shrink-0">
+                  <Icon name="mingcute:user-4-fill" class="w-8 h-8 text-text/40" />
+                </div>
+              )}
+
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-3 mb-2">
+                  <h3 class="font-bold text-lg uppercase">{contributor.name}</h3>
+                  <div class="flex gap-2">
+                    {contributor.socials.youtube && (
+                      <a
+                        href={contributor.socials.youtube}
+                        target="_blank"
+                        class="text-text/40 hover:text-primary transition-colors"
+                      >
+                        <Icon name="mingcute:youtube-fill" class="w-4 h-4" />
+                      </a>
+                    )}
+                    {contributor.socials.twitch && (
+                      <a
+                        href={contributor.socials.twitch}
+                        target="_blank"
+                        class="text-text/40 hover:text-primary transition-colors"
+                      >
+                        <Icon name="mdi:twitch" class="w-4 h-4" />
+                      </a>
+                    )}
+                    {contributor.socials.discord && (
+                      <a
+                        href={contributor.socials.discord}
+                        target="_blank"
+                        class="text-text/40 hover:text-primary transition-colors"
+                      >
+                        <Icon name="mingcute:discord-fill" class="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  {contributor.contributions.overall && (
+                    <div class="text-sm">
+                      <span class="font-medium text-secondary uppercase">overall:</span>
+                      <span class="text-text/70 ml-2 lowercase">
+                        {contributor.contributions.overall}
+                      </span>
+                    </div>
+                  )}
+                  {gameId && contributor.contributions[gameId] && (
+                    <div class="text-sm">
+                      <span class="font-medium text-primary capitalize">{currentGame.title}:</span>
+                      <span class="text-text/70 ml-2 lowercase">
+                        {contributor.contributions[gameId]}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </BaseCard>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -5,6 +5,28 @@ export const games: GameNavigation[] = [
     game: 'world',
     title: 'World/Iceborne',
     emoji: '🧊',
+    gameDescription: 'E',
+    playlistId: 'PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4',
+    featuredLinks: [
+      {
+        href: '/world/combos',
+        emoji: '🥊',
+        title: 'Combos',
+        description: 'Master the best lance combos for maximum damage!',
+      },
+      {
+        href: '/world/guard-up',
+        emoji: '🛡️',
+        title: 'Guard Up',
+        description: 'Complete reference of all attacks requiring Guard Up.',
+      },
+      {
+        href: '/world/motion-values',
+        emoji: '🔍',
+        title: 'Motion Values',
+        description: 'Motion values for all weapons in World/Iceborne.',
+      },
+    ],
     sections: {
       builds: [
         {
@@ -122,6 +144,28 @@ export const games: GameNavigation[] = [
     game: 'rise',
     title: 'Rise/Sunbreak',
     emoji: '🌅',
+    gameDescription: 'Rise and Sunbreak are the latest mainline Monster Hunter games.',
+    playlistId: 'PLMgaMGsEoNvmMAOMQ8PFmnGvaGuLO_nVd',
+    featuredLinks: [
+      {
+        href: '/rise/combos',
+        emoji: '🥊',
+        title: 'Combos',
+        description: 'Master the best lance combos for maximum damage!',
+      },
+      {
+        href: '/rise/guard-up',
+        emoji: '🛡️',
+        title: 'Guard Up',
+        description: 'Complete reference of all attacks requiring Guard Up.',
+      },
+      {
+        href: '/rise/motion-values',
+        emoji: '🔍',
+        title: 'Motion Values',
+        description: 'Motion values for all weapons in Rise/Sunbreak.',
+      },
+    ],
     sections: {
       builds: [
         {
@@ -264,6 +308,28 @@ export const games: GameNavigation[] = [
     game: 'wilds',
     title: 'Wilds',
     emoji: '🌿',
+    gameDescription: 'Wilds is a new Monster Hunter game set in a lush, untamed world.',
+    playlistId: 'PLMgaMGsEoNvm348bMTeveCS1WZlisWQWq',
+    featuredLinks: [
+      {
+        href: '/wilds/combos',
+        emoji: '🥊',
+        title: 'Combos',
+        description: 'Master the best lance combos for maximum damage!',
+      },
+      {
+        href: '/wilds/guard-up',
+        emoji: '🛡️',
+        title: 'Guard Up',
+        description: 'Complete reference of all attacks requiring Guard Up.',
+      },
+      {
+        href: '/wilds/motion-values',
+        emoji: '🔍',
+        title: 'Motion Values',
+        description: 'Motion values for all weapons in Wilds.',
+      },
+    ],
     sections: {
       builds: [],
       guides: [],

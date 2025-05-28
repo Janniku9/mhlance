@@ -1,0 +1,85 @@
+---
+import { Icon } from 'astro-icon/components';
+import Badge from '../common/Badge.astro';
+import BaseCard from '../common/BaseCard.astro';
+import type { FeaturedLink } from '../../types/Navigation';
+
+interface Props {
+  currentGame: {
+    title: string;
+    featuredLinks: FeaturedLink[];
+  };
+}
+
+const getSectionTypeColor = (type: string) => {
+  switch (type) {
+    case 'builds':
+      return 'bg-primary/20 text-primary border-primary/30';
+    case 'guides':
+      return 'bg-secondary/20 text-secondary border-secondary/30';
+    case 'data':
+      return 'bg-warning/20 text-warning border-warning/30';
+    case 'tools':
+      return 'bg-success/20 text-success border-success/30';
+    default:
+      return 'bg-text/20 text-text border-text/30';
+  }
+};
+
+const { currentGame }: Props = Astro.props;
+---
+
+<section class="py-16 px-4 md:px-8 bg-gradient-to-br from-primary/5 to-secondary/5">
+  <!-- Decorative Elements -->
+  <div class="absolute left-0 top-0 w-full h-full overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 -left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+    <div class="absolute bottom-1/4 -right-10 w-32 h-32 bg-secondary/10 rounded-full blur-xl"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-secondary via-primary to-warning bg-clip-text text-transparent uppercase"
+      >
+        featured content
+      </h2>
+      <p class="text-lg text-text/70 lowercase">
+        essential guides and builds for {currentGame.title} lance mastery
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {
+        currentGame.featuredLinks.map((link) => (
+          <BaseCard
+            href={link.href}
+            class="p-6 hover:scale-105 bg-background-dark/50 backdrop-blur-sm"
+          >
+            <div class="flex items-start gap-4">
+              <div
+                class="text-3xl bg-text/5 rounded-xl p-4 animate-float"
+                style={`animation-delay: ${Math.random() * 2}s;`}
+              >
+                {link.emoji}
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-xl mb-2 group-hover:text-primary transition-colors uppercase">
+                  {link.title}
+                </h3>
+                <p class="text-text/70 text-sm leading-relaxed mb-3 lowercase">
+                  {link.description}
+                </p>
+                <div class="flex items-center justify-between">
+                  <Icon
+                    name="mingcute:arrow-right-line"
+                    class="w-5 h-5 text-text/40 group-hover:text-primary group-hover:translate-x-1 transition-all"
+                  />
+                </div>
+              </div>
+            </div>
+          </BaseCard>
+        ))
+      }
+    </div>
+  </div>
+</section>

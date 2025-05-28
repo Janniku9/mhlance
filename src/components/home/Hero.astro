@@ -1,0 +1,76 @@
+---
+import type { GameNavigation } from '../../types/Navigation';
+
+interface Props {
+  gameId: string;
+  currentGame: GameNavigation;
+}
+
+const { gameId, currentGame } = Astro.props;
+
+const builds = currentGame.sections.builds.length;
+const guides = currentGame.sections.guides.length;
+const resources = currentGame.sections.data.length;
+---
+
+<section class="relative py-12 md:py-16 px-4 md:px-8">
+  <div class="relative max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+      <!-- Game Info -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-6 mb-6">
+          <div class="text-5xl md:text-6xl animate-float">
+            {currentGame.emoji}
+          </div>
+          <div>
+            <h1
+              class="text-3xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary via-secondary to-warning bg-clip-text text-transparent uppercase"
+            >
+              {currentGame.title}
+            </h1>
+            <h2 class="text-xl md:text-2xl font-bold text-primary-light uppercase">lance guide</h2>
+          </div>
+        </div>
+        <p class="text-lg text-text/80 mb-6 leading-relaxed lowercase">
+          {currentGame.gameDescription}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4">
+          <a
+            href={`/${gameId}/builds`}
+            class="bg-primary hover:bg-primary-dark text-background px-6 py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 uppercase"
+          >
+            view builds
+          </a>
+          <a
+            href="#video-guides"
+            class="border-2 border-secondary hover:border-secondary-light text-secondary hover:text-secondary-light px-6 py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105 uppercase"
+          >
+            watch guides
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
+        <div class="text-center lg:text-left">
+          <div class="text-2xl md:text-3xl font-bold text-primary">{builds}</div>
+          <div class="text-sm text-text/60 uppercase">builds</div>
+        </div>
+        <div class="text-center lg:text-left">
+          <div class="text-2xl md:text-3xl font-bold text-secondary">
+            {guides}
+          </div>
+          <div class="text-sm text-text/60 uppercase">guides</div>
+        </div>
+        <div class="text-center lg:text-left">
+          <div class="text-2xl md:text-3xl font-bold text-warning">
+            {resources}
+          </div>
+          <div class="text-sm text-text/60 uppercase">resources</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
