@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import Badge from '../common/Badge.astro';
 import BaseCard from '../common/BaseCard.astro';
 import type { FeaturedLink } from '../../types/Navigation';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
 
 interface Props {
   currentGame: {
@@ -29,7 +30,7 @@ const getSectionTypeColor = (type: string) => {
 const { currentGame }: Props = Astro.props;
 ---
 
-<section class="py-16 px-4 md:px-8 bg-gradient-to-br from-primary/5 to-secondary/5">
+<section class="py-8 md:py-16 px-3 md:px-4 md:px-8 bg-background-dark relative overflow-hidden">
   <!-- Decorative Elements -->
   <div class="absolute left-0 top-0 w-full h-full overflow-hidden pointer-events-none">
     <div class="absolute top-1/4 -left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
@@ -37,42 +38,40 @@ const { currentGame }: Props = Astro.props;
   </div>
 
   <div class="relative max-w-6xl mx-auto">
-    <div class="text-center mb-12">
+    <div class="text-center mb-4 md:mb-12">
       <h2
-        class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-secondary via-primary to-warning bg-clip-text text-transparent uppercase"
+        class="text-2xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-secondary via-primary to-warning bg-clip-text text-transparent uppercase"
       >
         featured content
       </h2>
-      <p class="text-lg text-text/70 lowercase">
+      <p class="text-md md:text-lg text-text/70 lowercase">
         essential guides and builds for {currentGame.title} lance mastery
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
       {
         currentGame.featuredLinks.map((link) => (
           <BaseCard
             href={link.href}
-            class="p-6 hover:scale-105 bg-background-dark/50 backdrop-blur-sm"
+            class="p-3 md:p-6 hover:scale-105 bg-background-dark/50 backdrop-blur-sm"
           >
             <div class="flex items-start gap-4">
               <div
-                class="text-3xl bg-text/5 rounded-xl p-4 animate-float"
+                class="text-3xl bg-text/5 rounded-xl p-2 md:p-4 animate-float"
                 style={`animation-delay: ${Math.random() * 2}s;`}
               >
                 {link.emoji}
               </div>
               <div class="flex-1">
-                <h3 class="font-bold text-xl mb-2 group-hover:text-primary transition-colors uppercase">
-                  {link.title}
-                </h3>
-                <p class="text-text/70 text-sm leading-relaxed mb-3 lowercase">
+                <BaseCardTitle title={link.title} class="mb-1 md:mb-2" />
+                <p class="text-text/70 text-xs md:text-sm leading-relaxed mb-2 md:mb-3 lowercase">
                   {link.description}
                 </p>
                 <div class="flex items-center justify-between">
                   <Icon
                     name="mingcute:arrow-right-line"
-                    class="w-5 h-5 text-text/40 group-hover:text-primary group-hover:translate-x-1 transition-all"
+                    class="w-5 h-5 text-secondary-light group-hover:text-secondary group-hover:translate-x-1 transition-all"
                   />
                 </div>
               </div>

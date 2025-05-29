@@ -14,48 +14,40 @@ interface Props {
 const { socials, currentGame }: Props = Astro.props;
 ---
 
-<section class="py-16 px-4 md:px-8 bg-background-dark">
+<section class="py-8 md:py-16 px-3 md:px-4 md:px-8 bg-gradient-to-br from-primary/5 to-secondary/5">
   <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-secondary uppercase">join the hunt</h2>
-      <p class="text-lg text-text/70 lowercase">
+    <div class="text-center mb-4 md:mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold mb-4 text-secondary uppercase">join the hunt</h2>
+      <p class="text-md md:text-lg text-text/70 lowercase">
         connect with fellow {currentGame.title} lance hunters
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 mb-16 md:mb-32">
       {
         socials.map((social: { url: any; icon: unknown; name: unknown; description: unknown }) => (
-          <BaseCard href={social.url} class="p-6 hover:scale-105">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-text/5 rounded-xl flex items-center justify-center">
-                <Icon name={social.icon} class="w-6 h-6 text-primary" />
+          <BaseCard
+            href={social.url}
+            class="p-3 md:p-6 hover:scale-105 bg-background-dark/50 backdrop-blur-sm"
+          >
+            <div class="flex items-center gap-3 md:gap-4">
+              <div class="w-10 md:w-12 h-10 md:h-12 bg-text/5 rounded-lg md:rounded-xl flex items-center justify-center flex-shrink-0">
+                <Icon name={social.icon} class="w-5 md:w-6 h-5 md:h-6 text-primary" />
               </div>
-              <div>
-                <h3 class="font-bold text-lg group-hover:text-primary transition-colors uppercase">
+              <div class="flex-1 min-w-0">
+                <h3 class="font-bold text-base md:text-lg group-hover:text-primary transition-colors uppercase">
                   {social.name}
                 </h3>
-                <p class="text-text/60 text-sm lowercase">{social.description}</p>
+                <p class="text-text/60 text-xs md:text-sm lowercase">{social.description}</p>
               </div>
               <Icon
                 name="mingcute:arrow-right-line"
-                class="w-5 h-5 text-text/40 group-hover:text-primary group-hover:translate-x-1 transition-all ml-auto"
+                class="w-4 md:w-5 h-4 md:h-5 text-text/40 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0"
               />
             </div>
           </BaseCard>
         ))
       }
-    </div>
-
-    <!-- Hidden MH Easter Egg -->
-    <div class="text-center mt-12">
-      <button
-        onclick="this.innerHTML = this.innerHTML === '🥩' ? 'felyne says meow! 🐱' : '🥩'"
-        class="text-2xl opacity-50 hover:opacity-100 transition-opacity cursor-pointer"
-        title="psst... click me hunter!"
-      >
-        🥩
-      </button>
     </div>
   </div>
 </section>

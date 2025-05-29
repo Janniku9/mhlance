@@ -50,8 +50,8 @@ const gameNews = news.filter((item) => item.game === gameId);
 
 <>
   <Hero gameId={gameId} currentGame={currentGame} />
-  <FeaturedLinks currentGame={currentGame} />
   <News currentNews={gameNews} currentGame={currentGame} />
+  <FeaturedLinks currentGame={currentGame} />
   <Playlist currentGame={currentGame} />
   <Faq currentGame={currentGame} faq={currentFaq} />
   <Contributors currentGame={currentGame} contributors={gameContributors} gameId={gameId} />

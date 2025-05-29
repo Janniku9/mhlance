@@ -66,7 +66,7 @@ export default {
           DEFAULT: '#1e181c',
           dark: '#141014',
           //dark: '#191418',
-          darker: '#141014',
+          darker: '#0d090d',
         },
         fontSize: {
           sectionpc: '1.12rem',

@@ -5,7 +5,8 @@ export const games: GameNavigation[] = [
     game: 'world',
     title: 'World/Iceborne',
     emoji: '🧊',
-    gameDescription: 'E',
+    gameDescription:
+      'Master the clutch claw, perfect your guard timing, and learn how to dominate the icy challenges of Iceborne.',
     playlistId: 'PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4',
     featuredLinks: [
       {
@@ -144,26 +145,46 @@ export const games: GameNavigation[] = [
     game: 'rise',
     title: 'Rise/Sunbreak',
     emoji: '🌅',
-    gameDescription: 'Rise and Sunbreak are the latest mainline Monster Hunter games.',
+    gameDescription:
+      'Learn the counters and switch skill in sunbreak to beat even the toughest anomaly investigations.',
     playlistId: 'PLMgaMGsEoNvmMAOMQ8PFmnGvaGuLO_nVd',
     featuredLinks: [
       {
-        href: '/rise/combos',
+        href: '/rise/builds/endgame',
+        emoji: '👑',
+        title: 'Endgame Builds',
+        description:
+          'Endgame builds for everyone that completed the story! (Updated for patch 16.0)',
+      },
+      {
+        href: '/rise/guides/switch-skills',
+        emoji: '🔄',
+        title: 'Switch Skills',
+        description: 'Master the new Switch Skills system introduced in Sunbreak!',
+      },
+      {
+        href: '/rise/guides/combos',
         emoji: '🥊',
         title: 'Combos',
         description: 'Master the best lance combos for maximum damage!',
       },
       {
-        href: '/rise/guard-up',
+        href: '/rise/guides/palamutes',
+        emoji: '🐕‍',
+        title: 'Palamutes',
+        description: 'Turn your dogs into dps machines! Best palamute equipment and skills.',
+      },
+      {
+        href: '/rise/data/match-ups',
+        emoji: '📝',
+        title: 'Match Ups',
+        description: 'Complete matchup guide showing the best builds for every monster!',
+      },
+      {
+        href: '/rise/data/guard-up',
         emoji: '🛡️',
         title: 'Guard Up',
         description: 'Complete reference of all attacks requiring Guard Up.',
-      },
-      {
-        href: '/rise/motion-values',
-        emoji: '🔍',
-        title: 'Motion Values',
-        description: 'Motion values for all weapons in Rise/Sunbreak.',
       },
     ],
     sections: {
@@ -308,26 +329,27 @@ export const games: GameNavigation[] = [
     game: 'wilds',
     title: 'Wilds',
     emoji: '🌿',
-    gameDescription: 'Wilds is a new Monster Hunter game set in a lush, untamed world.',
+    gameDescription:
+      'Perfect your follow up attacks and master the newly introduced Focus Mode to adapt to the untamed wilderness that the new Monster Hunter game brings.',
     playlistId: 'PLMgaMGsEoNvm348bMTeveCS1WZlisWQWq',
     featuredLinks: [
+      {
+        href: '/wilds/guides/focus-mode',
+        emoji: '🤺',
+        title: 'Focus Mode',
+        description: 'Master the new Focus Mode for optimal damage output!',
+      },
       {
         href: '/wilds/combos',
         emoji: '🥊',
         title: 'Combos',
-        description: 'Master the best lance combos for maximum damage!',
+        description: 'Complete reference of all combos for maximum damage.',
       },
       {
-        href: '/wilds/guard-up',
-        emoji: '🛡️',
-        title: 'Guard Up',
-        description: 'Complete reference of all attacks requiring Guard Up.',
-      },
-      {
-        href: '/wilds/motion-values',
+        href: '/wilds/high-rank',
         emoji: '🔍',
-        title: 'Motion Values',
-        description: 'Motion values for all weapons in Wilds.',
+        title: 'High Rank',
+        description: 'Best high rank builds for the current update.',
       },
     ],
     sections: {
