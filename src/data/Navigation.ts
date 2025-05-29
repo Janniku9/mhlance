@@ -353,10 +353,82 @@ export const games: GameNavigation[] = [
       },
     ],
     sections: {
-      builds: [],
-      guides: [],
+      builds: [
+        {
+          id: 'low-rank',
+          emoji: '🏛️',
+          title: 'Low Rank',
+          navDescription: 'Low rank story progression builds',
+          pageDescription:
+            'Journey through ancient Wyveria with optimized builds for discovering the Dragontorch mysteries!',
+        },
+        {
+          id: 'high-rank',
+          emoji: '⛓️',
+          title: 'High Rank',
+          navDescription: 'High rank endgame builds',
+          pageDescription:
+            'Face the White Wraith and Tempered monsters with powerful endgame lance builds!',
+        },
+      ],
+      guides: [
+        {
+          id: 'focus-mode',
+          emoji: '🤺',
+          title: 'Focus Mode',
+          navDescription: 'Master the new precision targeting system',
+          pageDescription:
+            'Learn to use and take advantage of the new Focus Mode to maximize your damage output!',
+        },
+        {
+          id: 'counters',
+          emoji: '🛡️',
+          title: 'Counters',
+          navDescription: 'Perfect your counter attacks',
+          pageDescription:
+            'Master lance counter mechanics to turn enemy aggression into your advantage!',
+        },
+        {
+          id: 'combos',
+          emoji: '🥊',
+          title: 'Combos',
+          navDescription: 'Optimal combos for all situations',
+          pageDescription: 'Unleash most optimal lance combos for all situations and playstyles!',
+        },
+        {
+          id: 'palico',
+          emoji: '🐈',
+          title: 'Palico',
+          navDescription: 'Best palico equipment and skills',
+          pageDescription: 'Optimize your feline companion for the dangerous Forbidden Lands!',
+        },
+      ],
       tools: [],
-      data: [],
+      data: [
+        {
+          id: 'match-ups',
+          emoji: '📝',
+          title: 'Match Ups',
+          navDescription: 'Optimal builds for every monster matchup',
+          pageDescription: 'Complete matchup guide showing the best builds for every monster! ',
+        },
+        {
+          id: 'guard-up',
+          emoji: '🛡️',
+          title: 'Guard Up',
+          navDescription: 'All blockable & unblockable attacks',
+          pageDescription:
+            'Complete list of attacks requiring Guard Up and truly unblockable moves! ',
+        },
+        {
+          id: 'motion-values',
+          emoji: '🔍',
+          title: 'Motion Values',
+          navDescription: 'Motion values for all weapons',
+          externalLink:
+            'https://docs.google.com/spreadsheets/d/1I8j9nM7xWXDd2n9WMZTitSGkFe8R89SqHr0sEjoR4Fs/edit?gid=510034666#gid=510034666',
+        },
+      ],
     },
   },
 ];
