@@ -56,7 +56,9 @@ const { contributors, gameId, currentGame } = Astro.props;
                       <a
                         href={contributor.socials.youtube}
                         target="_blank"
-                        class="text-text/40 hover:text-primary transition-colors"
+                        rel="noopener noreferrer"
+                        class="text-text/40 hover:text-primary transition-colors relative z-10"
+                        style="pointer-events: auto;"
                       >
                         <Icon name="mingcute:youtube-fill" class="w-3 md:w-4 h-3 md:h-4" />
                       </a>
@@ -65,7 +67,9 @@ const { contributors, gameId, currentGame } = Astro.props;
                       <a
                         href={contributor.socials.twitch}
                         target="_blank"
-                        class="text-text/40 hover:text-primary transition-colors"
+                        rel="noopener noreferrer"
+                        class="text-text/40 hover:text-primary transition-colors relative z-10"
+                        style="pointer-events: auto;"
                       >
                         <Icon name="mdi:twitch" class="w-3 md:w-4 h-3 md:h-4" />
                       </a>
@@ -74,7 +78,9 @@ const { contributors, gameId, currentGame } = Astro.props;
                       <a
                         href={contributor.socials.discord}
                         target="_blank"
-                        class="text-text/40 hover:text-primary transition-colors"
+                        rel="noopener noreferrer"
+                        class="text-text/40 hover:text-primary transition-colors relative z-10"
+                        style="pointer-events: auto;"
                       >
                         <Icon name="mingcute:discord-fill" class="w-3 md:w-4 h-3 md:h-4" />
                       </a>
