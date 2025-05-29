@@ -1,8 +1,9 @@
 ---
+import type { Game } from '../../types/Game';
 import type { GameNavigation } from '../../types/Navigation';
 
 interface Props {
-  gameId: string;
+  gameId: Game;
   currentGame: GameNavigation;
 }
 
@@ -11,41 +12,94 @@ const { gameId, currentGame } = Astro.props;
 const builds = currentGame.sections.builds.length;
 const guides = currentGame.sections.guides.length;
 const resources = currentGame.sections.data.length;
+
+const getGameClasses = (gameId: Game) => {
+  switch (gameId) {
+    case 'world':
+      return {
+        titleGradient:
+          'bg-gradient-to-r from-primary-light via-info-light to-info-darker bg-clip-text text-transparent',
+        primaryBtn: 'bg-info hover:bg-info-dark text-white hover:info/25',
+        secondaryBtn:
+          'border-primary-light text-primary-light hover:bg-primary-light hover:text-white hover:border-primary-light',
+        statOne: 'text-primary-light',
+        statTwo: 'text-info-light',
+      };
+    case 'rise':
+      return {
+        titleGradient:
+          'bg-gradient-to-r from-primary-light via-amber-500 to-red-500 bg-clip-text text-transparent',
+        primaryBtn:
+          'bg-secondary hover:bg-secondary-light text-white hover:shadow-secondary-light/25',
+        secondaryBtn:
+          'border-primary text-primary hover:bg-primary-light hover:text-white hover:border-primary-light',
+        statOne: 'text-error',
+        statTwo: 'text-secondary',
+      };
+    case 'wilds':
+      return {
+        titleGradient:
+          'bg-gradient-to-r from-success-light via-success-dark to-primary bg-clip-text text-transparent',
+        primaryBtn: 'bg-success hover:bg-success-dark text-white hover:shadow-success-dark/25',
+        secondaryBtn:
+          'border-primary-light text-primary-light hover:bg-primary-light hover:text-white hover:border-primary-light',
+        statOne: 'text-success-light',
+        statTwo: 'text-primary-light',
+      };
+    default:
+      return {
+        titleGradient:
+          'bg-gradient-to-r from-violet-500 via-amber-500 to-amber-400 bg-clip-text text-transparent',
+        primaryBtn: 'bg-violet-500 hover:bg-violet-600 text-white hover:shadow-violet-500/25',
+        secondaryBtn:
+          'border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white hover:border-amber-500',
+        statOne: 'text-violet-500',
+        statTwo: 'text-amber-500',
+      };
+  }
+};
+
+const classes = getGameClasses(gameId);
 ---
 
-<section class="relative py-12 md:py-16 px-4 md:px-8">
+<section class="relative py-16 md:py-20 px-4 md:px-8">
   <div class="relative max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
       <!-- Game Info -->
       <div class="lg:col-span-2">
-        <div class="flex items-center gap-6 mb-6">
-          <div class="text-5xl md:text-6xl animate-float">
+        <div class="flex items-center gap-8 mb-8">
+          <div class="text-7xl md:text-8xl animate-float">
             {currentGame.emoji}
           </div>
           <div>
             <h1
-              class="text-3xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary via-secondary to-warning bg-clip-text text-transparent uppercase"
+              class:list={['text-4xl md:text-6xl font-bold mb-2 uppercase', classes.titleGradient]}
             >
               {currentGame.title}
             </h1>
-            <h2 class="text-xl md:text-2xl font-bold text-primary-light uppercase">lance guide</h2>
           </div>
         </div>
-        <p class="text-lg text-text/80 mb-6 leading-relaxed lowercase">
+        <p class="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed lowercase max-w-3xl">
           {currentGame.gameDescription}
         </p>
 
         <!-- CTA Buttons -->
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-6">
           <a
             href={`/${gameId}/builds`}
-            class="bg-primary hover:bg-primary-dark text-background px-6 py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 uppercase"
+            class:list={[
+              'px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg uppercase text-lg',
+              classes.primaryBtn,
+            ]}
           >
             view builds
           </a>
           <a
             href="#video-guides"
-            class="border-2 border-secondary hover:border-secondary-light text-secondary hover:text-secondary-light px-6 py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105 uppercase"
+            class:list={[
+              'px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 uppercase text-lg border-2',
+              classes.secondaryBtn,
+            ]}
           >
             watch guides
           </a>
@@ -53,24 +107,40 @@ const resources = currentGame.sections.data.length;
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-3 lg:grid-cols-1 gap-4">
+      <div class="grid grid-cols-3 lg:grid-cols-1 gap-6">
         <div class="text-center lg:text-left">
-          <div class="text-2xl md:text-3xl font-bold text-primary">{builds}</div>
-          <div class="text-sm text-text/60 uppercase">builds</div>
+          <div class:list={['text-3xl md:text-4xl font-bold', classes.statOne]}>{builds}</div>
+          <div class="text-base text-white/60 uppercase">builds</div>
         </div>
         <div class="text-center lg:text-left">
-          <div class="text-2xl md:text-3xl font-bold text-secondary">
+          <div class:list={['text-3xl md:text-4xl font-bold', classes.statTwo]}>
             {guides}
           </div>
-          <div class="text-sm text-text/60 uppercase">guides</div>
+          <div class="text-base text-white/60 uppercase">guides</div>
         </div>
         <div class="text-center lg:text-left">
-          <div class="text-2xl md:text-3xl font-bold text-warning">
+          <div class:list={['text-3xl md:text-4xl font-bold', classes.statOne]}>
             {resources}
           </div>
-          <div class="text-sm text-text/60 uppercase">resources</div>
+          <div class="text-base text-white/60 uppercase">resources</div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+</style>
