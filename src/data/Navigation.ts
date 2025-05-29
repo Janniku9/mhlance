@@ -347,7 +347,7 @@ export const games: GameNavigation[] = [
       },
       {
         href: '/wilds/high-rank',
-        emoji: '🔍',
+        emoji: '⛓️',
         title: 'High Rank',
         description: 'Best high rank builds for the current update.',
       },
