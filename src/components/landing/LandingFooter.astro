@@ -10,7 +10,7 @@ const classList = Astro.props.class;
     {/* Attribution with softer styling */}
     <div class="text-center">
       <span
-        class="text-sm md:text-lg text-text/65 transition-colors duration-300 hover:text-text/70"
+        class="text-sm md:text-lg text-text/65 transition-colors duration-300 hover:text-text/70 lowercase"
       >
         Made with ❤️ by the Monster Hunter Lance community
       </span>
@@ -24,7 +24,7 @@ const classList = Astro.props.class;
             icon={social.icon}
             href={social.url}
             text={social.description}
-            ariaLabel={`Check out the ${social.name}`}
+            ariaLabel={`check out the ${social.name}`}
           />
         ))
       }
