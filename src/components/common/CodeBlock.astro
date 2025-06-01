@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<code
+  class:list={[
+    'px-2 py-1 rounded-md text-sm font-mono border',
+    'transition-all duration-200 hover:scale-105',
+    'bg-text/5 text-secondary-light border-secondary-light/20',
+    className,
+  ]}
+>
+  <slot />
+</code>
