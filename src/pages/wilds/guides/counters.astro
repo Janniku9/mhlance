@@ -1,8 +1,91 @@
 ---
+import Section from '../../../components/common/Section.astro';
+import StyledList from '../../../components/common/StyledList.astro';
 import ComingSoon from '../../../components/core/ComingSoon.astro';
-import MainLayout from '../../../layouts/MainLayout.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
 ---
 
-<MainLayout title="Coming Soon">
-  <ComingSoon />
-</MainLayout>
+<ContentLayout>
+  <Section>
+    <p>
+      Wilds added a lot of new guards and counters, all with different follow-ups and use cases. In
+      this section we will go over the different moves, what exactly they do, and when to use them.
+    </p>
+  </Section>
+
+  <Section title="Charged Counter">
+    <p>
+      Charge Counter is a new move added in Wilds and it's very very strong. It's called Charged
+      Counter because you can charge it up and depending on the level of charge, you will deal more
+      damage.
+    </p>
+
+    <p>
+      You can almost always transition your combo into a Charged Counter. The deeper you are in your
+      combo, the higher the initial charge level will be. As in all games, lance combos always
+      consist of 3 attacks, before you need to reset the loop with either a hop, a finisher or just
+      by waiting. (For example, 3 pokes, or 1 leaping thrust + 2 pokes, or 1 poke + 1 wide sweep + 1
+      poke, etc.)
+    </p>
+
+    <p>
+      So for example, starting charged counter after 1 attack will give you immediately lvl 1
+      charge, after 2 attacks you get lvl 2 charge and after 3 attacks you get lvl 3 charge. If you
+      go into charged counter from neutral, you will be at lvl 0 for a very brief moment, before you
+      charge it to lvl 1.
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Level 1 Charge Counter deals 20% more damage (white)',
+          emoji: '1️⃣',
+        },
+        {
+          text: 'Level 2 Charge Counter deals 40% more damage (yellow)',
+          emoji: '2️⃣',
+        },
+        {
+          text: 'Level 3 Charge Counter deals 70% more damage (red)',
+          emoji: '3️⃣',
+        },
+      ]}
+    />
+
+    <p>
+      Each level comes with a significant increase in damage, but charging it is never really worth
+      it unless you really have nothing better to do, like the monster is charging up an attack out
+      of reach, or is about to charge you from far, as most of the time it's just better to do more
+      pokes before going into a charged counter.
+    </p>
+
+    <p>
+      Now how does the charged counter actually counter attacks? Well, when you release the charged
+      counter right before the monster hits you, you will perform a so called offset attack.
+      Allowing you to ingore the monster's attack and deal damage to it instead.
+    </p>
+
+    <p>
+      You basically get i-frames after releasing the charged counter, which allows you to counter
+      negating all damage (no matter what guard level you have) and even allowing you to block
+      unblockable attacks that otherwise need guard up. On top of that, when you actually offset an
+      attack, you the counter attack will do two damage instances, doing significantly more damage
+      than an empty charged counter.
+    </p>
+
+    <p>
+      Funnily enough, the skill offensive guard still works with charged counter, which makes this
+      the best counter in the game, especially if used at yellow or red charge level.
+    </p>
+  </Section>
+
+  <Section title="Perfect Guard">
+    <p>
+      Perfect Guard is performed by pressing the guard button right before the monster hits you.
+    </p>
+  </Section>
+
+  <Section title="Power Guard">
+    <ComingSoon />
+  </Section>
+</ContentLayout>

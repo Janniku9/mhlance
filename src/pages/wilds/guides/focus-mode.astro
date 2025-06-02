@@ -1,9 +1,12 @@
 ---
 import CodeBlock from '../../../components/common/CodeBlock.astro';
+import ImageCard from '../../../components/common/ImageCard.astro';
 import Section from '../../../components/common/Section.astro';
 import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
 import StyledList from '../../../components/common/StyledList.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mode-settings.png';
 ---
 
 <ContentLayout>
@@ -62,10 +65,17 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
       sheathing, why not just stay in Focus Mode for the entire fight?
     </p>
 
-    <CodeBlock>
-      Settings → Keybinds/Controls → Page 2 Change "Aim/Focus Mode Controls" to "Press to Toggle
-      Mode"
-    </CodeBlock>
+    <ImageCard src={focusModeSettings} alt="Focus Mode Settings" maxWidth="1000px">
+      <p>
+        To make this easier, you can change the Focus Mode controls to a toggle instead of a hold.
+        This way, you can just press the button to enter Focus Mode and press it again to exit,
+        without needing to hold it down.
+      </p>
+      <CodeBlock>
+        Settings → Keyboard/Controller Configuration → All Melee Weapons → "Focus Mode/Aim Slinger
+        Hold" to a button of your choice
+      </CodeBlock>
+    </ImageCard>
 
     <p>
       Now you can just press the button when engaging a monster and press it again to turn it off
