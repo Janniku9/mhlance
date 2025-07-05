@@ -18,8 +18,22 @@ const { contributors, gameId, currentGame } = Astro.props;
 ---
 
 <section
-  class="py-8 md:py-16 px-3 md:px-4 md:px-8 bg-gradient-to-br from-background via-background-dark to-background"
+  class="py-12 md:py-32 px-3 md:px-4 md:px-8 bg-gradient-to-br from-background via-background-dark to-background relative overflow-hidden -mt-1"
 >
+  <!-- Curved top border -->
+  <div class="absolute top-0 left-0 w-full overflow-hidden">
+    <svg
+      class="relative block w-full h-6 md:h-12 lg:h-16"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,0V46.29c0,0,270.5,47.05,600,0s600,0,600,0V0Z"
+        fill="currentColor"
+        class="text-background-darker"></path>
+    </svg>
+  </div>
+
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-4 md:mb-12">
       <h2 class="text-2xl md:text-4xl font-bold mb-4 text-warning uppercase">contributors</h2>

@@ -28,7 +28,7 @@ const getNewsTypeColor = (type: string) => {
 };
 
 ---
-<section class="py-8 md:py-16 px-3 md:px-4 md:px-8 bg-gradient-to-br from-primary/5 to-secondary/5 relative overflow-hidden">
+<section class="py-12 md:py-32 px-3 md:px-4 md:px-8 bg-gradient-to-br from-primary/5 to-primary-light/20 relative overflow-hidden -mt-1">
   <!-- Decorative Elements -->
   <div class="absolute left-0 top-0 w-full h-full overflow-hidden pointer-events-none">
     <div class="absolute top-10 left-10 w-16 h-16 hexagon bg-primary opacity-5"></div>
@@ -120,3 +120,16 @@ const getNewsTypeColor = (type: string) => {
     </div>
   </div>
 </section>
+
+<style>
+  /* Hexagon shape for decorative elements */
+  .hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  /* Ensure smooth transition from wave */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+</style>
