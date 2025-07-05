@@ -89,7 +89,7 @@ const totalIngredientCount = ingredients.reduce((sum, item) => sum + item.count,
         }
       </div>
 
-      <div class="flex flex-wrap gap-1 px-3 py-2 rounded-lg bg-text/5">
+      <div class="flex flex-wrap gap-1 px-3 py-2 rounded-lg bg-text/7">
         {
           repeatEmoji(primaryIngredients.emoji, primaryIngredients.count).map((emoji) => (
             <span class="text-xl cursor-help" title={`${primaryIngredients.type} ingredient`}>
@@ -111,7 +111,7 @@ const totalIngredientCount = ingredients.reduce((sum, item) => sum + item.count,
         }
       </div>
 
-      <div class="flex flex-wrap gap-1 px-3 py-2 rounded-lg bg-text/5">
+      <div class="flex flex-wrap gap-1 px-3 py-2 rounded-lg bg-text/7">
         {
           ingredients.map((item) =>
             repeatEmoji(item.emoji, item.count).map((emoji) => (

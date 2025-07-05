@@ -34,7 +34,7 @@ const { contributors, gameId, currentGame } = Astro.props;
           <BaseCard class="p-3 md:p-6">
             <div class="flex items-start gap-3 md:gap-4">
               {contributor.image && (
-                <div class="w-12 md:w-16 h-12 md:h-16 rounded-lg md:rounded-xl overflow-hidden bg-text/5 flex-shrink-0">
+                <div class="w-12 md:w-16 h-12 md:h-16 rounded-lg md:rounded-xl overflow-hidden bg-text/7 flex-shrink-0">
                   <Image
                     src={contributor.image}
                     alt={contributor.name}
@@ -43,7 +43,7 @@ const { contributors, gameId, currentGame } = Astro.props;
                 </div>
               )}
               {!contributor.image && (
-                <div class="w-12 md:w-16 h-12 md:h-16 rounded-lg md:rounded-xl bg-text/5 flex items-center justify-center flex-shrink-0">
+                <div class="w-12 md:w-16 h-12 md:h-16 rounded-lg md:rounded-xl bg-text/7 flex items-center justify-center flex-shrink-0">
                   <Icon name="mingcute:user-4-fill" class="w-6 md:w-8 h-6 md:h-8 text-text/40" />
                 </div>
               )}

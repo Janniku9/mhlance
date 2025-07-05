@@ -58,7 +58,7 @@ const { currentGame }: Props = Astro.props;
           >
             <div class="flex items-start gap-4">
               <div
-                class="text-3xl bg-text/5 rounded-xl p-2 md:p-4 animate-float"
+                class="text-3xl bg-text/7 rounded-xl p-2 md:p-4 animate-float"
                 style={`animation-delay: ${Math.random() * 2}s;`}
               >
                 {link.emoji}
@@ -68,12 +68,12 @@ const { currentGame }: Props = Astro.props;
                 <p class="text-text/70 text-xs md:text-sm leading-relaxed mb-2 md:mb-3 lowercase">
                   {link.description}
                 </p>
-                <div class="flex items-center justify-between">
-                  <Icon
-                    name="mingcute:arrow-right-line"
-                    class="w-5 h-5 text-secondary-light group-hover:text-secondary group-hover:translate-x-1 transition-all"
-                  />
-                </div>
+              </div>
+              <div class="flex items-center ml-auto">
+                <Icon
+                  name="mingcute:arrow-right-line"
+                  class="w-7 md:w-10 h-7 md:h-10 text-secondary-light group-hover:text-secondary group-hover:translate-x-1 transition-all"
+                />
               </div>
             </div>
           </BaseCard>

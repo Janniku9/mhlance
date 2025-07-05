@@ -5,7 +5,7 @@ interface Props {
   class?: string;
 }
 
-const { text, color = 'bg-text/5 text-text', class: className } = Astro.props;
+const { text, color = 'bg-text/7 text-text', class: className } = Astro.props;
 ---
 
 <span class:list={['px-3 py-1 rounded-full text-sm', color, className]}>
