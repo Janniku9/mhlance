@@ -21,7 +21,7 @@ const sortedNews = currentNews.sort((a, b) => new Date(b.date).getTime() - new D
 const getNewsTypeColor = (type: string) => {
   switch(type) {
     case 'builds': return 'bg-primary/20 text-primary border-primary/30';
-    case 'guide': return 'bg-secondary/20 text-secondary border-secondary/30';
+    case 'guides': return 'bg-secondary/20 text-secondary border-secondary/30';
     case 'preview': return 'bg-warning/20 text-warning border-warning/30';
     default: return 'bg-text/20 text-text border-text/30';
   }
@@ -39,7 +39,7 @@ const getNewsTypeColor = (type: string) => {
     
   <div class="relative max-w-6xl mx-auto">
     <div class="text-center mb-4 md:mb-12">
-      <h2 class="text-2xl md:text-4xl font-bold mb-4 text-warning uppercase">
+      <h2 class="text-2xl md:text-4xl font-bold mb-4 text-secondary uppercase">
         latest updates
       </h2>
       <p class="text-md md:text-lg text-text/70 lowercase">
