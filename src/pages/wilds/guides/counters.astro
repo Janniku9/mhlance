@@ -1,38 +1,34 @@
 ---
 import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
 import StyledList from '../../../components/common/StyledList.astro';
-import ComingSoon from '../../../components/core/ComingSoon.astro';
+import InfoBox from '../../../components/common/InfoBox.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 ---
 
 <ContentLayout>
   <Section>
     <p>
-      Wilds added a lot of new guards and counters, all with different follow-ups and use cases. In
-      this section we will go over the different moves, what exactly they do, and when to use them.
+      Wilds introduced a arsenal of new defensive options that fundamentally change how Lance
+      approaches combat. Each guard and counter technique serves distinct purposes, offering
+      different levels of protection, damage potential, and follow-up opportunities. Mastering these
+      tools transforms Lance from a simple poke-and-block weapon into a sophisticated
+      counter-attacking powerhouse.
     </p>
   </Section>
 
-  <Section title="Charged Counter">
+  <Section title="Charged Counter (CC)">
     <p>
-      Charge Counter is a new move added in Wilds and it's very very strong. It's called Charged
-      Counter because you can charge it up and depending on the level of charge, you will deal more
-      damage.
+      Charged Counter stands as Lance's most devastating new tool: a scalable counter that grows
+      stronger the deeper you are in your combo sequence. The mechanic elegantly rewards aggressive
+      play by granting higher damage multipliers based on your current combo position.
     </p>
 
     <p>
-      You can almost always transition your combo into a Charged Counter. The deeper you are in your
-      combo, the higher the initial charge level will be. As in all games, lance combos always
-      consist of 3 attacks, before you need to reset the loop with either a hop, a finisher or just
-      by waiting. (For example, 3 pokes, or 1 leaping thrust + 2 pokes, or 1 poke + 1 wide sweep + 1
-      poke, etc.)
-    </p>
-
-    <p>
-      So for example, starting charged counter after 1 attack will give you immediately lvl 1
-      charge, after 2 attacks you get lvl 2 charge and after 3 attacks you get lvl 3 charge. If you
-      go into charged counter from neutral, you will be at lvl 0 for a very brief moment, before you
-      charge it to lvl 1.
+      The charge system works intuitively: each attack in your three-hit combo sequence increases
+      your starting charge level. Starting from neutral gives you level 0 (briefly), after one
+      attack you begin at level 1, after two attacks you start at level 2, and after three attacks
+      you immediately reach the maximum level 3 charge.
     </p>
 
     <StyledList
@@ -53,39 +49,268 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     />
 
     <p>
-      Each level comes with a significant increase in damage, but charging it is never really worth
-      it unless you really have nothing better to do, like the monster is charging up an attack out
-      of reach, or is about to charge you from far, as most of the time it's just better to do more
-      pokes before going into a charged counter.
+      While you can manually charge from any level to increase damage further, this rarely proves
+      worthwhile in practice. The time spent charging could usually be better invested in additional
+      pokes before triggering the counter.
+    </p>
+
+    <SectionSubTitle title="The Counter Mechanism" />
+
+    <p>
+      To successfully perform a Charged Counter you need to release it just before an attack
+      connects. This precise timing triggers an "offset attack" that grants i-frames, negating all
+      damage regardless of your guard skill investment. Even attacks that normally require Guard Up
+      become completely "blockable" through this counter window.
     </p>
 
     <p>
-      Now how does the charged counter actually counter attacks? Well, when you release the charged
-      counter right before the monster hits you, you will perform a so called offset attack.
-      Allowing you to ingore the monster's attack and deal damage to it instead.
+      Successfully offsetting an attack delivers two damage instances instead of one, dramatically
+      increasing the total damage output. Combined with the charge level multipliers, a successful
+      red-level offset represents some of the highest damage attacks Lance can perform.
     </p>
 
     <p>
-      You basically get i-frames after releasing the charged counter, which allows you to counter
-      negating all damage (no matter what guard level you have) and even allowing you to block
-      unblockable attacks that otherwise need guard up. On top of that, when you actually offset an
-      attack, you the counter attack will do two damage instances, doing significantly more damage
-      than an empty charged counter.
+      Funnily enough, even though you i-frame through the attack (not block it), it still procs the
+      Offensive Guard skill, making it this the best counter in the game, especially if used at
+      yellow or red charge level.
+    </p>
+
+    <SectionSubTitle title="Counter Chaining" />
+    <p>
+      You can even chain charged counters together, but the timing is a bit tricky: input the next
+      counter after both damage numbers appear and the lance begins retracting toward neutral
+      position. If you press too early, you will just perform a high thrust, too late and you might
+      not be in time to counter the next attack.
     </p>
 
     <p>
-      Funnily enough, the skill offensive guard still works with charged counter, which makes this
-      the best counter in the game, especially if used at yellow or red charge level.
+      This technique allows back-to-back counters against deliberate monster combinations, though it
+      requires good knowledge of attack timings.
     </p>
   </Section>
 
-  <Section title="Perfect Guard">
+  <Section title="Perfect Guard (PeG)">
     <p>
-      Perfect Guard is performed by pressing the guard button right before the monster hits you.
+      Perfect Guard is performed by pressing the guard button right before the monster hits you. If
+      done right, you will see a white flash and the counter shield attack deals increased damage
+      and KO. Additionally, all follow up attacks are significantly stronger.
+    </p>
+
+    <p>For the follow up attacks, you have three different options:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Retribution Thrust',
+          emoji: '⚡',
+          subtext:
+            'A very quick thrust that deals medium damage, but allows you to attack or block again immediately. In most cases, this is what you want to use, as it allows you to chain perfect block on very quick attacks while still squeezing in some damage.',
+        },
+        {
+          text: 'Retribution Thrust',
+          emoji: '💥',
+          subtext:
+            'A slow attack where you jump back and then thrust forward, dealing good damage with the option to follow up with a dash attack. This makes it a really good option for situations where you actually have the time to perform it and the dash attack.',
+        },
+        {
+          text: 'Payback Thrust',
+          emoji: '💸',
+          subtext:
+            "A slow attack where you jump forward and thrust upwards, dealing mediocre damage. This is option honestly doesn't see much use, as the damage and speed are bad so you usually wanna choose between the first two options.",
+        },
+      ]}
+    />
+
+    <SectionSubTitle title="When to choose Perfect Guard?" />
+
+    <p>
+      Perfect Guard functions best as a defensive safety net rather than a primary strategy. While
+      Charged Counter and Grand Retribution Thrust typically offer superior damage and utility,
+      Perfect Guard shines in specific scenarios:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Panic situations where you lack time to charge a counter',
+          emoji: '⏱️',
+        },
+        {
+          text: 'Multi-hit attacks that Charged Counter struggles to handle',
+          emoji: '🔄',
+        },
+        {
+          text: 'Extremely fast attack chains that require immediate defensive responses',
+          emoji: '⚡',
+        },
+      ]}
+    />
+
+    <p>So think of the perfect guard as a last resort option, a panic button.</p>
+
+    <SectionSubTitle title="Guard Skill Interactions" />
+
+    <p>
+      So when you compare blocking attacks with guard level 0, using normal block and perfect guard,
+      you will notice that the perfect guard results in less chip damage and faster recovery. This
+      is because I assume that perfect guard has some sort of build-in guard levels. If you start
+      including guard levels, it will start to get weird though, as it doesn't seem to scale with
+      it.
+    </p>
+
+    <p>
+      No matter if you have guard level 0 or 3, it seems you always take the same amount of
+      knockback and chip damage, when using perfect guard, completely ignoring the guard level,
+      which is a very weird game design choice, basically making it impossible to improve the
+      knockback and lag you take on strong attacks, when using perfect guard.
     </p>
   </Section>
 
-  <Section title="Power Guard">
-    <ComingSoon />
+  <Section title="Power Guard (PoG)">
+    <p>
+      Power Guard returns from previous games with enhanced functionality, creating a specialized
+      defensive stance that opens unique counter opportunities. Activate it by holding the dodge
+      button while blocking or charging a counter, entering a distinctive stance with 360-degree
+      protection.
+    </p>
+
+    <p>
+      The stance offers several defensive advantages: complete directional coverage eliminates the
+      need to face attacks directly, and the continuous stamina drain system allows indefinite
+      blocking as long as stamina remains available. This makes Power Guard excellent for handling
+      complex multi-hit combinations without worrying about stamina depletion on individual blocks.
+    </p>
+
+    <p>
+      However, Power Guard increases chip damage compared to normal blocking, creating a meaningful
+      trade-off between defensive utility and health preservation. Unlike Iceborne, Wilds does not
+      have the automatic Guard Up effect, so unblockable attacks remain unblockable regardless of
+      Power Guard duration.
+    </p>
+
+    <SectionSubTitle title="Grand Retribution Thrust (GRT)" />
+
+    <p>
+      Power Guard's primary value lies in accessing Grand Retribution Thrust, potentially Lance's
+      highest-damage attack when conditions align properly. Blocking any attack while in Power Guard
+      fills a hidden meter visible through your lance's glow intensity.
+    </p>
+
+    <p>The meter progression affects GRT damage significantly:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'White',
+          emoji: '⬜',
+          subtext:
+            'minimum you need to perform the Grand Retribution Thrust. Blocking any attack will at least give you this level.',
+        },
+        {
+          text: 'Orange',
+          emoji: '🟧',
+          subtext: 'Boosts the damage of the Grand Retribution Thrust by 40%.',
+        },
+        {
+          text: 'Red',
+          emoji: '🟥',
+          subtext: 'Boosts the damage of the Grand Retribution Thrust by 70%.',
+        },
+      ]}
+    />
+
+    <p>
+      Grand Retribution Thrust executes as a backward leap followed by a devastating forward thrust
+      dealing three damage ticks instead of the typical two. A GRT at red level is the highest
+      damage attack Lance can perform, surpassing even the Charged Counter.
+    </p>
+
+    <SectionSubTitle title="When to use Power Guard and GRT?" />
+
+    <p>
+      Despite its damage potential, GRT carries several practical limitations that prevent it from
+      replacing Charged Counter as the primary strategy:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'It is slower requiring a longer opening to perform, especially if you want to use it\s full potential and follow up with the dash attack.',
+        },
+        {
+          text: 'It requires you to block a strong attack so you can get to red level immediately. Blocking a strong attack often means you will take a lot of chip damage.',
+        },
+        {
+          text: 'To prevent chip damage and knockback, you can slot in guard levels, but this means most likely you need to sacrifice other skills you would use otherwise',
+        },
+        {
+          text: 'Power Guard drains stamina continuously, meaning skills like max might turn off, making you uptime worse.',
+        },
+        {
+          text: "Because you are in power guard, it\s impossible to proc offensive guard, meaning you will not get the damage boost from it unless it's already active",
+        },
+      ]}
+    />
+
+    <p>
+      But even with all these downsides, there's still plenty of use cases. First of all, many
+      monsters have roars that for some reason just give you a free red level + there's also some
+      attacks that barely chip you, but still give red level, and then there's one more thing we
+      haven't talked about yet, which is an advanced tenchnique you can do with GRT that probably is
+      the highest damage gap closer we can do.
+    </p>
+
+    <SectionSubTitle title="GRT Jump Tech" />
+    <p>
+      So as we learned when performing the Grand Retribution Thrust, you will jump back before
+      jumping forward with a thrust. Now there's a really cool tech where you can combine these two
+      movements into the same direction, allowing you to close larger gaps and dealing massive
+      damage in the process.
+    </p>
+
+    <p>
+      While performing this tech, it's also the only time ever we want to exit focus mode, as
+      otherwise we aren't able to perform it. So to perform the GRT Jump Tech you want to:
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Exit Focus Mode, face away from your target (hold stick backward), begin charging a counter',
+          emoji: '🚪',
+        },
+        {
+          text: 'Enter Power Guard just before impact, then input GRT after blocking',
+          emoji: '⚡',
+        },
+        {
+          text: 'Re-enable Focus Mode during the backward leap, aiming toward the monster to redirect the forward thrust',
+        },
+      ]}
+    />
+
+    <p>
+      This technique is quite complicated and takes some practice to get right, but once you master
+      it, it will open up a way to punish certain attacks harder than ever before.
+    </p>
+  </Section>
+
+  <Section title="Guard Dash (GD)">
+    <p>
+      Guard Dash is also back in this game, but because of the triple thrust finisher and the nerf
+      of leaping thrust, it barely sees any use.
+    </p>
+
+    <p>
+      Even when you want to use it as a gap closer, like in some older games, you know have better
+      options, as you can perform a leaping thrust out of neutral, by pressing both poke buttons at
+      the same time. And most of the time this distance is enough, making it a better option because
+      you deal damage and it's faster than doing a guard dash into a leaping thrust.
+    </p>
+
+    <p>
+      Unless you need the extra mobility range or defensive coverage during positioning, alternative
+      gap closers generally prove more efficient and damaging.
+    </p>
   </Section>
 </ContentLayout>

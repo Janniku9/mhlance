@@ -3,28 +3,90 @@ import { Icon } from 'astro-icon/components';
 
 interface Props {
   className?: string;
+  type?: 'info' | 'success' | 'warning' | 'error' | 'note' | 'tip';
 }
 
-const { className } = Astro.props;
+const { className, type = 'info' } = Astro.props;
+
+const variants = {
+  info: {
+    bg: 'bg-info/5 hover:bg-info/10',
+    border: 'border-info/20 hover:border-info/30',
+    gradient: 'from-info/10',
+    iconBg: 'bg-info/20 group-hover:bg-info/30',
+    icon: 'mingcute:information-fill',
+    iconColor: 'text-info',
+  },
+  success: {
+    bg: 'bg-success/5 hover:bg-success/10',
+    border: 'border-success/20 hover:border-success/30',
+    gradient: 'from-success/10',
+    iconBg: 'bg-success/20 group-hover:bg-success/30',
+    icon: 'mingcute:check-circle-fill',
+    iconColor: 'text-success',
+  },
+  warning: {
+    bg: 'bg-warning/5 hover:bg-warning/10',
+    border: 'border-warning/20 hover:border-warning/30',
+    gradient: 'from-warning/10',
+    iconBg: 'bg-warning/20 group-hover:bg-warning/30',
+    icon: 'mingcute:alert-triangle-fill',
+    iconColor: 'text-warning',
+  },
+  error: {
+    bg: 'bg-error/5 hover:bg-error/10',
+    border: 'border-error/20 hover:border-error/30',
+    gradient: 'from-error/10',
+    iconBg: 'bg-error/20 group-hover:bg-error/30',
+    icon: 'mingcute:close-circle-fill',
+    iconColor: 'text-error',
+  },
+  note: {
+    bg: 'bg-text-secondary/5 hover:bg-text-secondary/10',
+    border: 'border-text-secondary/20 hover:border-text-secondary/30',
+    gradient: 'from-text-secondary/10',
+    iconBg: 'bg-text-secondary/20 group-hover:bg-text-secondary/30',
+    icon: 'mingcute:pencil-fill',
+    iconColor: 'text-text-secondary',
+  },
+  tip: {
+    bg: 'bg-primary/5 hover:bg-primary/10',
+    border: 'border-primary/20 hover:border-primary/30',
+    gradient: 'from-primary/10',
+    iconBg: 'bg-primary/20 group-hover:bg-primary/30',
+    icon: 'mingcute:bulb-fill',
+    iconColor: 'text-primary',
+  },
+};
+
+const variant = variants[type];
 ---
 
 <div
   class:list={[
-    'relative bg-info/5 border border-info/20 rounded-xl p-2 sm:p-4 transition-all duration-300 group hover:bg-info/10 hover:border-info/30',
+    'relative rounded-xl p-2 sm:p-4 transition-all duration-300 group border',
+    variant.bg,
+    variant.border,
     className,
   ]}
 >
   <div
-    class="absolute inset-0 bg-gradient-to-br from-info/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none"
+    class:list={[
+      'absolute inset-0 bg-gradient-to-br to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none',
+      variant.gradient,
+    ]}
   >
   </div>
 
   <div class="flex flex-col sm:flex-row gap-4 relative z-10">
     <div class="flex-shrink-0 flex items-center justify-center sm:justify-start">
       <div
-        class="w-10 h-10 md:w-14 md:h-14 rounded-lg bg-info/20 flex items-center justify-center group-hover:bg-info/30 transition-colors"
+        class:list={[
+          'w-10 h-10 md:w-14 md:h-14 rounded-lg flex items-center justify-center transition-colors',
+          variant.iconBg,
+        ]}
       >
-        <Icon name="mingcute:information-fill" class="w-6 h-6 md:w-10 md:h-10 text-info" />
+        <Icon name={variant.icon} class:list={['w-6 h-6 md:w-10 md:h-10', variant.iconColor]} />
       </div>
     </div>
 

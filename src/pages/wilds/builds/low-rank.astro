@@ -1,6 +1,9 @@
 ---
+import BuildCard from '../../../components/builds/BuildCard.astro';
 import Section from '../../../components/common/Section.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import starter from '../../../assets/wilds/builds/low-rank/starter.png';
 ---
 
 <ContentLayout>
@@ -25,7 +28,56 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
   </Section>
 
   <Section title="Rescue In The Sandstorm - 1⭐">
-    <p>yo</p>
+    <p>
+      The starting Hope Lance and armor should last for the first few quests without needing
+      upgrades. Look out for mining spots, as when you get your first iron ore, you will be able to
+      upgrade the Hope Lance to the Hope Lance II.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'desert starter set',
+        description: [
+          'This is the armor you start with, we upgraded the Hope Lance to the Hope Lance II.',
+        ],
+        image: starter,
+        imageAlt: 'desert starter set',
+        stats: {
+          raw: 100,
+          sharpness: {
+            hits: 60,
+            type: 'green',
+          },
+          affinity: {
+            avg: 0,
+            peak: 0,
+          },
+        },
+      }}
+    />
+
+    <p>
+      During the first chapter you will learn explore the forbidden lands, learning more about the
+      seikret and the ecosystem, fighting new monsters in the plains and the forest locale.
+    </p>
+
+    <p>
+      At one point you you will encounter Lala Barina, which has a very good lance that we want to
+      craft. This weapon tree has very solid stats across the whole story, making it very worth
+      crafting it early on as we will use later upgrades of it as well. If the good stats weren't
+      enough, it also comes with a ridiculous amount of paralysis, and built in critical status
+      (meaning your crits apply even more paralysis). This weapon will consistently net you 2-3
+      paralysis procs per hunt, which is very balanced :)
+    </p>
+
+    <p>
+      Armorwise, we have a few options. The most straightforward choice is to stick with the starter
+      hope armor, as offensive options are still limited. However, if you want to experiment with
+      some skills, you can craft 2-4 pieces of the Doshaguma armor set. It's set bonus gives you
+      flat raw damage when you perform an offset attack or powerclash, which is like the only
+      offensive skill available at this point in time. If you are looking for more defense, you can
+      invest into the ingot armor as some of the pieces have divine blessing.
+    </p>
   </Section>
 
   <Section title="Ecosystem In Collapse - 2⭐">
