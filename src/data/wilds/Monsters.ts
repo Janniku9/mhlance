@@ -4,7 +4,7 @@ import ajarkan from '../../assets/wilds/monsters/ajarkan.png';
 import arkveld from '../../assets/wilds/monsters/arkveld.png';
 import balahara from '../../assets/wilds/monsters/balahara.png';
 import blangonga from '../../assets/wilds/monsters/blangonga.png';
-import chatacabara from '../../assets/wilds/monsters/chatacabara.png';
+import chatacabra from '../../assets/wilds/monsters/chatacabra.png';
 import congalala from '../../assets/wilds/monsters/congalala.png';
 import doshaguma from '../../assets/wilds/monsters/doshaguma.png';
 import gore_magala from '../../assets/wilds/monsters/gore_magala.png';
@@ -22,15 +22,15 @@ import lala_barina from '../../assets/wilds/monsters/lala_barina.png';
 import mizutsune from '../../assets/wilds/monsters/mizutsune.png';
 import nerscylla from '../../assets/wilds/monsters/nerscylla.png';
 import nu_udra from '../../assets/wilds/monsters/nu_udra.png';
-import quematrice from '../../assets/wilds/monsters/quematrique.png';
+import quematrice from '../../assets/wilds/monsters/quematrice.png';
 import rathalos from '../../assets/wilds/monsters/rathalos.png';
 import rathian from '../../assets/wilds/monsters/rathian.png';
 import rey_dau from '../../assets/wilds/monsters/rey_dau.png';
 import rompopolo from '../../assets/wilds/monsters/rompopolo.png';
 import seregios from '../../assets/wilds/monsters/seregios.png';
-import uth_duna from '../../assets/wilds/monsters/uth_dunat.png';
+import uth_duna from '../../assets/wilds/monsters/uth_duna.png';
 import xu_wu from '../../assets/wilds/monsters/xu_wu.png';
-import yian_kut_ku from '../../assets/wilds/monsters/yian_kut_kuku.png';
+import yian_kut_ku from '../../assets/wilds/monsters/yian_kut-ku.png';
 import zoh_shia from '../../assets/wilds/monsters/zoh_shia.png';
 
 export const wildsMonsters: Monster[] = [
@@ -51,8 +51,8 @@ export const wildsMonsters: Monster[] = [
     image: blangonga,
   },
   {
-    name: 'chatacabara',
-    image: chatacabara,
+    name: 'chatacabra',
+    image: chatacabra,
   },
   {
     name: 'congalala',

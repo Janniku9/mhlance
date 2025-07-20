@@ -1,8 +1,10 @@
 ---
-import ComingSoon from '../../../components/core/ComingSoon.astro';
-import MainLayout from '../../../layouts/MainLayout.astro';
+import MatchupChart from '../../../components/data/MatchupChart.astro';
+import { wildsMatchups } from '../../../data/wilds/Matchups';
+import { wildsMonsters } from '../../../data/wilds/Monsters';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
 ---
 
-<MainLayout title="Coming Soon">
-  <ComingSoon />
-</MainLayout>
+<ContentLayout>
+  <MatchupChart matchups={wildsMatchups} monsters={wildsMonsters} />
+</ContentLayout>
