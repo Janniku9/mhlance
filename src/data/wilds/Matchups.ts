@@ -19,7 +19,7 @@ export const wildsMatchups: Matchups[] = [
             name: 'doshaguma',
           },
           {
-            name: 'gore_magala',
+            name: 'gore magala',
           },
           {
             name: 'gypceros',
@@ -28,13 +28,13 @@ export const wildsMatchups: Matchups[] = [
             name: 'hirabami',
           },
           {
-            name: 'jhin_dahaad',
+            name: 'jhin dahaad',
           },
           {
             name: 'lagiacrus',
           },
           {
-            name: 'lala_barina',
+            name: 'lala barina',
           },
         ],
       },
@@ -50,10 +50,10 @@ export const wildsMatchups: Matchups[] = [
             name: 'gravios',
           },
           {
-            name: 'guardian_ebony_odogaron',
+            name: 'guardian ebony odogaron',
           },
           {
-            name: 'nu_udra',
+            name: 'nu udra',
           },
           {
             name: 'quematrice',
@@ -76,7 +76,6 @@ export const wildsMatchups: Matchups[] = [
           },
           {
             name: 'mizutsune',
-            buildPriority: 2,
           },
           {
             name: 'nerscylla',
@@ -85,7 +84,7 @@ export const wildsMatchups: Matchups[] = [
             name: 'seregios',
           },
           {
-            name: 'uth_duna',
+            name: 'uth duna',
           },
         ],
       },
@@ -95,19 +94,16 @@ export const wildsMatchups: Matchups[] = [
         color: '#06b6d4',
         monsters: [
           {
-            name: 'lagiacrus',
+            name: 'guardian fulgur anjanath',
           },
           {
-            name: 'guardian_fulgur_anjanath',
+            name: 'rey dau',
           },
           {
-            name: 'rey_dau',
+            name: 'xu wu',
           },
           {
-            name: 'xu_wu',
-          },
-          {
-            name: 'yian_kut_ku',
+            name: 'yian kut ku',
           },
         ],
       },
@@ -117,14 +113,10 @@ export const wildsMatchups: Matchups[] = [
         color: '#9333ea',
         monsters: [
           {
-            name: 'guardian_doshaguma',
+            name: 'guardian doshaguma',
           },
           {
-            name: 'guardian_rathalos',
-          },
-          {
-            name: 'mizutsune',
-            buildPriority: 1,
+            name: 'guardian rathalos',
           },
           {
             name: 'rathalos',
@@ -133,18 +125,18 @@ export const wildsMatchups: Matchups[] = [
             name: 'rathian',
           },
           {
-            name: 'zoh_shia',
+            name: 'zoh shia',
           },
         ],
       },
       {
         buildName: 'raw',
         emoji: '💥',
-        color: '#958d84ff',
+        color: '#f38c37',
         monsters: [
           { name: 'arkveld' },
           {
-            name: 'guardian_arkveld',
+            name: 'guardian arkveld',
           },
         ],
       },

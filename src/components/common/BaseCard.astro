@@ -28,7 +28,7 @@ const linkProps = href ? { href: disabled ? '#' : href } : {};
   {...dataAttribute ? { [dataAttribute]: '' } : {}}
   class:list={[
     'group relative bg-background-dark',
-    noTopRounding ? '' : 'border border-text/10 overflow-hidden',
+    noTopRounding ? '' : 'border border-text/15 overflow-hidden',
     'transition-all duration-300',
     noTopRounding ? 'rounded-b-2xl md:rounded-b-3xl' : 'rounded-2xl md:rounded-3xl',
     hoverable && !disabled && 'hover:bg-background-darker',
@@ -44,7 +44,7 @@ const linkProps = href ? { href: disabled ? '#' : href } : {};
   {
     hoverable && !disabled && (
       <div
-        class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
+        class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent
               opacity-0 group-hover:opacity-100 transition-all duration-300"
       />
     )

@@ -63,7 +63,7 @@ export const wildsMonsters: Monster[] = [
     image: doshaguma,
   },
   {
-    name: 'gore_magala',
+    name: 'gore magala',
     image: gore_magala,
   },
   {
@@ -71,23 +71,23 @@ export const wildsMonsters: Monster[] = [
     image: gravios,
   },
   {
-    name: 'guardian_arkveld',
+    name: 'guardian arkveld',
     image: guardian_arkveld,
   },
   {
-    name: 'guardian_doshaguma',
+    name: 'guardian doshaguma',
     image: guardian_doshaguma,
   },
   {
-    name: 'guardian_ebony_odogaron',
+    name: 'guardian ebony odogaron',
     image: guardian_ebony_odogaron,
   },
   {
-    name: 'guardian_fulgur_anjanath',
+    name: 'guardian fulgur anjanath',
     image: guardian_fulgur_anjanath,
   },
   {
-    name: 'guardian_rathalos',
+    name: 'guardian rathalos',
     image: guardian_rathalos,
   },
   {
@@ -99,7 +99,7 @@ export const wildsMonsters: Monster[] = [
     image: hirabami,
   },
   {
-    name: 'jhin_dahaad',
+    name: 'jhin dahaad',
     image: jhin_dahaad,
   },
   {
@@ -107,7 +107,7 @@ export const wildsMonsters: Monster[] = [
     image: lagiacrus,
   },
   {
-    name: 'lala_barina',
+    name: 'lala barina',
     image: lala_barina,
   },
   {
@@ -119,7 +119,7 @@ export const wildsMonsters: Monster[] = [
     image: nerscylla,
   },
   {
-    name: 'nu_udra',
+    name: 'nu udra',
     image: nu_udra,
   },
   {
@@ -135,7 +135,7 @@ export const wildsMonsters: Monster[] = [
     image: rathian,
   },
   {
-    name: 'rey_dau',
+    name: 'rey dau',
     image: rey_dau,
   },
   {
@@ -147,19 +147,19 @@ export const wildsMonsters: Monster[] = [
     image: seregios,
   },
   {
-    name: 'uth_duna',
+    name: 'uth duna',
     image: uth_duna,
   },
   {
-    name: 'xu_wu',
+    name: 'xu wu',
     image: xu_wu,
   },
   {
-    name: 'yian_kut_ku',
+    name: 'yian kut ku',
     image: yian_kut_ku,
   },
   {
-    name: 'zoh_shia',
+    name: 'zoh shia',
     image: zoh_shia,
   },
 ];

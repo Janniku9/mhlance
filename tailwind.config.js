@@ -74,7 +74,7 @@ export default {
         },
         fontSize: {
           sectionpc: '1.12rem',
-          sectionmobile: '1rem',
+          sectionmobile: '0.875rem',
         },
       },
       fontFamily: {
