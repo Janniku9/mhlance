@@ -11,6 +11,8 @@ export enum ComboTag {
 
   ExecutionSimple = 'Easy to Execute',
   ExecutionComplex = 'Complex Execution',
+
+  Reposition = 'Good for Repositioning',
 }
 
 export type PlaystationKey =

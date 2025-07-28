@@ -356,7 +356,7 @@ export const games: GameNavigation[] = [
       builds: [
         {
           id: 'low-rank',
-          emoji: '🏛️',
+          emoji: '🏜️',
           title: 'Low Rank',
           navDescription: 'Low rank story progression builds',
           pageDescription:

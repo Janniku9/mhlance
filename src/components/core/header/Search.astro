@@ -50,7 +50,7 @@ const {
             id="search-input"
             type="text"
             placeholder="search guides, builds, and resources..."
-            class="w-full bg-transparent border-none outline-none pl-10 pr-10 py-3 text-lg placeholder-text/60"
+            class="w-full bg-transparent border-none outline-none pl-10 pr-10 py-3 text-sm md:text-lg placeholder-text/60"
           />
           <button
             id="search-close"
@@ -69,12 +69,15 @@ const {
             class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto mb-2"
           >
           </div>
-          <p class="text-text/60">searching...</p>
+          <p class="text-text/60 text-sm md:text-lg">searching...</p>
         </div>
 
         <!-- Empty state -->
         <div id="search-empty" class="p-6 text-center text-text/60">
-          <Icon name="mingcute:search-line" class="w-12 h-12 mx-auto mb-2 opacity-40" />
+          <Icon
+            name="mingcute:search-line"
+            class="w-12 h-12 mx-auto mb-2 opacity-40 text-sm md:text-lg"
+          />
           <p>start typing to search...</p>
         </div>
 
@@ -308,7 +311,7 @@ const {
                     <h3 class="font-medium text-secondary truncate">${title}</h3>
                     <span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full whitespace-nowrap">${gameName}</span>
                   </div>
-                  <p class="text-sm text-text/70 line-clamp-2 mb-1">${highlightedExcerpt}</p>
+                  <p class="text-xs md:text-sm text-text/70 line-clamp-2 mb-1">${highlightedExcerpt}</p>
                 </div>
               </div>
             </a>
