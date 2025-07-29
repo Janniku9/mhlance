@@ -2,46 +2,52 @@
 import BuildCard from '../../../components/builds/BuildCard.astro';
 import Section from '../../../components/common/Section.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
 
 import starter from '../../../assets/wilds/builds/low-rank/starter.png';
+import improved_starter from '../../../assets/wilds/builds/low-rank/improved-starter.png';
+import hirabami from '../../../assets/wilds/builds/low-rank/hirabami.png';
+import burst_boost from '../../../assets/wilds/builds/low-rank/burst-boost.png';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
 ---
 
 <ContentLayout>
   <Section>
     <p>
-      Wild's low rank seems quite a bit different from older games, it's way more guided and
-      cinematic, forcing you from one fight into the next without really giving you the old school
-      monster hunter exploration vibe. For that same reason you probably also end up getting less
-      materials and need to grind equipment.
+      Wilds takes a notably different approach to low rank compared to previous games. The
+      experience is more guided and cinematic, pushing you from one encounter to the next with less
+      of that classic Monster Hunter exploration feel. This also means you'll gather fewer materials
+      and might need to do some extra grinding for gear.
     </p>
 
     <p>
-      The armor available in low rank also doesn't really offer any interesting skills, so most of
-      the time you just want to make whatever you can craft, and the only reason to make new armor
-      is because of the increased defense it has.
+      Low rank armor doesn't offer many exciting skills either—most pieces are just stat sticks with
+      higher defense values. For the most part, you'll want to craft whatever materials allow,
+      upgrading primarily for the defense boost rather than skill synergies.
     </p>
 
     <p>
-      Still this guide offers some suggestions on what to craft and use, but don't feel like you
-      need to grind to make these exact sets.
+      This guide offers some solid recommendations for what to prioritize, but don't feel pressured
+      to grind out these exact sets if you're getting by with what you have.
     </p>
   </Section>
 
   <Section title="Rescue In The Sandstorm - 1⭐">
     <p>
-      The starting Hope Lance and armor should last for the first few quests without needing
-      upgrades. Look out for mining spots, as when you get your first iron ore, you will be able to
-      upgrade the Hope Lance to the Hope Lance II.
+      Your starting Hope Lance and armor will carry you through the opening quests just fine. Keep
+      an eye out for mining nodes—once you snag your first iron ore, you can upgrade the Hope Lance
+      to Hope Lance II for a nice early damage boost.
     </p>
 
     <BuildCard
       build={{
-        title: 'desert starter set',
+        title: 'desert survivor',
         description: [
-          'This is the armor you start with, we upgraded the Hope Lance to the Hope Lance II.',
+          'Your starting gear with the Hope Lance upgraded to tier II. Simple but effective.',
         ],
         image: starter,
-        imageAlt: 'desert starter set',
+        imageAlt: 'desert survivor set',
         stats: {
           raw: 100,
           sharpness: {
@@ -57,34 +63,174 @@ import starter from '../../../assets/wilds/builds/low-rank/starter.png';
     />
 
     <p>
-      During the first chapter you will learn explore the forbidden lands, learning more about the
-      seikret and the ecosystem, fighting new monsters in the plains and the forest locale.
+      The first chapter takes you through the forbidden lands, introducing you to seikret mechanics
+      and the local ecosystem while you tackle new monsters across the plains and forest locales.
     </p>
 
+    <SectionSubTitle title="Progression Weapons" />
     <p>
-      At one point you you will encounter Lala Barina, which has a very good lance that we want to
-      craft. This weapon tree has very solid stats across the whole story, making it very worth
-      crafting it early on as we will use later upgrades of it as well. If the good stats weren't
-      enough, it also comes with a ridiculous amount of paralysis, and built in critical status
-      (meaning your crits apply even more paralysis). This weapon will consistently net you 2-3
-      paralysis procs per hunt, which is very balanced :)
+      Two weapon trees stand out as solid choices for low rank progression, each offering different
+      strengths.
     </p>
 
+    <StyledList
+      items={[
+        {
+          text: 'Balahara Lance I',
+          subtext:
+            'Comes with Offensive Guard, boosting your damage when you nail those perfectly-timed blocks. Slightly higher damage potential if you can master the timing.',
+        },
+        {
+          text: 'Lala Barina Lanza I',
+          subtext:
+            'Brings solid paralysis buildup with built-in Critical Status, plus an impressively long sharpness bar. Great comfort pick that trades a bit of raw damage for comfort.',
+        },
+      ]}
+    />
+
     <p>
-      Armorwise, we have a few options. The most straightforward choice is to stick with the starter
-      hope armor, as offensive options are still limited. However, if you want to experiment with
-      some skills, you can craft 2-4 pieces of the Doshaguma armor set. It's set bonus gives you
-      flat raw damage when you perform an offset attack or powerclash, which is like the only
-      offensive skill available at this point in time. If you are looking for more defense, you can
-      invest into the ingot armor as some of the pieces have divine blessing.
+      Both weapons are excellent choices with different upgrade points throughout the story, so
+      you'll likely find yourself switching between them as materials become available.
     </p>
+
+    <SectionSubTitle title="Optional Starter Set" />
+    <p>
+      Since offensive skills are basically non-existent this early, armor upgrades mainly provide
+      defense or quality-of-life improvements. Feel free to skip this if your current gear is
+      working fine.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'optional enhanced starter',
+        description: [
+          'A slight upgrade over your starting gear with better stats across the board.',
+          'For the weapon, we made the balahara lance I, giving us the first level of offensive guard.',
+        ],
+        image: improved_starter,
+        imageAlt: 'optional enhanced starter set',
+        stats: {
+          raw: 124,
+          sharpness: {
+            hits: 60,
+            type: 'green',
+          },
+          element: {
+            type: 'water',
+            value: 14,
+          },
+          affinity: {
+            avg: 10,
+            peak: 10,
+          },
+        },
+      }}
+    />
   </Section>
 
   <Section title="Ecosystem In Collapse - 2⭐">
-    <p>yo</p>
+    <p>
+      Chapter two opens up the Oilwell Basin, where you'll uncover more about the mysterious
+      Everforge. As sandstorms ravage the desert, you'll dive deeper into the complex ecosystem of
+      these forbidden lands.
+    </p>
+
+    <p>This chapter offers some modest upgrades, nothing game-changing but worth considering.</p>
+
+    <p>
+      You'll face a quest with three Hirabami simultaneously—basically a free materials jackpot for
+      crafting their armor pieces. The Kranodath Chest pairs well here to maintain some Flinch Free,
+      using materials from those small monsters roaming the Oilwell Basin.
+    </p>
+
+    <p>
+      Your encounter with Nerscylla provides the materials to upgrade the Lala Barina Lance to
+      Barina Sarissa II, gaining more raw damage and an even more generous green sharpness bar.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'hirabami packslayer',
+        description: [
+          'Takes advantage of the abundant Hirabami materials from the group quest for a solid defense boost.',
+          'The Lala Barina Lance upgrade is nice but not essential if materials are tight.',
+        ],
+        image: hirabami,
+        imageAlt: 'hirabami packslayer set',
+        stats: {
+          raw: 131,
+          sharpness: {
+            hits: 100,
+            type: 'green',
+          },
+          status: {
+            type: 'paralysis',
+            value: 13,
+          },
+          affinity: {
+            avg: 10,
+            peak: 10,
+          },
+        },
+      }}
+    />
   </Section>
 
   <Section title="Guardians Of Ancient Wyveria - 3⭐">
-    <p>yo</p>
+    <p>
+      Chapter three brings you to the ancient ruins of Wyveria, where you'll encounter the
+      Guardians, which are artificially created monsters that once protected these ruins. Something
+      has stirred them from their slumber, and they're acting out of control.
+    </p>
+
+    <p>
+      The first one you encounter, Guardian Doshaguma drops the materials needed to upgrade your
+      Balahara Lance to tier two, unlocking another level of Offensive Guard. This is a substantial
+      damage boost and absolutely worth prioritizing.
+    </p>
+
+    <p>
+      Finally, some proper damage skills become available! The standout set here is a 4-piece
+      Guardian Ebony Odogaron build, granting Burst level 3 and Burst Boost 2. These skills provide
+      significant raw and elemental damage bonuses as long as you maintain consistent hits, which is
+      very easy to maintain for lance. This actually outperforms a weakness exploit set using
+      Rathalos gear, as currently there's just not enough skills to make a crit build worth it.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'relentless striker',
+        description: [
+          'This is the best set available in low rank, it gives us a lot of flat extra raw and element, if we manage to continuously hit the monster.',
+          'We use 4 pieces of Guardian Ebony Odogaron armor, the chest piece is just a placeholder, Rey Dau piece just looks really cool!',
+        ],
+        image: burst_boost,
+        imageAlt: 'relentless striker set',
+        stats: {
+          raw: 196,
+          sharpness: {
+            hits: 40,
+            type: 'green',
+          },
+          element: {
+            type: 'water',
+            value: 27,
+          },
+          affinity: {
+            avg: 10,
+            peak: 10,
+          },
+        },
+      }}
+    />
+
+    <SectionSubTitle title="The end of Low Rank" />
+    <p>
+      After defeating Guardian Arkveld and preventing the Incubation at the Dragontorch, low rank's
+      story concludes. But your journey is just beginning—high rank awaits with even more formidable
+      monsters and powerful equipment to discover.
+    </p>
+
+    <NavigationButton href="/wilds/builds/high-rank" text="Next: High Rank" emoji="⛓️" />
   </Section>
 </ContentLayout>
