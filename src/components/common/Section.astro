@@ -1,25 +1,24 @@
 ---
-// Section.astro
 import SectionTitle from './SectionTitle.astro';
 
 interface Props {
   title?: string;
+  comment?: string;
   emoji?: string;
   className?: string;
   delay?: number;
-  slug?: string; // New: custom slug for anchor links
+  slug?: string;
 }
 
-const { title, emoji, className, delay = 50, slug } = Astro.props;
+const { title, comment, emoji, className, delay = 50, slug } = Astro.props;
 
 // Generate slug from title if not provided
 function generateSlug(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-') // Replace multiple hyphens with single
-    .trim();
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
 }
 
 const sectionSlug = slug || (title ? generateSlug(title) : undefined);
@@ -28,13 +27,14 @@ const sectionSlug = slug || (title ? generateSlug(title) : undefined);
 <section
   id={sectionSlug}
   class:list={[
-    'flex flex-col gap-4 md:gap-8 text-sectionmobile md:text-lgsectionpc scroll-mt-20',
+    'flex flex-col gap-4 md:gap-6 text-sectionmobile md:text-lgsectionpc scroll-mt-20',
     className,
   ]}
   data-fade-in
   style={`--animation-delay: ${delay}ms`}
 >
-  {title && <SectionTitle title={title} emoji={emoji} slug={sectionSlug} />}
+  {title && <SectionTitle title={title} emoji={emoji} slug={sectionSlug} comment={comment} />}
+
   <slot />
 </section>
 

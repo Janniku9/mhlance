@@ -1,18 +1,19 @@
 ---
 interface Props {
   class?: string;
+  text?: string;
 }
 
-const { class: className } = Astro.props;
+const { class: className, text } = Astro.props;
 ---
 
 <code
   class:list={[
-    'px-2 py-1 rounded-md text-sm font-mono border',
+    'px-1 py-1 rounded-md text-sm font-mono border',
     'transition-all duration-200 hover:scale-105',
     'bg-text/7 text-secondary-light border-secondary-light/20',
     className,
   ]}
 >
-  <slot />
-</code>
+  {text ? <span>{text}</span> : <slot />}</code
+>

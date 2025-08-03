@@ -334,22 +334,28 @@ export const games: GameNavigation[] = [
     playlistId: 'PLMgaMGsEoNvm348bMTeveCS1WZlisWQWq',
     featuredLinks: [
       {
+        href: '/wilds/builds/endgame',
+        emoji: '👑',
+        title: 'Endgame',
+        description: 'Best endgame builds for the current update.',
+      },
+      {
         href: '/wilds/guides/focus-mode',
         emoji: '🤺',
         title: 'Focus Mode',
         description: 'Master the new Focus Mode for optimal damage output!',
       },
       {
-        href: '/wilds/combos',
+        href: '/wilds/guides/combos',
         emoji: '🥊',
         title: 'Combos',
-        description: 'Complete reference of all combos for maximum damage.',
+        description: 'Best combo and neutral guide for all situations!',
       },
       {
-        href: '/wilds/high-rank',
-        emoji: '⛓️',
-        title: 'High Rank',
-        description: 'Best high rank builds for the current update.',
+        href: '/wilds/data/match-ups',
+        emoji: '📝',
+        title: 'Match Ups',
+        description: 'Complete match up table showing all weaknesses.',
       },
     ],
     sections: {
@@ -366,6 +372,14 @@ export const games: GameNavigation[] = [
           id: 'high-rank',
           emoji: '⛓️',
           title: 'High Rank',
+          navDescription: 'High rank progression builds',
+          pageDescription:
+            'Experience the consequences of shutting down the Dragontorch with powerful high rank builds!',
+        },
+        {
+          id: 'endgame',
+          emoji: '👑',
+          title: 'Endgame',
           navDescription: 'High rank endgame builds',
           pageDescription:
             'Face the White Wraith and Tempered monsters with powerful endgame lance builds!',

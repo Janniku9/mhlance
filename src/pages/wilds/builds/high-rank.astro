@@ -1,8 +1,274 @@
 ---
-import ComingSoon from '../../../components/core/ComingSoon.astro';
-import MainLayout from '../../../layouts/MainLayout.astro';
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
+
+import hr_starter from '../../../assets/wilds/builds/high-rank/hr-starter.png';
+import grathalos from '../../../assets/wilds/builds/high-rank/grath.png';
+
+import gore_budget from '../../../assets/wilds/builds/high-rank/4gore-budget.png';
+import gore_zoh from '../../../assets/wilds/builds/high-rank/4gore-zoh.png';
+import InfoBox from '../../../components/common/InfoBox.astro';
 ---
 
-<MainLayout title="Coming Soon">
-  <ComingSoon />
-</MainLayout>
+<ContentLayout title="Coming Soon">
+  <Section title="Echoes of Change - 4⭐">
+    <p>
+      After completing Low Rank, you'll witness the far-reaching consequences of the Dragontorch
+      incident as ecosystems across the Easternlands undergo dramatic transformations. Crystalline
+      corruption spreads through monster populations, and your previous victories have set in motion
+      changes that reach far beyond what you could have imagined.
+    </p>
+
+    <p>
+      The good news? Your Low Rank Burst Boost setup remains surprisingly effective since it's still
+      one of the strongest damage sources available in early High Rank. However, we can make a small
+      upgrade by switching to the Chatacabra chest piece, which grants Weakness Exploit level 1 for
+      both a damage boost and improved defense.
+    </p>
+
+    <InfoBox type="tip">
+      <p>
+        You are able to find monsters you encountered previsously as well as new ones roaming around
+        the locales. You can always start a quest to hunt them to get their materials.
+      </p>
+    </InfoBox>
+
+    <p>
+      <strong>Balahara:</strong>
+      Its materials enable upgrading your lance to level 3, providing a substantial damage increase that
+      will carry you through the early High Rank challenges.
+    </p>
+
+    <p>
+      <strong>Rathian:</strong> Don't pass up opportunities to hunt this classic wyvern. Rathian materials
+      are essential for crafting the Exploiter Charm (Weakness Exploit 1), a cornerstone accessory that
+      will appear in many future builds throughout your High Rank journey.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'early hr set',
+        description: [
+          'Building upon our proven Low Rank foundation, this set maintains the powerful Burst Boost synergy while incorporating strategic upgrades.',
+          'The Balahara Lance III provides a significant damage boost over its Low Rank predecessor, while the new chest piece adds valuable Weakness Exploit.',
+        ],
+        image: hr_starter,
+        imageAlt: 'early hr set',
+        stats: {
+          raw: 240,
+          sharpness: {
+            hits: 30,
+            type: 'blue',
+          },
+          element: {
+            type: 'water',
+            value: 30,
+          },
+          affinity: {
+            avg: 10,
+            peak: 10,
+          },
+        },
+      }}
+    />
+
+    <SectionSubTitle title="Towards the end of Chapter 4 (HR 21+)" />
+
+    <p>
+      As Chapter 4 unfolds, you'll face familiar Guardian monsters in their enhanced, more dangerous
+      forms. These corrupted versions demand respect, but they also provide access to superior
+      materials for crafting our next major upgrade.
+    </p>
+
+    <p>
+      We'll construct a 4-piece Guardian Rathalos set that maximizes Weakness Exploit while
+      incorporating the Guardian Ebony Odogaron Helmet to keep having at least one level of burst.
+    </p>
+
+    <p>
+      For the weapon, we will also go with the Guardian Rathalos lance. While we don't yet have the
+      affinity to fully capitalize on its Master's Touch property, its superior base stats make it
+      the clear best option at this rank.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Infernal Scorcher',
+        description: [
+          'This setup leverages the 4-piece Guardian Rathalos set to max out weakness exploit.',
+          'The Scorcher set bonus adds random procs of bonus fire to your attacks.',
+          'The Guardian Rathalos lance brings solid raw damage and is a good upgrade over the previous lance even when we lose Offensive Guard.',
+        ],
+        image: grathalos,
+        imageAlt: 'Infernal Scorcher set',
+        stats: {
+          raw: 260,
+          sharpness: {
+            hits: 40,
+            type: 'blue',
+          },
+          element: {
+            type: 'fire',
+            value: 29,
+          },
+          affinity: {
+            avg: 42,
+            peak: 45,
+          },
+        },
+        additionalNotes: {
+          'weapon decos':
+            'Prioritize Offensive Guard, Critical Boost, or Handicraft decorations if available.',
+          'armor decos':
+            'Slot in Maximum Might, Agitator, or additional Burst levels based on your decoration collection.',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Frozen Tempest- 5⭐ [HR 31+]">
+    <p>
+      Chapter 5 brings catastrophic weather patterns as unnatural blizzards engulf entire regions.
+      You'll finally confront Jin Dahaad's true power in its frozen domain while uncovering the dark
+      origins of the Frenzy virus that has been corrupting monsters throughout your journey.
+    </p>
+
+    <p>
+      The source of this spreading plague? None other than the returning Gore Magala, and once
+      again, its signature armor skills prove devastatingly effective. The 2-piece set bonus
+      inflicts you with the Frenzy virus—but this apparent curse becomes a blessing when you deal
+      enough damage to cure yourself, granting substantial free affinity.
+    </p>
+
+    <p>
+      The Antivirus skill creates perfect synergy with this mechanic, providing additional affinity
+      while cured for a total of 25% affinity bonus. Even better, the 4-piece Gore Magala set grants
+      +10 raw attack while infected and an additional +5 while cured (15 total), making this one of
+      the strongest armor combinations available until true endgame.
+    </p>
+
+    <p>
+      For our weapon upgrade, we'll enhance the Guardian Rathalos lance to its final form. This
+      requires Hunter Symbol II, obtainable from 6-star tempered investigations. The resulting
+      weapon ranks among the best craftable lances and will serve you well for quite some time.
+    </p>
+
+    <InfoBox type="warning">
+      Don't forget to complete the 5-star quest 'As Gatekeeper' to unlock the Powercharm—a simple
+      inventory item that provides a permanent raw attack boost just by carrying it.
+    </InfoBox>
+
+    <BuildCard
+      build={{
+        title: 'Chaos Incarnate',
+        description: [
+          'Harnessing the power of the Frenzy virus, this set transforms a dangerous affliction into a devastating advantage.',
+          'The 4-piece Gore Magala combination provides massive flat raw bonuses while the virus mechanic grants substantial affinity.',
+          'We maintain our Burst damage focus through the Ebony Odogaron helmet.',
+          'The fully upgraded Guardian Rathalos lance serves as our weapon of choice, offering excellent damage and slots.',
+        ],
+        image: gore_budget,
+        imageAlt: 'Chaos Incarnate set',
+        stats: {
+          raw: 360,
+          sharpness: {
+            hits: 10,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 37,
+          },
+          affinity: {
+            avg: 37,
+            peak: 45,
+          },
+        },
+        additionalNotes: {
+          'weapon decos':
+            'Focus on Offensive Guard, Critical Boost, or Handicraft decorations to maximize effectiveness.',
+          'armor decos':
+            'Enhance the build with Maximum Might, Agitator, or additional Burst levels as decorations allow.',
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="The Eternal Hunt - 6⭐ [HR 50+]">
+    <p>
+      In the final chapter of high rank, you'll confront the harsh reality of what it truly means to
+      maintain balance as a Hunter. You'll discover that preserving the natural order is an ongoing
+      responsibility rather than a problem that can be solved once and for all.
+    </p>
+
+    <p>
+      This chapter reintroduces both Arkveld and Zoh Shia, unlocking access to superior armor and
+      weapons. Zoh Shia deserves special attention for its incredibly efficient chest piece, which
+      allows us to upgrade our Gore setup while maintaining the powerful 4-piece bonus.
+    </p>
+
+    <p>
+      The Zoh Shia lance might just be the finest craftable lance available, featuring excellent raw
+      damage and sharpness. Its true strength lies in the Whiteflame Torrent weapon skill—similar to
+      Sunbreak's Powder Mantle—which triggers random bonus damage procs on your attacks. These extra
+      hits may seem modest individually, but they accumulate into substantial damage increases over
+      the course of a hunt.
+    </p>
+
+    <p>
+      Now is also the perfect time to focus on investigations. Farm decorations aggressively while
+      collecting materials and Artian Weapon parts needed for crafting the ultimate endgame Artian
+      Lances that await in your future.
+    </p>
+
+    <p>
+      The build below showcases optimal decoration usage, but don't stress if your collection isn't
+      complete yet—simply use the best decorations available and upgrade as you find better options.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Draconic Sovereign',
+        description: [
+          "The evolution of our Gore Magala set, now enhanced with Zoh Shia's superior chest piece for more skill efficiency.",
+          'The Zoh Shia lance brings a unique weapon skill: Whiteflame Torrent skill that adds significant bonus damage to your attacks.',
+        ],
+        image: gore_zoh,
+        imageAlt: 'draconic sovereign set',
+        stats: {
+          raw: 461,
+          sharpness: {
+            hits: 50,
+            type: 'white',
+          },
+          element: {
+            type: 'dragon',
+            value: 29,
+          },
+          affinity: {
+            avg: 71,
+            peak: 95,
+          },
+        },
+      }}
+    />
+
+    <SectionSubTitle title="What's Next After the Story?" />
+    <p>
+      Completing High Rank's story campaign unlocks the true endgame experience. You'll gain full
+      access to high-level tempered investigations, which serve as your primary source for farming
+      Artian Weapon parts and the rarest decorations.
+    </p>
+
+    <p>
+      The ultimate challenge awaits in the form of Arch Tempered Apex monsters, whose materials
+      craft some of the most powerful armor pieces in the game. These encounters will test
+      everything you've learned about lance combat and monster behavior.
+    </p>
+
+    <NavigationButton href="/wilds/builds/endgame" text="Next: Endgame" emoji="👑" />
+  </Section>
+</ContentLayout>
