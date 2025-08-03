@@ -6,7 +6,7 @@ import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
 import StyledList from '../../../components/common/StyledList.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 
-import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mode-settings.png';
+import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mode-settings.jpg';
 ---
 
 <ContentLayout>
@@ -29,8 +29,8 @@ import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mod
 
     <p>
       This makes positioning much less critical since you can always adjust without dropping combos,
-      or even avoid attacks by moving mid-combo. It's incredibly powerful because positioning—which
-      was always a major skill expression factor in previous games—becomes much more forgiving.
+      or even avoid attacks by moving mid-combo. It's incredibly powerful because positioning, which
+      was always a major skill expression factor in previous games, becomes much more forgiving.
     </p>
 
     <StyledList
@@ -51,9 +51,9 @@ import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mod
     />
 
     <p>
-      The downside is that your camera is significantly zoomed in and it makes the game feel more
-      like a hack-and-slash since you can constantly attack while repositioning, rather than the
-      deliberate positioning game Monster Hunter traditionally requires.
+      The downside is that your camera is slightly zoomed in and it makes the game feel more like a
+      hack-and-slash since you can constantly attack while repositioning, rather than the deliberate
+      positioning game Monster Hunter traditionally requires.
     </p>
   </Section>
 
@@ -62,7 +62,7 @@ import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mod
       The default Focus Mode controls are pretty awkward since you need to hold multiple buttons,
       often requiring claw grip on controller or uncomfortable hand positions on PC. But since
       there's really no downside to Focus Mode except the zoom and needing to disable it for
-      sheathing, why not just stay in Focus Mode for the entire fight?
+      sheathing/using certain items, why not just stay in Focus Mode for the entire fight?
     </p>
 
     <ImageCard src={focusModeSettings} alt="Focus Mode Settings" maxWidth="1000px">
@@ -84,10 +84,10 @@ import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mod
     </p>
   </Section>
 
-  <Section title="wounds">
+  <Section title="wounds and weakspots">
     <p>
       With the addition of focus mode we also got a new wound system. When you repeatedly hit the
-      same monster prt, it eventually gets wounded. In Focus Mode, wounds are super easy to spot
+      same monster part, it eventually gets wounded. In Focus Mode, wounds are super easy to spot
       since they're highlighted in red (or blue for tempered wounds), giving you another reason to
       stay in Focus Mode most of the time.
     </p>
@@ -140,6 +140,24 @@ import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mod
       The best way to use the Focus Strike is to: immediately cancel the charge attack by pressing
       the Focus Strike button again. This gives you a quick thrust that's much easier to land on the
       wounded part and deals better DPS than the full animation.
+    </p>
+
+    <SectionSubTitle title="Temporary Monster Weakpoints" />
+    <p>
+      Certain special monster attacks create temporary weakpoints that appear with the same red
+      highlight as wounds. These include attacks like Uth Duna's jump, Rey Dau's big thunder
+      explosion, and more.
+    </p>
+
+    <p>
+      You can use Focus Strikes on these temporary weakpoints to deal bonus damage. If you
+      successfully destroy them, they deal additional damage and go on cooldown. If you don't
+      destroy them in time, they disappear after a short duration.
+    </p>
+
+    <p>
+      Depending on how long the fight lasts, these temporary weakpoints may become available again
+      once their cooldown expires, and the attack is used again.
     </p>
   </Section>
 </ContentLayout>

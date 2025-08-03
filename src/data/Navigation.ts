@@ -409,13 +409,6 @@ export const games: GameNavigation[] = [
           navDescription: 'Optimal combos for all situations',
           pageDescription: 'Unleash most optimal lance combos for all situations and playstyles!',
         },
-        {
-          id: 'palico',
-          emoji: '🐈',
-          title: 'Palico',
-          navDescription: 'Best palico equipment and skills',
-          pageDescription: 'Optimize your feline companion for the dangerous Forbidden Lands!',
-        },
       ],
       tools: [],
       data: [

@@ -3,6 +3,7 @@ import type { News } from '../types/News';
 import tu6Thumbnail from '../assets/rise/tu6.png';
 import iceborneProp from '../assets/world/iprog.png';
 import wildsThumbnail from '../assets/wilds/coming_soon.png';
+import wildsTu2 from '../assets/wilds/tu2.png';
 
 export const news: News[] = [
   {
@@ -30,6 +31,15 @@ export const news: News[] = [
     date: '2025-03-01',
     title: 'New Builds and Guides for Wilds',
     description: 'A little more patience needed :)',
+    game: 'wilds',
+  },
+  {
+    href: '/wilds/builds/endgame',
+    type: 'builds',
+    image: wildsTu2,
+    date: '2025-08-03',
+    title: 'New Endgame Builds for TU2',
+    description: 'Updated endgame builds for Lagiacrus, Seregios and Arch Tempered Uth Duna!',
     game: 'wilds',
   },
 ];
