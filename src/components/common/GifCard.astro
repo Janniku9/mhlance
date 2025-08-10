@@ -23,7 +23,7 @@ const { src, title, maxWidth, class: className, reversed = false } = Astro.props
       class:list={['relative rounded-lg overflow-hidden', reversed ? 'md:order-2' : 'md:order-1']}
       style={maxWidth ? `max-width: ${maxWidth};` : ''}
     >
-      <iframe src={src} class="w-full aspect-video" frameborder="0" allowfullscreen></iframe>
+      <img src={src} alt={title ?? ''} class="w-full h-auto" loading="lazy" />
     </div>
 
     <div class:list={['flex flex-col justify-center', reversed ? 'md:order-1' : 'md:order-2']}>
