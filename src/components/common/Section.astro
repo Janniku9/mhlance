@@ -83,6 +83,10 @@ const sectionSlug = slug || (title ? generateSlug(title) : undefined);
       opacity: 1 !important;
     }
   }
+
+  section > :global(p) {
+    @apply mx-2;
+  }
 </style>
 
 <script>

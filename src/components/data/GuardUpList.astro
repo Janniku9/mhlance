@@ -19,7 +19,7 @@ const {
   monsterData,
   class: className,
   hoverable = true,
-  scaled = false, // Default to false since this is a complex interactive component
+  scaled = false,
   href,
   disabled = false
 } = Astro.props;
@@ -80,7 +80,7 @@ const combinedMonsters = monsterData.map(monster => {
             
             <div class="relative z-10">
               <!-- Monster Image & Name Header -->
-              <div class="p-4 border-b border-text/10 bg-background-darker/50">
+              <div class="p-4 border-b border-text/10 bg-background-darker/50 rounded-t-xl">
                 <div class="flex items-center gap-4">
                   <div class="w-20 h-20 relative overflow-hidden rounded-lg">
                     <Image

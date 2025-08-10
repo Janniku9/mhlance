@@ -10,6 +10,10 @@ const gameId = segments[0] as Game;
 const sectionType = segments[1];
 const sectionId = segments[2];
 
+const formattedGameId = gameId
+  ? `${gameId.charAt(0).toUpperCase() + gameId.slice(1).toLowerCase()}`
+  : 'MH Lance';
+
 const currentGame = games.find((game) => game.game === gameId);
 
 const currentSection = currentGame?.sections[
@@ -17,7 +21,7 @@ const currentSection = currentGame?.sections[
 ]?.find((section) => section.id === sectionId);
 ---
 
-<MainLayout title={`MH Lance - ${currentSection?.title ?? ''} `}>
+<MainLayout title={`${formattedGameId} - ${currentSection?.title ?? ''} `}>
   <div class:list={['max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-24']} data-pagefind-body>
     <PageTitle
       title={currentSection?.title ?? ''}
