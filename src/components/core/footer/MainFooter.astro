@@ -7,6 +7,8 @@ import SocialIconButton from '../../common/SocialIconButton.astro';
 
 const classList = Astro.props.class;
 const currentYear = new Date().getFullYear();
+
+const game = Astro.props.game;
 ---
 
 <footer class={`w-full border-t border-text/10 relative ${classList}`}>
@@ -45,7 +47,7 @@ const currentYear = new Date().getFullYear();
 
     <!-- Contributors Scroll -->
     <div class="w-full">
-      <ContributorScroll contributors={contributors} />
+      <ContributorScroll contributors={contributors} game={game} />
     </div>
 
     <!-- Footer Text -->

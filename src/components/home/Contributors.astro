@@ -103,17 +103,8 @@ const { contributors, gameId, currentGame } = Astro.props;
                 </div>
 
                 <div class="space-y-1 md:space-y-2">
-                  {contributor.contributions.overall && (
-                    <div class="text-xs md:text-sm">
-                      <span class="font-medium text-secondary uppercase">overall:</span>
-                      <span class="text-text/70 ml-1 md:ml-2 lowercase">
-                        {contributor.contributions.overall}
-                      </span>
-                    </div>
-                  )}
                   {gameId && contributor.contributions[gameId] && (
                     <div class="text-xs md:text-sm">
-                      <span class="font-medium text-primary capitalize">{currentGame.title}:</span>
                       <span class="text-text/70 ml-1 md:ml-2 lowercase">
                         {contributor.contributions[gameId]}
                       </span>
@@ -125,6 +116,16 @@ const { contributors, gameId, currentGame } = Astro.props;
           </BaseCard>
         ))
       }
+    </div>
+
+    <div class="max-w-3xl mx-auto text-center mb-8 text-text/80 mt-8">
+      <p>
+        Hey, <strong>J9</strong> here, I started <a
+          href="https://mhlance.com"
+          class="text-primary hover:underline">mhlance.com</a
+        > to share Lance guides, tips, and builds for different Monster Hunter games. Huge thanks to
+        everyone who’s helped over the past few years.
+      </p>
     </div>
   </div>
 </section>

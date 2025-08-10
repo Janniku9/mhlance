@@ -7,7 +7,7 @@ export const games: GameNavigation[] = [
     emoji: '🧊',
     gameDescription:
       'Master the clutch claw, perfect your guard timing, and learn how to dominate the icy challenges of Iceborne.',
-    playlistId: 'PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4',
+    playlistId: 'PLMgaMGsEoNvmMAOMQ8PFmnGvaGuLO_nVd',
     featuredLinks: [
       {
         href: '/world/combos',
@@ -147,7 +147,7 @@ export const games: GameNavigation[] = [
     emoji: '🌅',
     gameDescription:
       'Learn the counters and switch skill in sunbreak to beat even the toughest anomaly investigations.',
-    playlistId: 'PLMgaMGsEoNvmMAOMQ8PFmnGvaGuLO_nVd',
+    playlistId: 'PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4',
     featuredLinks: [
       {
         href: '/rise/builds/endgame',
@@ -434,6 +434,16 @@ export const games: GameNavigation[] = [
           navDescription: 'Motion values for all weapons',
           externalLink:
             'https://docs.google.com/spreadsheets/d/1I8j9nM7xWXDd2n9WMZTitSGkFe8R89SqHr0sEjoR4Fs/edit?gid=510034666#gid=510034666',
+        },
+        {
+          id: 'calculator',
+          emoji: '🧮',
+          externalLink:
+            'https://docs.google.com/spreadsheets/d/1rLmn3sO7HrdtiSiK60FC2mneoQCJ8roP2nNSNNmvjE0/edit?gid=614892569#gid=614892569https://dotmh.com/tools/damage-calculator',
+          title: "Dot's Damage Calculator",
+          navDescription: 'Calculate damage output of builds',
+          pageDescription:
+            "Use this external tool to calculate your damage output based on your build and the monster you're fighting.",
         },
       ],
     },

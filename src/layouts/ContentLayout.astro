@@ -6,7 +6,7 @@ import MainFooter from '../components/core/footer/MainFooter.astro';
 import PageTitle from '../components/common/PageTitle.astro';
 
 const segments = Astro.url.pathname.split('/').filter(Boolean);
-const gameId = segments[0] as Game;
+const gameId = segments[0] as Exclude<Game, null>;
 const sectionType = segments[1];
 const sectionId = segments[2];
 
@@ -34,5 +34,5 @@ const currentSection = currentGame?.sections[
   </div>
 
   <div class="h-24"></div>
-  <MainFooter />
+  <MainFooter game={gameId} />
 </MainLayout>

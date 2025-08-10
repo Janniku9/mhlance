@@ -15,8 +15,10 @@ interface Props  {
 
 const { currentNews, currentGame }: Props = Astro.props;
 
-// Sort news by date to ensure newest first
-const sortedNews = currentNews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+// Sort news newest first
+const sortedNews = currentNews.sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
 
 const getNewsTypeColor = (type: string) => {
   switch(type) {
@@ -26,8 +28,8 @@ const getNewsTypeColor = (type: string) => {
     default: return 'bg-text/20 text-text border-text/30';
   }
 };
-
 ---
+
 <section class="py-12 md:py-32 px-3 md:px-4 md:px-8 bg-gradient-to-br from-primary/5 to-primary-light/20 relative overflow-hidden -mt-1">
   <!-- Decorative Elements -->
   <div class="absolute left-0 top-0 w-full h-full overflow-hidden pointer-events-none">
@@ -47,89 +49,117 @@ const getNewsTypeColor = (type: string) => {
       </p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-1 gap-3 md:gap-4">
-      {sortedNews.map((news) => (
-        <BaseCard href={news.href} class="p-3 md:p-6 group relative overflow-hidden hover:scale-[1.02] bg-background-dark/50 backdrop-blur-sm">
-          <!-- Subtle gradient overlay -->
-          <div class="absolute inset-0 bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          
-          <!-- Mobile Layout (Vertical) -->
-          <div class="relative space-y-3 md:hidden">
-            <!-- News Image -->
-            <div class="w-full h-40 rounded-lg overflow-hidden bg-text/7">
-              <Image 
-                src={news.image} 
-                alt={news.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-            </div>
-            
-            <div class="flex items-center justify-between">
-              <Badge text={news.type} color={getNewsTypeColor(news.type)} class="uppercase border text-xs" />
-              <span class="text-xs text-text/50 uppercase">{news.date}</span>
-            </div>
-            
-            <div>
-              <BaseCardTitle title={news.title} class="mb-1 group-hover:text-primary transition-colors" />
-              <p class="text-text/70 text-xs leading-relaxed lowercase">
-                {news.description}
-              </p>
-            </div>
-            
-            <div class="flex items-center text-primary text-xs font-medium uppercase">
-              read more
-              <Icon name="mingcute:arrow-right-line" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </div>
+    <!-- Carousel -->
+    <div id="news-carousel" class="overflow-hidden relative">
+      <div id="news-track" class="flex transition-transform duration-500">
+        {sortedNews.map((news) => (
+          <div class="min-w-full">
+            <BaseCard href={news.href} class="p-3 md:p-6 group relative overflow-hidden hover:scale-[1.02] bg-background-dark/50 backdrop-blur-sm">
+              <div class="absolute inset-0 bg-gradient-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              
+              <!-- Mobile Layout -->
+              <div class="relative space-y-3 md:hidden">
+                <div class="w-full h-40 rounded-lg overflow-hidden bg-text/7">
+                  <Image 
+                    src={news.image} 
+                    alt={news.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex items-center justify-between">
+                  <Badge text={news.type} color={getNewsTypeColor(news.type)} class="uppercase border text-xs" />
+                  <span class="text-xs text-text/50 uppercase">{news.date}</span>
+                </div>
+                <div>
+                  <BaseCardTitle title={news.title} class="mb-1 group-hover:text-primary transition-colors" />
+                  <p class="text-text/70 text-xs leading-relaxed lowercase">{news.description}</p>
+                </div>
+                <div class="flex items-center text-primary text-xs font-medium uppercase">
+                  read more
+                  <Icon name="mingcute:arrow-right-line" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
 
-          <!-- Desktop Layout (Horizontal) -->
-          <div class="relative hidden md:flex md:gap-6 md:items-center">
-            <!-- News Image -->
-            <div class="flex-shrink-0 md:h-64 xl:h-96 rounded-lg overflow-hidden bg-text/7">
-              <Image 
-                src={news.image} 
-                alt={news.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-            </div>
-            
-            <!-- Content -->
-            <div class="flex-grow space-y-3">
-              <div class="flex items-center justify-between">
-                <Badge text={news.type} color={getNewsTypeColor(news.type)} class="uppercase border text-xs" />
-                <span class="text-sm text-text/50 uppercase">{news.date}</span>
+              <!-- Desktop Layout -->
+              <div class="relative hidden md:flex md:gap-6 md:items-center">
+                <div class="flex-shrink-0 md:h-64 xl:h-96 rounded-lg overflow-hidden bg-text/7">
+                  <Image 
+                    src={news.image} 
+                    alt={news.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex-grow space-y-3">
+                  <div class="flex items-center justify-between">
+                    <Badge text={news.type} color={getNewsTypeColor(news.type)} class="uppercase border text-xs" />
+                    <span class="text-sm text-text/50 uppercase">{news.date}</span>
+                  </div>
+                  <div>
+                    <BaseCardTitle title={news.title} class="mb-2 group-hover:text-primary transition-colors" />
+                    <p class="text-text/70 text-sm leading-relaxed lowercase">{news.description}</p>
+                  </div>
+                  <div class="flex items-center text-primary text-sm font-medium uppercase">
+                    read more
+                    <Icon name="mingcute:arrow-right-line" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
               </div>
-              
-              <div>
-                <BaseCardTitle title={news.title} class="mb-2 group-hover:text-primary transition-colors" />
-                <p class="text-text/70 text-sm leading-relaxed lowercase">
-                  {news.description}
-                </p>
-              </div>
-              
-              <div class="flex items-center text-primary text-sm font-medium uppercase">
-                read more
-                <Icon name="mingcute:arrow-right-line" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
+            </BaseCard>
           </div>
-        </BaseCard>
-      ))}
+        ))}
+      </div>
+
+      <!-- Navigation Dots -->
+      {sortedNews.length > 1 && (
+        <div id="news-dots" class="flex justify-center mt-4 gap-2">
+          {sortedNews.map(() => (
+            <button class="dot-btn w-3 h-3 rounded-full bg-text/30"></button>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 </section>
 
 <style>
-  /* Hexagon shape for decorative elements */
   .hexagon {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
-
-  /* Ensure smooth transition from wave */
-  section {
-    position: relative;
-    z-index: 1;
-  }
+  section { position: relative; z-index: 1; }
 </style>
+
+<script>
+  let activeIndex = 0;
+  const track = document.getElementById("news-track");
+  const dots = document.querySelectorAll(".dot-btn");
+  const total = dots.length;
+
+  function showSlide(index: number) {
+    if (index < 0 || index >= total) return;
+
+    if (!track) return;
+
+    activeIndex = index;
+    track.style.transform = `translateX(-${activeIndex * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-primary", i === activeIndex);
+      dot.classList.toggle("bg-text/30", i !== activeIndex);
+    });
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      showSlide(i);
+    });
+  });
+
+  setInterval(() => {
+    activeIndex = (activeIndex + 1) % total;
+    showSlide(activeIndex);
+  }, 10000);
+
+  showSlide(0);
+</script>
+/style>

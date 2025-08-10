@@ -25,9 +25,7 @@ if (!currentGame) {
 }
 
 // Get game-specific contributors
-const gameContributors = contributors.filter(
-  (contributor) => contributor.contributions[gameId] || contributor.contributions.overall
-);
+const gameContributors = contributors.filter((contributor) => contributor.contributions[gameId]);
 
 // Get game-specific faq
 const gameFaq = () => {

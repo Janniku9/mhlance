@@ -7,9 +7,9 @@ export const contributors: Contributor[] = [
     name: 'J9',
     image: J9,
     contributions: {
-      overall: 'Website design, development and hosting',
-      world: 'Progression guides and lance mechanics',
-      rise: 'Endgame optimization and post-story content',
+      world: 'progression guides and lance mechanics',
+      rise: 'endgame optimization and post-story content',
+      wilds: 'endgame builds and guides',
     },
     socials: {
       youtube: 'https://www.youtube.com/@J9_MH',
@@ -19,9 +19,8 @@ export const contributors: Contributor[] = [
   {
     name: 'Chef',
     contributions: {
-      overall: 'Comprehensive progression guides for Rise and World',
-      world: 'Early and mid-game progression support',
-      rise: 'Early game progression guide',
+      world: 'base and mid-game progression guide',
+      rise: 'base and mid-game progression guide',
     },
     socials: {
       twitch: 'https://www.twitch.tv/ch3f_',
@@ -30,17 +29,33 @@ export const contributors: Contributor[] = [
   {
     name: 'Kenny',
     contributions: {
-      overall: 'Guard Up mechanics research',
-      rise: 'Tested all monster attacks against Guard Up mechanics',
+      rise: 'guard up testing and data collection',
     },
     socials: {},
   },
   {
     name: 'Noxvenator',
     contributions: {
-      overall: 'Guard Up mechanics research',
-      world: 'Tested all monster attacks against Guard Up mechanics',
+      world: 'guard up testing and data collection',
     },
     socials: {},
+  },
+  {
+    name: 'Dot Execute',
+    contributions: {
+      wilds: 'damage calculator',
+    },
+    socials: {
+      youtube: 'https://www.youtube.com/channel/UCCVlgaeVKSj6zpUrVGgEjhg',
+    },
+  },
+  {
+    name: 'Gnar',
+    contributions: {
+      wilds: 'guard up testing and data collection',
+    },
+    socials: {
+      youtube: 'https://www.youtube.com/@gnaryamanobe',
+    },
   },
 ];
