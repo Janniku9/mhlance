@@ -30,7 +30,7 @@ const { faq, currentGame } = Astro.props;
         faq.map((faq: FAQ, _: number) => (
           <BaseCard class="p-3 md:p-6" hoverable={false}>
             <details class="group">
-              <summary class="flex items-center justify-between cursor-pointer list-none">
+              <summary class="flex items-center justify-between cursor-pointer list-none hover:text-primary-light transition-colors">
                 <h3 class="font-bold text-xs md:text-lg pr-2 md:pr-4 uppercase">{faq.question}</h3>
                 <Icon
                   name="mingcute:down-line"

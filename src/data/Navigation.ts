@@ -41,6 +41,7 @@ export const games: GameNavigation[] = [
           id: 'high-rank',
           title: 'High Rank',
           emoji: '💠',
+          showInQuickLinks: true,
           navDescription: 'High rank progression builds',
           pageDescription: 'Optimized lance builds for High Rank progression! ',
         },
@@ -203,6 +204,7 @@ export const games: GameNavigation[] = [
           title: 'High Rank',
           emoji: '🌄',
           navDescription: 'High rank progression builds',
+          showInQuickLinks: true,
           pageDescription:
             'Power through High Rank with optimized lance builds! From starter gear to endgame sets.',
         },
@@ -220,6 +222,7 @@ export const games: GameNavigation[] = [
           title: 'Post-Story',
           emoji: '🩸',
           navDescription: 'Post story & anomaly progression builds',
+          showInQuickLinks: true,
           pageDescription:
             'Dominate Anomaly Investigations with specialized builds for efficient farming!',
         },
@@ -373,6 +376,7 @@ export const games: GameNavigation[] = [
           emoji: '⛓️',
           title: 'High Rank',
           navDescription: 'High rank progression builds',
+          showInQuickLinks: true,
           pageDescription:
             'Experience the consequences of shutting down the Dragontorch with powerful high rank builds!',
         },
@@ -381,6 +385,7 @@ export const games: GameNavigation[] = [
           emoji: '👑',
           title: 'Endgame',
           navDescription: 'High rank endgame builds',
+          showInQuickLinks: true,
           pageDescription:
             'Face the White Wraith and Tempered monsters with powerful endgame lance builds!',
         },
@@ -391,6 +396,7 @@ export const games: GameNavigation[] = [
           emoji: '🤺',
           title: 'Focus Mode',
           navDescription: 'Master the new precision targeting system',
+          showInQuickLinks: true,
           pageDescription:
             'Learn to use and take advantage of the new Focus Mode to maximize your damage output!',
         },
@@ -399,6 +405,7 @@ export const games: GameNavigation[] = [
           emoji: '🛡️',
           title: 'Counters',
           navDescription: 'Perfect your counter attacks',
+          showInQuickLinks: true,
           pageDescription:
             'Master lance counter mechanics to turn enemy aggression into your advantage!',
         },
@@ -407,6 +414,7 @@ export const games: GameNavigation[] = [
           emoji: '🥊',
           title: 'Combos',
           navDescription: 'Optimal combos for all situations',
+          showInQuickLinks: true,
           pageDescription: 'Unleash most optimal lance combos for all situations and playstyles!',
         },
       ],
@@ -417,6 +425,7 @@ export const games: GameNavigation[] = [
           emoji: '📝',
           title: 'Match Ups',
           navDescription: 'Optimal builds for every monster matchup',
+          showInQuickLinks: true,
           pageDescription: 'Complete matchup guide showing the best builds for every monster! ',
         },
         {
@@ -424,6 +433,7 @@ export const games: GameNavigation[] = [
           emoji: '🛡️',
           title: 'Guard Up',
           navDescription: 'All blockable & unblockable attacks',
+          showInQuickLinks: true,
           pageDescription:
             'Complete list of attacks requiring Guard Up and truly unblockable moves! ',
         },

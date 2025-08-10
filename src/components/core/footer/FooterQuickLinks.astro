@@ -1,28 +1,37 @@
 ---
 import { games } from '../../../data/Navigation';
+import type { Game } from '../../../types/Game';
 
-// Extract all items marked for quick links across all games
-const quickLinks = games.flatMap((game) =>
-  Object.entries(game.sections).flatMap(([sectionType, sections]) =>
-    sections
-      .filter((section) => section.showInQuickLinks)
-      .map((section) => ({
-        href: `/${game.game}/${sectionType}/${section.id}`,
-        emoji: section.emoji,
-        label: section.title,
-        game: game.title,
-        description: section.navDescription,
-        // Color gradients based on section type
-        color:
-          sectionType === 'builds'
-            ? 'from-green-500/20 to-green-600/20'
-            : sectionType === 'guides'
-              ? 'from-blue-500/20 to-blue-600/20'
-              : sectionType === 'data'
-                ? 'from-purple-500/20 to-purple-600/20'
-                : 'from-orange-500/20 to-orange-600/20',
-      }))
-  )
+interface Props {
+  game: Exclude<Game, null>;
+}
+
+const { game } = Astro.props;
+
+const gameData = games.find((g) => g.game === game);
+
+if (!gameData) {
+  throw new Error(`Game not found: ${game}`);
+}
+const quickLinks = Object.entries(gameData.sections).flatMap(([sectionType, sections]) =>
+  sections
+    .filter((section) => section.showInQuickLinks)
+    .map((section) => ({
+      href: `/${game}/${sectionType}/${section.id}`,
+      emoji: section.emoji,
+      label: section.title,
+      game: gameData.title,
+      description: section.navDescription,
+      // Color gradients based on section type
+      color:
+        sectionType === 'builds'
+          ? 'from-green-500/20 to-green-600/20'
+          : sectionType === 'guides'
+            ? 'from-blue-500/20 to-blue-600/20'
+            : sectionType === 'data'
+              ? 'from-purple-500/20 to-purple-600/20'
+              : 'from-orange-500/20 to-orange-600/20',
+    }))
 );
 ---
 
