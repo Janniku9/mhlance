@@ -38,7 +38,7 @@ import { ComboTag } from '../../../types/guides/Combo';
       </ul>
     </InfoBox>
 
-    <Section title="The main Bread and Butter Combos">
+    <Section title="Bread and Butter Combos">
       <p>
         All possible combos in Wilds perform similarly, but two stand out slightly. These work best
         when the monster is downed or not attacking you. Both combos come with a leaping thrust
@@ -61,21 +61,14 @@ import { ComboTag } from '../../../types/guides/Combo';
       </p>
 
       <p>
-        Since corrupted mantle only provides extra damage ticks on mid thrusts and triple thrust,
-        this becomes the optimal combo. You get bonus damage ticks on every mid thrust plus one on
-        the finisher.
+        So the true power of this combo doesn't necessarily come from the damage it deals, but
+        rather from it's reaction speed and ability to reposition.
       </p>
 
-      <InfoBox type="tip">
-        <b>Advanced Tip:</b>
-        Strafing the third mid thrust is slightly slower than not strafing, so the optimal combo is:
-        strafe left poke, strafe right poke, neutral poke, then triple thrust. This damage difference
-        is very small, however.
-      </InfoBox>
-
       <p>
-        Additionally, while in focus mode, performing mid thrusts lets you strafe in all four
-        directions, allowing small positioning adjustments while attacking.
+        Since corrupted mantle only provides extra damage ticks on mid thrusts and triple thrust,
+        this becomes the optimal combo while wearing it. You get bonus damage ticks on every mid
+        thrust plus one on the triple finisher.
       </p>
 
       <ComboCard
@@ -89,7 +82,7 @@ import { ComboTag } from '../../../types/guides/Combo';
             duration: 3.83,
           },
           tags: [ComboTag.DamageElemental, ComboTag.ExecutionSimple, ComboTag.OpportunityShort],
-          gif: 'https://giphy.com/embed/NUV7ISckjN1rDKCVgf',
+          gif: 'https://assets.mhlance.com/wilds/mt-spam.gif',
           strengths: [
             'Fastest combo to stack Charge Counter',
             'Very high elemental damage and easy to execute',
@@ -105,19 +98,21 @@ import { ComboTag } from '../../../types/guides/Combo';
       />
 
       <p>
-        In Wilds, we can perform leaping thrust from neutral while in focus mode (this is faster
-        than from guard dash and doesn't consume stamina, preserving Max Might). In situations where
-        you're at a small distance from the monster, consider using leaping thrust into mid thrust +
-        mid thrust + triple thrust combo. This deals slightly less damage but allows you to close
-        distance.
+        In Wilds, we can perform leaping thrust from neutral (this is faster than from guard dash
+        and doesn't consume stamina, preserving Max Might). In situations where you're at a small
+        distance from the monster, consider using leaping thrust into mid thrust + mid thrust +
+        triple thrust combo. This deals slightly less damage but allows you to close distance more
+        efficiently.
       </p>
 
       <p>
         This combo is often used after a power clash or after popping a wound, as it usually leaves
-        you at a distance where this combo perfectly catches up to the monster.
+        you at a distance where this combo perfectly catches up to the monster. For the second loop
+        you then transition into mid thrust spam.
       </p>
 
       <ComboCard
+        reversed
         combo={{
           title: 'Leaping Into Mid Thrust Spam',
           longTitle: 'Leaping Thrust + 2x MT into Triple Thrust',
@@ -128,7 +123,7 @@ import { ComboTag } from '../../../types/guides/Combo';
             duration: 4.75,
           },
           tags: [ComboTag.DamageElemental, ComboTag.Reposition],
-          gif: 'https://giphy.com/embed/pYr85Iz3Gvy5kFmvAj',
+          gif: 'https://assets.mhlance.com/wilds/lt-mt-spam.gif',
           strengths: [
             'Good gap closer',
             'Very good elemental damage',
@@ -142,6 +137,13 @@ import { ComboTag } from '../../../types/guides/Combo';
           },
         }}
       />
+
+      <InfoBox type="tip">
+        <b>Advanced Tip:</b>
+        Strafing the third mid thrust is slightly slower than not strafing, so the optimal combo is something
+        like: strafe left poke, strafe right poke, neutral poke, then triple thrust. However, this damage
+        difference is very very small.
+      </InfoBox>
 
       <SectionSubTitle title="High Thrust Wide Sweep (Raw)" />
 
@@ -157,6 +159,12 @@ import { ComboTag } from '../../../types/guides/Combo';
         quickly as possible.
       </p>
 
+      <p>
+        Although this combo deals more raw damage than mid thrust spam, it is slower and less
+        reactive. Therefore, you see a lot of players still using mid thrust spam when using raw
+        weapons and the monster is moving, as it allows for better repositioning and reaction speed.
+      </p>
+
       <ComboCard
         combo={{
           title: 'High Thrust Sweep',
@@ -168,7 +176,7 @@ import { ComboTag } from '../../../types/guides/Combo';
             duration: 4.75,
           },
           tags: [ComboTag.DamageRaw, ComboTag.OpportunityLong],
-          gif: 'https://giphy.com/embed/cWysX2FlhPRmLBSQdC',
+          gif: 'https://assets.mhlance.com/wilds/ht-sweep-ht-cc.gif',
           strengths: ['Deals very high raw damage', 'Low sharpness consumption'],
           considerations: ['The wide sweep requires bigger commitment and is harder to aim'],
           inputs: {
@@ -180,9 +188,9 @@ import { ComboTag } from '../../../types/guides/Combo';
       />
 
       <p>
-        This is the best combo when using raw or status weapons, or when the elemental hitzone is
-        very low. Remember that while wearing corrupted mantle, mid thrust spam remains better since
-        this combo doesn't provide extra damage ticks.
+        This is the highest damage combo when using raw or status weapons, or when the elemental
+        hitzone is very low. Remember that while wearing corrupted mantle, mid thrust spam remains
+        better since this combo doesn't provide extra damage ticks.
       </p>
 
       <p>
@@ -191,11 +199,12 @@ import { ComboTag } from '../../../types/guides/Combo';
       </p>
 
       <p>
-        This combo is often used after power clash or wound popping, as it usually leaves you at the
-        perfect distance to catch up to the monster.
+        This variation of the combo is often used after power clash or wound popping, as it usually
+        leaves you at the perfect distance to catch up to the monster.
       </p>
 
       <ComboCard
+        reversed
         combo={{
           title: 'Leaping Thrust into High Thrust Sweep',
           longTitle: 'Leaping Thrust into HT Sweep HT CC',
@@ -206,7 +215,7 @@ import { ComboTag } from '../../../types/guides/Combo';
             duration: 5.44,
           },
           tags: [ComboTag.DamageRaw, ComboTag.Reposition, ComboTag.EfficiencySharpness],
-          gif: 'https://giphy.com/embed/neyBfwoJcK1vno9FSN',
+          gif: 'https://assets.mhlance.com/wilds/lt-sweep-ht-cc.gif',
           strengths: [
             'Good gap closer',
             'Deals very high raw damage',

@@ -6,12 +6,16 @@ import StyledList from '../../../components/common/StyledList.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import NavigationButton from '../../../components/common/NavigationButton.astro';
 
+import reinforcements from '../../../assets/wilds/builds/reinforcements.png';
+
 import rey from '../../../assets/wilds/builds/high-rank/tu2-3rey.png';
 import lagi from '../../../assets/wilds/builds/high-rank/tu2-2lagi.png';
 import zoh from '../../../assets/wilds/builds/high-rank/tu2-comfy.png';
 import InfoBox from '../../../components/common/InfoBox.astro';
 import Comment from '../../../components/common/Comment.astro';
 import CodeBlock from '../../../components/common/CodeBlock.astro';
+import ImageCard from '../../../components/common/ImageCard.astro';
+import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.astro';
 ---
 
 <ContentLayout title="Coming Soon">
@@ -20,14 +24,8 @@ import CodeBlock from '../../../components/common/CodeBlock.astro';
 
     <p>
       These are the current endgame builds for Title Update 2, which added Seregios and Lagiacrus.
-      All of these assume you've completed the main story and have access to the highest rarity
-      Artian weapons, plus pretty much all decorations and armor pieces.
-    </p>
-
-    <p>
-      They require you to have completed the main story and unlocked the ability to craft the
-      highest rarity Artian weapons, as well as having access to pretty much all decorations and
-      armor pieces in the game.
+      All of these builds assume you've completed the main story and have access to the highest
+      rarity Artian weapons, plus pretty much all decorations and armor pieces.
     </p>
 
     <SectionSubTitle title="Weapons" />
@@ -36,19 +34,29 @@ import CodeBlock from '../../../components/common/CodeBlock.astro';
       Artian weapons are still the best option in the game by a wide margin. They all come with
       three level-3 slots, which lets you stack the weapon skills that lance really needs. The
       reinforcement system also gives them the best stats for almost every element or status, making
-      most craftable lances pretty obsolete.
+      most craftable lances pretty obsolete (for thunder the Lagiacrus lance is pretty good).
     </p>
 
     <p>
-      When crafting new Artian weapons, try to get three parts with the same element or status, plus
-      an attack infusion. This basically guarantees you to get the element you want while maximizing
-      the attack production bonus.
+      When crafting new Artian weapons, try to get three parts with the same element or status and
+      all having attack infusions. This basically guarantees you to get the element you want while
+      maximizing the attack production bonus.
     </p>
 
+    <ImageCard
+      src={reinforcements}
+      alt="reinforcement bonuses"
+      caption="A fire Artian lance with full raw production bonus and 2 sharpness, 1 affinity and 1 affinity production bonus. Not the god roll, but still a very good one."
+      maxWidth="500px"
+    />
+
     <p>
-      For reinforcement bonuses, aim for 1 sharpness and 4 attack. Even if you only get 2-3 attack
-      reinforcements, it'll still outperform the craftable alternatives.
+      For reinforcement bonuses, aim for 1 sharpness and 4 attack (2 sharpness 3 attack is the
+      second best). Even if you only get 2-3 attack reinforcements, the weapon will still outperform
+      the craftable alternatives.
     </p>
+
+    <SectionSubSubTitle title="Weapon Decorations" />
 
     <p>Here's how to use those 3 weapon decoration slots:</p>
     <StyledList
@@ -76,18 +84,29 @@ import CodeBlock from '../../../components/common/CodeBlock.astro';
       attack. Pick based on what you need—guard for tough matchups, handicraft if you're struggling
       with sharpness, or elemental attack for a small damage boost.
     </p>
+
     <p>
-      Since our affinity is pretty high now, Master's Touch is usually better for sharpness
-      management. You can also use combo Razor Sharp + ironwall decorations if you prefer running
-      guard 2 as the master's touch is not available as a combo decoration.
+      Since our affinity is pretty high now, Master's Touch is slowly starts being better for
+      sharpness management. Most sets have around 80% average affinity, we get <CodeBlock
+        text="1/(1 - (0.8*0.8)) = 2.78"
+      /> times the sharpness. And with the Artian lances being at 50 hits that results in around 138
+      hits. On the other hand, Razor Sharp just doubles the sharpness, which is 120 hits if you pick
+      a handicraft combo or 100 hits if you pick a guard or elemental attack combo.
+    </p>
+
+    <SectionSubSubTitle title="Craftable Weapons" />
+
+    <p>
+      The Lagiacrus lance can actually match or and even beat the Artian Thunder Lance in very
+      elemental-heavy matchups like Seregios if you manage to reach high thunder resistance. For
+      longer hunts, an Artian with god roll probably still wins due to better slots, giving it
+      better sharpness.
     </p>
 
     <InfoBox>
       <p>
-        The Lagiacrus lance can actually match or beat the Artian Thunder Lance in very
-        elemental-heavy matchups like Seregios, especially if you stack thunder resistance. When
-        using it, eat a meal that maxes elemental resistances and use your 1-slots for more thunder
-        resistance. For longer hunts, the Artian might still win due to better sharpness.
+        When using the Lagi Lance, eat a meal that gives elemental resistances and use your 1-slots
+        for more thunder resistance.
       </p>
     </InfoBox>
 

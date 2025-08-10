@@ -1,4 +1,5 @@
 ---
+import GifCard from '../../../components/common/GifCard.astro';
 import Section from '../../../components/common/Section.astro';
 import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
 import StyledList from '../../../components/common/StyledList.astro';
@@ -18,16 +19,17 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
   <Section title="Charged Counter (CC)">
     <p>
-      Charged Counter stands as Lance's most devastating new tool: a scalable counter that grows
-      stronger the deeper you are in your combo sequence. The mechanic elegantly rewards aggressive
-      play by granting higher damage multipliers based on your current combo position.
+      Charged Counter stands as Lance's most powerful new tool: a broken counter that grows stronger
+      the deeper you are in your combo sequence. The mechanic rewards aggressive play by granting
+      higher damage multipliers based on your current combo position.
     </p>
 
     <p>
       The charge system works intuitively: each attack in your three-hit combo sequence increases
       your starting charge level. Starting from neutral gives you level 0 (briefly), after one
       attack you begin at level 1, after two attacks you start at level 2, and after three attacks
-      you immediately reach the maximum level 3 charge.
+      you immediately reach the maximum level 3 charge. Each level is represented by a different
+      color and
     </p>
 
     <StyledList
@@ -46,6 +48,18 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
         },
       ]}
     />
+
+    <GifCard
+      src="https://assets.mhlance.com/wilds/charged-counter-2.gif"
+      alt="Charge Counter Transitions"
+      title="Charge Counter Transitions"
+    >
+      <p>
+        This is a clip of Arch Tempered Uth Duna, where the hunter keeps stacking up to red level
+        with 3 pokes, then performs a max level charged counter, aligning perfectly with the
+        monster's attack pattern.
+      </p>
+    </GifCard>
 
     <p>
       While you can manually charge from any level to increase damage further, this rarely proves
@@ -74,6 +88,25 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
       yellow or red charge level.
     </p>
 
+    <GifCard
+      reversed
+      src="https://assets.mhlance.com/wilds/charged-counter.gif"
+      alt="Charged Counter"
+      title="The true power of the Charged Counter"
+    >
+      We transition into a charged counter from the mid-thrust combo, countering Lagiacrus's big AOE
+      thunder attack. This attack actually has 3 hitboxes, but a well timed Charged Counter allows
+      us to negate all of them. We stand still for a bit, until after all hitboxes have passed,
+      before we start poking again.
+    </GifCard>
+
+    <p>
+      Charged Counter also has this unique property, that if you counter a multi-hit attack, like
+      Zoh Shia's Flame Breath or the Lagiacrus's Thunder AOE, for as long as you don't press any
+      buttons afterwards, you'll ignore all future hitboxes of that attack. Which is situationally
+      very useful to know.
+    </p>
+
     <SectionSubTitle title="Counter Chaining" />
     <p>
       You can even chain charged counters together, but the timing is a bit tricky: input the next
@@ -100,7 +133,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     <StyledList
       items={[
         {
-          text: 'Retribution Thrust',
+          text: 'Return Thrust',
           emoji: '⚡',
           subtext:
             'A very quick thrust that deals medium damage, but allows you to attack or block again immediately. In most cases, this is what you want to use, as it allows you to chain perfect block on very quick attacks while still squeezing in some damage.',
@@ -120,6 +153,19 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
       ]}
     />
 
+    <GifCard
+      src="https://assets.mhlance.com/wilds/perfect-guard.gif"
+      alt="Perfect Guard"
+      title="Perfect Guard Chain"
+    >
+      <p>
+        Nu Udra has a very quick attack chain, where the first attack has enough time to perform a
+        charged counter on it, on the second attack we do a perfect guard and because the third
+        attack is very quick, we follow up with a return thrust into another perfect guard. The
+        final attack leaves Nu Udra open so we can perform a Retribution Thrust out of the perfect
+        guard.
+      </p>
+    </GifCard>
     <SectionSubTitle title="When to choose Perfect Guard?" />
 
     <p>
@@ -131,16 +177,12 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     <StyledList
       items={[
         {
-          text: 'Panic situations where you lack time to charge a counter',
-          emoji: '⏱️',
-        },
-        {
-          text: 'Multi-hit attacks that Charged Counter struggles to handle',
+          text: 'Multi-hit attacks or fast attack Chains that Charged Counter struggles to handle',
           emoji: '🔄',
         },
         {
-          text: 'Extremely fast attack chains that require immediate defensive responses',
-          emoji: '⚡',
+          text: 'Panic situations where you lack time to charge a counter',
+          emoji: '⏱️',
         },
       ]}
     />
@@ -218,6 +260,20 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
       ]}
     />
 
+    <GifCard
+      reversed
+      src="https://assets.mhlance.com/wilds/grt.gif"
+      alt="Grand Retribution Thrust"
+      title="Grand Retribution Thrust"
+    >
+      <p>
+        Versus Rey Dau, when he does the double wing attack, you can Charge Counter the first one,
+        then you could do another CC on the second one, but since your combo will be max at level 1,
+        you can also do a GRT with guaranteed orange level, dealing slightly more damage and being
+        able to punish the wide opening with a triple thrust or a dash attack.
+      </p>
+    </GifCard>
+
     <p>
       The damage boost doesn't only apply to GRT, it also applies to other follow-up attacks like
       Leaping Thrust. In some situations, this boosted leaping thrust can also be a valid option as
@@ -234,7 +290,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
     <p>
       Despite its damage potential, GRT carries several practical limitations that prevent it from
-      replacing Charged Counter as the primary strategy:
+      replacing Charged Counter as the primary Counter option:
     </p>
 
     <StyledList
@@ -258,11 +314,11 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     />
 
     <p>
-      But even with all these downsides, there's still plenty of use cases. First of all, many
-      monsters have roars that for some reason just give you a free red level + there's also some
-      attacks that barely chip you, but still give red level, and then there's one more thing we
-      haven't talked about yet, which is an advanced tenchnique you can do with GRT that probably is
-      the highest damage gap closer we can do.
+      But even with all these downsides, there's still some use cases. First of all, many monsters
+      have roars that for some reason just give you a free red level, in many situations it's also
+      better than doing a charged counter on no combo and you know you get orange or red on the GRT.
+      Additionally, there's an advanced trick (covered in the next section) to increase the range,
+      allowing you to punish attacks you otherwise couldn't reach.
     </p>
 
     <p>
@@ -273,16 +329,13 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
     <SectionSubTitle title="GRT Jump Tech" />
     <p>
-      So as we learned when performing the Grand Retribution Thrust, you will jump back before
-      jumping forward with a thrust. Now there's a really cool tech where you can combine these two
-      movements into the same direction, allowing you to close larger gaps and dealing massive
-      damage in the process.
+      Let's look at how to get even more out of GRT, so as we learned when performing the Grand
+      Retribution Thrust, you will jump back before jumping forward with a thrust. Now there's a
+      really cool tech where you can combine these two movements into the same direction, allowing
+      you to close larger gaps and dealing massive damage in the process.
     </p>
 
-    <p>
-      While performing this tech, it's also the only time ever we want to exit focus mode, as
-      otherwise we aren't able to perform it. So to perform the GRT Jump Tech you want to:
-    </p>
+    <p>So to perform the GRT Jump Tech you want to:</p>
 
     <StyledList
       items={[
@@ -300,9 +353,23 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
       ]}
     />
 
+    <GifCard
+      src="https://assets.mhlance.com/wilds/reverse-grt-long.gif"
+      alt="How to style on Monsters"
+      title="Styling on Monsters with GRT Jump Tech"
+    >
+      <p>
+        We can see two use cases of the GRT Jump Tech against Mizutsune here. In the first case,
+        both a Charged Counter or a GRT facing the monster don't have enough range to punish. In the
+        second scenario using the GRT Jump Tech allows us to get and punish on the head hitzone
+        instead of being stuck on the tail or body.
+      </p>
+    </GifCard>
+
     <p>
       This technique is quite complicated and takes some practice to get right, but once you master
-      it, it will open up a way to punish certain attacks harder than ever before.
+      it, it will open up a way to punish certain attacks harder than ever before + you will look
+      really cool doing it.
     </p>
   </Section>
 
