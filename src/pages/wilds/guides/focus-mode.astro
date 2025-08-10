@@ -1,0 +1,249 @@
+---
+import CodeBlock from '../../../components/common/CodeBlock.astro';
+import ImageCard from '../../../components/common/ImageCard.astro';
+import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import focusModeSettings from '../../../assets/wilds/guides/focus-mode/focus-mode-settings.jpg';
+import wounds from '../../../assets/wilds/guides/focus-mode/wounds.png';
+
+import GifCard from '../../../components/common/GifCard.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Focus Mode is a new mechanic in Wilds that lets you aim your attacks and guards more precisely
+      by turning your character toward wherever your camera is facing. While it's active, your
+      camera zooms in and your character always faces the camera direction, letting you block
+      attacks from any angle and adjust positioning mid-combo.
+    </p>
+  </Section>
+
+  <Section title="why is focus mode op?">
+    <p>
+      In older Monster Hunter games, once you started a combo like the triple poke, your direction
+      was locked in. If you mispositioned, you'd need to hop or wait to reset before you could aim
+      properly again. Focus Mode changes this completely by letting you turn your character
+      significantly while performing combos, and even move a little bit.
+    </p>
+
+    <p>
+      High Thrusts let you turn into any direction mid-combo, while Mid Thrusts let you strafe into
+      any of the four directions. This means you can make small position and angle adjustments
+      without stopping your combo, making positioning much less critical since you can always
+      adjust, or sometimes even avoid attacks by moving mid-combo. It's incredibly powerful because
+      positioning, which was always a major skill expression factor in previous games, becomes much
+      more forgiving.
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Adjust position and angle during any combo without canceling',
+          emoji: '🎯',
+        },
+        {
+          text: 'Turn to block attacks from any direction regardless of starting position',
+          emoji: '🛡️',
+        },
+        {
+          text: 'Recover from positioning mistakes without losing offensive pressure',
+          emoji: '⚡',
+        },
+      ]}
+    />
+
+    <p>
+      The downside is that your camera is slightly zoomed in, you don't have access to all items and
+      it makes the game feel more like a hack-and-slash since you can constantly attack while
+      repositioning, rather than the deliberate positioning game Monster Hunter traditionally
+      requires.
+    </p>
+  </Section>
+
+  <Section title="toggle vs hold">
+    <p>
+      The default Focus Mode controls are pretty awkward since you need to hold multiple buttons,
+      often requiring claw grip on controller or uncomfortable hand positions on PC. But since
+      there's really no downside to Focus Mode except the zoom and needing to disable it for
+      sheathing/using certain items, why not just stay in Focus Mode for the entire fight?
+    </p>
+
+    <ImageCard src={focusModeSettings} alt="Focus Mode Settings" maxWidth="1000px">
+      <p>
+        To make this easier, you can change the Focus Mode controls to a toggle instead of a hold.
+        This way, you can just press the button to enter Focus Mode and press it again to exit,
+        without needing to hold it down.
+      </p>
+      <CodeBlock>
+        Settings → Keyboard/Controller Configuration → All Melee Weapons → "Focus Mode/Aim Slinger
+        Hold" to a button of your choice
+      </CodeBlock>
+    </ImageCard>
+
+    <p>
+      Now you can just press the button when engaging a monster and press it again to turn it off
+      when you want to sheathe. Much cleaner and lets you actually use Focus Mode without hand
+      cramps.
+    </p>
+  </Section>
+
+  <Section title="wounds and weakspots">
+    <p>
+      With the addition of focus mode we also got a new wound system. When you repeatedly hit the
+      same monster part, it eventually gets wounded. In Focus Mode, wounds are super easy to spot
+      since they're highlighted in red (or blue for tempered wounds), giving you another reason to
+      stay in Focus Mode most of the time.
+    </p>
+
+    <StyledList
+      variant="compact"
+      items={[
+        {
+          text: 'Wounded parts take increased damage until destroyed',
+        },
+        {
+          text: 'Some wounds cause flinches or topples when destroyed (like leg trips)',
+        },
+        {
+          text: 'Blue wounds on tempered monsters always cause free topples',
+        },
+        {
+          text: 'Skills like Weakness Exploit and Flayer synergize with wounds',
+        },
+      ]}
+    />
+
+    <p>
+      Preparing and destroying wounds is a very important part of optimal gameplay, since it lets
+      you play much more aggressively by constantly getting flinches and free topples.
+    </p>
+
+    <ImageCard src={wounds} alt="Wounds on a Arkveld" maxWidth="700px">
+      <p>
+        While we are in Focus Mode, we can easily spot open wounds as they are higlighted with red
+        glows. In the Image we can see Arkveld with 2 open wounds on his wing arm.
+      </p>
+    </ImageCard>
+
+    <p>
+      The extra blue wounds on tempered monsters that always result in free topples actually make
+      some fights easier than their regular counterparts, since they make the monster fall on the
+      ground even more.
+    </p>
+  </Section>
+
+  <Section title="Focus Strike">
+    <p>
+      While in Focus Mode, you can perform Focus Strikes on wounded parts that instantly destroy the
+      wound and deal significant damage. They can even cancel some monster attacks, lock them in
+      place (looking at you switch axe) or just give free flinches.
+    </p>
+
+    <GifCard
+      src="https://assets.mhlance.com/wilds/focus-strike.gif"
+      title="Focus Strike in Action"
+      alt="Focus Strike"
+      maxWidth="720px"
+    >
+      <p>
+        We can see a bunch of open wounds on the Chatacabara. Right after it recovers from a long
+        attack, we perform a Focus Strike on the face.
+      </p>
+
+      <p>
+        After the Focus Strike, often the monster ends up at a distance, so you usally want to
+        follow up with a leaping thrust. In the clip we somehow open a blue tempered wound on the
+        arm and pop it, resulting in a topple.
+      </p>
+    </GifCard>
+
+    <p>
+      Lance's Focus Strike is a shield bash that triggers a long charge attack when it connects with
+      a wound. The charge looks cool but is actually pretty wonky and often makes you miss the
+      wounded part with the finisher.
+    </p>
+
+    <SectionSubTitle title="The Cancel Trick" />
+    <p>
+      The best way to use the Focus Strike is to: immediately cancel the charge attack by pressing
+      the Focus Strike button again. This gives you a quick thrust that's much easier to land on the
+      wounded part and deals better DPS than the full animation.
+    </p>
+
+    <SectionSubTitle title="Temporary Monster Weakpoints" />
+    <p>
+      Certain special monster attacks create temporary weakpoints that appear with the same red
+      highlight as wounds. These include attacks like Uth Duna's jump, Rey Dau's big thunder
+      explosion, and more.
+    </p>
+
+    <p>
+      You can use Focus Strikes on these temporary weakpoints to deal bonus damage. If you
+      successfully destroy them, they deal additional damage and go on cooldown. If you don't
+      destroy them in time, they disappear after a short duration.
+    </p>
+
+    <GifCard
+      reversed
+      src="https://assets.mhlance.com/wilds/weakpoint.gif"
+      title="Taking Advantage of Temporary Weakpoints"
+      alt="Temporary Weakpoint"
+      maxWidth="720px"
+    >
+      <p>
+        Gravios is a monster that leaves a lot of temporary weakpoints. One example is the fire beam
+        showin in the clip, where after the beam ends, the head glows red temporarily and allows for
+        a Focus Strike. Against this certain attack, performing a successful Focus Strike even ends
+        in a free down of the monster.
+      </p>
+
+      <p>As you can see we use the Cancel Trick to quickly get the topple.</p>
+    </GifCard>
+
+    <p>
+      Depending on how long the fight lasts, these temporary weakpoints may become available again
+      once their cooldown expires, and the attack is used again.
+    </p>
+  </Section>
+
+  <Section title="power clash">
+    <p>
+      A Power Clash is a special interaction that some weapons with perfect guard mechanics can
+      perform. Essentially, it's a forced clash, where you need to spam the guard button to win the
+      clash. If you win, you will deal a high damage finisher and knock the monster back slightly.
+    </p>
+
+    <p>
+      Just like not all weapons have this interaction, not all monsters can be power clashed.
+      There's only a few of them, and even then only a limited selection of attacks can start the
+      interaction. For example, Arkveld never triggers the Power Clash when chargin through you,
+      it's always the follow up chain slam attack that does.
+    </p>
+
+    <p>
+      If you performed a Power Clash, it will go on cooldown (the CD depends on the monster) before
+      it can be provoked again.
+    </p>
+
+    <GifCard
+      src="https://assets.mhlance.com/wilds/power-clash.gif"
+      title="Eat my Shield"
+      maxWidth="800px"
+    >
+      In this clip we can see a successful Power Clash after we Perfect Guard Uth Duna's quick bite
+      attack. Since we are left at a distance, we follow up with a Leaping Thrust.
+    </GifCard>
+
+    <p>
+      There's a few armor skills that interact with Power Clash, like Binding Counter from Jin
+      Dahaad. Other than that, Power Clash is not really a good damage mechanic (it's like a forced
+      DPS loss), but since you will perfect guard from time to time, you get forced to do it anyway.
+      In multiplayer, Power Clash can be a nice opener for your teammates to deal some damage, while
+      the monster is clashing with you.
+    </p>
+  </Section>
+</ContentLayout>

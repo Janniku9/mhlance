@@ -1,0 +1,52 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseCard from '../common/BaseCard.astro';
+import type { Social } from '../../types/Socials';
+
+interface Props {
+  socials: Social[];
+  currentGame: {
+    emoji: string;
+    title: string;
+  };
+}
+
+const { socials, currentGame }: Props = Astro.props;
+---
+
+<section class="py-8 md:py-52 px-3 md:px-4 md:px-8 bg-gradient-to-br from-primary/5 to-secondary/5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-4 md:mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold mb-4 text-secondary uppercase">
+        need help or have ideas?
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 mb-16 md:mb-32">
+      {
+        socials.map((social: { url: any; icon: unknown; name: unknown; description: unknown }) => (
+          <BaseCard
+            href={social.url}
+            class="p-3 md:p-6 hover:scale-105 bg-background-dark/50 backdrop-blur-sm"
+          >
+            <div class="flex items-center gap-3 md:gap-4">
+              <div class="w-10 md:w-12 h-10 md:h-12 bg-text/7 rounded-lg md:rounded-xl flex items-center justify-center flex-shrink-0">
+                <Icon name={social.icon} class="w-5 md:w-6 h-5 md:h-6 text-primary" />
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="font-bold text-base md:text-lg group-hover:text-primary transition-colors uppercase">
+                  {social.name}
+                </h3>
+                <p class="text-text/60 text-xs md:text-sm lowercase">{social.description}</p>
+              </div>
+              <Icon
+                name="mingcute:arrow-right-line"
+                class="w-4 md:w-5 h-4 md:h-5 text-text/40 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0"
+              />
+            </div>
+          </BaseCard>
+        ))
+      }
+    </div>
+  </div>
+</section>

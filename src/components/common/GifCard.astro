@@ -1,0 +1,44 @@
+---
+import BaseCard from './BaseCard.astro';
+import BaseCardTitle from './BaseCardTitle.astro';
+
+interface GifProps {
+  src: string;
+  title?: string;
+  maxWidth?: string;
+  class?: string;
+  reversed?: boolean;
+}
+
+const { src, title, maxWidth, class: className, reversed = false } = Astro.props;
+---
+
+<BaseCard class={className} dataAttribute="data-gif-card-auto-hover">
+  <div class="p-4 lg:p-6 flex flex-col gap-6 md:grid md:grid-cols-2">
+    <!-- Title (mobile only) -->
+    {title && <BaseCardTitle title={title} class="md:hidden" />}
+
+    <!-- Content wrapper with conditional order -->
+    <div
+      class:list={['relative rounded-lg overflow-hidden', reversed ? 'md:order-2' : 'md:order-1']}
+      style={maxWidth ? `max-width: ${maxWidth};` : ''}
+    >
+      <img src={src} alt={title ?? ''} class="w-full h-auto" loading="lazy" />
+    </div>
+
+    <div class:list={['flex flex-col justify-center', reversed ? 'md:order-1' : 'md:order-2']}>
+      {title && <BaseCardTitle title={title} class="hidden md:block" />}
+
+      <p class="text-sm text-text/80 group-hover:text-primary-lighter/80 transition-colors">
+        <slot />
+      </p>
+    </div>
+  </div>
+</BaseCard>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-gif-card-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

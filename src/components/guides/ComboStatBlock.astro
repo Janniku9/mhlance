@@ -1,4 +1,6 @@
 ---
+import BaseCardSubTitle from '../common/BaseCardSubTitle.astro';
+
 interface Props {
   label: string;
   value: number;
@@ -26,7 +28,7 @@ const formattedPerSecond = perSecond.toFixed(1);
 ---
 
 <div class:list={[compact ? 'flex items-center gap-2' : 'flex flex-col gap-1', className]}>
-  {!compact && <span class="text-sm text-text/60">{label}</span>}
+  {!compact && <BaseCardSubTitle title={label} />}
   <div
     class:list={[
       'flex items-center gap-2',

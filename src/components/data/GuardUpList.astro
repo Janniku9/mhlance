@@ -1,14 +1,28 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
+import BaseCard from '../common/BaseCard.astro';
 import type { GuardUp, Monster } from '../../types/Monsters';
 
 interface Props {
   guardUpData: GuardUp[];
   monsterData: Monster[];
+  class?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
 }
 
-const { guardUpData, monsterData } = Astro.props;
+const { 
+  guardUpData, 
+  monsterData,
+  class: className,
+  hoverable = true,
+  scaled = false,
+  href,
+  disabled = false
+} = Astro.props;
 
 // Combine monster data with guard data
 const combinedMonsters = monsterData.map(monster => {
@@ -23,21 +37,20 @@ const combinedMonsters = monsterData.map(monster => {
 });
 ---
 
-<div class="group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden">
-  <!-- Hover gradient overlay -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 
-           group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+>
   <div class="p-6 md:p-8">
     <!-- Search Bar -->
     <div class="mb-6">
       <div class="relative">
         <input
           type="text"
-          placeholder="Search monsters..."
+          placeholder="search monsters..."
           class="w-full bg-background-darker border border-text/10 rounded-xl px-4 py-3 pl-12
                  text-text placeholder:text-text/40 focus:outline-none focus:ring-2 
                  focus:ring-primary/20 transition-all duration-300"
@@ -55,8 +68,8 @@ const combinedMonsters = monsterData.map(monster => {
       {
         combinedMonsters.map((monster) => (
           <div 
-            class="group/card relative bg-background-dark border border-text/10 rounded-xl 
-                   hover:bg-background-darker transition-all duration-300"
+            class="group/card relative bg-secondary-light/5 border border-text/10 rounded-xl 
+                   hover:bg-primary/10 transition-all duration-300"
             data-monster-name={monster.name.toLowerCase()}
           >
             <div 
@@ -67,32 +80,32 @@ const combinedMonsters = monsterData.map(monster => {
             
             <div class="relative z-10">
               <!-- Monster Image & Name Header -->
-              <div class="p-4 border-b border-text/10 bg-background-darker/50">
+              <div class="p-4 border-b border-text/10 bg-background-darker/50 rounded-t-xl">
                 <div class="flex items-center gap-4">
-                  <div class="w-16 h-16 relative">
+                  <div class="w-20 h-20 relative overflow-hidden rounded-lg">
                     <Image
                       src={monster.image}
                       alt={monster.name}
-                      class="w-20 h-20 object-contain absolute -top-2 -left-2"
+                      class="w-20 h-20 object-contain transition-transform duration-300 group-hover/card:scale-110"
                     />
                   </div>
                   
                   <div>
-                    <h3 class="text-lg font-bold capitalize group-hover/card:text-primary transition-colors uppercase">
+                    <h3 class="text-lg font-bold uppercase text-primary-light group-hover/card:text-secondary transition-colors uppercase">
                       {monster.name}
                     </h3>
                     
                     <div class="flex gap-2 mt-2">
                       {monster.guardUp && (
                         <span class="px-2 py-1 rounded-full text-xs bg-primary/10 text-primary 
-                                   border border-primary/20">
-                          Guard Up
+                                   border border-primary/20 uppercase">
+                          guard up
                         </span>
                       )}
                       {monster.trueUnblockable && (
                         <span class="px-2 py-1 rounded-full text-xs bg-error/10 text-error 
-                                   border border-error/20">
-                          Unblockable
+                                   border border-error/20 uppercase">
+                          unblockable
                         </span>
                       )}
                     </div>
@@ -105,7 +118,7 @@ const combinedMonsters = monsterData.map(monster => {
                 {!monster.guardUp && !monster.trueUnblockable && (
                   <div class="text-sm flex items-center gap-2 text-success/90">
                     <Icon name="mingcute:shield-line" class="w-4 h-4" />
-                    <span>No special guard requirements</span>
+                    <span>no special guard requirements</span>
                   </div>
                 )}
 
@@ -113,7 +126,7 @@ const combinedMonsters = monsterData.map(monster => {
                   <div class="mb-3">
                     <div class="text-sm text-primary/90 mb-2 flex items-center gap-2">
                       <Icon name="mingcute:shield-line" class="w-4 h-4 " />
-                      <span>Requires Guard Up:</span>
+                      <span>requires guard up:</span>
                     </div>
                     <ul class="space-y-2">
                       {monster.guardUp.map((move) => (
@@ -122,7 +135,7 @@ const combinedMonsters = monsterData.map(monster => {
                             name="mingcute:arrow-right-line" 
                             class="w-4 h-4 flex-shrink-0 text-primary" 
                           />
-                          <span>{move}</span>
+                          <span class="lowercase">{move}</span>
                         </li>
                       ))}
                     </ul>
@@ -133,7 +146,7 @@ const combinedMonsters = monsterData.map(monster => {
                   <div class={monster.guardUp ? 'mt-4' : ''}>
                     <div class="text-sm text-error mb-2 flex items-center gap-2">
                       <Icon name="mingcute:alert-line" class="w-4 h-4" />
-                      <span>Cannot be blocked:</span>
+                      <span>cannot be blocked:</span>
                     </div>
                     <ul class="space-y-2">
                       {monster.trueUnblockable.map((move) => (
@@ -155,7 +168,7 @@ const combinedMonsters = monsterData.map(monster => {
       }
     </div>
   </div>
-</div>
+</BaseCard>
 
 <script>
   // Search functionality
@@ -179,4 +192,3 @@ const combinedMonsters = monsterData.map(monster => {
     }
   });
 </script>
-

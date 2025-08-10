@@ -1,7 +1,5 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import Section from '../../../components/core/layout/Section.astro';
-import SectionSubTitle from '../../../components/core/typography/SectionSubTitle.astro';
 
 import regular6star from '../../../assets/world/builds/high-rank/regular_6star.png';
 import regular7star from '../../../assets/world/builds/high-rank/regular_6star.png';
@@ -9,9 +7,11 @@ import regular8star from '../../../assets/world/builds/high-rank/regular_8star.p
 import regularDrachen9star from '../../../assets/world/builds/high-rank/regular_drachen_9star.png';
 import regularKaiser9star from '../../../assets/world/builds/high-rank/regular_kaiser_9star.png';
 import BuildCard from '../../../components/builds/BuildCard.astro';
-import StyledList from '../../../components/core/lists/StyledList.astro';
-import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
-import Tabs from '../../../components/core/tabs/Tabs.astro';
+import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
+import Tabs from '../../../components/common/Tabs.astro';
 ---
 
 <ContentLayout>
@@ -234,6 +234,7 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
     >
       <div id="kaiser">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Fire King Perfection 🦁',
             description: [
@@ -258,6 +259,7 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
 
       <div id="drachen">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Drachen Lancer 🐉',
             description: [

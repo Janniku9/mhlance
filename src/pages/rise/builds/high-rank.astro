@@ -1,9 +1,6 @@
 ---
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import Section from '../../../components/core/layout/Section.astro';
 import MHRChefInfoBox from '../../../components/builds/MHRChefInfoBox.astro';
-import NavigationButton from '../../../components/core/buttons/NavigationButton.astro';
-import ExternalLinkButton from '../../../components/core/buttons/ExternalLinkButton.astro';
 
 // image imports
 import fourStar from '../../../assets/rise/builds/high-rank/regular_4star.png';
@@ -14,7 +11,10 @@ import eightStar from '../../../assets/rise/builds/high-rank/regular_8star.png';
 import comfyEndgame from '../../../assets/rise/builds/high-rank/comfy_endgame.png';
 import dragonheartEndgame from '../../../assets/rise/builds/high-rank/dheart_endgame.png';
 import BuildCard from '../../../components/builds/BuildCard.astro';
-import Tabs from '../../../components/core/tabs/Tabs.astro';
+import Section from '../../../components/common/Section.astro';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
+import ExternalLinkButton from '../../../components/common/ExternalLinkButton.astro';
+import Tabs from '../../../components/common/Tabs.astro';
 ---
 
 <ContentLayout>
@@ -322,6 +322,7 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
     >
       <div id="comfy">
         <BuildCard
+          noTopRounding
           build={{
             title: 'comfy endgame set',
             description: [
@@ -351,6 +352,7 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
 
       <div id="dragonheart">
         <BuildCard
+          noTopRounding
           build={{
             title: 'dragonheart endgame set',
             description: [

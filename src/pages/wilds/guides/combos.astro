@@ -1,0 +1,247 @@
+---
+import InfoBox from '../../../components/common/InfoBox.astro';
+import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import ComboCard from '../../../components/guides/ComboCard.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import { ComboTag } from '../../../types/guides/Combo';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Combos are an essential part of lance gameplay in all Monster Hunter games. Lance typically
+      allows three actions before resetting the combo tree. In Wilds specifically, we gain many new
+      options to reset combos beyond the standard back hop or guard dash.
+    </p>
+
+    <SectionSubTitle title="Understanding Combo Mechanics" />
+    <p>
+      Charge Counter adds an additional layer to lance's combo system, as its power increases
+      depending on how far you are into the combo. In some situations, you might want to use a
+      slower or less powerful attack just to reach the final red level of Charged Counter at the
+      optimal time.
+    </p>
+
+    <p>
+      While in focus mode, mid thrusts allow you to strafe in all four directions, enabling small
+      movement adjustments while attacking. High thrusts let you turn in any direction and reach
+      higher targets, which is sometimes required to properly hit monster hitzones.
+    </p>
+
+    <InfoBox type="tip">
+      <b>During a fight, your move selection depends entirely on the situation:</b>
+      <ul>
+        <li>Need to move slightly left or right? Use mid thrusts with strafing</li>
+        <li>Need reach to hit high parts? Use high thrusts</li>
+        <li>Want optimal Charged Counter timing? Plan your combo sequence accordingly</li>
+      </ul>
+    </InfoBox>
+
+    <Section title="Bread and Butter Combos">
+      <p>
+        All possible combos in Wilds perform similarly, but two stand out slightly. These work best
+        when the monster is downed or not attacking you. Both combos come with a leaping thrust
+        variation that allows you to close distance while allowing you to then transition into the
+        main combo.
+      </p>
+
+      <SectionSubTitle title="Mid Thrust Spam (Elemental/Corrupted Mantle)" />
+
+      <p>
+        This is the best combo in Wilds and unfortunately also the most boring, as you simply press
+        one button repeatedly. It has the highest damage output when using elemental weapons due to
+        its speed and high hit count.
+      </p>
+
+      <p>
+        Because it's the fastest combo, it reaches the final level of Charge Counter quickest, and
+        you have the most options to interrupt and react to incoming attacks. Even though it doesn't
+        have the highest raw damage, this makes it the best combo overall.
+      </p>
+
+      <p>
+        So the true power of this combo doesn't necessarily come from the damage it deals, but
+        rather from it's reaction speed and ability to reposition.
+      </p>
+
+      <p>
+        Since corrupted mantle only provides extra damage ticks on mid thrusts and triple thrust,
+        this becomes the optimal combo while wearing it. You get bonus damage ticks on every mid
+        thrust plus one on the triple finisher.
+      </p>
+
+      <ComboCard
+        combo={{
+          title: 'Mid Thrust Spam',
+          longTitle: 'Triple Mid Thrust into Triple Thrust',
+          stats: {
+            motionValue: 160,
+            elementModifier: 6,
+            sharpnessCost: 4,
+            duration: 3.83,
+          },
+          tags: [ComboTag.DamageElemental, ComboTag.ExecutionSimple, ComboTag.OpportunityShort],
+          gif: 'https://assets.mhlance.com/wilds/mt-spam.gif',
+          strengths: [
+            'Fastest combo to stack Charge Counter',
+            'Very high elemental damage and easy to execute',
+            'Can strafe in all directions for good positioning',
+          ],
+          considerations: ['Consumes more sharpness than other combos due to speed'],
+          inputs: {
+            PlaystationInput: [['Triangle'], ['Triangle'], ['Triangle'], ['Triangle']],
+            XboxInput: [['Y'], ['Y'], ['Y'], ['Y']],
+            PCInput: [['MouseLeft'], ['MouseLeft'], ['MouseLeft'], ['MouseLeft']],
+          },
+        }}
+      />
+
+      <p>
+        In Wilds, we can perform leaping thrust from neutral (this is faster than from guard dash
+        and doesn't consume stamina, preserving Max Might). In situations where you're at a small
+        distance from the monster, consider using leaping thrust into mid thrust + mid thrust +
+        triple thrust combo. This deals slightly less damage but allows you to close distance more
+        efficiently.
+      </p>
+
+      <p>
+        This combo is often used after a power clash or after popping a wound, as it usually leaves
+        you at a distance where this combo perfectly catches up to the monster. For the second loop
+        you then transition into mid thrust spam.
+      </p>
+
+      <ComboCard
+        reversed
+        combo={{
+          title: 'Leaping Into Mid Thrust Spam',
+          longTitle: 'Leaping Thrust + 2x MT into Triple Thrust',
+          stats: {
+            motionValue: 194,
+            elementModifier: 7.4,
+            sharpnessCost: 4,
+            duration: 4.75,
+          },
+          tags: [ComboTag.DamageElemental, ComboTag.Reposition],
+          gif: 'https://assets.mhlance.com/wilds/lt-mt-spam.gif',
+          strengths: [
+            'Good gap closer',
+            'Very good elemental damage',
+            'Can transition into mid thrust spam',
+          ],
+          considerations: ['Deals slightly less damage than mid thrust spam'],
+          inputs: {
+            PlaystationInput: [['Circle', 'Triangle'], ['Triangle'], ['Triangle'], ['Triangle']],
+            XboxInput: [['B', 'Y'], ['Y'], ['Y'], ['Y']],
+            PCInput: [['MouseRight', 'MouseLeft'], ['MouseLeft'], ['MouseLeft'], ['MouseLeft']],
+          },
+        }}
+      />
+
+      <InfoBox type="tip">
+        <b>Advanced Tip:</b>
+        Strafing the third mid thrust is slightly slower than not strafing, so the optimal combo is something
+        like: strafe left poke, strafe right poke, neutral poke, then triple thrust. However, this damage
+        difference is very very small.
+      </InfoBox>
+
+      <SectionSubTitle title="High Thrust Wide Sweep (Raw)" />
+
+      <p>
+        For raw damage, we want to utilize the high motion value of wide sweep. Since we can't start
+        with wide sweep and the third high thrust deals more damage than the second, the optimal
+        combo is: high thrust + wide sweep + high thrust + charge counter.
+      </p>
+
+      <p>
+        High thrust into triple poke is somehow slow, so performing an empty charge counter (without
+        actually countering) works better. Make sure not to charge the counter, release it as
+        quickly as possible.
+      </p>
+
+      <p>
+        Although this combo deals more raw damage than mid thrust spam, it is slower and less
+        reactive. Therefore, you see a lot of players still using mid thrust spam when using raw
+        weapons and the monster is moving, as it allows for better repositioning and reaction speed.
+      </p>
+
+      <ComboCard
+        combo={{
+          title: 'High Thrust Sweep',
+          longTitle: 'HT Wide Sweep HT Charged Counter',
+          stats: {
+            motionValue: 209.1,
+            elementModifier: 4,
+            sharpnessCost: 4,
+            duration: 4.75,
+          },
+          tags: [ComboTag.DamageRaw, ComboTag.OpportunityLong],
+          gif: 'https://assets.mhlance.com/wilds/ht-sweep-ht-cc.gif',
+          strengths: ['Deals very high raw damage', 'Low sharpness consumption'],
+          considerations: ['The wide sweep requires bigger commitment and is harder to aim'],
+          inputs: {
+            PlaystationInput: [['Circle'], ['Circle', 'Triangle'], ['Circle'], ['Circle']],
+            XboxInput: [['B'], ['B', 'Y'], ['B'], ['B']],
+            PCInput: [['MouseRight'], ['MouseRight', 'MouseLeft'], ['MouseRight'], ['MouseRight']],
+          },
+        }}
+      />
+
+      <p>
+        This is the highest damage combo when using raw or status weapons, or when the elemental
+        hitzone is very low. Remember that while wearing corrupted mantle, mid thrust spam remains
+        better since this combo doesn't provide extra damage ticks.
+      </p>
+
+      <p>
+        When you need to close distance, use leaping thrust into high thrust + wide sweep + high
+        thrust combo. This deals slightly less damage but allows gap closing.
+      </p>
+
+      <p>
+        This variation of the combo is often used after power clash or wound popping, as it usually
+        leaves you at the perfect distance to catch up to the monster.
+      </p>
+
+      <ComboCard
+        reversed
+        combo={{
+          title: 'Leaping Thrust into High Thrust Sweep',
+          longTitle: 'Leaping Thrust into HT Sweep HT CC',
+          stats: {
+            motionValue: 238.1,
+            elementModifier: 5.4,
+            sharpnessCost: 4,
+            duration: 5.44,
+          },
+          tags: [ComboTag.DamageRaw, ComboTag.Reposition, ComboTag.EfficiencySharpness],
+          gif: 'https://assets.mhlance.com/wilds/lt-sweep-ht-cc.gif',
+          strengths: [
+            'Good gap closer',
+            'Deals very high raw damage',
+            'Lowest sharpness consumption',
+          ],
+          considerations: [
+            'The wide sweep is a bigger commitment and harder to aim',
+            'Takes quite long to execute',
+          ],
+          inputs: {
+            PlaystationInput: [
+              ['Circle', 'Triangle'],
+              ['Circle', 'Triangle'],
+              ['Circle'],
+              ['Circle'],
+            ],
+            XboxInput: [['B', 'Y'], ['B', 'Y'], ['B'], ['B']],
+            PCInput: [
+              ['MouseRight', 'MouseLeft'],
+              ['MouseRight', 'MouseLeft'],
+              ['MouseRight'],
+              ['MouseRight'],
+            ],
+          },
+        }}
+      />
+    </Section>
+  </Section>
+</ContentLayout>

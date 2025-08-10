@@ -1,9 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
 import ComboStatBlock from './ComboStatBlock.astro';
+import ComboInputs from './ComboInputs.astro';
 import type { Combo } from '../../types/guides/Combo';
 import { getComboTagColor } from '../../utils/ComboUtils';
-import ComboInputs from './ComboInputs.astro';
+import BaseCard from '../common/BaseCard.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
 
 interface Props {
   combo: Combo;
@@ -19,22 +21,7 @@ const elementPerSecond = combo.stats.elementModifier / combo.stats.duration;
 const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
 ---
 
-<div
-  data-combo-card-auto-hover
-  class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
-    'transition-all duration-300 hover:bg-background-darker',
-    'hover:shadow-2xl hover:shadow-primary/5',
-    className,
-  ]}
->
-  <!-- Hover gradient overlay -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
-            opacity-0 group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
+<BaseCard class={className} dataAttribute="data-combo-card-auto-hover">
   <div class="grid grid-cols-1 md:grid-cols-2">
     <!-- Left Column - GIF and Stats -->
     <div
@@ -43,15 +30,13 @@ const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
         reversed ? 'md:order-2 md:border-l md:border-r-0' : 'md:order-1',
       ]}
     >
-      <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-        {combo.longTitle}
-      </h3>
+      <BaseCardTitle title={combo.longTitle} class="mb-4" />
 
       <!-- Tags -->
       <div class="flex flex-wrap gap-2 mb-6">
         {
           combo.tags.map((tag) => (
-            <span class:list={['px-3 py-1 rounded-full text-sm', getComboTagColor(tag)]}>
+            <span class:list={['px-3 py-1 rounded-full text-sm lowercase', getComboTagColor(tag)]}>
               {tag}
             </span>
           ))
@@ -107,7 +92,7 @@ const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
         <ul class="space-y-2">
           {
             combo.strengths.map((strength) => (
-              <li class="text-sm text-text/80 flex items-start gap-2">
+              <li class="text-sm text-text/80 flex items-center gap-2">
                 <Icon name="mingcute:plus-fill" class="w-4 h-4 text-success flex-shrink-0" />
                 {strength}
               </li>
@@ -144,7 +129,7 @@ const sharpnessPerSecond = combo.stats.sharpnessCost / combo.stats.duration;
       }
     </div>
   </div>
-</div>
+</BaseCard>
 
 <script>
   import autoHoverDirective from '../../directives/auto-hover';

@@ -1,0 +1,145 @@
+---
+interface Props {
+  labels: { id: string; display: string }[];
+  title?: string;
+  initialSelectedId?: string;
+}
+
+const { labels, title, initialSelectedId } = Astro.props;
+const selectedId = initialSelectedId || (labels.length > 0 ? labels[0].id : null);
+---
+
+<div class="tab-card group relative border border-text/10 rounded-3xl overflow-hidden transition-all duration-300 hover:border-text/20">
+  <!-- Card header with tabs -->
+  <div class="border-b border-text/10 bg-background-dark">
+    {title && <h3 class="text-md font-medium text-text/80 px-6 pt-5 pb-4">{title}</h3>}
+    
+    <div class="flex w-full relative">
+      {
+        labels.map((tab) => (
+          <button
+            data-tab={tab.id}
+            class:list={[
+              'relative flex-1 py-4 px-2',
+              'transition-all duration-300',
+              'flex items-center justify-center hover:bg-background-darker',
+              tab.id === selectedId
+                ? 'text-primary'
+                : '',
+            ]}
+          >
+            <span class="relative text-xs md:text-sm font-medium hover:text-primary transition-colors uppercase">
+              {tab.display}
+            </span>
+            
+            <!-- Active indicator (bottom border) -->
+            <div 
+              class:list={[
+                'absolute bottom-0 left-0 h-1 w-full bg-primary transition-all duration-200',
+                tab.id === selectedId ? 'opacity-100' : 'opacity-0'
+              ]}
+            ></div>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Card content area -->
+  <div class="build-content bg-background-dark/30">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .tab-card {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Get all tab components
+  const tabComponents = document.querySelectorAll('.tab-card');
+
+  // Initialize each tab component separately
+  tabComponents.forEach((tabComponent) => {
+    const tabs = tabComponent.querySelectorAll('[data-tab]');
+    
+    // Find initially selected tab
+    let initialTab: any = null;
+    tabs.forEach(tab => {
+      const isActive = tab.classList.contains('text-primary');
+      if (isActive) {
+        initialTab = tab;
+      }
+    });
+    
+    // If no tab is marked as active, select the first one
+    if (!initialTab && tabs.length > 0) {
+      initialTab = tabs[0];
+      initialTab.classList.add('text-primary');
+      initialTab.querySelector('div:last-child')?.classList.remove('opacity-0');
+      initialTab.querySelector('div:last-child')?.classList.add('opacity-100');
+    }
+
+    // Hide all except selected content
+    tabs.forEach((tab) => {
+      const id = tab.getAttribute('data-tab');
+      const content = tabComponent.querySelector(`#${id}`);
+      if (content && tab !== initialTab) {
+        content.classList.add('hidden');
+      }
+    });
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const thisTabId = tab.getAttribute('data-tab');
+        
+        // Reset all tabs first
+        tabs.forEach((t) => {
+          t.classList.remove('text-primary');
+          
+          // Force hide the underline
+          const underline = t.querySelector('div:last-child');
+          if (underline) {
+            underline.classList.remove('opacity-100');
+            underline.classList.add('opacity-0');
+          }
+          
+          // Hide all content
+          const content = tabComponent.querySelector(`#${t.getAttribute('data-tab')}`);
+          if (content) {
+            content.classList.add('hidden');
+          }
+        });
+        
+        // Then activate only the clicked tab
+        tab.classList.add('text-primary');
+        
+        // Force show the underline
+        const activeUnderline = tab.querySelector('div:last-child');
+        if (activeUnderline) {
+          activeUnderline.classList.remove('opacity-0');
+          activeUnderline.classList.add('opacity-100');
+        }
+        
+        // Show the selected content
+        const selectedContent = tabComponent.querySelector(`#${thisTabId}`);
+        if (selectedContent) {
+          selectedContent.classList.remove('hidden');
+        }
+      });
+    });
+  });
+</script>

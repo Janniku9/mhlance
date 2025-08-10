@@ -1,4 +1,6 @@
 ---
+import BaseCardSubTitle from '../common/BaseCardSubTitle.astro';
+
 interface Props {
   label: string;
   value: number | string;
@@ -10,7 +12,7 @@ const { label, value, icon, class: className } = Astro.props;
 ---
 
 <div class:list={['flex flex-col gap-1', className]}>
-  <span class="text-sm text-text/60 uppercase">{label}</span>
+  <BaseCardSubTitle title={label} />
   <div class="flex items-center gap-2">
     <div class="w-8 h-8 flex items-center justify-center">
       {icon}

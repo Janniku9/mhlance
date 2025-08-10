@@ -1,40 +1,53 @@
 ---
 import { Image } from 'astro:assets';
 import type { Contributor } from '../../../types/Contributors';
+import type { Game } from '../../../types/Game';
 
 interface Props {
   contributors: Contributor[];
+  game: Exclude<Game, null>;
 }
 
-const { contributors } = Astro.props;
+const { contributors, game } = Astro.props;
 
-const scrollContributors = [...contributors, ...contributors, ...contributors, ...contributors];
+// Filter to only those with contributions for the given game
+const filteredContributors = game
+  ? contributors.filter((c) => !!c.contributions[game])
+  : contributors;
+
+// Duplicate for infinite scroll
+const scrollContributors = [
+  ...filteredContributors,
+  ...filteredContributors,
+  ...filteredContributors,
+  ...filteredContributors,
+];
 ---
 
-<div class="w-full overflow-hidden py-4 bg-background-dark/50 relative">
-  <a href="/contributors" class="contributor-scroll-container">
-    <div class="contributor-scroll flex gap-8">
-      {
-        scrollContributors.map((contributor, index) => (
+{
+  scrollContributors.length > 0 && (
+    <div class="w-full overflow-hidden py-4 bg-background-dark/50 relative">
+      <div class="contributor-scroll flex gap-8">
+        {scrollContributors.map((contributor, index) => (
           <div class="flex items-center gap-2 shrink-0 px-4">
             {contributor.image ? (
               <Image src={contributor.image} alt={contributor.name} class="w-8 h-8 rounded-full" />
             ) : (
-              <div class="w-8 h-8 rounded-full bg-text/5 flex items-center justify-center">
+              <div class="w-8 h-8 rounded-full bg-text/7 flex items-center justify-center">
                 <span class="text-sm">{contributor.name[0]}</span>
               </div>
             )}
             <div class="flex gap-2 items-center">
               <span class="text-sm font-medium">{contributor.name}</span>
               <span class="text-xs text-text/60">•</span>
-              <span class="text-xs text-text/60">{contributor.contributions.overall}</span>
+              <span class="text-xs text-text/60">{contributor.contributions[game]}</span>
             </div>
           </div>
-        ))
-      }
+        ))}
+      </div>
     </div>
-  </a>
-</div>
+  )
+}
 
 <style>
   .contributor-scroll-container {
@@ -46,8 +59,6 @@ const scrollContributors = [...contributors, ...contributors, ...contributors, .
   .contributor-scroll {
     display: inline-flex;
     animation: scroll 30s linear infinite;
-    /* This ensures the animation starts with contributors already visible */
-    /* and ends with the same content positioned to create a seamless loop */
     position: relative;
     white-space: nowrap;
   }
@@ -57,12 +68,10 @@ const scrollContributors = [...contributors, ...contributors, ...contributors, .
       transform: translateX(0);
     }
     100% {
-      /* Make sure we scroll exactly one full set of contributors */
       transform: translateX(calc(-100% / 4));
     }
   }
 
-  /* Pause animation on hover */
   .contributor-scroll:hover {
     animation-play-state: paused;
   }

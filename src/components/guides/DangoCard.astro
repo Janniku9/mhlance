@@ -1,5 +1,6 @@
 ---
-import autoHoverDirective from '../../directives/auto-hover';
+import BaseCard from '../common/BaseCard.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
 
 interface DangoSkill {
   text: string;
@@ -16,32 +17,35 @@ interface Props {
     lvl1?: DangoSkill;
   };
   class?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
 }
 
-const { title, description, dangos, class: className } = Astro.props;
+const {
+  title,
+  description,
+  dangos,
+  class: className,
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
+} = Astro.props;
 ---
 
-<div
-  data-dango-card-auto-hover
-  class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
-    'transition-all duration-300 hover:bg-background-darker hover:scale-[1.02]',
-    'hover:shadow-2xl hover:shadow-primary/5 animate-fade-in',
-    className,
-  ]}
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-dango-card-auto-hover"
 >
-  <!-- Hover gradient overlay -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
-            opacity-0 group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
   <div class="p-4 sm:p-6 md:p-8 h-full flex flex-col">
     <!-- Header -->
-    <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-      {title}
-    </h3>
+    <BaseCardTitle title={title} class="mb-2" />
 
     <!-- Description -->
     <p class="text-sm text-text/80 mb-6">
@@ -51,14 +55,16 @@ const { title, description, dangos, class: className } = Astro.props;
     <!-- Dango Skills -->
     <div class="space-y-4 mt-auto">
       {
-        [4, 3, 2, 1].map((level) => {
+        [4, 3, 2, 1].map((level, index) => {
           const skill = dangos[`lvl${level}` as keyof typeof dangos];
           if (!skill) return null;
 
           return (
-            <div class="flex items-center gap-3">
-              <span class="text-sm font-medium text-text/60">Level {level}</span>
-              <div class="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg bg-text/5">
+            <div class="flex items-center gap-3" style={`transition-delay: ${index * 0.1}s`}>
+              <span class="text-sm font-medium text-text/60 group-hover:text-secondary transition-colors duration-300">
+                Level {level}
+              </span>
+              <div class="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg bg-text/7">
                 <span class="text-xl">{skill.emoji}</span>
                 <span class="text-sm font-medium">{skill.text}</span>
               </div>
@@ -68,24 +74,7 @@ const { title, description, dangos, class: className } = Astro.props;
       }
     </div>
   </div>
-</div>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
-  }
-</style>
+</BaseCard>
 
 <script>
   import autoHoverDirective from '../../directives/auto-hover';

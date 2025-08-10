@@ -1,0 +1,103 @@
+---
+import SectionTitle from './SectionTitle.astro';
+
+interface Props {
+  title?: string;
+  comment?: string;
+  emoji?: string;
+  className?: string;
+  delay?: number;
+  slug?: string;
+}
+
+const { title, comment, emoji, className, delay = 50, slug } = Astro.props;
+
+// Generate slug from title if not provided
+function generateSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
+const sectionSlug = slug || (title ? generateSlug(title) : undefined);
+---
+
+<section
+  id={sectionSlug}
+  class:list={[
+    'flex flex-col gap-4 md:gap-6 text-sectionmobile md:text-lgsectionpc scroll-mt-20',
+    className,
+  ]}
+  data-fade-in
+  style={`--animation-delay: ${delay}ms`}
+>
+  {title && <SectionTitle title={title} emoji={emoji} slug={sectionSlug} comment={comment} />}
+
+  <slot />
+</section>
+
+<style>
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Make content visible by default (no JS fallback) */
+  section {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Only apply initial hidden state after JS initializes */
+  section.fade-in-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out var(--animation-delay),
+      transform 0.6s ease-out var(--animation-delay);
+  }
+
+  section.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Skip animation for hash targets */
+  section.fade-in-no-animation {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Scroll margin for fixed headers */
+  section {
+    scroll-margin-top: 5rem; /* Adjust based on your header height */
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    section {
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  section > :global(p) {
+    @apply mx-2;
+  }
+</style>
+
+<script>
+  import fadeIn, { handleHashNavigation } from '../../directives/fade-in.ts';
+
+  // Initialize hash navigation handling
+  handleHashNavigation();
+
+  // Initialize fade-in for all elements
+  const elements = document.querySelectorAll('[data-fade-in]');
+  elements.forEach((element) => {
+    if (element instanceof HTMLElement) fadeIn(element);
+  });
+</script>

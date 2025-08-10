@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import BaseCard from './BaseCard.astro';
+import BaseCardTitle from './BaseCardTitle.astro';
+import BaseCardSubTitle from './BaseCardSubTitle.astro';
+
+interface ImageData {
+  src: ImageMetadata;
+  alt: string;
+  title?: string;
+  caption?: string;
+}
+
+interface Props {
+  images: ImageData[];
+  title: string;
+  maxCols?: number;
+  maxWidth?: string;
+  class?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
+}
+
+const {
+  images,
+  title,
+  maxCols = 3,
+  class: className,
+  maxWidth,
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
+} = Astro.props;
+---
+
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-image-grid-card-auto-hover"
+>
+  <div class="p-6 md:p-8">
+    <!-- Global Title -->
+    <div class="relative mb-6">
+      <BaseCardTitle title={title} />
+    </div>
+
+    <!-- Image Grid -->
+    <div
+      class:list={[
+        'grid gap-12 mx-auto w-fit',
+        'justify-items-center',
+        'grid-cols-1',
+        'sm:grid-cols-2',
+        maxCols === 3 && 'md:grid-cols-3',
+        maxCols === 4 && 'md:grid-cols-4',
+      ]}
+    >
+      {
+        images.map((image) => (
+          <div class="space-y-3" style={maxWidth ? `max-width: ${maxWidth};` : ''}>
+            {/* Title */}
+            {image.title && (
+              <div class="px-1 space-y-2 text-center">
+                <BaseCardSubTitle title={image.title} />
+              </div>
+            )}
+
+            {/* Image */}
+            <div class="relative rounded-lg overflow-hidden">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                class="w-full h-auto transition-transform duration-300 group-hover:scale-102"
+              />
+            </div>
+
+            {/* Caption */}
+            {image.caption && (
+              <p class="text-sm text-text/70 group-hover:text-text/80 transition-colors text-center">
+                {image.caption}
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Global Caption (Slot) -->
+    <div class="mt-6 text-sm text-text/80">
+      <slot />
+    </div>
+  </div>
+</BaseCard>
+
+<script>
+  import autoHoverDirective from '../../directives/auto-hover';
+  document.querySelectorAll('[data-image-grid-card-auto-hover]').forEach((element) => {
+    if (element instanceof HTMLElement) autoHoverDirective(element);
+  });
+</script>

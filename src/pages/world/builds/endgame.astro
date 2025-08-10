@@ -1,5 +1,4 @@
 ---
-import Section from '../../../components/core/layout/Section.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 
 // image imports
@@ -7,7 +6,8 @@ import fatalis from '../../../assets/world/builds/endgame/fatalis.png';
 import alatreonFire from '../../../assets/world/builds/endgame/alatreon_fire.png';
 import alatreonIce from '../../../assets/world/builds/endgame/alatreon_ice.png';
 import BuildCard from '../../../components/builds/BuildCard.astro';
-import Tabs from '../../../components/core/tabs/Tabs.astro';
+import Section from '../../../components/common/Section.astro';
+import Tabs from '../../../components/common/Tabs.astro';
 ---
 
 <ContentLayout>
@@ -97,6 +97,7 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
     >
       <div id="fire">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Dawn Harbinger 🔥',
             description: [
@@ -134,6 +135,7 @@ import Tabs from '../../../components/core/tabs/Tabs.astro';
       </div>
       <div id="ice">
         <BuildCard
+          noTopRounding
           build={{
             title: 'Frost Sovereign 🧊',
             description: [

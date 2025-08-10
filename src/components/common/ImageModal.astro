@@ -1,0 +1,101 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  id: string;
+  class?: string;
+}
+
+const { id, class: className = '' } = Astro.props;
+---
+
+<!-- Image Modal -->
+<div
+  id={id}
+  class={`fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] hidden ${className}`}
+  data-image-modal={id}
+  style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; display: none !important;"
+>
+  <!-- Modal Container -->
+  <div class="fixed inset-0 flex items-center justify-center p-4">
+    <!-- Modal Content -->
+    <div class="relative w-full max-w-7xl mx-auto">
+      <!-- Image Content Slot -->
+      <div
+        class="relative rounded-xl overflow-hidden shadow-2xl flex items-center justify-center bg-background-dark/50 backdrop-blur-sm"
+      >
+        <slot />
+      </div>
+    </div>
+
+    <!-- Close Button - Bottom Center, Outside Image -->
+    <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <button
+        type="button"
+        class="bg-background-dark/90 backdrop-blur-sm border border-text/10 rounded-lg px-4 py-2 hover:bg-background-darker hover:scale-105 transition-all duration-300 flex items-center gap-2"
+        aria-label="Close modal"
+        data-close-modal={id}
+      >
+        <span class="text-text/80 font-medium">close</span>
+        <Icon name="mingcute:close-line" class="w-4 h-4 text-text/70" />
+      </button>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ modalId: id }}>
+  // Image modal functionality for this specific modal
+  const modal = document.querySelector(`[data-image-modal="${modalId}"]`);
+  const closeButton = document.querySelector(`[data-close-modal="${modalId}"]`);
+  const expandButton = document.querySelector(`[data-expand-image="${modalId}"]`);
+
+  function openModal() {
+    if (modal) {
+      // Move modal to document.body to avoid transform context issues
+      if (modal.parentElement !== document.body) {
+        modal._originalParent = modal.parentElement;
+        modal._originalNextSibling = modal.nextSibling;
+        document.body.appendChild(modal);
+      }
+
+      modal.classList.remove('hidden');
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.style.display = 'none';
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+
+      // Restore modal to original position in DOM
+      if (modal._originalParent) {
+        if (modal._originalNextSibling) {
+          modal._originalParent.insertBefore(modal, modal._originalNextSibling);
+        } else {
+          modal._originalParent.appendChild(modal);
+        }
+      }
+    }
+  }
+
+  // Event listeners
+  expandButton?.addEventListener('click', openModal);
+  closeButton?.addEventListener('click', closeModal);
+
+  // Close modal when clicking outside the image
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('fixed')) {
+      closeModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+      closeModal();
+    }
+  });
+</script>

@@ -2,14 +2,29 @@
 import type { Matchups, Monster } from '../../types/Monsters';
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
-import Tooltip from '../core/ToolTip.astro';
+import BaseCard from '../common/BaseCard.astro';
+import ToolTip from '../common/ToolTip.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
 
 interface Props {
   matchups: Matchups[];
   monsters: Monster[];
+  class?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
 }
 
-const { matchups, monsters } = Astro.props;
+const {
+  matchups,
+  monsters,
+  class: className,
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
+} = Astro.props;
 
 const getPriorityLabel = (priority: number | undefined) => {
   if (!priority) return '';
@@ -26,21 +41,22 @@ const getMonsterImage = (monsterName: string) => {
 };
 ---
 
-<div
-  data-matchup-chart-auto-hover
-  class="group relative bg-background-dark border border-text/10 rounded-xl overflow-hidden transition-all duration-300 hover:bg-background-darker hover:shadow-2xl hover:shadow-primary/5"
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-matchup-chart-auto-hover"
 >
-  {/* Hover gradient overlay */}
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
   <div class="p-6">
     {
       matchups.map((matchup) => (
         <div class="mb-8 last:mb-0">
-          <h2 class="text-xl font-bold text-primary mb-4 text-center">{matchup.title}</h2>
+          {/* centered title */}
+          <div class="flex justify-center mb-5">
+            <BaseCardTitle title={matchup.title} />
+          </div>
 
           <div class="space-y-4">
             {matchup.effectiveAgainst.map((build) => (
@@ -56,7 +72,7 @@ const getMonsterImage = (monsterName: string) => {
                   class="flex flex-col md:flex-row items-center gap-3 rounded-l-2xl p-2 h-full z-10"
                   style={`background-color: ${build.color}30;`}
                 >
-                  <span class="text-xl md:text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
+                  <span class="text-xl md:text-2xl bg-text/7 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
                     {build.emoji}
                   </span>
                   <h3 class="text-xs md:text-base font-bold text-text/90">{build.buildName}</h3>
@@ -83,7 +99,7 @@ const getMonsterImage = (monsterName: string) => {
                             )}
                           </div>
 
-                          <Tooltip text={monster.name} />
+                          <ToolTip text={monster.name} />
                         </div>
                       )
                     );
@@ -101,7 +117,7 @@ const getMonsterImage = (monsterName: string) => {
       Numbers indicate build priority (1 being the strongest)
     </div>
   </div>
-</div>
+</BaseCard>
 
 <script>
   import autoHoverDirective from '../../directives/auto-hover';

@@ -1,0 +1,131 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Contributor } from '../../types/Contributors';
+import BaseCard from '../common/BaseCard.astro';
+import { Image } from 'astro:assets';
+import type { Game } from '../../types/Game';
+
+interface Props {
+  contributors: Contributor[];
+  gameId: Game;
+  currentGame: {
+    emoji: string;
+    title: string;
+  };
+}
+
+const { contributors, gameId, currentGame } = Astro.props;
+---
+
+<section
+  class="py-12 md:py-32 px-3 md:px-4 md:px-8 bg-gradient-to-br from-background via-background-dark to-background relative overflow-hidden -mt-1"
+>
+  <!-- Curved top border -->
+  <div class="absolute top-0 left-0 w-full overflow-hidden">
+    <svg
+      class="relative block w-full h-6 md:h-12 lg:h-16"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,0V46.29c0,0,270.5,47.05,600,0s600,0,600,0V0Z"
+        fill="currentColor"
+        class="text-background-darker"></path>
+    </svg>
+  </div>
+
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-4 md:mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold mb-4 text-warning uppercase">contributors</h2>
+      <p class="text-md md:text-lg text-text/70 lowercase">
+        hunters who helped build this {currentGame.title} guide
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
+      {
+        contributors.map((contributor: Contributor) => (
+          <BaseCard class="p-3 md:p-6">
+            <div class="flex items-start gap-3 md:gap-4">
+              {contributor.image && (
+                <div class="w-12 md:w-16 h-12 md:h-16 rounded-lg md:rounded-xl overflow-hidden bg-text/7 flex-shrink-0">
+                  <Image
+                    src={contributor.image}
+                    alt={contributor.name}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              {!contributor.image && (
+                <div class="w-12 md:w-16 h-12 md:h-16 rounded-lg md:rounded-xl bg-text/7 flex items-center justify-center flex-shrink-0">
+                  <Icon name="mingcute:user-4-fill" class="w-6 md:w-8 h-6 md:h-8 text-text/40" />
+                </div>
+              )}
+
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 md:gap-3 mb-2">
+                  <h3 class="font-bold text-base md:text-lg uppercase">{contributor.name}</h3>
+                  <div class="flex gap-1 md:gap-2">
+                    {contributor.socials.youtube && (
+                      <a
+                        href={contributor.socials.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-text/40 hover:text-primary transition-colors relative z-10"
+                        style="pointer-events: auto;"
+                      >
+                        <Icon name="mingcute:youtube-fill" class="w-3 md:w-4 h-3 md:h-4" />
+                      </a>
+                    )}
+                    {contributor.socials.twitch && (
+                      <a
+                        href={contributor.socials.twitch}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-text/40 hover:text-primary transition-colors relative z-10"
+                        style="pointer-events: auto;"
+                      >
+                        <Icon name="mdi:twitch" class="w-3 md:w-4 h-3 md:h-4" />
+                      </a>
+                    )}
+                    {contributor.socials.discord && (
+                      <a
+                        href={contributor.socials.discord}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-text/40 hover:text-primary transition-colors relative z-10"
+                        style="pointer-events: auto;"
+                      >
+                        <Icon name="mingcute:discord-fill" class="w-3 md:w-4 h-3 md:h-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div class="space-y-1 md:space-y-2">
+                  {gameId && contributor.contributions[gameId] && (
+                    <div class="text-xs md:text-sm">
+                      <span class="text-text/70 ml-1 md:ml-2 lowercase">
+                        {contributor.contributions[gameId]}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </BaseCard>
+        ))
+      }
+    </div>
+
+    <div class="max-w-3xl mx-auto text-center mb-8 text-text/80 mt-8">
+      <p>
+        Hey, <strong>J9</strong> here, inspired by the charge blade site, I started <a
+          href="https://mhlance.com"
+          class="text-primary hover:underline">mhlance.com</a
+        > to share guides, tips, and builds for my favorite weapon, the lance. Huge thanks to everyone
+        who’s helped over the past few years!
+      </p>
+    </div>
+  </div>
+</section>

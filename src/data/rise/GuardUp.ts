@@ -3,133 +3,133 @@ import type { GuardUp } from '../../types/Monsters';
 export const riseGuardUp: GuardUp[] = [
   {
     name: 'amatsu',
-    guardUp: ['Tornado that pulls you close to it', 'Double barrel vortex'],
+    guardUp: ['tornado that pulls you close to it', 'double barrel vortex'],
   },
   {
     name: 'astalos',
-    guardUp: ['Creates a lightsaber from mouth and slams head into ground'],
+    guardUp: ['creates a lightsaber from mouth and slams head into ground'],
   },
   {
     name: 'basarios',
-    guardUp: ['Fire beam', 'All gas cloud attacks'],
+    guardUp: ['fire beam', 'all gas cloud attacks'],
   },
   {
     name: 'chaotic gore magala',
-    guardUp: ['Nuke attack (becomes multi-hit during frenzy state)'],
+    guardUp: ['nuke attack (becomes multi-hit during frenzy state)'],
   },
   {
     name: 'crimson glow valstrax',
-    trueUnblockable: ['Ambush - sheathe and superman dive, or sheathing retreat iframe :)'],
+    trueUnblockable: ['ambush - sheathe and superman dive, or sheathing retreat iframe :)'],
   },
   {
     name: 'flaming espinas',
     trueUnblockable: [
-      'Nuke after stomp - sheathe and superman dive, or sheathing retreat iframe :)',
+      'nuke after stomp - sheathe and superman dive, or sheathing retreat iframe :)',
     ],
   },
   {
     name: 'furious rajang',
-    guardUp: ['Lightning beam attack (can easily be avoided with sheathing retreat)'],
+    guardUp: ['lightning beam attack (can easily be avoided with sheathing retreat)'],
   },
   {
     name: 'gaismagorm',
-    trueUnblockable: ['Falling meteors', 'Hand slam explosion in phase 2.5'],
+    trueUnblockable: ['falling meteors', 'hand slam explosion in phase 2.5'],
   },
   {
     name: 'garangolm',
-    guardUp: ['Nuke where it pulls out rock underneath'],
+    guardUp: ['nuke where it pulls out rock underneath'],
   },
   {
     name: 'great wroggi',
-    guardUp: ['All poison gas attacks (Guard Up prevents poisoning)'],
+    guardUp: ['all poison gas attacks (Guard Up prevents poisoning)'],
   },
   {
     name: 'khezu',
-    guardUp: ['Lightning balls that travel along ground (causes heavy paralysis)'],
+    guardUp: ['lightning balls that travel along ground (causes heavy paralysis)'],
   },
   {
     name: 'lucent nargacuga',
-    guardUp: ['Super tail slam where it goes invisible, jumps around, then slams'],
+    guardUp: ['super tail slam where it goes invisible, jumps around, then slams'],
   },
   {
     name: 'malzeno',
-    guardUp: ['Nuke where it drops giant qurio ball'],
+    guardUp: ['nuke where it drops giant qurio ball'],
   },
   {
     name: 'narwa the allmother',
-    guardUp: ['Tail slam', 'Light wave'],
-    trueUnblockable: ['Dragonator', 'Supernova'],
+    guardUp: ['tail slam', 'light wave'],
+    trueUnblockable: ['dragonator', 'supernova'],
   },
   {
     name: 'primordial malzeno',
     guardUp: [
-      'Dive bomb with crossed wings',
-      'Large explosion during last phase before exhaustion',
-      'Double wing slam attack',
+      'dive bomb with crossed wings',
+      'large explosion during last phase before exhaustion',
+      'double wing slam attack',
     ],
     trueUnblockable: [
-      'Triple laser line in second phase - must sheathe and superman dive or use sheathing retreat to iframe',
+      'triple laser line in second phase - must sheathe and superman dive or use sheathing retreat to iframe',
     ],
   },
   {
     name: 'pyre rakna-kadaki',
-    guardUp: ['All web attacks', 'Fire beam attack'],
+    guardUp: ['all web attacks', 'fire beam attack'],
   },
   {
     name: 'rajang',
-    guardUp: ['Lightning beam attack (can be avoided with sheathing retreat)'],
+    guardUp: ['lightning beam attack (can be avoided with sheathing retreat)'],
   },
   {
     name: 'rakna-kadaki',
-    guardUp: ['All web attacks', 'Fire beam', 'All Ceiling attacks'],
+    guardUp: ['all web attacks', 'fire beam attack', 'all ceiling attacks'],
   },
   {
     name: 'risen shagaru magala',
-    guardUp: ['Beam attack'],
+    guardUp: ['beam attack'],
   },
   {
     name: 'risen teostra',
-    guardUp: ['Supernova'],
+    guardUp: ['supernova'],
   },
   {
     name: 'risen valstrax',
-    guardUp: ['Charged stab after charged spin (performs 2 stabs after level 270)'],
-    trueUnblockable: ['Ambush attack - must sheathe and superman dive'],
+    guardUp: ['charged stab after charged spin (performs 2 stabs after level 270)'],
+    trueUnblockable: ['ambush attack - must sheathe and superman dive'],
   },
   {
     name: 'seething bazelgeuse',
-    guardUp: ['Mega nuke', 'Dive bomb'],
+    guardUp: ['mega nuke', 'dive bomb'],
   },
   {
     name: 'shagaru magala',
-    guardUp: ['Laser beam'],
+    guardUp: ['laser beam'],
   },
   {
     name: 'silver rathalos',
-    guardUp: ['Nuke'],
+    guardUp: ['nuke'],
   },
   {
     name: 'somnacanth',
-    guardUp: ['All sleep gas attacks'],
+    guardUp: ['all sleep gas attacks'],
   },
   {
     name: 'teostra',
-    guardUp: ['Supernova'],
+    guardUp: ['supernova'],
   },
   {
     name: 'tetranadon',
-    guardUp: ['Double jump in fat mode'],
+    guardUp: ['double jump in fat mode'],
   },
   {
     name: 'velkhana',
-    guardUp: ['Ice breath attack that causes freeze'],
+    guardUp: ['ice breath attack that causes freeze'],
   },
   {
     name: 'violet mizutsune',
-    guardUp: ['Spirit bomb bubble (can be deflected back by hitting it)'],
+    guardUp: ['spirit bomb bubble (can be deflected back by hitting it)'],
   },
   {
     name: 'wind serpent ibushi',
-    guardUp: ['Tail slam attack', 'Attack where it throws floating rock at you'],
+    guardUp: ['tail slam attack', 'attack where it throws floating rock at you'],
   },
 ];

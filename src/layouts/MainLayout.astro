@@ -1,9 +1,9 @@
 ---
 import Image from 'astro/components/Image.astro';
-import Header from '../components/core/header/Header.astro';
-import FontLoader from '../components/core/FontLoader.astro';
-import BackToTop from '../components/core/nav/BackToTop.astro';
 import LanceSVG from '../assets/lance.svg';
+import FontLoader from '../components/core/FontLoader.astro';
+import Header from '../components/core/header/Header.astro';
+import BackToTop from '../components/core/nav/BackToTop.astro';
 
 interface Props {
   title: string;
@@ -24,7 +24,7 @@ const { title } = Astro.props;
   <body class="bg-background text-text min-h-screen font-mono">
     <!-- Lance SVG background -->
     <div
-      class="fixed right-8 w-3/5 h-auto opacity-5 pointer-events-none rotate-6 blur-sm
+      class="fixed right-8 w-3/5 h-auto opacity-8 pointer-events-none rotate-6 blur-lg
        md:top-1/5 md:-translate-y-1/5
        top-1/3 -translate-y-1/3"
     >

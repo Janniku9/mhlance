@@ -22,15 +22,19 @@ const { title } = Astro.props;
     <FontLoader />
     <LegacyRedirect />
   </head>
-  <body class="bg-background text-text min-h-screen font-mono overflow-x-hidden">
+  <body class="bg-background text-text min-h-screen font-mono">
     <main class="min-h-screen relative">
       <!-- Added Lance SVG background -->
-      <div
-        class="absolute right-8 top-1/5 -translate-y-1/5 w-3/5 h-auto opacity-5 pointer-events-none rotate-6"
-      >
+      <div class="fixed right-8 top-1/5 w-3/5 h-auto opacity-5 pointer-events-none rotate-6">
         <Image src={LanceSVG} alt="" class="w-full h-full object-contain" aria-hidden="true" />
       </div>
-      <slot />
+
+      {/* Main Landing Layout Content */}
+      <div
+        class="max-w-7xl min-h-screen flex flex-col items-center justify-center mx-auto py-16 px-2 relative z-10"
+      >
+        <slot />
+      </div>
     </main>
   </body>
 </html>

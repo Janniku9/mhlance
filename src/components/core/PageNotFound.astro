@@ -1,12 +1,13 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import NavigationButton from './buttons/NavigationButton.astro';
+import NavigationButton from '../common/NavigationButton.astro';
 ---
 
 <div class="container mx-auto px-4">
-  <div class="min-h-screen flex flex-col items-center justify-center py-20 relative">
+  <div class="mt-8 md:mt-16 flex flex-col items-center justify-center py-20 relative">
     <!-- Large Emoji -->
-    <div class="text-7xl sm:text-8xl animate-float mb-8">😿</div>
+    <div class="text-7xl sm:text-8xl animate-float mb-8">
+      {['😿', '🙀'].at(Math.floor(Math.random() * 2))}
+    </div>
 
     <!-- Error Message -->
     <h1
@@ -17,15 +18,15 @@ import NavigationButton from './buttons/NavigationButton.astro';
 
     <!-- Description with Lance emoji -->
     <p class="text-xl sm:text-2xl text-text/80 mb-4 text-center">
-      <span>Your lance</span>
-      <span class="inline-block animate-spin-slow">🎯</span>
-      <span>missed its mark...</span>
+      <span>Meow! Your palico scratches its head in confusion...</span>
     </p>
 
-    <p class="text-lg sm:text-xl text-text/60 mb-12">Even the best hunters get lost sometimes!</p>
+    <p class="text-lg sm:text-xl text-text/60 mb-12">
+      looks like this location doesn't exist in any field guide!
+    </p>
 
     <!-- Navigation Button -->
-    <NavigationButton href="/" text="Return to Base Camp" icon="mingcute:campground-fill" />
+    <NavigationButton href="/" text="return to base camp" icon="mingcute:campground-fill" />
 
     <!-- Background Stars -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">

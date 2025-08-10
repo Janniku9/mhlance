@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import BaseCard from '../common/BaseCard.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
+import BaseCardSubTitle from '../common/BaseCardSubTitle.astro';
 
 interface Props {
   name: string;
@@ -12,6 +15,10 @@ interface Props {
   class?: string;
   reversed?: boolean;
   imageTargetWidth?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
 }
 
 const {
@@ -24,25 +31,21 @@ const {
   class: className,
   reversed = false,
   imageTargetWidth = '200px',
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
 } = Astro.props;
 ---
 
-<div
-  data-mantle-card-auto-hover
-  class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
-    'transition-all duration-300 hover:bg-background-darker hover:scale-[1.02]',
-    'hover:shadow-2xl hover:shadow-primary/5 animate-fade-in',
-    className,
-  ]}
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-mantle-card-auto-hover"
 >
-  <!-- Hover gradient overlay -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
-            opacity-0 group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
   <div class="flex flex-col md:flex-row">
     <!-- Image Column (40%) -->
     <div
@@ -52,9 +55,7 @@ const {
         reversed ? 'md:order-2 md:border-l md:border-r-0' : 'md:order-1',
       ]}
     >
-      <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-        {name}
-      </h3>
+      <BaseCardTitle title={name} />
 
       <!-- Image -->
       <div class="flex justify-center mb-6">
@@ -69,7 +70,7 @@ const {
 
       <!-- Stats -->
       <div class="grid grid-cols-1 gap-4 max-w-[200px] mx-auto">
-        <div class="p-3 rounded-lg bg-text/5">
+        <div class="p-3 rounded-lg bg-text/7">
           <span class="text-sm text-text/60 block mb-1">COOLDOWN</span>
           <div class="flex items-center gap-2">
             <Icon name="mingcute:time-duration-fill" class="w-4 h-4 text-primary" />
@@ -77,7 +78,7 @@ const {
           </div>
         </div>
 
-        <div class="p-3 rounded-lg bg-text/5">
+        <div class="p-3 rounded-lg bg-text/7">
           <span class="text-sm text-text/60 block mb-1">DURATION</span>
           <div class="flex items-center gap-2">
             <Icon name="mingcute:time-fill" class="w-4 h-4 text-primary" />
@@ -97,55 +98,38 @@ const {
     >
       <!-- Description -->
       <div class="mb-6">
-        <span class="text-sm text-text/60 block mb-2">DESCRIPTION</span>
+        <BaseCardSubTitle title="DESCRIPTION" class="mb-1" />
         {description.map((para) => <p class="text-sm text-text/80 mb-4 last:mb-0">{para}</p>)}
+
+        <!-- Effects -->
+        {
+          effects.length > 0 && (
+            <div class="mb-6">
+              <BaseCardSubTitle title="EFFECTS" class="mb-2" />
+              <ul class="space-y-2">
+                {effects.map((effect) => (
+                  <li class="text-sm text-text/80 flex items-start gap-2">
+                    <Icon
+                      name="mingcute:lightning-fill"
+                      class="w-4 h-4 text-secondary flex-shrink-0"
+                    />
+                    {effect}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        <slot />
       </div>
-
-      <!-- Effects -->
-      {
-        effects.length > 0 && (
-          <div class="mb-6">
-            <span class="text-sm text-text/60 block mb-2">EFFECTS</span>
-            <ul class="space-y-2">
-              {effects.map((effect) => (
-                <li class="text-sm text-text/80 flex items-start gap-2">
-                  <Icon
-                    name="mingcute:lightning-fill"
-                    class="w-4 h-4 text-secondary flex-shrink-0"
-                  />
-                  {effect}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
-
-      <slot />
     </div>
   </div>
-</div>
 
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
-  }
-</style>
-
-<script>
-  import autoHoverDirective from '../../directives/auto-hover';
-  document.querySelectorAll('[data-mantle-card-auto-hover]').forEach((element) => {
-    if (element instanceof HTMLElement) autoHoverDirective(element);
-  });
-</script>
+  <script>
+    import autoHoverDirective from '../../directives/auto-hover';
+    document.querySelectorAll('[data-mantle-card-auto-hover]').forEach((element) => {
+      if (element instanceof HTMLElement) autoHoverDirective(element);
+    });
+  </script>
+</BaseCard>

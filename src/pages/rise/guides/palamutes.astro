@@ -1,10 +1,5 @@
 ---
-import { makeIssue } from 'astro:schema';
-import Section from '../../../components/core/layout/Section.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
-import StyledList from '../../../components/core/lists/StyledList.astro';
-import GifCard from '../../../components/core/media/GifCard.astro';
-import ImageGridCard from '../../../components/core/media/ImageGridCard.astro';
 
 import chains from '../../../assets/rise/guides/palamutes/chains.png';
 import healing from '../../../assets/rise/guides/palamutes/healing.png';
@@ -22,7 +17,11 @@ import poison from '../../../assets/rise/guides/palamutes/dog_poison.png';
 import blast from '../../../assets/rise/guides/palamutes/dog_blast.png';
 import paralysis from '../../../assets/rise/guides/palamutes/dog_para.png';
 import sleep from '../../../assets/rise/guides/palamutes/dog_sleep.png';
-import SectionSubTitle from '../../../components/core/typography/SectionSubTitle.astro';
+import Section from '../../../components/common/Section.astro';
+import GifCard from '../../../components/common/GifCard.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+import ImageGridCard from '../../../components/common/ImageGridCard.astro';
 ---
 
 <ContentLayout>
@@ -48,7 +47,10 @@ import SectionSubTitle from '../../../components/core/typography/SectionSubTitle
       Chains, offering even higher damage potential through their unique mechanics.
     </p>
 
-    <GifCard src="https://giphy.com/embed/wGDIeoKPHh1aA0yYII" title="Chain Synergy Demonstration">
+    <GifCard
+      src="https://assets.mhlance.com/rise/dog-chains.gif"
+      title="Chain Synergy Demonstration"
+    >
       This clip demonstrates the powerful synergy between Lance's Anchor Rage and Palamute chain
       attacks. The successful counter triggers an immediate Whirlwind Spin from both Palamutes.
     </GifCard>

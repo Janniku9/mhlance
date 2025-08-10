@@ -1,14 +1,18 @@
 ---
 import MainLayout from './MainLayout.astro';
-import PageTitle from '../components/core/typography/Pagetitle.astro';
 import type { Game } from '../types/Game';
 import { games } from '../data/Navigation';
 import MainFooter from '../components/core/footer/MainFooter.astro';
+import PageTitle from '../components/common/PageTitle.astro';
 
 const segments = Astro.url.pathname.split('/').filter(Boolean);
-const gameId = segments[0] as Game;
+const gameId = segments[0] as Exclude<Game, null>;
 const sectionType = segments[1];
 const sectionId = segments[2];
+
+const formattedGameId = gameId
+  ? `${gameId.charAt(0).toUpperCase() + gameId.slice(1).toLowerCase()}`
+  : 'MH Lance';
 
 const currentGame = games.find((game) => game.game === gameId);
 
@@ -17,8 +21,8 @@ const currentSection = currentGame?.sections[
 ]?.find((section) => section.id === sectionId);
 ---
 
-<MainLayout title={`MH Lance - ${currentSection?.title ?? ''} `}>
-  <div class:list={['max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-24']}>
+<MainLayout title={`${formattedGameId} - ${currentSection?.title ?? ''} `}>
+  <div class:list={['max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-24']} data-pagefind-body>
     <PageTitle
       title={currentSection?.title ?? ''}
       description={currentSection?.pageDescription ?? currentSection?.navDescription ?? ''}
@@ -30,7 +34,5 @@ const currentSection = currentGame?.sections[
   </div>
 
   <div class="h-24"></div>
-  <MainFooter />
+  <MainFooter game={gameId} />
 </MainLayout>
-
-<style></style>

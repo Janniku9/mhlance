@@ -1,0 +1,119 @@
+---
+import NavigationButton from '../common/NavigationButton.astro';
+---
+
+<div class="container mx-auto px-2">
+  <div class="mt-8 md:mt-16 flex flex-col items-center justify-center py-20 relative">
+    <!-- Large Emoji -->
+    <div class="text-7xl sm:text-8xl animate-float mb-8 mt-24">
+      {['⚡', '🔨', '⚔️', '🛡️'].at(Math.floor(Math.random() * 4))}
+    </div>
+
+    <!-- Coming Soon Message -->
+    <h1
+      class="text-4xl sm:text-5xl font-bold mb-4 text-primary transition-all duration-300 hover:scale-110 hover:text-warning"
+    >
+      Coming Soon
+    </h1>
+
+    <!-- Description with hunting theme -->
+    <p class="text-xl sm:text-2xl text-text/80 mb-4 text-center">
+      <span>The Research Commission is still studying this area...</span>
+    </p>
+
+    <p class="text-lg sm:text-xl text-text/60 mb-12">
+      This page of the field guide is getting updated soon!
+    </p>
+
+    <!-- Navigation Button -->
+    <NavigationButton href="/" text="return to base camp" icon="mingcute:campground-fill" />
+
+    <!-- Animated Smithy Background -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <!-- Sparks -->
+      {
+        Array.from({ length: 30 }).map((_, i) => (
+          <div
+            class="absolute rounded-full bg-warning animate-spark"
+            style={`
+              left: ${Math.random() * 100}%;
+              top: ${Math.random() * 100}%;
+              width: ${Math.random() * 4 + 2}px;
+              height: ${Math.random() * 4 + 2}px;
+              opacity: ${Math.random() * 0.7 + 0.3};
+              animation-delay: ${Math.random() * 4}s;
+            `}
+          />
+        ))
+      }
+
+      <!-- Glowing embers -->
+      {
+        Array.from({ length: 20 }).map((_, i) => (
+          <div
+            class="absolute rounded-full bg-accent animate-ember"
+            style={`
+              left: ${Math.random() * 100}%;
+              top: ${Math.random() * 100}%;
+              width: ${Math.random() * 6 + 3}px;
+              height: ${Math.random() * 6 + 3}px;
+              opacity: ${Math.random() * 0.4 + 0.2};
+              animation-delay: ${Math.random() * 6}s;
+            `}
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes spark {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(1.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes ember {
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: translateY(-30px) scale(1.2);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-spark {
+    animation: spark 2s ease-in-out infinite;
+  }
+
+  .animate-ember {
+    animation: ember 4s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>

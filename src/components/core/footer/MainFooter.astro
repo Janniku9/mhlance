@@ -1,12 +1,14 @@
 ---
 import { socials } from '../../../data/Socials';
 import { contributors } from '../../../data/Contributors';
-import SocialLink from './FooterSocials.astro';
 import ContributorScroll from './FooterContributors.astro';
 import QuickLinks from './FooterQuickLinks.astro';
+import SocialIconButton from '../../common/SocialIconButton.astro';
 
 const classList = Astro.props.class;
 const currentYear = new Date().getFullYear();
+
+const game = Astro.props.game;
 ---
 
 <footer class={`w-full border-t border-text/10 relative ${classList}`}>
@@ -14,26 +16,38 @@ const currentYear = new Date().getFullYear();
   <div class="absolute inset-0 bg-gradient-to-b from-background-dark to-secondary/5 opacity-70">
   </div>
 
-  <div class="relative flex flex-col items-center justify-center gap-8 py-12">
+  <div class="relative flex flex-col items-center justify-center gap-12 py-10">
     <!-- Social Links and Quick Links Section -->
-    <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
-      <!-- Quick Game Links - First on mobile, second on desktop -->
-      <div class="md:order-2">
-        <QuickLinks />
+    <div class="w-full max-w-9xl grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8 px-2 md:px-8">
+      <!-- Social Links -->
+      <div class="flex flex-col items-center lg:items-start gap-4">
+        <h3 class="text-sm font-medium text-secondary-light uppercase tracking-wider">Community</h3>
+        <div class="flex items-center gap-4">
+          {
+            socials.map((social) => (
+              <SocialIconButton
+                icon={social.icon}
+                url={social.url}
+                name={social.name}
+                description={social.description}
+              />
+            ))
+          }
+        </div>
+        <p class="text-xs text-text/60 text-center lg:text-left mt-2">
+          Chat with us in #lance! Feel like contributing?
+        </p>
       </div>
 
-      <!-- Social Links - Second on mobile, first on desktop -->
-      <div class="flex flex-col items-center md:items-start gap-4 md:order-1">
-        <h3 class="text-sm font-medium text-text/60 uppercase">Community</h3>
-        <div class="flex items-center gap-6">
-          {socials.map((social) => <SocialLink {...social} />)}
-        </div>
+      <!-- Quick Game Links - Takes up 2 columns on large screens -->
+      <div class="lg:col-span-2">
+        <QuickLinks game={game} />
       </div>
     </div>
 
     <!-- Contributors Scroll -->
     <div class="w-full">
-      <ContributorScroll contributors={contributors} />
+      <ContributorScroll contributors={contributors} game={game} />
     </div>
 
     <!-- Footer Text -->
@@ -41,7 +55,5 @@ const currentYear = new Date().getFullYear();
       <p class="text-sm text-text/60">Made with ❤️ by the Monster Hunter Lance community</p>
       <p class="text-xs text-text/40">© {currentYear}</p>
     </div>
-
-    <div class="flex h-4"></div>
   </div>
 </footer>

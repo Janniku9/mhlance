@@ -1,0 +1,56 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  icon: string;
+  href?: string;
+  text?: string;
+  ariaLabel?: string;
+  target?: string;
+  rel?: string;
+  class?: string;
+}
+
+const {
+  icon,
+  href,
+  text,
+  ariaLabel,
+  target = '_blank',
+  rel = 'noopener noreferrer',
+  class: classList = '',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'div';
+const linkProps = href ? { href, target, rel, 'aria-label': ariaLabel } : {};
+---
+
+<Tag
+  {...linkProps}
+  class={`group flex items-center gap-3 transition-all duration-300 hover:scale-[1.02] ${classList}`}
+>
+  {/* Icon container with subtle hover effects */}
+  <div
+    class="relative bg-background-dark border border-text/10 rounded-xl p-3 md:p-4 transition-all duration-300 group-hover:bg-background-darker group-hover:shadow-xl group-hover:shadow-primary/5"
+  >
+    {/* Subtle gradient overlay on hover */}
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
+             rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300"
+    >
+    </div>
+    <Icon
+      name={icon}
+      class="w-5 h-5 md:w-6 md:h-6 relative z-10 text-text/70 group-hover:text-primary transition-colors duration-300"
+    />
+  </div>
+
+  {/* Optional text label next to icon */}
+  {
+    text && (
+      <span class="text-sm md:text-base text-text/70 group-hover:text-primary transition-colors duration-300 font-medium lowercase">
+        {text}
+      </span>
+    )
+  }
+</Tag>

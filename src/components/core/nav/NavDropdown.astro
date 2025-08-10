@@ -26,9 +26,9 @@ const { title, items, baseUrl } = Astro.props;
     class="absolute -left-24 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50 transform origin-top scale-95 group-hover/nav:scale-100"
   >
     <div
-      class="bg-background rounded-xl shadow-xl border border-text/10 p-6 min-w-[420px] animate-dropdown"
+      class="bg-background rounded-xl shadow-xl border border-text/10 p-2 min-w-[420px] animate-dropdown"
     >
-      <ul class="space-y-4">
+      <ul class="space-y-1">
         {
           items.map((item, index) => (
             <li
@@ -39,11 +39,11 @@ const { title, items, baseUrl } = Astro.props;
                 href={item.externalLink ? item.externalLink : `${baseUrl}/${item.id}`}
                 target={item.externalLink ? '_blank' : undefined}
                 rel={item.externalLink ? 'noopener noreferrer' : undefined}
-                class="group block hover:bg-primary/10 rounded-lg p-3 transition-colors"
+                class="group block hover:bg-primary/10 rounded-lg p-2 transition-colors"
               >
                 <div class="flex items-center gap-3">
                   {item.emoji && (
-                    <span class="text-2xl bg-text/5 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
+                    <span class="text-2xl bg-text/7 rounded-lg p-2 w-12 h-12 flex items-center justify-center">
                       {item.emoji}
                     </span>
                   )}

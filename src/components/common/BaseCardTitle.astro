@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  class?: string;
+  underline?: boolean;
+}
+
+const { title, class: className, underline = true } = Astro.props;
+---
+
+<h3
+  class:list={[
+    'w-fit text-md md:text-xl font-bold text-primary-light group-hover:text-primary transition-all duration-300 uppercase relative',
+    className,
+  ]}
+>
+  {title}
+  {
+    underline && (
+      <div
+        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary 
+                group-hover:w-full transition-all duration-300 ease-out"
+      />
+    )
+  }
+</h3>

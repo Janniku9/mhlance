@@ -1,0 +1,72 @@
+---
+import Comment from './Comment.astro';
+
+interface Props {
+  emoji?: string;
+  comment?: string;
+  title: string;
+  slug?: string;
+}
+
+const { emoji, title, comment, slug } = Astro.props;
+---
+
+<div class="flex-col items-center gap-3 mb-1 group">
+  <div class="flex items-center gap-3 mb-1 group">
+    {
+      emoji && (
+        <span class="text-2xl bg-text/7 rounded-xl p-2 inline-block animate-subtle-float">
+          {emoji}
+        </span>
+      )
+    }
+    <h2 class="text-xl md:text-3xl font-bold text-secondary animate-title uppercase">
+      {title}
+    </h2>
+
+    {
+      slug && (
+        <button
+          class="opacity-0 group-hover:opacity-100 p-1 text-text/40 hover:text-text/80 text-lg md:text-2xl"
+          onclick={`navigator.clipboard.writeText(window.location.origin + window.location.pathname + '#${slug}'); this.textContent = '✓'; setTimeout(() => this.textContent = '🔗', 1000)`}
+          title="Copy link"
+        >
+          🔗
+        </button>
+      )
+    }
+  </div>
+
+  {comment && <Comment>{comment}</Comment>}
+</div>
+
+<style>
+  @keyframes title {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes subtle-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-title {
+    animation: title 0.5s ease-out forwards;
+  }
+
+  .animate-subtle-float {
+    animation: subtle-float 4s ease-in-out infinite;
+  }
+</style>

@@ -1,7 +1,9 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { GameNavigation } from '../../../types/Navigation';
-import GitHubLink from '../header/GitHubLink.astro';
 import MobileSection from './MobileSection.astro';
+import IconBox from '../../common/IconBox.astro';
+import GitHubLink from '../header/GitHubLink.astro';
 
 interface Props {
   currentGame?: GameNavigation;
@@ -40,7 +42,11 @@ const { currentGame, height } = Astro.props;
     }
 
     <div class="mt-6 pt-6 border-t border-text/10">
-      <GitHubLink showLabel />
+      <IconBox
+        icon="mingcute:github-fill"
+        href="https://github.com/Janniku9/mhlance"
+        text="github"
+      />
     </div>
   </div>
 </div>

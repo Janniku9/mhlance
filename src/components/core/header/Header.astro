@@ -1,12 +1,12 @@
 ---
-import { BREAKPOINTS } from '../../../types/Header';
 import MobileNav from '../nav/MobileNav.astro';
 import MobileMenu from '../nav/MobileMenu.astro';
 import HeaderLogo from './HeaderLogo.astro';
 import NavDropdown from '../nav/NavDropdown.astro';
 import GameSelector from '../nav/GameSelector.astro';
-import GitHubLink from './GitHubLink.astro';
 import { games } from '../../../data/Navigation';
+import GitHubLink from './GitHubLink.astro';
+import Search from './Search.astro';
 
 interface Props {
   height: string;
@@ -25,7 +25,7 @@ const currentGame = games.find((g) => g.game === gameId);
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-200"
   style={`height: ${height}`}
 >
-  <nav class="max-w-7xl mx-auto px-6 h-full">
+  <nav class="max-w-7xl mx-auto px-4 md:px-5 h-full">
     <div class="grid grid-cols-2 md:grid-cols-3 items-center w-full h-full">
       {/* Logo */}
       <div class="flex items-center">
@@ -35,7 +35,7 @@ const currentGame = games.find((g) => g.game === gameId);
       {/* Center Navigation */}
       {
         currentGame && (
-          <div class="hidden md:flex items-center justify-center gap-8">
+          <div class="hidden md:flex items-center justify-center gap-6">
             <NavDropdown
               title="BUILDS"
               items={currentGame.sections.builds}
@@ -58,10 +58,11 @@ const currentGame = games.find((g) => g.game === gameId);
       {/* Right Section */}
       <div class="flex items-center justify-end">
         {/* Desktop Navigation */}
-        <div class="items-center gap-4 flex">
-          <div class="hidden md:flex">
+        <div class="items-center gap-2 flex">
+          <div class="hidden md:flex h-full">
             <GitHubLink />
           </div>
+          <Search currentGameId={gameId} class="h-full" />
           <GameSelector games={games} currentGame={currentGame} />
         </div>
 

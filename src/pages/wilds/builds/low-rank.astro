@@ -1,0 +1,236 @@
+---
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import Section from '../../../components/common/Section.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+
+import starter from '../../../assets/wilds/builds/low-rank/starter.png';
+import improved_starter from '../../../assets/wilds/builds/low-rank/improved-starter.png';
+import hirabami from '../../../assets/wilds/builds/low-rank/hirabami.png';
+import burst_boost from '../../../assets/wilds/builds/low-rank/burst-boost.png';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
+---
+
+<ContentLayout>
+  <Section>
+    <p>
+      Wilds takes a notably different approach to low rank compared to previous games. The
+      experience is more guided and cinematic, pushing you from one encounter to the next with less
+      of that classic Monster Hunter exploration feel. This also means you'll gather fewer materials
+      and might need to do some extra grinding for gear.
+    </p>
+
+    <p>
+      Low rank armor doesn't offer many exciting skills either, most pieces are just stat sticks
+      with higher defense values. For the most part, you'll want to craft whatever materials allow,
+      upgrading primarily for the defense boost rather than skill synergies.
+    </p>
+
+    <p>
+      This guide offers some solid recommendations for what to prioritize, but don't feel pressured
+      to grind out these exact sets if you're getting by with what you have.
+    </p>
+  </Section>
+
+  <Section title="Rescue In The Sandstorm - 1⭐">
+    <p>
+      Your starting Hope Lance and armor will carry you through the opening quests just fine. Keep
+      an eye out for mining nodes—once you snag your first iron ore, you can upgrade the Hope Lance
+      to Hope Lance II for a nice early damage boost.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'desert survivor',
+        description: [
+          'Your starting gear with the Hope Lance upgraded to tier II. Simple but effective.',
+        ],
+        image: starter,
+        imageAlt: 'desert survivor set',
+        stats: {
+          raw: 100,
+          sharpness: {
+            hits: 60,
+            type: 'green',
+          },
+          affinity: {
+            avg: 0,
+            peak: 0,
+          },
+        },
+      }}
+    />
+
+    <p>
+      The first chapter takes you through the forbidden lands, introducing you to seikret mechanics
+      and the local ecosystem while you tackle new monsters across the plains and forest locales.
+    </p>
+
+    <SectionSubTitle title="Progression Weapons" />
+    <p>
+      Two weapon trees stand out as solid choices for low rank progression, each offering different
+      strengths.
+    </p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Balahara Lance I',
+          subtext:
+            'Comes with Offensive Guard, boosting your damage when you nail those perfectly-timed blocks. Slightly higher damage potential if you can master the timing.',
+        },
+        {
+          text: 'Lala Barina Lanza I',
+          subtext:
+            'Brings solid paralysis buildup with built-in Critical Status, plus an impressively long sharpness bar. Great comfort pick that trades a bit of raw damage for comfort.',
+        },
+      ]}
+    />
+
+    <p>
+      Both weapons are excellent choices with different upgrade points throughout the story, so
+      you'll likely find yourself switching between them as materials become available.
+    </p>
+
+    <SectionSubTitle title="Optional Starter Set" />
+    <p>
+      Since offensive skills are basically non-existent this early, armor upgrades mainly provide
+      defense or quality-of-life improvements. Feel free to skip this if your current gear is
+      working fine.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'optional enhanced starter',
+        description: [
+          'A slight upgrade over your starting gear with better stats across the board.',
+          'For the weapon, we made the balahara lance I, giving us the first level of offensive guard.',
+        ],
+        image: improved_starter,
+        imageAlt: 'optional enhanced starter set',
+        stats: {
+          raw: 124,
+          sharpness: {
+            hits: 60,
+            type: 'green',
+          },
+          element: {
+            type: 'water',
+            value: 14,
+          },
+          affinity: {
+            avg: 10,
+            peak: 10,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Ecosystem In Collapse - 2⭐">
+    <p>
+      Chapter two opens up the Oilwell Basin, where you'll uncover more about the mysterious
+      Everforge. As sandstorms ravage the desert, you'll dive deeper into the complex ecosystem of
+      these forbidden lands.
+    </p>
+
+    <p>This chapter offers some modest upgrades, nothing game-changing but worth considering.</p>
+
+    <p>
+      You'll face a quest with three Hirabami simultaneously—basically a free materials jackpot for
+      crafting their armor pieces. The Kranodath Chest pairs well here to maintain some Flinch Free,
+      using materials from those small monsters roaming the Oilwell Basin.
+    </p>
+
+    <p>
+      Your encounter with Nerscylla provides the materials to upgrade the Lala Barina Lance to
+      Barina Sarissa II, gaining more raw damage and an even more generous green sharpness bar.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'hirabami packslayer',
+        description: [
+          'Takes advantage of the abundant Hirabami materials from the group quest for a solid defense boost.',
+          'The Lala Barina Lance upgrade is nice but not essential if materials are tight.',
+        ],
+        image: hirabami,
+        imageAlt: 'hirabami packslayer set',
+        stats: {
+          raw: 131,
+          sharpness: {
+            hits: 100,
+            type: 'green',
+          },
+          status: {
+            type: 'paralysis',
+            value: 13,
+          },
+          affinity: {
+            avg: 10,
+            peak: 10,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Guardians Of Ancient Wyveria - 3⭐">
+    <p>
+      Chapter three brings you to the ancient ruins of Wyveria, where you'll encounter the
+      Guardians, which are artificially created monsters that once protected these ruins. Something
+      has stirred them from their slumber, and they're acting out of control.
+    </p>
+
+    <p>
+      The first one you encounter, Guardian Doshaguma drops the materials needed to upgrade your
+      Balahara Lance to tier two, unlocking another level of Offensive Guard. This is a substantial
+      damage boost and absolutely worth prioritizing.
+    </p>
+
+    <p>
+      Finally, some proper damage skills become available! The standout set here is a 4-piece
+      Guardian Ebony Odogaron build, granting Burst level 3 and Burst Boost 2. These skills provide
+      significant raw and elemental damage bonuses as long as you maintain consistent hits, which is
+      very easy to maintain for lance. This actually outperforms a weakness exploit set using
+      Rathalos gear, as currently there's just not enough skills to make a crit build worth it.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'relentless striker',
+        description: [
+          'This is the best set available in low rank, it gives us a lot of flat extra raw and element, if we manage to continuously hit the monster.',
+          'We use 4 pieces of Guardian Ebony Odogaron armor, the chest piece is just a placeholder, Rey Dau piece just looks really cool!',
+        ],
+        image: burst_boost,
+        imageAlt: 'relentless striker set',
+        stats: {
+          raw: 196,
+          sharpness: {
+            hits: 40,
+            type: 'green',
+          },
+          element: {
+            type: 'water',
+            value: 27,
+          },
+          affinity: {
+            avg: 10,
+            peak: 10,
+          },
+        },
+      }}
+    />
+
+    <SectionSubTitle title="The end of Low Rank" />
+    <p>
+      After defeating Guardian Arkveld and preventing the Incubation at the Dragontorch, low rank's
+      story concludes. But your journey is just beginning—high rank awaits with even more formidable
+      monsters and powerful equipment to discover.
+    </p>
+
+    <NavigationButton href="/wilds/builds/high-rank" text="Next: High Rank" emoji="⛓️" />
+  </Section>
+</ContentLayout>

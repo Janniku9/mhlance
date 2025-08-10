@@ -4,7 +4,7 @@ export interface Contributor {
   name: string;
   image?: ImageMetadata;
   contributions: {
-    [key in Exclude<Game, null> | 'overall']?: string;
+    [key in Exclude<Game, null>]?: string;
   };
   socials: {
     youtube?: string;

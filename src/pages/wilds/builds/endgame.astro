@@ -1,0 +1,281 @@
+---
+import BuildCard from '../../../components/builds/BuildCard.astro';
+import Section from '../../../components/common/Section.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import StyledList from '../../../components/common/StyledList.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+import NavigationButton from '../../../components/common/NavigationButton.astro';
+
+import reinforcements from '../../../assets/wilds/builds/reinforcements.png';
+
+import rey from '../../../assets/wilds/builds/high-rank/tu2-3rey.png';
+import lagi from '../../../assets/wilds/builds/high-rank/tu2-2lagi.png';
+import zoh from '../../../assets/wilds/builds/high-rank/tu2-comfy.png';
+import InfoBox from '../../../components/common/InfoBox.astro';
+import Comment from '../../../components/common/Comment.astro';
+import CodeBlock from '../../../components/common/CodeBlock.astro';
+import ImageCard from '../../../components/common/ImageCard.astro';
+import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.astro';
+---
+
+<ContentLayout title="Coming Soon">
+  <Section>
+    <Comment> last updated for AT Uth Duna </Comment>
+
+    <p>
+      These are the current endgame builds for Title Update 2, which added Seregios and Lagiacrus.
+      All of these builds assume you've completed the main story and have access to the highest
+      rarity Artian weapons, plus pretty much all decorations and armor pieces.
+    </p>
+
+    <SectionSubTitle title="Weapons" />
+
+    <p>
+      Artian weapons are still the best option in the game by a wide margin. They all come with
+      three level-3 slots, which lets you stack the weapon skills that lance really needs. The
+      reinforcement system also gives them the best stats for almost every element or status, making
+      most craftable lances pretty obsolete (for thunder the Lagiacrus lance is pretty good).
+    </p>
+
+    <p>
+      When crafting new Artian weapons, try to get three parts with the same element or status and
+      all having attack infusions. This basically guarantees you to get the element you want while
+      maximizing the attack production bonus.
+    </p>
+
+    <ImageCard
+      src={reinforcements}
+      alt="reinforcement bonuses"
+      caption="A fire Artian lance with full raw production bonus and 2 sharpness, 1 affinity and 1 affinity production bonus. Not the god roll, but still a very good one."
+      maxWidth="500px"
+    />
+
+    <p>
+      For reinforcement bonuses, aim for 1 sharpness and 4 attack (2 sharpness 3 attack is the
+      second best). Even if you only get 2-3 attack reinforcements, the weapon will still outperform
+      the craftable alternatives.
+    </p>
+
+    <SectionSubSubTitle title="Weapon Decorations" />
+
+    <p>Here's how to use those 3 weapon decoration slots:</p>
+    <StyledList
+      items={[
+        {
+          text: 'Offensive Guard 3',
+          subtext: "Lance's most important weapon skill for damage",
+          emoji: '⚔️',
+        },
+        {
+          text: "Master's Touch 3 or Razor Sharp 3",
+          subtext: 'Essential for maintaining sharpness during long fights',
+          emoji: '🗡️',
+        },
+        {
+          text: 'Critical Boost 3',
+          subtext: 'Great damage skill, but prioritize the other two first',
+          emoji: '💥',
+        },
+      ]}
+    />
+
+    <p>
+      Offensive Guard comes with combo decorations that include guard, handicraft, or elemental
+      attack. Pick based on what you need—guard for tough matchups, handicraft if you're struggling
+      with sharpness, or elemental attack for a small damage boost.
+    </p>
+
+    <p>
+      Since our affinity is pretty high now, Master's Touch is slowly starts being better for
+      sharpness management. Most sets have around 80% average affinity, we get <CodeBlock
+        text="1/(1 - (0.8*0.8)) = 2.78"
+      /> times the sharpness. And with the Artian lances being at 50 hits that results in around 138
+      hits. On the other hand, Razor Sharp just doubles the sharpness, which is 120 hits if you pick
+      a handicraft combo or 100 hits if you pick a guard or elemental attack combo.
+    </p>
+
+    <SectionSubSubTitle title="Craftable Weapons" />
+
+    <p>
+      The Lagiacrus lance can actually match or and even beat the Artian Thunder Lance in very
+      elemental-heavy matchups like Seregios if you manage to reach high thunder resistance. For
+      longer hunts, an Artian with god roll probably still wins due to better slots, giving it
+      better sharpness.
+    </p>
+
+    <InfoBox>
+      <p>
+        When using the Lagi Lance, eat a meal that gives elemental resistances and use your 1-slots
+        for more thunder resistance.
+      </p>
+    </InfoBox>
+
+    <p>
+      For other craftable options, the <CodeBlock text="Blazing Sital" /> from Zoh Shia has a unique
+      weapon skill, while the Guardian Rathalos lance <CodeBlock text="Shining Pillar" /> offers good
+      stats and slot efficiency.
+    </p>
+
+    <SectionSubTitle title="Element vs Raw" />
+    <p>
+      Since Artian weapons can all reach the same raw damage, using elemental ones just adds free
+      damage on top. If you can afford to make 6 different Artian lances (5 element and 1
+      status/raw), definitely do it. Using the right element typically adds 5-10% damage, which
+      really adds up over time.
+    </p>
+
+    <p>Check the matchup table to see which element works best against each monster.</p>
+
+    <NavigationButton href="/wilds/data/match-ups" text="matchup chart" emoji="📊" />
+
+    <p>
+      If you want to stick with raw weapons, blast is generally the best option, though paralysis is
+      also solid for the openings it creates.
+    </p>
+
+    <SectionSubTitle title="Armor" />
+    <p>
+      All three builds here use Guts, the set bonus from wearing 3 pieces of any Arch-Tempered Apex
+      monster armor. Guts lets you survive a lethal hit if you're above 40% health, and as long as
+      it hasn't been triggered recently, it gives you a 5% raw damage bonus. Combined with how
+      skill-efficient these armor pieces are, it makes Guts one of the strongest skills available.
+    </p>
+
+    <p>
+      The builds are very similar in damage output, but each has different strengths and use cases.
+    </p>
+
+    <p>Now with all that covered, let's take a look at the builds.</p>
+  </Section>
+
+  <Section title="latent power set" emoji="💪">
+    <p>
+      This build uses 3 pieces of Rey Dau combined with the best-in-slot armor pieces available,
+      letting us max out both Agitator and Weakness Exploit.
+    </p>
+
+    <p>
+      The key feature is high Latent Power levels, giving this set the highest theoretical damage
+      output. The downside is that Latent Power can be inconsistent, as it has high up and down
+      times. And when the up times overlap with zone transitions, or timings in the fight where you
+      can't attack or deal less damage due to monster states, it can lead to damage loss.
+    </p>
+
+    <p>
+      If you get hit a lot, you actually will have a higher latent power uptime. If this is an
+      advantage solely depends on you :)
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'rey dau latent power set',
+        description: [
+          "We get Guts/Lord's Soul from 2 pieces of AT Rey Dau and the new AT Uth Duna boots, allowing us to max out agitator and weakness exploit",
+          'With an additional 3 levels of latent power, we reach a very good average affinity allowing for the highest damage output',
+          'High thunder resistance makes this set particularly good when using the Lagiacrus lance.',
+        ],
+        image: rey,
+        imageAlt: 'rey dau latent power set',
+        stats: {
+          raw: 489,
+          sharpness: {
+            hits: 50,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 40,
+          },
+          affinity: {
+            avg: 81,
+            peak: 100,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="azure bolt set" emoji="⚡">
+    <p>
+      This set uses 2 pieces of Lagiacrus for the Azure Bolt set bonus, trading some raw power for
+      much more consistent damage output.
+    </p>
+
+    <p>
+      While the Lagiacrus pieces make this slightly weaker than the Latent Power set on paper, Azure
+      Bolt provides more reliable affinity uptime with shorter cycles. The set bonus also adds free
+      damage procs that aren't reflected in the displayed stats. We also get 2 levels of Stamina
+      Surge, which helps maintain Maximum Might uptime.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'lagiacrus azure bolt set',
+        description: [
+          'Two Lagiacrus pieces provide the Azure Bolt set bonus for more consistent affinity.',
+          'The set bonus offers reliable uptime and additional damage procs not shown in stats.',
+          'Two levels of Stamina Surge help maintain Maximum Might uptime.',
+        ],
+        image: lagi,
+        imageAlt: 'lagiacrus azure bolt set',
+        stats: {
+          raw: 486,
+          sharpness: {
+            hits: 50,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 40,
+          },
+          affinity: {
+            avg: 79,
+            peak: 100,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="comfy zoh shia set" emoji="❤️‍🩹">
+    <p>
+      Alternatively, there's this third set which is a really comfy variant using the Zoh Shia super
+      recovery set bonus, which allows you to recover health passively even without having red
+      health. This is really nice for us, as it can help a lot with damage building up from chip or
+      smaller hits, meaning you need to heal less often, allowing you to focus more on attacking.
+    </p>
+
+    <p>
+      Overall, this set has only around 1-2% less damage than the latent power set, but offers a lot
+      of quality of life, making this my go to set for most late game investigation hunts.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'comfy zoh shia recovery set',
+        description: [
+          'Two Zoh Shia pieces provide Super Recovery for passive healing without red health.',
+          'AT Uth Duna boots still let us max Weakness Exploit and Agitator while losing only one Latent Power level.',
+          'Two free level-1 slots can be used for comfort skills like Mirewalker, Windproof, or Stun Resistance.',
+        ],
+        image: zoh,
+        imageAlt: 'comfy zoh shia recovery set',
+        stats: {
+          raw: 485,
+          sharpness: {
+            hits: 50,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 40,
+          },
+          affinity: {
+            avg: 78,
+            peak: 100,
+          },
+        },
+      }}
+    />
+  </Section>
+</ContentLayout>

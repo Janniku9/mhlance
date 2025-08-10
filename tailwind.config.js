@@ -3,6 +3,10 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      opacity: {
+        7: '0.07',
+        8: '0.08',
+      },
       maxWidth: {
         '8xl': '88rem',
         '9xl': '96rem',
@@ -64,13 +68,13 @@ export default {
         },
         background: {
           DEFAULT: '#1e181c',
-          dark: '#141014',
+          dark: '#0E0B0F',
           //dark: '#191418',
-          darker: '#141014',
+          darker: '#0d090d',
         },
         fontSize: {
           sectionpc: '1.12rem',
-          sectionmobile: '1rem',
+          sectionmobile: '0.875rem',
         },
       },
       fontFamily: {

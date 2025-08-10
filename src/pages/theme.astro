@@ -1,21 +1,14 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import SectionTitle from '../components/common/SectionTitle.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 
 const BoxSize = 'w-24 h-24';
 const BoxStyle = 'text-background';
-
-const ExampleText = 'Text';
 ---
 
-<MainLayout title="MH Lance - Theme">
-  <div class="flex justify-center mb-4">
-    <p class="text-3xl">THEME</p>
-  </div>
-
-  {/* ----------- COLORS -----------  */}
-  <div class="flex justify-center mb-4">
-    <p class="text-xl">COLORS</p>
-  </div>
+<LandingLayout title="MH Lance - Theme">
+  {/* Colors */}
+  <SectionTitle title="colors" emoji="🎨" />
 
   <div class="flex justify-center gap-4">
     <div>
@@ -72,4 +65,4 @@ const ExampleText = 'Text';
       <div class=`bg-error-darker ${BoxSize} ${BoxStyle}`>darker</div>
     </div>
   </div>
-</MainLayout>
+</LandingLayout>

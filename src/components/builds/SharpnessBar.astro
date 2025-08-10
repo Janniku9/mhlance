@@ -13,7 +13,7 @@ const { hits, type, class: className } = Astro.props;
 
 <div class:list={['w-full mb-6', className]}>
   <div class="flex items-center justify-between mb-2">
-    <span class="text-sm text-text/60">SHARPNESS</span>
+    <span class="text-sm text-secondary-light group-hover:text-secondary">SHARPNESS</span>
     <span class="text-sm font-medium">{hits} {type.toLocaleLowerCase()} hits</span>
   </div>
   <div class="h-2 bg-text/10 rounded-full overflow-hidden">

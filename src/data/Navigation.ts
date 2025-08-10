@@ -5,6 +5,29 @@ export const games: GameNavigation[] = [
     game: 'world',
     title: 'World/Iceborne',
     emoji: '🧊',
+    gameDescription:
+      'Master the clutch claw, perfect your guard timing, and learn how to dominate the icy challenges of Iceborne.',
+    playlistId: 'PLMgaMGsEoNvmMAOMQ8PFmnGvaGuLO_nVd',
+    featuredLinks: [
+      {
+        href: '/world/combos',
+        emoji: '🥊',
+        title: 'Combos',
+        description: 'Master the best lance combos for maximum damage!',
+      },
+      {
+        href: '/world/guard-up',
+        emoji: '🛡️',
+        title: 'Guard Up',
+        description: 'Complete reference of all attacks requiring Guard Up.',
+      },
+      {
+        href: '/world/motion-values',
+        emoji: '🔍',
+        title: 'Motion Values',
+        description: 'Motion values for all weapons in World/Iceborne.',
+      },
+    ],
     sections: {
       builds: [
         {
@@ -18,6 +41,7 @@ export const games: GameNavigation[] = [
           id: 'high-rank',
           title: 'High Rank',
           emoji: '💠',
+          showInQuickLinks: true,
           navDescription: 'High rank progression builds',
           pageDescription: 'Optimized lance builds for High Rank progression! ',
         },
@@ -122,6 +146,48 @@ export const games: GameNavigation[] = [
     game: 'rise',
     title: 'Rise/Sunbreak',
     emoji: '🌅',
+    gameDescription:
+      'Learn the counters and switch skill in sunbreak to beat even the toughest anomaly investigations.',
+    playlistId: 'PLMgaMGsEoNvkWNRlP2hCDo_resRVXILO4',
+    featuredLinks: [
+      {
+        href: '/rise/builds/endgame',
+        emoji: '👑',
+        title: 'Endgame Builds',
+        description:
+          'Endgame builds for everyone that completed the story! (Updated for patch 16.0)',
+      },
+      {
+        href: '/rise/guides/switch-skills',
+        emoji: '🔄',
+        title: 'Switch Skills',
+        description: 'Master the new Switch Skills system introduced in Sunbreak!',
+      },
+      {
+        href: '/rise/guides/combos',
+        emoji: '🥊',
+        title: 'Combos',
+        description: 'Master the best lance combos for maximum damage!',
+      },
+      {
+        href: '/rise/guides/palamutes',
+        emoji: '🐕‍',
+        title: 'Palamutes',
+        description: 'Turn your dogs into dps machines! Best palamute equipment and skills.',
+      },
+      {
+        href: '/rise/data/match-ups',
+        emoji: '📝',
+        title: 'Match Ups',
+        description: 'Complete matchup guide showing the best builds for every monster!',
+      },
+      {
+        href: '/rise/data/guard-up',
+        emoji: '🛡️',
+        title: 'Guard Up',
+        description: 'Complete reference of all attacks requiring Guard Up.',
+      },
+    ],
     sections: {
       builds: [
         {
@@ -138,6 +204,7 @@ export const games: GameNavigation[] = [
           title: 'High Rank',
           emoji: '🌄',
           navDescription: 'High rank progression builds',
+          showInQuickLinks: true,
           pageDescription:
             'Power through High Rank with optimized lance builds! From starter gear to endgame sets.',
         },
@@ -155,6 +222,7 @@ export const games: GameNavigation[] = [
           title: 'Post-Story',
           emoji: '🩸',
           navDescription: 'Post story & anomaly progression builds',
+          showInQuickLinks: true,
           pageDescription:
             'Dominate Anomaly Investigations with specialized builds for efficient farming!',
         },
@@ -264,11 +332,130 @@ export const games: GameNavigation[] = [
     game: 'wilds',
     title: 'Wilds',
     emoji: '🌿',
+    gameDescription:
+      'Perfect your follow up attacks and master the newly introduced Focus Mode to adapt to the untamed wilderness that the new Monster Hunter game brings.',
+    playlistId: 'PLMgaMGsEoNvm348bMTeveCS1WZlisWQWq',
+    featuredLinks: [
+      {
+        href: '/wilds/builds/endgame',
+        emoji: '👑',
+        title: 'Endgame',
+        description: 'Best endgame builds for the current update.',
+      },
+      {
+        href: '/wilds/guides/focus-mode',
+        emoji: '🤺',
+        title: 'Focus Mode',
+        description: 'Master the new Focus Mode for optimal damage output!',
+      },
+      {
+        href: '/wilds/guides/combos',
+        emoji: '🥊',
+        title: 'Combos',
+        description: 'Best combo and neutral guide for all situations!',
+      },
+      {
+        href: '/wilds/data/match-ups',
+        emoji: '📝',
+        title: 'Match Ups',
+        description: 'Complete match up table showing all weaknesses.',
+      },
+    ],
     sections: {
-      builds: [],
-      guides: [],
+      builds: [
+        {
+          id: 'low-rank',
+          emoji: '🏜️',
+          title: 'Low Rank',
+          navDescription: 'Low rank story progression builds',
+          pageDescription:
+            'Journey through ancient Wyveria with optimized builds for discovering the Dragontorch mysteries!',
+        },
+        {
+          id: 'high-rank',
+          emoji: '⛓️',
+          title: 'High Rank',
+          navDescription: 'High rank progression builds',
+          showInQuickLinks: true,
+          pageDescription:
+            'Experience the consequences of shutting down the Dragontorch with powerful high rank builds!',
+        },
+        {
+          id: 'endgame',
+          emoji: '👑',
+          title: 'Endgame',
+          navDescription: 'High rank endgame builds',
+          showInQuickLinks: true,
+          pageDescription:
+            'Face the White Wraith and Tempered monsters with powerful endgame lance builds!',
+        },
+      ],
+      guides: [
+        {
+          id: 'focus-mode',
+          emoji: '🤺',
+          title: 'Focus Mode',
+          navDescription: 'Master the new precision targeting system',
+          showInQuickLinks: true,
+          pageDescription:
+            'Learn to use and take advantage of the new Focus Mode to maximize your damage output!',
+        },
+        {
+          id: 'counters',
+          emoji: '🛡️',
+          title: 'Counters',
+          navDescription: 'Perfect your counter attacks',
+          showInQuickLinks: true,
+          pageDescription:
+            'Master lance counter mechanics to turn enemy aggression into your advantage!',
+        },
+        {
+          id: 'combos',
+          emoji: '🥊',
+          title: 'Combos',
+          navDescription: 'Optimal combos for all situations',
+          showInQuickLinks: true,
+          pageDescription: 'Unleash most optimal lance combos for all situations and playstyles!',
+        },
+      ],
       tools: [],
-      data: [],
+      data: [
+        {
+          id: 'match-ups',
+          emoji: '📝',
+          title: 'Match Ups',
+          navDescription: 'Optimal builds for every monster matchup',
+          showInQuickLinks: true,
+          pageDescription: 'Complete matchup guide showing the best builds for every monster! ',
+        },
+        {
+          id: 'guard-up',
+          emoji: '🛡️',
+          title: 'Guard Up',
+          navDescription: 'All blockable & unblockable attacks',
+          showInQuickLinks: true,
+          pageDescription:
+            'Complete list of attacks requiring Guard Up and truly unblockable moves! ',
+        },
+        {
+          id: 'motion-values',
+          emoji: '🔍',
+          title: 'Motion Values',
+          navDescription: 'Motion values for all weapons',
+          externalLink:
+            'https://docs.google.com/spreadsheets/d/1I8j9nM7xWXDd2n9WMZTitSGkFe8R89SqHr0sEjoR4Fs/edit?gid=510034666#gid=510034666',
+        },
+        {
+          id: 'calculator',
+          emoji: '🧮',
+          externalLink:
+            'https://docs.google.com/spreadsheets/d/1rLmn3sO7HrdtiSiK60FC2mneoQCJ8roP2nNSNNmvjE0/edit?gid=614892569#gid=614892569https://dotmh.com/tools/damage-calculator',
+          title: "Dot's Damage Calculator",
+          navDescription: 'Calculate damage output of builds',
+          pageDescription:
+            "Use this external tool to calculate your damage output based on your build and the monster you're fighting.",
+        },
+      ],
     },
   },
 ];

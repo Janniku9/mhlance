@@ -163,6 +163,9 @@ export function getComboTagColor(tag: ComboTag): string {
     case ComboTag.ExecutionComplex:
       // error light color
       return 'bg-error-light/20 border-error-light/30 text-error-lighter';
+    case ComboTag.Reposition:
+      // warning light color
+      return 'bg-warning-light/20 border-warning-light/30 text-warning-lighter';
     default:
       return '';
   }

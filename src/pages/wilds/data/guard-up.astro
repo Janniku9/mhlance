@@ -1,0 +1,33 @@
+---
+import GuardUpList from '../../../components/data/GuardUpList.astro';
+import { wildsGuardUp } from '../../../data/wilds/GuardUp';
+import { wildsMonsters } from '../../../data/wilds/Monsters';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+---
+
+<ContentLayout>
+  <p>
+    Guard Up returns in Monster Hunter Wilds as a three-level skill that allows you to block
+    otherwise unblockable attacks, though you'll still take chip damage. Higher skill levels reduce
+    the amount of damage taken from these special attacks. For pins and grabs, Guard Up 1 is
+    sufficient since these moves don't deal direct damage, but against endgame monsters, you should
+    always run Guard Up 3 when blocking these attacks, as the chip damage at levels 1 and 2 can
+    still be lethal.
+  </p>
+
+  <p>
+    With the introduction of the new Charged Counter move, Guard Up has become less essential for
+    many situations. Any Guard Up attack can be completely avoided using the invincibility frames
+    from a successful Charged Counter. If you're confident with the timing and can read monster
+    attacks well, you can often rely on Charged Counter instead of investing skill points into Guard
+    Up.
+  </p>
+
+  <p>
+    However, understanding which attacks require Guard Up or are truly unblockable remains important
+    for defensive play. Below is a comprehensive list of all attacks that need Guard Up to block, as
+    well as those that cannot be blocked even with the skill active.
+  </p>
+
+  <GuardUpList guardUpData={wildsGuardUp} monsterData={wildsMonsters} />
+</ContentLayout>

@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
+import BaseCard from '../common/BaseCard.astro';
+import BaseCardSubTitle from '../common/BaseCardSubTitle.astro';
+import BaseCardTitle from '../common/BaseCardTitle.astro';
 
 interface Props {
   name: string;
@@ -10,6 +13,10 @@ interface Props {
   class?: string;
   reversed?: boolean;
   imageTargetWidth?: string;
+  hoverable?: boolean;
+  scaled?: boolean;
+  href?: string;
+  disabled?: boolean;
 }
 
 const {
@@ -20,25 +27,21 @@ const {
   class: className,
   reversed = false,
   imageTargetWidth = '200px',
+  hoverable = true,
+  scaled = true,
+  href,
+  disabled = false,
 } = Astro.props;
 ---
 
-<div
-  data-gadget-card-auto-hover
-  class:list={[
-    'group relative bg-background-dark border border-text/10 rounded-xl md:rounded-3xl overflow-hidden',
-    'transition-all duration-300 hover:bg-background-darker hover:scale-[1.02]',
-    'hover:shadow-2xl hover:shadow-primary/5 animate-fade-in',
-    className,
-  ]}
+<BaseCard
+  class={className}
+  hoverable={hoverable}
+  scaled={scaled}
+  href={href}
+  disabled={disabled}
+  dataAttribute="data-gadget-card-auto-hover"
 >
-  <!-- Hover gradient overlay -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent
-            opacity-0 group-hover:opacity-100 transition-all duration-300"
-  >
-  </div>
-
   <div class="flex flex-col md:flex-row">
     <!-- Image Column (40%) -->
     <div
@@ -48,9 +51,7 @@ const {
         reversed ? 'md:order-2 md:border-l md:border-r-0' : 'md:order-1',
       ]}
     >
-      <h3 class="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-        {name}
-      </h3>
+      <BaseCardTitle title={name} class="mb-5" />
 
       <!-- Image -->
       <div class="flex justify-center mb-6">
@@ -74,7 +75,7 @@ const {
     >
       <!-- Description -->
       <div class="mb-6">
-        <span class="text-sm text-text/60 block mb-2">DESCRIPTION</span>
+        <BaseCardSubTitle title="DESCRIPTION" class="mb-2" />
         {description.map((para) => <p class="text-sm text-text/80 mb-4 last:mb-0">{para}</p>)}
       </div>
 
@@ -82,7 +83,7 @@ const {
       {
         effects.length > 0 && (
           <div class="mb-6">
-            <span class="text-sm text-text/60 block mb-2">ABILITIES</span>
+            <BaseCardSubTitle title="ABILITIES" class="mb-2" />
             <ul class="space-y-2">
               {effects.map((effect) => (
                 <li class="text-sm text-text/80 flex items-start gap-2">
@@ -101,24 +102,7 @@ const {
       <slot />
     </div>
   </div>
-</div>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
-  }
-</style>
+</BaseCard>
 
 <script>
   import autoHoverDirective from '../../directives/auto-hover';
