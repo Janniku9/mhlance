@@ -28,7 +28,7 @@ export const wildsMatchups: Matchups[] = [
             name: 'hirabami',
           },
           {
-            name: 'jhin dahaad',
+            name: 'jin dahaad',
           },
           {
             name: 'lagiacrus',
@@ -44,7 +44,7 @@ export const wildsMatchups: Matchups[] = [
         color: '#2563eb',
         monsters: [
           {
-            name: 'ajarkan',
+            name: 'ajarakan',
           },
           {
             name: 'gravios',
@@ -134,10 +134,10 @@ export const wildsMatchups: Matchups[] = [
         emoji: '💥',
         color: '#f38c37',
         monsters: [
-          { name: 'arkveld' },
           {
             name: 'guardian arkveld',
           },
+          { name: 'arkveld' },
         ],
       },
     ],

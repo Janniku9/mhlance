@@ -2,8 +2,8 @@ import type { GuardUp } from '../../types/Monsters';
 
 export const wildsGuardUp: GuardUp[] = [
   {
-    name: 'jhin dahaad',
-    trueUnblockable: ['Ice nova where he curls up. Can counter charge it though'],
+    name: 'jin dahaad',
+    trueUnblockable: ['ice nova where he curls up. can counter charge it though'],
   },
   {
     name: 'zoh shia',

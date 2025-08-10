@@ -1,6 +1,6 @@
 import type { Monster } from '../../types/Monsters';
 
-import ajarkan from '../../assets/wilds/monsters/ajarkan.png';
+import ajarakan from '../../assets/wilds/monsters/ajarakan.png';
 import arkveld from '../../assets/wilds/monsters/arkveld.png';
 import balahara from '../../assets/wilds/monsters/balahara.png';
 import blangonga from '../../assets/wilds/monsters/blangonga.png';
@@ -16,7 +16,7 @@ import guardian_fulgur_anjanath from '../../assets/wilds/monsters/guardian_fulgu
 import guardian_rathalos from '../../assets/wilds/monsters/guardian_rathalos.png';
 import gypceros from '../../assets/wilds/monsters/gypceros.png';
 import hirabami from '../../assets/wilds/monsters/hirabami.png';
-import jhin_dahaad from '../../assets/wilds/monsters/jhin_dahaad.png';
+import jin_dahaad from '../../assets/wilds/monsters/jin_dahaad.png';
 import lagiacrus from '../../assets/wilds/monsters/lagiacrus.png';
 import lala_barina from '../../assets/wilds/monsters/lala_barina.png';
 import mizutsune from '../../assets/wilds/monsters/mizutsune.png';
@@ -35,8 +35,8 @@ import zoh_shia from '../../assets/wilds/monsters/zoh_shia.png';
 
 export const wildsMonsters: Monster[] = [
   {
-    name: 'ajarkan',
-    image: ajarkan,
+    name: 'ajarakan',
+    image: ajarakan,
   },
   {
     name: 'arkveld',
@@ -99,8 +99,8 @@ export const wildsMonsters: Monster[] = [
     image: hirabami,
   },
   {
-    name: 'jhin dahaad',
-    image: jhin_dahaad,
+    name: 'jin dahaad',
+    image: jin_dahaad,
   },
   {
     name: 'lagiacrus',
