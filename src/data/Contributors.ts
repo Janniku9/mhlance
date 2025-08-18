@@ -43,7 +43,7 @@ export const contributors: Contributor[] = [
   {
     name: 'Dot Execute',
     contributions: {
-      wilds: 'damage calculator',
+      wilds: 'damage calculator and MV sheet',
     },
     socials: {
       youtube: 'https://www.youtube.com/channel/UCCVlgaeVKSj6zpUrVGgEjhg',

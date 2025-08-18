@@ -441,7 +441,7 @@ export const games: GameNavigation[] = [
           id: 'motion-values',
           emoji: '🔍',
           title: 'Motion Values',
-          navDescription: 'Motion values for all weapons',
+          navDescription: 'Motion values for lance',
           externalLink:
             'https://docs.google.com/spreadsheets/d/1I8j9nM7xWXDd2n9WMZTitSGkFe8R89SqHr0sEjoR4Fs/edit?gid=510034666#gid=510034666',
         },
@@ -454,6 +454,13 @@ export const games: GameNavigation[] = [
           navDescription: 'Calculate damage output of builds',
           pageDescription:
             "Use this external tool to calculate your damage output based on your build and the monster you're fighting.",
+        },
+        {
+          id: 'monster-data',
+          title: 'Monster Database',
+          emoji: '👾',
+          navDescription: 'HP, Hitzone, weaknesses, and more!',
+          externalLink: 'https://robomeche.github.io/MHWilds-Database/',
         },
       ],
     },
