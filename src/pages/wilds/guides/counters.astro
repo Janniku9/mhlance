@@ -1,4 +1,5 @@
 ---
+import Comment from '../../../components/common/Comment.astro';
 import GifCard from '../../../components/common/GifCard.astro';
 import Section from '../../../components/common/Section.astro';
 import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
@@ -19,17 +20,15 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
   <Section title="Charged Counter (CC)">
     <p>
-      Charged Counter stands as Lance's most powerful new tool: a broken counter that grows stronger
-      the deeper you are in your combo sequence. The mechanic rewards aggressive play by granting
-      higher damage multipliers based on your current combo position.
+      Charged Counter is Lance's most powerful new tool: a counter that completely negates all
+      damage and grows stronger the higher the charge level is.
     </p>
 
     <p>
-      The charge system works intuitively: each attack in your three-hit combo sequence increases
-      your starting charge level. Starting from neutral gives you level 0 (briefly), after one
-      attack you begin at level 1, after two attacks you start at level 2, and after three attacks
-      you immediately reach the maximum level 3 charge. Each level is represented by a different
-      color and
+      Each attack in your three-hit combo sequence increases your starting charge level. Starting
+      from neutral gives you level 0 (briefly), after one attack you begin at level 1, after two
+      attacks you start at level 2, and after three attacks you immediately reach the maximum level
+      3 charge. Each level is represented by a different color and
     </p>
 
     <StyledList
@@ -63,8 +62,8 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
     <p>
       While you can manually charge from any level to increase damage further, this rarely proves
-      worthwhile in practice. The time spent charging could usually be better invested in additional
-      pokes before triggering the counter.
+      worthwhile in practice as it's faster to simply perform additional pokes to reach the desired
+      charge level.
     </p>
 
     <SectionSubTitle title="The Counter Mechanism" />
@@ -84,7 +83,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
     <p>
       Funnily enough, even though you i-frame through the attack (not block it), it still procs the
-      Offensive Guard skill, making it this the best counter in the game, especially if used at
+      Offensive Guard skill, making this one of the best counters in the game, especially if used at
       yellow or red charge level.
     </p>
 
@@ -103,8 +102,9 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     <p>
       Charged Counter also has this unique property, that if you counter a multi-hit attack, like
       Zoh Shia's Flame Breath or the Lagiacrus's Thunder AOE, for as long as you don't press any
-      buttons afterwards, you'll ignore all future hitboxes of that attack. Which is situationally
-      very useful to know.
+      buttons (including move stick) afterwards, you'll ignore all future hitboxes of that attack.
+      This is very useful, as it allows you to just wait out some longer multi-hit attacks that
+      would otherwise chip you to death.
     </p>
 
     <SectionSubTitle title="Counter Chaining" />
@@ -116,7 +116,7 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     </p>
 
     <p>
-      This technique allows back-to-back counters against deliberate monster combinations, though it
+      This technique allows back-to-back counters against certain monster attack patterns, though it
       requires good knowledge of attack timings.
     </p>
   </Section>
@@ -169,9 +169,9 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     <SectionSubTitle title="When to choose Perfect Guard?" />
 
     <p>
-      Perfect Guard functions best as a defensive safety net rather than a primary strategy. While
-      Charged Counter and Grand Retribution Thrust typically offer superior damage and utility,
-      Perfect Guard shines in specific scenarios:
+      Perfect Guard functions best as a defensive safety net rather than your primary defensive
+      option. While Charged Counter and Grand Retribution Thrust typically offer superior damage and
+      utility, Perfect Guard shines in some situations:
     </p>
 
     <StyledList
@@ -194,13 +194,13 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     <p>
       So when you compare blocking attacks with guard level 0, using normal block and perfect guard,
       you will notice that the perfect guard results in less chip damage and faster recovery. This
-      is because I assume that perfect guard has some sort of build-in guard levels. If you start
-      including guard levels, it will start to get weird though, as it doesn't seem to scale with
-      it.
+      is because perfect guard has some built in levels of guard. Unfortunately, this seems to be
+      fixed though, and does not scale with the guard skill, meaning that you can't improve the
+      perfect guard knockback or chip damage with guard skills.
     </p>
 
     <p>
-      No matter if you have guard level 0 or 3, it seems you always take the same amount of
+      So no matter if you have guard level 0 or 3, it seems you always take the same amount of
       knockback and chip damage, when using perfect guard, completely ignoring the guard level,
       which is a very weird game design choice, basically making it impossible to improve the
       knockback and lag you take on strong attacks, when using perfect guard.
@@ -209,56 +209,33 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
   <Section title="Power Guard (PoG)">
     <p>
-      Power Guard returns from previous games with enhanced functionality, creating a specialized
-      defensive stance that opens unique counter opportunities. Activate it by holding the dodge
-      button while blocking or charging a counter, entering a distinctive stance with 360-degree
-      protection.
+      Power Guard returns from previous games with a new hidden meter mechanic. You can enter Power
+      Guard by holding the dodge button while blocking or charging a counter, entering a distinctive
+      stance with 360-degree guard angle.
     </p>
 
     <p>
-      The stance offers several defensive advantages: complete directional coverage eliminates the
-      need to face attacks directly, and the continuous stamina drain system allows indefinite
-      blocking as long as stamina remains available. This makes Power Guard excellent for handling
-      complex multi-hit combinations without worrying about stamina depletion on individual blocks.
+      The stance offers several defensive advantages: it allows blocking attacks from all
+      directions, and the continuous stamina drain system allows indefinite blocking as long as
+      stamina remains available. This makes Power Guard excellent for handling complex multi-hit
+      combinations or attacks from multiple angles.
     </p>
 
     <p>
-      However, Power Guard increases chip damage compared to normal blocking, creating a meaningful
-      trade-off between defensive utility and health preservation. Unlike Iceborne, Wilds does not
-      have the automatic Guard Up effect, so unblockable attacks remain unblockable regardless of
-      Power Guard duration.
+      However, Power Guard increases chip damage compared to normal blocking, creating a trade-off
+      for better stamina management and stronger follow ups at the cost of taking more damage.
+      Unlike Iceborne, Wilds does not have the automatic Guard Up effect, so unblockable attacks
+      remain unblockable regardless of Power Guard duration.
     </p>
 
     <SectionSubTitle title="Grand Retribution Thrust (GRT)" />
 
     <p>
-      Power Guard's primary value lies in accessing Grand Retribution Thrust, potentially Lance's
-      highest-damage attack when conditions align properly. Blocking any attack while in Power Guard
-      fills a hidden meter visible through your lance's glow intensity.
+      Power Guard's primary value lies in it's strong follow ups and new level mechanic, allowing
+      access to Grand Retribution Thrust, Lance's highest-damage attack when conditions align
+      properly. Blocking any attack while in Power Guard fills a hidden meter visible through your
+      lance's glow intensity.
     </p>
-
-    <p>The meter progression affects GRT damage significantly:</p>
-
-    <StyledList
-      items={[
-        {
-          text: 'White',
-          emoji: '⬜',
-          subtext:
-            'minimum you need to perform the Grand Retribution Thrust. Blocking any attack will at least give you this level.',
-        },
-        {
-          text: 'Orange',
-          emoji: '🟧',
-          subtext: 'Boosts the damage of the Grand Retribution Thrust by 40%.',
-        },
-        {
-          text: 'Red',
-          emoji: '🟥',
-          subtext: 'Boosts the damage of the Grand Retribution Thrust by 70%.',
-        },
-      ]}
-    />
 
     <GifCard
       reversed
@@ -268,23 +245,51 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     >
       <p>
         Versus Rey Dau, when he does the double wing attack, you can Charge Counter the first one,
-        then you could do another CC on the second one, but since your combo will be max at level 1,
-        you can also do a GRT with guaranteed orange level, dealing slightly more damage and being
-        able to punish the wide opening with a triple thrust or a dash attack.
+        then you could do another CC on the second one, but since your combo will be max at level 1
+        (giving you a low damage CC), you can also do a GRT with guaranteed orange level, dealing
+        slightly more damage and being able to punish the wide opening with a triple thrust or a
+        dash attack immediately after.
       </p>
     </GifCard>
-
-    <p>
-      The damage boost doesn't only apply to GRT, it also applies to other follow-up attacks like
-      Leaping Thrust. In some situations, this boosted leaping thrust can also be a valid option as
-      it's very quick, deals good damage, and closes quite a bit of distance.
-    </p>
 
     <p>
       Grand Retribution Thrust executes as a backward leap followed by a devastating forward thrust
       dealing three damage ticks instead of the typical two. A GRT at red level is the highest
       damage attack Lance can perform, surpassing even the Charged Counter.
     </p>
+
+    <p>
+      GRT isn't the only follow up from Power Guard, there's also other follow-up attacks like
+      Leaping Thrust. In some situations, this boosted leaping thrust can also be a valid option as
+      it's very quick, deals good damage, and closes quite a bit of distance.
+    </p>
+
+    <p>The meter progression affects follow up attack damage significantly:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'White',
+          emoji: '⬜',
+          subtext:
+            'minimum you need to perform the Grand Retribution Thrust. Blocking any attack will at least give you this level. It buffs attacks by 10%',
+        },
+        {
+          text: 'Orange',
+          emoji: '🟧',
+          subtext: 'Boosts the damage of follow up attacks by 30%.',
+        },
+        {
+          text: 'Red',
+          emoji: '🟥',
+          subtext: 'Boosts the damage of follow up attacks by 70%.',
+        },
+      ]}
+    />
+
+    <Comment>
+      the level buff only applies to the raw damage part. Element attack does not get boosted.
+    </Comment>
 
     <SectionSubTitle title="When to use Power Guard and GRT?" />
 
@@ -322,6 +327,11 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     </p>
 
     <p>
+      Especially with the august balance patch, increasing GRT damage and reducing power guard chip
+      damage, make this move a lot more viable than before.
+    </p>
+
+    <p>
       So to summarize, Power Guard and Grand Retribution Thrust are good when you have no charge
       level for a charged counter and you know you can get a red level buff on the power guard. It
       can also be used for gap closing, as charged counter is very stationary.
@@ -329,13 +339,13 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
 
     <SectionSubTitle title="GRT Jump Tech" />
     <p>
-      Let's look at how to get even more out of GRT, so as we learned when performing the Grand
+      Let's look at how to get even more out of GRT: as we learned when performing the Grand
       Retribution Thrust, you will jump back before jumping forward with a thrust. Now there's a
       really cool tech where you can combine these two movements into the same direction, allowing
-      you to close larger gaps and dealing massive damage in the process.
+      you to close even larger gaps and dealing massive damage in the process.
     </p>
 
-    <p>So to perform the GRT Jump Tech you want to:</p>
+    <p>To perform the GRT Jump Tech you want to:</p>
 
     <StyledList
       items={[
@@ -382,13 +392,8 @@ import ContentLayout from '../../../layouts/ContentLayout.astro';
     <p>
       Even when you want to use it as a gap closer, like in some older games, you know have better
       options, as you can perform a leaping thrust out of neutral, by pressing both poke buttons at
-      the same time. And most of the time this distance is enough, making it a better option because
-      you deal damage and it's faster than doing a guard dash into a leaping thrust.
-    </p>
-
-    <p>
-      Unless you need the extra mobility range or defensive coverage during positioning, alternative
-      gap closers generally prove more efficient and damaging.
+      the same time. And most of the time (thanks to the august balance patch) this distance is more
+      than enough, making it a better option because you deal damage and don't lose stamina.
     </p>
   </Section>
 </ContentLayout>
