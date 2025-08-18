@@ -4,6 +4,7 @@ import tu6Thumbnail from '../assets/rise/tu6.png';
 import iceborneProp from '../assets/world/iprog.png';
 import wildsThumbnail from '../assets/wilds/coming_soon.png';
 import wildsTu2 from '../assets/wilds/tu2.png';
+import wildsAugustBuffs from '../assets/wilds/august_buffs.png';
 
 export const news: News[] = [
   {
@@ -40,6 +41,15 @@ export const news: News[] = [
     date: '2025-08-03',
     title: 'New Endgame Builds for TU2',
     description: 'Updated endgame builds for Lagiacrus, Seregios and Arch Tempered Uth Duna!',
+    game: 'wilds',
+  },
+  {
+    href: '/wilds/guides/combos',
+    type: 'builds',
+    image: wildsAugustBuffs,
+    date: '2025-08-19',
+    title: 'Updated Combos & Counters for Balance Patch',
+    description: 'Lance Buffs are finally here, Find out what changed',
     game: 'wilds',
   },
 ];
