@@ -10,7 +10,7 @@ const { className, type = 'info' } = Astro.props;
 
 const variants = {
   info: {
-    bg: 'bg-info/20 hover:bg-info/25',
+    bg: 'bg-info/30 hover:bg-info/35',
     border: 'border-info/20 hover:border-info/30',
     gradient: 'from-info/10',
     iconBg: 'bg-info/20 group-hover:bg-info/30',
@@ -26,7 +26,7 @@ const variants = {
     iconColor: 'text-success',
   },
   warning: {
-    bg: 'bg-warning/5 hover:bg-warning/10',
+    bg: 'bg-warning/15 hover:bg-warning/20',
     border: 'border-warning/20 hover:border-warning/30',
     gradient: 'from-warning/10',
     iconBg: 'bg-warning/20 group-hover:bg-warning/30',
@@ -90,7 +90,7 @@ const variant = variants[type];
       </div>
     </div>
 
-    <div class="flex flex-col gap-4 text-sm md:text-md text-text/70 text-center sm:text-left">
+    <div class="flex flex-col gap-4 text-sm md:text-md text-text/80 text-center sm:text-left">
       <slot />
     </div>
   </div>

@@ -20,7 +20,7 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
 
 <ContentLayout title="Coming Soon">
   <Section>
-    <Comment> last updated for AT Uth Duna </Comment>
+    <Comment> last updated for august balance update </Comment>
 
     <p>
       These are the current endgame builds for Title Update 2, which added Seregios and Lagiacrus.
@@ -51,9 +51,9 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
     />
 
     <p>
-      For reinforcement bonuses, aim for 1 sharpness and 4 attack (2 sharpness 3 attack is the
-      second best). Even if you only get 2-3 attack reinforcements, the weapon will still outperform
-      the craftable alternatives.
+      For reinforcement bonuses, aim for 1 sharpness and 4 attack. Anything that has 1 sharpness and
+      at least 2 raw is considered a good roll and pretty much beats all craftable weapons (except
+      for thunder).
     </p>
 
     <SectionSubSubTitle title="Weapon Decorations" />
@@ -86,21 +86,18 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
     </p>
 
     <p>
-      Since our affinity is pretty high now, Master's Touch is slowly starts being better for
-      sharpness management. Most sets have around 80% average affinity, we get <CodeBlock
-        text="1/(1 - (0.8*0.8)) = 2.78"
-      /> times the sharpness. And with the Artian lances being at 50 hits that results in around 138
-      hits. On the other hand, Razor Sharp just doubles the sharpness, which is 120 hits if you pick
-      a handicraft combo or 100 hits if you pick a guard or elemental attack combo.
+      With our high affinity builds (around 80% average), Master's Touch becomes more effective than
+      Razor Sharp for sharpness management. At 80% affinity, Master's Touch effectively multiplies
+      your sharpness by 2.78x, giving Artian lances around 138 effective hits compared to Razor
+      Sharp's flat doubling (100-120 hits depending on your combo decoration choice).
     </p>
 
     <SectionSubSubTitle title="Craftable Weapons" />
 
     <p>
-      The Lagiacrus lance can actually match or and even beat the Artian Thunder Lance in very
-      elemental-heavy matchups like Seregios if you manage to reach high thunder resistance. For
-      longer hunts, an Artian with god roll probably still wins due to better slots, giving it
-      better sharpness.
+      The Lagiacrus lance actually beats the Artian Thunder Lance in very elemental-heavy matchups
+      like Seregios and if you manage to reach high thunder resistance. For longer hunts, an Artian
+      with god roll probably still wins due to better slots, giving it better sharpness.
     </p>
 
     <InfoBox>
@@ -119,9 +116,9 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
     <SectionSubTitle title="Element vs Raw" />
     <p>
       Since Artian weapons can all reach the same raw damage, using elemental ones just adds free
-      damage on top. If you can afford to make 6 different Artian lances (5 element and 1
-      status/raw), definitely do it. Using the right element typically adds 5-10% damage, which
-      really adds up over time.
+      damage on top. If possible, craft 6 different Artian lances (one for each element plus one
+      status/raw weapon) to maximize your damage potential across all matchups.. Using the right
+      element typically adds 5-10% damage, which really adds up over time.
     </p>
 
     <p>Check the matchup table to see which element works best against each monster.</p>
@@ -131,6 +128,38 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
     <p>
       If you want to stick with raw weapons, blast is generally the best option, though paralysis is
       also solid for the openings it creates.
+    </p>
+
+    <SectionSubTitle title="RNG Charms" />
+
+    <p>
+      The latest update added a new charm system. Unfortunately they are all random and not that
+      good, unless you get a really really good one (probably considered a god charm), sticking to
+      the craftable charms is still better.
+    </p>
+
+    <p>So what is a really good charm? A good charm gives you:</p>
+
+    <StyledList
+      items={[
+        {
+          text: 'Armor Skills',
+          subtext: '1 point of Wex/Agi or Burst',
+          emoji: '🛡️',
+        },
+        {
+          text: 'Weapon Skills',
+          subtext: 'All 3 levels of Offensive Guard or Razor Sharp',
+          emoji: '🗡️',
+        },
+      ]}
+    />
+
+    <p>
+      As you can see, the needed charm is pretty crazy, but what it allows you to do is basically
+      drop 1 level of Agitator and slot in the remaining 2 levels of crit boost into the freed
+      weapon slot. Doing so results in around a 1-2% damage increase, which is pretty low
+      considering the estimated effort required to obtain such a charm.
     </p>
 
     <SectionSubTitle title="Armor" />
@@ -146,6 +175,13 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
     </p>
 
     <p>Now with all that covered, let's take a look at the builds.</p>
+
+    <InfoBox type="warning">
+      <p>
+        All builds use craftable charms since RNG charms with meaningful damage increases are too
+        rare to rely on as a baseline requirement.
+      </p>
+    </InfoBox>
   </Section>
 
   <Section title="latent power set" emoji="💪">
