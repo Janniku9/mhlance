@@ -69,7 +69,9 @@ const getNewsTypeColor = (type: string) => {
                 </div>
                 <div class="flex items-center justify-between">
                   <Badge text={news.type} color={getNewsTypeColor(news.type)} class="uppercase border text-xs" />
-                  <span class="text-xs text-text/50 uppercase">{news.date}</span>
+                  <span class="text-xs text-text/50 uppercase">
+                    {new Date(news.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </span>
                 </div>
                 <div>
                   <BaseCardTitle title={news.title} class="mb-1 group-hover:text-primary transition-colors" />
@@ -94,7 +96,9 @@ const getNewsTypeColor = (type: string) => {
                 <div class="flex-grow space-y-3">
                   <div class="flex items-center justify-between">
                     <Badge text={news.type} color={getNewsTypeColor(news.type)} class="uppercase border text-xs" />
-                    <span class="text-sm text-text/50 uppercase">{news.date}</span>
+                    <span class="text-xs text-text/50 uppercase">
+                      {new Date(news.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </span>
                   </div>
                   <div>
                     <BaseCardTitle title={news.title} class="mb-2 group-hover:text-primary transition-colors" />
