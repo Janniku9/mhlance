@@ -12,11 +12,11 @@ export const wildsGuardUp: GuardUp[] = [
   },
   {
     name: 'arkveld',
-    guardUp: ['tail grab attack'],
+    guardUp: ['chainwhip grab attack'],
   },
   {
     name: 'guardian arkveld',
-    guardUp: ['tail grab attack'],
+    guardUp: ['chainwhip grab attack'],
   },
   {
     name: 'rathalos',
