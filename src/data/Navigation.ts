@@ -443,7 +443,7 @@ export const games: GameNavigation[] = [
           title: 'Motion Values',
           navDescription: 'Motion values for lance',
           externalLink:
-            'https://docs.google.com/spreadsheets/d/1I8j9nM7xWXDd2n9WMZTitSGkFe8R89SqHr0sEjoR4Fs/edit?gid=510034666#gid=510034666',
+            'https://docs.google.com/spreadsheets/d/1HH2S0XFVlXoBrpbrsBMTIHjOuolFXo45L8M9tW_jZHM/edit?gid=510034666#gid=510034666',
         },
         {
           id: 'calculator',
