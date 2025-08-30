@@ -19,19 +19,21 @@ const hasContent = (game: GameNavigation) => {
 };
 ---
 
-<div class="relative group/nav h-full">
+<div class="relative group/nav h-full" id="game-nav-dropdown">
   <button
+    id="dropdown-trigger"
     class="bg-primary hover:bg-primary-dark text-background px-4 py-2 rounded-md transition-colors flex items-center gap-2 uppercase text-sm md:text-md"
   >
     {currentGame?.title || 'SELECT GAME'}
     <Icon
       name="mingcute:down-fill"
-      class="w-5 h-5 transition-transform duration-200 group-hover/nav:rotate-180"
+      class="w-5 h-5 transition-transform duration-200 dropdown-icon"
     />
   </button>
 
   <div
-    class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-200 z-50 transform origin-top scale-95 group-hover/nav:scale-100"
+    id="dropdown-menu"
+    class="absolute right-0 top-full pt-3 opacity-0 invisible transition-all duration-200 z-50 transform origin-top scale-95 dropdown-menu"
   >
     <div
       class="bg-background rounded-xl shadow-xl border border-text/10 p-4 min-w-[300px] animate-dropdown"
@@ -40,7 +42,7 @@ const hasContent = (game: GameNavigation) => {
         {
           games.map((game, index) => (
             <li
-              class="opacity-0 translate-y-2 group-hover/nav:opacity-100 group-hover/nav:translate-y-0 transition-all duration-200"
+              class="opacity-0 translate-y-2 transition-all duration-200 dropdown-item"
               style={`transition-delay: ${index * 50}ms`}
             >
               <a
@@ -86,4 +88,148 @@ const hasContent = (game: GameNavigation) => {
   .animate-dropdown {
     animation: dropdown 0.2s ease-out forwards;
   }
+
+  /* Hover */
+  @media (hover: hover) and (pointer: fine) {
+    .group\/nav:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .group\/nav:hover .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .group\/nav:hover .dropdown-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Tap and click */
+  .dropdown-open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .dropdown-open .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-open .dropdown-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
+
+<script>
+  class GameNavDropdown {
+    private dropdown: HTMLElement;
+    private trigger: HTMLButtonElement;
+    private menu: HTMLElement;
+    private isOpen: boolean = false;
+    private isHovered: boolean = false;
+    private isTouchDevice: boolean = false;
+    private hasTouch: boolean = false;
+
+    constructor() {
+      this.dropdown = document.getElementById('game-nav-dropdown') as HTMLElement;
+      this.trigger = document.getElementById('dropdown-trigger') as HTMLButtonElement;
+      this.menu = document.getElementById('dropdown-menu') as HTMLElement;
+
+      if (!this.dropdown || !this.trigger || !this.menu) return;
+
+      this.bindEvents();
+    }
+
+    private bindEvents() {
+      // Click events
+      this.trigger.addEventListener('click', this.handleClick.bind(this));
+      document.addEventListener('click', this.handleOutsideClick.bind(this));
+
+      // Touch events
+      this.trigger.addEventListener('touchstart', this.handleTouchStart.bind(this), {
+        passive: true,
+      });
+
+      // Hover events
+      this.dropdown.addEventListener('mouseenter', this.handleMouseEnter.bind(this));
+      this.dropdown.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+    }
+
+    private handleTouchStart(event: TouchEvent) {
+      this.hasTouch = true;
+      this.isTouchDevice = true;
+    }
+
+    private handleClick(event: Event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      // If touch device, ignore any hover state
+      if (this.isTouchDevice || this.hasTouch) {
+        this.toggle();
+        return;
+      }
+
+      this.toggle();
+    }
+
+    private handleOutsideClick(event: Event) {
+      if (!this.dropdown.contains(event.target as Node)) {
+        this.close();
+      }
+    }
+
+    private handleMouseEnter() {
+      // Don't trigger hover if touch
+      if (this.isTouchDevice || this.hasTouch) return;
+
+      this.isHovered = true;
+      this.open();
+    }
+
+    private handleMouseLeave() {
+      // Don't trigger hover if touch
+      if (this.isTouchDevice || this.hasTouch) return;
+
+      this.isHovered = false;
+      // Small delay to allow moving to menu
+      setTimeout(() => {
+        if (!this.isHovered && !this.isTouchDevice && !this.hasTouch) {
+          this.close();
+        }
+      }, 100);
+    }
+
+    private toggle() {
+      if (this.isOpen) {
+        this.close();
+      } else {
+        this.open();
+      }
+    }
+
+    private open() {
+      this.isOpen = true;
+      this.dropdown.classList.add('dropdown-open');
+    }
+
+    private close() {
+      this.isOpen = false;
+      this.dropdown.classList.remove('dropdown-open');
+    }
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new GameNavDropdown();
+  });
+
+  // Re-initialize on navigation (for Astro's client-side routing)
+  document.addEventListener('astro:page-load', () => {
+    new GameNavDropdown();
+  });
+</script>
