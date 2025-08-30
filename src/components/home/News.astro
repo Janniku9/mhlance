@@ -119,7 +119,7 @@ const getNewsTypeColor = (type: string) => {
       {sortedNews.length > 1 && (
         <div id="news-dots" class="flex justify-center mt-4 gap-2">
           {sortedNews.map(() => (
-            <button class="dot-btn w-3 h-3 rounded-full bg-text/30"></button>
+            <button class="dot-btn w-4 h-4 rounded-full bg-text/30"></button>
           ))}
         </div>
       )}
@@ -138,7 +138,12 @@ const getNewsTypeColor = (type: string) => {
   let activeIndex = 0;
   const track = document.getElementById("news-track");
   const dots = document.querySelectorAll(".dot-btn");
+  const carousel = document.getElementById("news-carousel");
   const total = dots.length;
+
+  // Touch/swipe variables
+  let startX = 0;
+  let isDragging = false;
 
   function showSlide(index: number) {
     if (index < 0 || index >= total) return;
@@ -153,16 +158,70 @@ const getNewsTypeColor = (type: string) => {
     });
   }
 
+  function nextSlide() {
+    activeIndex = (activeIndex + 1) % total;
+    showSlide(activeIndex);
+  }
+
+  function prevSlide() {
+    activeIndex = (activeIndex - 1 + total) % total;
+    showSlide(activeIndex);
+  }
+
+  // Dot navigation
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
       showSlide(i);
     });
   });
 
-  setInterval(() => {
-    activeIndex = (activeIndex + 1) % total;
-    showSlide(activeIndex);
-  }, 10000);
+  // Touch events for mobile swipe
+  if (carousel) {
+    carousel.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    });
 
+    carousel.addEventListener("touchend", (e) => {
+      if (!isDragging) return;
+      
+      const deltaX = e.changedTouches[0].clientX - startX;
+      
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          prevSlide();
+        } else {
+          nextSlide();
+        }
+      }
+      
+      isDragging = false;
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      prevSlide();
+    } else if (e.key === "ArrowRight") {
+      nextSlide();
+    }
+  });
+
+  // Auto-advance (paused during interaction)
+  let autoAdvanceInterval = setInterval(nextSlide, 10000);
+
+  // Pause auto-advance on hover (desktop)
+  if (carousel) {
+    carousel.addEventListener("mouseenter", () => {
+      clearInterval(autoAdvanceInterval);
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+      autoAdvanceInterval = setInterval(nextSlide, 10000);
+    });
+  }
+
+  // Initialize
   showSlide(0);
 </script>
