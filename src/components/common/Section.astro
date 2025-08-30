@@ -73,7 +73,7 @@ const sectionSlug = slug || (title ? generateSlug(title) : undefined);
 
   /* Scroll margin for fixed headers */
   section {
-    scroll-margin-top: 5rem; /* Adjust based on your header height */
+    scroll-margin-top: 8rem; /* Adjust based on your header height */
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -92,12 +92,21 @@ const sectionSlug = slug || (title ? generateSlug(title) : undefined);
 <script>
   import fadeIn, { handleHashNavigation } from '../../directives/fade-in.ts';
 
-  // Initialize hash navigation handling
-  handleHashNavigation();
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize fade-in first
+    const elements = document.querySelectorAll('[data-fade-in]');
+    elements.forEach((element) => {
+      if (element instanceof HTMLElement) fadeIn(element);
+    });
 
-  // Initialize fade-in for all elements
-  const elements = document.querySelectorAll('[data-fade-in]');
-  elements.forEach((element) => {
-    if (element instanceof HTMLElement) fadeIn(element);
+    // Then handle hash navigation after a brief delay
+    setTimeout(() => {
+      handleHashNavigation();
+      if (window.location.hash) {
+        document.querySelector(window.location.hash)?.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
+    }, 100);
   });
 </script>
