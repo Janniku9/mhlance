@@ -10,22 +10,28 @@ export const games: GameNavigation[] = [
     playlistId: 'PLMgaMGsEoNvmMAOMQ8PFmnGvaGuLO_nVd',
     featuredLinks: [
       {
-        href: '/world/combos',
+        href: '/world/guides/combos',
         emoji: '🥊',
         title: 'Combos',
         description: 'Master the best lance combos for maximum damage!',
       },
       {
-        href: '/world/guard-up',
+        href: '/world/data/guard-up',
         emoji: '🛡️',
         title: 'Guard Up',
         description: 'Complete reference of all attacks requiring Guard Up.',
       },
       {
-        href: '/world/motion-values',
-        emoji: '🔍',
-        title: 'Motion Values',
-        description: 'Motion values for all weapons in World/Iceborne.',
+        href: '/world/builds/master-rank',
+        emoji: '❄️',
+        title: 'Master Rank Builds',
+        description: 'Guide to bring you safely through Iceborne!',
+      },
+      {
+        href: '/world/builds/endgame',
+        emoji: '👑',
+        title: 'Endgame Builds',
+        description: 'ultimate endgame builds after defeating Fatalis!',
       },
     ],
     sections: {
