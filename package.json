@@ -13,7 +13,7 @@
   "dependencies": {
     "@iconify-json/mdi": "^1.2.1",
     "@iconify-json/mingcute": "^1.2.1",
-    "astro": "^5.11.0",
+    "astro": "^5.14.3",
     "astro-icon": "^1.1.4",
     "astro-pagefind": "^1.8.3"
   },
