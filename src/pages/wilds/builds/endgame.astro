@@ -16,6 +16,7 @@ import ExternalLinkButton from '../../../components/common/ExternalLinkButton.as
 import gogma_artian from '../../../assets/wilds/builds/gog_artian.png';
 
 import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png';
+import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
 ---
 
 <ContentLayout title="Coming Soon">
@@ -132,7 +133,7 @@ import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png'
     </p>
   </Section>
 
-  <Section title="gorcherer" emoji="🔥">
+  <Section title="Scorcherer Sets" emoji="🔥">
     <p>
       This is theoretically the highest damage set available. IIt utilizes Lord's Soul and Bloodlust
       to reach massive raw and affinity numbers. It maxes out every skill Lance wants, and as a
@@ -161,7 +162,7 @@ import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png'
         stats: {
           raw: 554,
           sharpness: {
-            hits: 230,
+            hits: 180,
             type: 'white',
           },
           element: {
@@ -175,5 +176,77 @@ import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png'
         },
       }}
     />
+
+    <InfoBox type="warning">
+      Note: The displayed EFR does not include the damage from Scorcherer. Although the number
+      appears lower than other sets, Scorcherer adds around <strong
+        >2-3% more effective damage</strong
+      >
+      in theory, and even more in practice (due to not attacking 100% of the time).
+    </InfoBox>
+  </Section>
+
+  <Section title="FulGore" emoji="🦖">
+    <p>
+      You may remember FulGore from the game's release. It makes a comeback return in TU4 now that
+      we can fit Lord's Soul.
+    </p>
+
+    <p>
+      This build mirrors the Gorcherer template, but swaps Guardian Rathalos for Transcended Fulgur
+      Anjanath pieces to activate <strong>Second Wind</strong>, which grants a secondary stamina
+      gauge, allowing you to execute stamina-heavy moves like Dash Attack or Grand Retribution
+      Thrust or hops without depleting your main bar. This increases your Maximum Might uptime,
+      potentially allowing you to match or even exceed Gorcherer's damage output.
+    </p>
+
+    <p>
+      However, this set is a bit harder to execute. You should already be quite good at managing
+      stamina to make good use of the tiny extra stamina bar. If you struggle with stamina, the
+      passive damage from Scorcherer is simply more reliable. On the other hand, if your management
+      is too good, you may not need the safety net of Second Wind to begin with.
+    </p>
+
+    <p>
+      Ultimately, I believe FulGore shines if you have good monster knowledge and can play
+      aggressively with stamina-draining moves (like GRT), whereas Gorcherer remains the simpler,
+      more general option.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'FulGore',
+        description: [
+          "The new AT Jin pieces allow us to easily max out Agitator and get Binding Counter and Lord's Soul.",
+          'Since the Gore armor is relatively skill inefficient but the series bonus is incredible, we choose to have 1 point on our weapon.',
+          'We use 2 transcended Guardian Fulgur Anjanath pieces to get second wind.',
+        ],
+        image: fulgore,
+        imageAlt: 'fulgore',
+        stats: {
+          raw: 557,
+          sharpness: {
+            hits: 220,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 51,
+          },
+          affinity: {
+            avg: 84,
+            peak: 100,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Gog Elemental" emoji="🔱">
+    <p>coming soon</p>
+  </Section>
+
+  <Section title="Budget Raw" emoji="💸">
+    <p>coming soon</p>
   </Section>
 </ContentLayout>
