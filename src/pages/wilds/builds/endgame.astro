@@ -17,6 +17,7 @@ import gogma_artian from '../../../assets/wilds/builds/gog_artian.png';
 
 import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png';
 import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
+import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
 ---
 
 <ContentLayout title="Coming Soon">
@@ -133,9 +134,16 @@ import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
     </p>
   </Section>
 
+  <InfoBox>
+    All sets relying on Gore/Lord's Soul being on the weapon have an alternative build that can be
+    made by replacing Gore with Lagiacrus and adding 1-2 levels of Latent Power. These sets are very
+    minimally (1-2%) weaker than the Gore versions. You can hopefully figure out the details
+    yourself 🙏
+  </InfoBox>
+
   <Section title="Scorcherer Sets" emoji="🔥">
     <p>
-      This is theoretically the highest damage set available. IIt utilizes Lord's Soul and Bloodlust
+      This is theoretically the highest damage set available. It utilizes Lord's Soul and Bloodlust
       to reach massive raw and affinity numbers. It maxes out every skill Lance wants, and as a
       bonus, grants Binding Counter and Scorcherer for free (we would most likely want to run these
       pieces even without those two skills).
@@ -177,12 +185,12 @@ import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
       }}
     />
 
-    <InfoBox type="warning">
+    <InfoBox type="note">
       Note: The displayed EFR does not include the damage from Scorcherer. Although the number
       appears lower than other sets, Scorcherer adds around <strong
         >2-3% more effective damage</strong
       >
-      in theory, and even more in practice (due to not attacking 100% of the time).
+      in theory, and even more in practice.
     </InfoBox>
   </Section>
 
@@ -193,15 +201,15 @@ import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
     </p>
 
     <p>
-      This build mirrors the Gorcherer template, but swaps Guardian Rathalos for Transcended Fulgur
-      Anjanath pieces to activate <strong>Second Wind</strong>, which grants a secondary stamina
-      gauge, allowing you to execute stamina-heavy moves like Dash Attack or Grand Retribution
-      Thrust or hops without depleting your main bar. This increases your Maximum Might uptime,
-      potentially allowing you to match or even exceed Gorcherer's damage output.
+      We use 2 Transcended Fulgur Anjanath pieces to activate <strong>Second Wind</strong>. This
+      grants a secondary stamina gauge, allowing you to execute stamina-heavy moves (like Dash
+      Attack, Grand Retribution Thrust, or hops) without depleting your main bar. This prevents
+      Maximum Might from deactivating, potentially allowing you to match or even exceed Gorcherer's
+      damage output.
     </p>
 
     <p>
-      However, this set is a bit harder to execute. You should already be quite good at managing
+      However, this set is a bit harder to execute. You need to already be quite good at managing
       stamina to make good use of the tiny extra stamina bar. If you struggle with stamina, the
       passive damage from Scorcherer is simply more reliable. On the other hand, if your management
       is too good, you may not need the safety net of Second Wind to begin with.
@@ -246,7 +254,43 @@ import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
     <p>coming soon</p>
   </Section>
 
-  <Section title="Budget Raw" emoji="💸">
-    <p>coming soon</p>
+  <Section title="Poverty Scorcher" emoji="💸">
+    <p>
+      This set does not require any skills on your Gogma Weapon, it works right out of the box. We
+      achieve Lord's Soul by using 3 AT Jin pieces, while still fitting in Scorcherer.
+    </p>
+
+    <p>
+      Instead of using an RNG charm, we drop the extra Crit Boost and compensate for the loss of
+      affinity (from not running Gore) with Latent Power. While not as reliable or strong as the
+      meta options, this is an excellent budget entry point.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Poverty Scorcher',
+        description: [
+          'We use 3 AT jin pieces to max out Agitator and get some Weakness Exploit',
+          'Then we use 2 transcended Guardian Rathalos to round out the set and add Scorcherer.',
+        ],
+        image: poverty,
+        imageAlt: 'poverty scorcher',
+        stats: {
+          raw: 532,
+          sharpness: {
+            hits: 180,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 51,
+          },
+          affinity: {
+            avg: 78,
+            peak: 100,
+          },
+        },
+      }}
+    />
   </Section>
 </ContentLayout>
