@@ -17,6 +17,7 @@ import gogma_artian from '../../../assets/wilds/builds/gog_artian.png';
 
 import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png';
 import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
+import gog from '../../../assets/wilds/builds/high-rank/tu4-gog.png';
 import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
 ---
 
@@ -251,7 +252,50 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
   </Section>
 
   <Section title="Gog Elemental" emoji="🔱">
-    <p>coming soon</p>
+    <p>
+      When fighting Gogmazios or other monsters, like Seregios, with very high elemental-to-raw
+      hitzone ratios, we can make use of the Gogmazios elemental boosting skill, Gogmapocalypse, to
+      create a powerful hybrid build.
+    </p>
+    <p>
+      Because the Gogmazios pieces possess additional series skills, we can run one G. Rathalos and
+      G. Odogaron piece to get both Scorcherer and Burst Boost. These two together compensate for
+      not running Lord's Soul, so we only need to aim for Gore on the weapon.
+    </p>
+
+    <p>
+      On the weapon, instead of running 2x Attack III, we can aim to get 2x Element EX instead.
+      Together with Gogmapocalypse and Burst, we reach element levels high enough where it's even
+      worth slotting in Critical Element.
+    </p>
+
+    <BuildCard
+      build={{
+        title: '',
+        description: [
+          'We use the 2 Gogmazios pieces that come with a point of Burst Boost and Scorcherer.',
+          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points.',
+          'The final piece is Gore, which together with the weapon helps us with affinity.',
+        ],
+        image: gog,
+        imageAlt: 'gog elemental',
+        stats: {
+          raw: 474,
+          sharpness: {
+            hits: 170,
+            type: 'white',
+          },
+          element: {
+            type: 'dragon',
+            value: 139,
+          },
+          affinity: {
+            avg: 75,
+            peak: 100,
+          },
+        },
+      }}
+    />
   </Section>
 
   <Section title="Poverty Scorcher" emoji="💸">
