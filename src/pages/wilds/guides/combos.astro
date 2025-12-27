@@ -1,6 +1,7 @@
 ---
 import Comment from '../../../components/common/Comment.astro';
 import InfoBox from '../../../components/common/InfoBox.astro';
+import GifCard from '../../../components/common/GifCard.astro';
 import Section from '../../../components/common/Section.astro';
 import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
 import ComboCard from '../../../components/guides/ComboCard.astro';
@@ -52,13 +53,13 @@ import { ComboTag } from '../../../types/guides/Combo';
 
   <Section title="Bread and Butter Combos">
     <p>
-      All possible combos in Wilds perform similarly, but two stand out quite a bit. These work best
-      when the monster is downed or you have a bigger opening. Almost all variations have a leaping
-      thrust variation, that is slightly weaker in terms of damage, but allows for easier
-      reposition/gap closing.
+      All possible combos in Wilds perform similarly, but here's the ones that stand out. These work
+      best when the monster is downed or you have a bigger opening. Almost all variations have a
+      leaping thrust variation, that is slightly weaker in terms of damage, but allows for easier
+      reposition/gap closing and is usually a good way to start the combo when a monster falls over.
     </p>
 
-    <SectionSubTitle title="High Thrust Wide Sweep" />
+    <SectionSubTitle title="High Thrust Wide Sweep Counter" />
 
     <p>
       With the wide sweep and high thrust buff, the best combo obviously includes both of these
@@ -74,15 +75,15 @@ import { ComboTag } from '../../../types/guides/Combo';
 
     <ComboCard
       combo={{
-        title: 'High Thrust Sweep + CC',
+        title: 'High Thrust Sweep',
         longTitle: 'HT Wide Sweep HT Charged Counter',
         stats: {
-          motionValue: 224.1,
+          motionValue: 226.1,
           elementModifier: 4.4,
           sharpnessCost: 4,
           duration: 4.6,
         },
-        tags: [ComboTag.DamageRaw, ComboTag.DamagePeak, ComboTag.OpportunityLong],
+        tags: [ComboTag.DamageRaw, ComboTag.OpportunityLong],
         gif: 'https://assets.mhlance.com/wilds/ht-sweep-ht-cc.gif',
         strengths: ['Deals very high raw damage', 'Low sharpness consumption'],
         considerations: ['The wide sweep requires bigger commitment and is harder to aim'],
@@ -95,7 +96,7 @@ import { ComboTag } from '../../../types/guides/Combo';
     />
 
     <Comment>
-      this combo's motion value per second increased from 44 to 48.7 with the buffs, that's roughly
+      this combo's motion value per second increased from 44 to 49.2 with the buffs, that's roughly
       a 10% dps increase
     </Comment>
 
@@ -104,43 +105,19 @@ import { ComboTag } from '../../../types/guides/Combo';
       then transition into the normal combo. You trade a bit of damage for the gap closing ability.
     </p>
 
-    <ComboCard
+    <GifCard
+      src="https://assets.mhlance.com/wilds/lt-sweep-ht-cc.gif"
+      title="Leaping Thrust into Sweep HT CC"
       reversed
-      combo={{
-        title: 'Leaping Thrust into Sweep HT CC',
-        longTitle: 'Leaping Thrust into Sweep HT CC',
-        stats: {
-          motionValue: 237.1,
-          elementModifier: 5.8,
-          sharpnessCost: 4,
-          duration: 5.25,
-        },
-        tags: [ComboTag.DamageRaw, ComboTag.Reposition, ComboTag.EfficiencySharpness],
-        gif: 'https://assets.mhlance.com/wilds/lt-sweep-ht-cc.gif',
-        strengths: ['Good gap closer', 'Low sharpness consumption'],
-        considerations: ['Takes quite long to execute', 'Lower damage compared to normal version'],
-        inputs: {
-          PlaystationInput: [
-            ['Circle', 'Triangle'],
-            ['Circle', 'Triangle'],
-            ['Circle'],
-            ['Circle'],
-          ],
-          XboxInput: [['B', 'Y'], ['B', 'Y'], ['B'], ['B']],
-          PCInput: [
-            ['MouseRight', 'MouseLeft'],
-            ['MouseRight', 'MouseLeft'],
-            ['MouseRight'],
-            ['MouseRight'],
-          ],
-        },
-      }}
-    />
+    >
+      We got a topple on mizu and follow up with Leaping Thrust to easily reach the head and then
+      transition into the normal combo.
+    </GifCard>
 
     <p>
-      A wide sweep variation is often the best follow up after a power clash, as it usually leaves
-      you at a distance where this combo perfectly catches up to the monster and your other follow
-      up options just miss.
+      The leaping thrust variation is often the best follow up after a power clash or topple, as it
+      usually leaves you at a distance where this combo perfectly catches up to the monster and your
+      other follow up options just miss.
     </p>
 
     <p>
@@ -152,18 +129,24 @@ import { ComboTag } from '../../../types/guides/Combo';
     <SectionSubTitle title="Mid Thrust Wide Sweep (Elemental)" />
 
     <p>
-      When using the corrupted mantle, we get additional damage ticks on mid thrusts and triple
-      thrusts. The additional damage from corrupted mantle is so significant, it's worth leaving out
-      the wide sweep entirely and just looping mid thrusts and triple thrusts.
+      A different variant of the Wide Sweep combo uses Mid Thrusts instead of High Thrusts and ends
+      with the Triple Thrust instead of the Charged Counter. This variant is lower in raw damage,
+      but higher in elemental damage.
+    </p>
+
+    <p>
+      Use this combo When you have an elemental weapon (even if it's raw reinforced) and you hit an
+      Elemental Hitzone of <strong>15 or higher</strong>, the extra elemental damage makes up for
+      the lower raw output and it starts outperforming the High Thrust Wide Sweep combo.
     </p>
 
     <ComboCard
       combo={{
         title: 'Mid Thrust Sweep + Triple',
-        longTitle: 'MT Wide Sweep MT Triple Finisher',
+        longTitle: 'MT Wide Sweep MT Triple Thrust',
         stats: {
-          motionValue: 216,
-          elementModifier: 7.8,
+          motionValue: 227,
+          elementModifier: 8.1,
           sharpnessCost: 4,
           duration: 4.74,
         },
@@ -180,60 +163,25 @@ import { ComboTag } from '../../../types/guides/Combo';
     />
 
     <p>
-      If the raw hitzone is very high compared to the elemental hitzone, the above high thrust
-      charged counter combo is still more effective, as lance is currently still more of a raw
-      weapon. It's just because all artian weapons get the element for free we get free bonus damage
-      by matching the element.
-    </p>
-
-    <p>
       Again we can also perform a leaping thrust variation to close the gap and then transition into
       the combo.
     </p>
 
-    <ComboCard
+    <GifCard
+      src="https://assets.mhlance.com/wilds/lt-sweep-mt-triple.gif"
+      title="Leaping Thrust into Sweep MT Triple Thrust"
       reversed
-      combo={{
-        title: 'Leaping Thrust into Sweep MT Triple',
-        longTitle: 'Leaping Thrust into Sweep MT Triple',
-        stats: {
-          motionValue: 236,
-          elementModifier: 9,
-          sharpnessCost: 4,
-          duration: 5.61,
-        },
-        tags: [ComboTag.DamageHybrid, ComboTag.Reposition],
-        gif: 'https://assets.mhlance.com/wilds/lt-sweep-mt-triple.gif',
-        strengths: ['Good gap closer', 'Low sharpness consumption'],
-        considerations: ['Takes quite long to execute', 'Lower damage compared to normal version'],
-        inputs: {
-          PlaystationInput: [
-            ['Circle', 'Triangle'],
-            ['Circle', 'Triangle'],
-            ['Triangle'],
-            ['Triangle'],
-          ],
-          XboxInput: [['B', 'Y'], ['B', 'Y'], ['Y'], ['Y']],
-          PCInput: [
-            ['MouseRight', 'MouseLeft'],
-            ['MouseRight', 'MouseLeft'],
-            ['MouseLeft'],
-            ['MouseLeft'],
-          ],
-        },
-      }}
-    />
-    <SectionSubTitle title="Mid Thrust Spam (Elemental/Corrupted Mantle)" />
+    >
+      Uth Duna lost the veil and topples, we follow up with a Leaping Thrust and transition into a
+      Wide Sweep Mid Thrust, followed by a Triple Thrust.
+    </GifCard>
+
+    <SectionSubTitle title="Mid Thrust Spam (Corrupted Mantle)" />
 
     <p>
-      For a long time this was considered the best lance combo in the game, but due to the balance
-      patch, wide sweep combos are now superior. However, this combo still offers the highest
-      elemental damage output and is also the fastest combo.
-    </p>
-
-    <p>
-      Because of it's speed it doesn't just let you react to any incoming attack the best, it also
-      reaches the final level of Charge Counter the quickest.
+      When using the corrupted mantle, we get additional damage ticks on mid thrusts and triple
+      thrusts. The additional damage from corrupted mantle is so significant, it's worth leaving out
+      the wide sweep entirely and just looping mid thrusts and triple thrusts.
     </p>
 
     <ComboCard
@@ -241,8 +189,8 @@ import { ComboTag } from '../../../types/guides/Combo';
         title: 'Mid Thrust Spam',
         longTitle: 'Triple Mid Thrust into Triple Thrust',
         stats: {
-          motionValue: 160,
-          elementModifier: 7.6,
+          motionValue: 173,
+          elementModifier: 7.9,
           sharpnessCost: 4,
           duration: 3.83,
         },
@@ -263,8 +211,15 @@ import { ComboTag } from '../../../types/guides/Combo';
     />
 
     <p>
-      So the true power of this combo doesn't necessarily come from the damage it deals, but rather
-      from it's reaction speed and ability to reposition.
+      The true power of this combo doesn't necessarily come from the damage it deals, but rather
+      from it's reaction speed, ability to reposition and because it's the fastest way to reach red
+      Charged Counter.
+    </p>
+
+    <p>
+      So situationally you still want to use it, for example when you need to move slightly to the
+      side to hit the weakspot, or if you can fit in a red charged counter into an attack chain
+      where wide sweep combos can't.
     </p>
 
     <InfoBox type="tip">
@@ -273,11 +228,5 @@ import { ComboTag } from '../../../types/guides/Combo';
       like: strafe left poke, strafe right poke, neutral poke, then triple thrust. However, this damage
       difference is very very small.
     </InfoBox>
-
-    <p>
-      Additionally it synergizes the best with corrupted mantle as the mantle only provides extra
-      damage ticks on mid thrusts and triple thrust, making this combo really strong while wearing
-      it.
-    </p>
   </Section>
 </ContentLayout>
