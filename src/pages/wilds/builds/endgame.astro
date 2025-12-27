@@ -1,124 +1,99 @@
 ---
 import BuildCard from '../../../components/builds/BuildCard.astro';
 import Section from '../../../components/common/Section.astro';
-import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
 import StyledList from '../../../components/common/StyledList.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import NavigationButton from '../../../components/common/NavigationButton.astro';
 
-import reinforcements from '../../../assets/wilds/builds/reinforcements.png';
-
-import rey from '../../../assets/wilds/builds/high-rank/tu2-3rey.png';
-import lagi from '../../../assets/wilds/builds/high-rank/tu2-2lagi.png';
-import zoh from '../../../assets/wilds/builds/high-rank/tu2-comfy.png';
 import InfoBox from '../../../components/common/InfoBox.astro';
 import Comment from '../../../components/common/Comment.astro';
 import CodeBlock from '../../../components/common/CodeBlock.astro';
 import ImageCard from '../../../components/common/ImageCard.astro';
 import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.astro';
+import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
+import ExternalLinkButton from '../../../components/common/ExternalLinkButton.astro';
+
+import gogma_artian from '../../../assets/wilds/builds/gog_artian.png';
+
+import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png';
+import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
+import gog from '../../../assets/wilds/builds/high-rank/tu4-gog.png';
+import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
 ---
 
 <ContentLayout title="Coming Soon">
   <Section>
-    <Comment> last updated for august balance update </Comment>
+    <Comment> last updated for Gogmazios and AT Jin Dahaad </Comment>
 
     <p>
-      These are the current endgame builds for Title Update 2, which added Seregios and Lagiacrus.
-      All of these builds assume you've completed the main story and have access to the highest
-      rarity Artian weapons, plus pretty much all decorations and armor pieces.
+      These are the current endgame builds for Title Update 4, which added Gogmazions and AT Jin
+      Dahaad. All of these builds assume you've completed the main story and have access to the
+      highest rarity Gogma Artian weapons, plus pretty much all decorations and armor pieces.
     </p>
 
-    <SectionSubTitle title="Weapons" />
+    <ExternalLinkButton href="/wilds/builds/endgame-tu2" name="Old Tu2 Builds" />
+  </Section>
+
+  <Section title="Weapons">
+    <p>
+      Artian Weapons just got even better with the new Gogmazios reinforcement system, allowing you
+      to get armor-exclusive skills and even more stat bonuses. For a full guide on how the system
+      works exactly, or how to perform save scumming, check out the guide by Masuku.
+    </p>
+
+    <NavigationButton
+      href="https://lescarnetsdelawycademie.fr/gogmazios-weapons/"
+      text="in-depth gogma artian guide"
+      emoji="📓"
+    />
 
     <p>
-      Artian weapons are still the best option in the game by a wide margin. They all come with
-      three level-3 slots, which lets you stack the weapon skills that lance really needs. The
-      reinforcement system also gives them the best stats for almost every element or status, making
-      most craftable lances pretty obsolete (for thunder the Lagiacrus lance is pretty good).
+      When crafting new Artian weapons, make sure to pick 3 parts of the same element, all with <b
+        >attack infusion</b
+      >. This maximizes your chances of getting the desired element with optimal production bonuses.
+      Avoid affinity infusion, it is noticeably worse.
     </p>
 
     <p>
-      When crafting new Artian weapons, try to get three parts with the same element or status and
-      all having attack infusions. This basically guarantees you to get the element you want while
-      maximizing the attack production bonus.
+      When you upgrade your Artian weapon, you can choose between attack, affinity, or element
+      focus. Depending on the focus, you receive different bonus stats. Both element and attack
+      focus are strong options, though element is technically the slightly superior choice (roughly
+      0.05% more damage).
+    </p>
+
+    <p>
+      Depending on your focus, the optimal stat rolls differ slightly. Regardless of build, always
+      aim for 1x Sharpness EX and 2x Attack EX. If you went with element focus, look for 2x Attack
+      III. With attack focus, we want to balance out the negative affinity, so choose 1x Affinity EX
+      and 1x Attack III.
+    </p>
+
+    <p>
+      There are very few matchups where maxing out element instead of attack is strictly better.
+      Gogmazios himself, for example, is one case due to his Phase 3 weakness to Dragon. So if you
+      don't want to craft like 11 different weapons, just max out raw.
     </p>
 
     <ImageCard
-      src={reinforcements}
+      src={gogma_artian}
       alt="reinforcement bonuses"
-      caption="A fire Artian lance with full raw production bonus and 2 sharpness, 1 affinity and 1 affinity production bonus. Not the god roll, but still a very good one."
+      caption="A dragon gogma artian lance with full attack infusion, element focus, 1x sharpness EX, 2x attack EX, 1x attack III and 1x attack II. Almost a max roll"
       maxWidth="500px"
     />
 
     <p>
-      For reinforcement bonuses, aim for 1 sharpness and 4 attack. Anything that has 1 sharpness and
-      at least 2 raw is considered a good roll and pretty much beats all craftable weapons (except
-      for thunder).
+      For the skills, aim for <b>Gore Magala's Tyranny</b> (Gore) or <b>Leviathan's Fury</b> (Lagiacrus)
+      as the series skill. Then aim for <b>Lord's Soul</b> (Guts) as the group skill. These are by far
+      the best-in-slot options.
     </p>
+  </Section>
 
-    <SectionSubSubTitle title="Weapon Decorations" />
-
-    <p>Here's how to use those 3 weapon decoration slots:</p>
-    <StyledList
-      items={[
-        {
-          text: 'Offensive Guard 3',
-          subtext: "Lance's most important weapon skill for damage",
-          emoji: '⚔️',
-        },
-        {
-          text: "Master's Touch 3 or Razor Sharp 3",
-          subtext: 'Essential for maintaining sharpness during long fights',
-          emoji: '🗡️',
-        },
-        {
-          text: 'Critical Boost 3',
-          subtext: 'Great damage skill, but prioritize the other two first',
-          emoji: '💥',
-        },
-      ]}
-    />
-
+  <Section title="Element vs Raw">
     <p>
-      Offensive Guard comes with combo decorations that include guard, handicraft, or elemental
-      attack. Pick based on what you need—guard for tough matchups, handicraft if you're struggling
-      with sharpness, or elemental attack for a small damage boost.
-    </p>
-
-    <p>
-      With our high affinity builds (around 80% average), Master's Touch becomes more effective than
-      Razor Sharp for sharpness management. At 80% affinity, Master's Touch effectively multiplies
-      your sharpness by 2.78x, giving Artian lances around 138 effective hits compared to Razor
-      Sharp's flat doubling (100-120 hits depending on your combo decoration choice).
-    </p>
-
-    <SectionSubSubTitle title="Craftable Weapons" />
-
-    <p>
-      The Lagiacrus lance actually beats the Artian Thunder Lance in very elemental-heavy matchups
-      like Seregios and if you manage to reach high thunder resistance. For longer hunts, an Artian
-      with god roll probably still wins due to better slots, giving it better sharpness.
-    </p>
-
-    <InfoBox>
-      <p>
-        When using the Lagi Lance, eat a meal that gives elemental resistances and use your 1-slots
-        for more thunder resistance.
-      </p>
-    </InfoBox>
-
-    <p>
-      For other craftable options, the <CodeBlock text="Blazing Sital" /> from Zoh Shia has a unique
-      weapon skill, while the Guardian Rathalos lance <CodeBlock text="Shining Pillar" /> offers good
-      stats and slot efficiency.
-    </p>
-
-    <SectionSubTitle title="Element vs Raw" />
-    <p>
-      Since Artian weapons can all reach the same raw damage, using elemental ones just adds free
-      damage on top. If possible, craft 6 different Artian lances (one for each element plus one
+      Since Gogma Artian weapons can all reach the same raw damage, using elemental ones simply adds
+      free damage on top. If possible, craft 6 different lances (one for each element plus one
       status/raw weapon) to maximize your damage potential across all matchups.. Using the right
-      element typically adds 5-10% damage, which really adds up over time.
+      element typically adds 5-15% damage, which really adds up over time.
     </p>
 
     <p>Check the matchup table to see which element works best against each monster.</p>
@@ -129,31 +104,21 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
       If you want to stick with raw weapons, blast is generally the best option, though paralysis is
       also solid for the openings it creates.
     </p>
+  </Section>
 
-    <SectionSubTitle title="RNG Charms" />
-
+  <Section title="RNG Charms">
     <p>
-      The latest update added a new charm system. Unfortunately all new charms are random and most
-      of them are not that good. It's relatively easy to find a charm that has a 3 slot and either 1
-      level of Wex, Agi or Burst together with some additional skills. Making it a clear upgrade
-      over the craftable charms.
-    </p>
-
-    <p>
-      Because we are trying to get both a 3 slot skill and a 3 slot, the skills we can get are very
-      limited (for most skills you can only get 1 level). What you wanna look for are Critical Eye,
-      Attack Boost, Handicraft Guard or any other comfort skill.
-    </p>
-
-    <p>
-      To actually make a meaningful damage increase, you need to be very lucky. What you want are:
+      The August update added a new RNG charm system. These charms allow you to potentially get more
+      weapon skills. Aim for an <b>Armor Skill 3 slot</b> (or 1 level of Agitator/Burst/WEX) combined
+      with skills like
+      <b>Offensive Guard 3</b>, <b>Master's Touch 1</b>, or <b>Razor Sharp 3</b> on the charm.
     </p>
 
     <StyledList
       items={[
         {
           text: 'Armor Skills',
-          subtext: '1 point of Wex/Agi or Burst',
+          subtext: '3 slot or 1 point of Wex/Agi or Burst',
           emoji: '🛡️',
         },
         {
@@ -165,166 +130,212 @@ import SectionSubSubTitle from '../../../components/common/SectionSubSubTitle.as
     />
 
     <p>
-      As you can see, the required charm to get a noticeable damage improvement is pretty crazy.
-      What it allows you to do is slot in the remaining 2 levels of crit boost into the now freed up
-      weapon slot, at the cost of dropping 1 level of Agitator. Doing so results in around a 1-2%
-      damage increase, which is pretty low considering the estimated effort you need to put in to
-      obtain such a charm.
+      This usually allows you to slot in more Crit Boost or get extra affinity from Critical Eye or
+      more raw from Attack Boost.
     </p>
+  </Section>
 
-    <SectionSubTitle title="Armor" />
+  <InfoBox>
+    All sets relying on Gore/Lord's Soul being on the weapon have an alternative build that can be
+    made by replacing Gore with Lagiacrus and adding 1-2 levels of Latent Power. These sets are very
+    minimally (1-2%) weaker than the Gore versions. You can hopefully figure out the details
+    yourself 🙏
+  </InfoBox>
+
+  <Section title="Gorcher" emoji="🔥">
     <p>
-      All three builds here use Guts, the set bonus from wearing 3 pieces of any Arch-Tempered Apex
-      monster armor. Guts lets you survive a lethal hit if you're above 40% health, and as long as
-      it hasn't been triggered recently, it gives you a 5% raw damage bonus. Combined with how
-      skill-efficient these armor pieces are, it makes Guts one of the strongest skills available.
+      This is theoretically the highest damage set available. It utilizes Lord's Soul and Bloodlust
+      to reach massive raw and affinity numbers. It maxes out every skill Lance wants, and as a
+      bonus, grants Binding Counter and Scorcherer for free (we would most likely want to run these
+      pieces even without those two skills).
     </p>
 
     <p>
-      The builds are very similar in damage output, but each has different strengths and use cases.
+      The transcended Guardian Rathalos allow us to max out the core skills and squeeze in a level
+      of Scorcherer. Thanks to the recent buff that added fixed damage and lowered the cooldown,
+      this skill is now quite powerful (even against fire resistant monsters).
     </p>
 
-    <p>Now with all that covered, let's take a look at the builds.</p>
+    <p>Binding counter is a nice raw damage boost, in matchups where we can proc it.</p>
 
-    <InfoBox type="warning">
-      <p>
-        All builds use craftable charms since RNG charms are too inconsistent to recommend. Any
-        charm with Wex, Agi or Burst + a 3 slot and some additional skills is a solid upgrade over
-        craftable ones. The charms that actually provide a meaningful damage increase are way too
-        rare to consider them here.
-      </p>
+    <BuildCard
+      build={{
+        title: 'Gorcher',
+        description: [
+          "The new AT Jin pieces allow us to easily max out Agitator and get Binding Counter and Lord's Soul.",
+          'Since the Gore armor is relatively skill inefficient but the series bonus is incredible, we choose to have 1 point on our weapon.',
+          'The Transcended Guardian Rathalos pieces are insanely efficient thanks to the new slots, allowing us to max out our core skills and get Scorcherer on top.',
+        ],
+        image: gorcherer,
+        imageAlt: 'gorcher',
+        stats: {
+          raw: 554,
+          sharpness: {
+            hits: 180,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 51,
+          },
+          affinity: {
+            avg: 81,
+            peak: 100,
+          },
+        },
+      }}
+    />
+
+    <InfoBox type="note">
+      Note: The displayed EFR does not include the damage from Scorcherer. Although the number
+      appears lower than other sets, Scorcherer adds around <strong
+        >2-3% more effective damage</strong
+      >
+      in theory, and even more in practice.
     </InfoBox>
+  </Section>
 
-    <Section title="latent power set" emoji="💪">
-      <p>
-        This build uses 3 pieces of Rey Dau combined with the best-in-slot armor pieces available,
-        letting us max out both Agitator and Weakness Exploit.
-      </p>
+  <Section title="FulGore" emoji="🦖">
+    <p>
+      You may remember FulGore from the game's release. It makes a comeback return in TU4 now that
+      we can fit Lord's Soul.
+    </p>
 
-      <p>
-        The key feature is high Latent Power levels, giving this set the highest theoretical damage
-        output. The downside is that Latent Power can be inconsistent, as it has high up and down
-        times. And when the up times overlap with zone transitions, or timings in the fight where
-        you can't attack or deal less damage due to monster states, it can lead to damage loss.
-      </p>
+    <p>
+      We use 2 Transcended Fulgur Anjanath pieces to activate <strong>Second Wind</strong>. This
+      grants a secondary stamina gauge, allowing you to execute stamina-heavy moves (like Dash
+      Attack, Grand Retribution Thrust, or hops) without depleting your main bar. This prevents
+      Maximum Might from deactivating, potentially allowing you to match or even exceed Gorcher's
+      damage output.
+    </p>
 
-      <p>
-        If you get hit a lot, you actually will have a higher latent power uptime. If this is an
-        advantage solely depends on you :)
-      </p>
+    <p>
+      However, this set is a bit harder to execute. You need to already be quite good at managing
+      stamina to make good use of the tiny extra stamina bar. If you struggle with stamina, the
+      passive damage from Scorcherer is simply more reliable. On the other hand, if your management
+      is too good, you may not need the safety net of Second Wind to begin with.
+    </p>
 
-      <BuildCard
-        build={{
-          title: 'rey dau latent power set',
-          description: [
-            "We get Guts/Lord's Soul from 2 pieces of AT Rey Dau and the new AT Uth Duna boots, allowing us to max out agitator and weakness exploit",
-            'With an additional 3 levels of latent power, we reach a very good average affinity allowing for the highest damage output',
-            'High thunder resistance makes this set particularly good when using the Lagiacrus lance.',
-          ],
-          image: rey,
-          imageAlt: 'rey dau latent power set',
-          stats: {
-            raw: 489,
-            sharpness: {
-              hits: 50,
-              type: 'white',
-            },
-            element: {
-              type: 'fire',
-              value: 40,
-            },
-            affinity: {
-              avg: 81,
-              peak: 100,
-            },
+    <p>
+      Ultimately, I believe FulGore shines if you have good monster knowledge and can play
+      aggressively with stamina-draining moves (like GRT), whereas Gorcher remains the simpler, more
+      general option.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'FulGore',
+        description: [
+          "The new AT Jin pieces allow us to easily max out Agitator and get Binding Counter and Lord's Soul.",
+          'Since the Gore armor is relatively skill inefficient but the series bonus is incredible, we choose to have 1 point on our weapon.',
+          'We use 2 transcended Guardian Fulgur Anjanath pieces to get second wind.',
+        ],
+        image: fulgore,
+        imageAlt: 'fulgore',
+        stats: {
+          raw: 557,
+          sharpness: {
+            hits: 220,
+            type: 'white',
           },
-        }}
-      />
-    </Section>
-
-    <Section title="azure bolt set" emoji="⚡">
-      <p>
-        This set uses 2 pieces of Lagiacrus for the Azure Bolt set bonus, trading some raw power for
-        much more consistent damage output.
-      </p>
-
-      <p>
-        While the Lagiacrus pieces make this slightly weaker than the Latent Power set on paper,
-        Azure Bolt provides more reliable affinity uptime with shorter cycles. The set bonus also
-        adds free damage procs that aren't reflected in the displayed stats. We also get 2 levels of
-        Stamina Surge, which helps maintain Maximum Might uptime.
-      </p>
-
-      <BuildCard
-        build={{
-          title: 'lagiacrus azure bolt set',
-          description: [
-            'Two Lagiacrus pieces provide the Azure Bolt set bonus for more consistent affinity.',
-            'The set bonus offers reliable uptime and additional damage procs not shown in stats.',
-            'Two levels of Stamina Surge help maintain Maximum Might uptime.',
-          ],
-          image: lagi,
-          imageAlt: 'lagiacrus azure bolt set',
-          stats: {
-            raw: 486,
-            sharpness: {
-              hits: 50,
-              type: 'white',
-            },
-            element: {
-              type: 'fire',
-              value: 40,
-            },
-            affinity: {
-              avg: 79,
-              peak: 100,
-            },
+          element: {
+            type: 'fire',
+            value: 51,
           },
-        }}
-      />
-    </Section>
-
-    <Section title="comfy zoh shia set" emoji="❤️‍🩹">
-      <p>
-        Alternatively, there's this third set which is a really comfy variant using the Zoh Shia
-        super recovery set bonus, which allows you to recover health passively even without having
-        red health. This is really nice for us, as it can help a lot with damage building up from
-        chip or smaller hits, meaning you need to heal less often, allowing you to focus more on
-        attacking.
-      </p>
-
-      <p>
-        Overall, this set has only around 1-2% less damage than the latent power set, but offers a
-        lot of quality of life, making this my go to set for most late game investigation hunts.
-      </p>
-
-      <BuildCard
-        build={{
-          title: 'comfy zoh shia recovery set',
-          description: [
-            'Two Zoh Shia pieces provide Super Recovery for passive healing without red health.',
-            'AT Uth Duna boots still let us max Weakness Exploit and Agitator while losing only one Latent Power level.',
-            'Two free level-1 slots can be used for comfort skills like Mirewalker, Windproof, or Stun Resistance.',
-          ],
-          image: zoh,
-          imageAlt: 'comfy zoh shia recovery set',
-          stats: {
-            raw: 485,
-            sharpness: {
-              hits: 50,
-              type: 'white',
-            },
-            element: {
-              type: 'fire',
-              value: 40,
-            },
-            affinity: {
-              avg: 78,
-              peak: 100,
-            },
+          affinity: {
+            avg: 84,
+            peak: 100,
           },
-        }}
-      />
-    </Section>
+        },
+      }}
+    />
+  </Section>
+  {
+    /*
+  <Section title="Gog Elemental" emoji="🔱">
+    <p>
+      When fighting Gogmazios or other monsters, like Seregios, with very high elemental-to-raw
+      hitzone ratios, we can make use of the Gogmazios elemental boosting skill, Gogmapocalypse, to
+      create a powerful hybrid build.
+    </p>
+    <p>
+      Because the Gogmazios pieces possess additional series skills, we can run one G. Rathalos and
+      G. Odogaron piece to get both Scorcherer and Burst Boost. These two together compensate for
+      not running Lord's Soul, so we only need to aim for Gore on the weapon.
+    </p>
+
+    <p>
+      On the weapon, instead of running 2x Attack III, we can aim to get 2x Element EX instead.
+      Together with Gogmapocalypse and Burst, we reach element levels high enough where it's even
+      worth slotting in Critical Element.
+    </p>
+
+    <BuildCard
+      build={{
+        title: '',
+        description: [
+          'We use the 2 Gogmazios pieces that come with a point of Burst Boost and Scorcherer.',
+          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points.',
+          'The final piece is Gore, which together with the weapon helps us with affinity.',
+        ],
+        image: gog,
+        imageAlt: 'gog elemental',
+        stats: {
+          raw: 474,
+          sharpness: {
+            hits: 170,
+            type: 'white',
+          },
+          element: {
+            type: 'dragon',
+            value: 139,
+          },
+          affinity: {
+            avg: 75,
+            peak: 100,
+          },
+        },
+      }}
+    />
+  </Section> */
+  }
+  <Section title="Poverty Scorcher" emoji="💸">
+    <p>
+      This set does not require any skills on your Gogma Weapon, it works right out of the box. We
+      achieve Lord's Soul by using 3 AT Jin pieces, while still fitting in Scorcherer.
+    </p>
+
+    <p>
+      Instead of using an RNG charm, we drop the extra Crit Boost and compensate for the loss of
+      affinity (from not running Gore) with Latent Power. While not as reliable or strong as the
+      meta options, this is an excellent budget entry point.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Poverty Scorcher',
+        description: [
+          'We use 3 AT jin pieces to max out Agitator and get some Weakness Exploit',
+          'Then we use 2 transcended Guardian Rathalos to round out the set and add Scorcherer.',
+        ],
+        image: poverty,
+        imageAlt: 'poverty scorcher',
+        stats: {
+          raw: 532,
+          sharpness: {
+            hits: 180,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 51,
+          },
+          affinity: {
+            avg: 78,
+            peak: 100,
+          },
+        },
+      }}
+    />
   </Section>
 </ContentLayout>

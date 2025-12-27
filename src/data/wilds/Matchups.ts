@@ -19,6 +19,9 @@ export const wildsMatchups: Matchups[] = [
             name: 'doshaguma',
           },
           {
+            name: 'gogmazios',
+          },
+          {
             name: 'gore magala',
           },
           {
@@ -81,6 +84,9 @@ export const wildsMatchups: Matchups[] = [
             name: 'nerscylla',
           },
           {
+            name: 'omega planetes',
+          },
+          {
             name: 'seregios',
           },
           {
@@ -112,6 +118,9 @@ export const wildsMatchups: Matchups[] = [
         emoji: '🐉',
         color: '#9333ea',
         monsters: [
+          {
+            name: 'gogmazios',
+          },
           {
             name: 'guardian doshaguma',
           },

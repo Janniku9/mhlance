@@ -15,6 +15,15 @@ export const wildsGuardUp: GuardUp[] = [
     guardUp: ['chainwhip grab attack'],
   },
   {
+    name: 'gogmazios',
+    guardUp: [
+      'straight mud beam',
+      'sweeping mud beam',
+      'all lava puddles',
+      'all fire laser attacks',
+    ],
+  },
+  {
     name: 'guardian arkveld',
     guardUp: ['chainwhip grab attack'],
   },
@@ -41,6 +50,10 @@ export const wildsGuardUp: GuardUp[] = [
   {
     name: 'nu udra',
     guardUp: ['grab attack'],
+  },
+  {
+    name: 'omega planetes',
+    guardUp: ['laser array', 'mega laser'],
   },
   {
     name: 'xu wu',

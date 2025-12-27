@@ -7,6 +7,7 @@ import blangonga from '../../assets/wilds/monsters/blangonga.png';
 import chatacabra from '../../assets/wilds/monsters/chatacabra.png';
 import congalala from '../../assets/wilds/monsters/congalala.png';
 import doshaguma from '../../assets/wilds/monsters/doshaguma.png';
+import gogmazios from '../../assets/wilds/monsters/gogmazios.png';
 import gore_magala from '../../assets/wilds/monsters/gore_magala.png';
 import gravios from '../../assets/wilds/monsters/gravios.png';
 import guardian_arkveld from '../../assets/wilds/monsters/guardian_arkveld.png';
@@ -21,6 +22,7 @@ import lagiacrus from '../../assets/wilds/monsters/lagiacrus.png';
 import lala_barina from '../../assets/wilds/monsters/lala_barina.png';
 import mizutsune from '../../assets/wilds/monsters/mizutsune.png';
 import nerscylla from '../../assets/wilds/monsters/nerscylla.png';
+import omega_planetes from '../../assets/wilds/monsters/omega.png';
 import nu_udra from '../../assets/wilds/monsters/nu_udra.png';
 import quematrice from '../../assets/wilds/monsters/quematrice.png';
 import rathalos from '../../assets/wilds/monsters/rathalos.png';
@@ -61,6 +63,10 @@ export const wildsMonsters: Monster[] = [
   {
     name: 'doshaguma',
     image: doshaguma,
+  },
+  {
+    name: 'gogmazios',
+    image: gogmazios,
   },
   {
     name: 'gore magala',
@@ -121,6 +127,10 @@ export const wildsMonsters: Monster[] = [
   {
     name: 'nu udra',
     image: nu_udra,
+  },
+  {
+    name: 'omega planetes',
+    image: omega_planetes,
   },
   {
     name: 'quematrice',
