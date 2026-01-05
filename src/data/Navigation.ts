@@ -449,14 +449,13 @@ export const games: GameNavigation[] = [
           title: 'Motion Values',
           navDescription: 'Motion values for lance',
           externalLink:
-            'https://docs.google.com/spreadsheets/d/1HH2S0XFVlXoBrpbrsBMTIHjOuolFXo45L8M9tW_jZHM/edit?gid=510034666#gid=510034666',
+            'https://docs.google.com/spreadsheets/d/1F_bOwQT6A6mFtCN7WCetnZDrmvLYu-ne4y97IsG6Fkk/edit?gid=510034666#gid=510034666',
         },
         {
           id: 'calculator',
           emoji: '🧮',
-          externalLink:
-            'https://docs.google.com/spreadsheets/d/1rLmn3sO7HrdtiSiK60FC2mneoQCJ8roP2nNSNNmvjE0/edit?gid=614892569#gid=614892569https://dotmh.com/tools/damage-calculator',
-          title: "Dot's Damage Calculator",
+          externalLink: 'https://www.mathhunter.ca/lance.html',
+          title: 'Math Hunter',
           navDescription: 'Calculate damage output of builds',
           pageDescription:
             "Use this external tool to calculate your damage output based on your build and the monster you're fighting.",

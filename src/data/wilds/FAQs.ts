@@ -1,8 +1,8 @@
 export const wildsFaqs = [
   {
     question: 'What was used to make the build images?',
-    answer: 'The Gamecat Armorset Builder',
-    link: 'https://gamecat.fun/ew/#xxxxsxu8',
+    answer: 'Mathunter for all endgame builds and gamecat armorset builder for all other builds',
+    link: 'https://www.mathhunter.ca/lance.html',
   },
   {
     question: 'Why is guard not a priority?',
@@ -12,6 +12,6 @@ export const wildsFaqs = [
   {
     question: 'How much stronger are element sets?',
     answer:
-      'As all endgame Artian weapons have the same raw, element is just free bonus damage. In most cases, you end up doing 5-10% more damage if you match element with the monsters weakness.',
+      'As all endgame Artian weapons have the same raw, element is just free bonus damage. In most cases, you end up doing 5-15% more damage if you match element with the monsters weakness.',
   },
 ];

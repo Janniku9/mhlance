@@ -17,11 +17,12 @@ import gogma_artian from '../../../assets/wilds/builds/gog_artian.png';
 
 import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png';
 import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
-import gog from '../../../assets/wilds/builds/high-rank/tu4-gog.png';
+import twogog from '../../../assets/wilds/builds/high-rank/tu4-2gog.png';
+import fourgog from '../../../assets/wilds/builds/high-rank/tu4-4gog.png';
 import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
 ---
 
-<ContentLayout title="Coming Soon">
+<ContentLayout title="Wilds Endgame">
   <Section>
     <Comment> last updated for Gogmazios and AT Jin Dahaad </Comment>
 
@@ -183,6 +184,10 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
             peak: 100,
           },
         },
+        additionalNotes: {
+          charm:
+            "Flayer is a flex skill, it's nice to have but if your charm doesn't allow for it, you can use any charm with good weapon skills and then drop it it for level 1 burst.",
+        },
       }}
     />
 
@@ -250,55 +255,7 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
       }}
     />
   </Section>
-  {
-    /*
-  <Section title="Gog Elemental" emoji="🔱">
-    <p>
-      When fighting Gogmazios or other monsters, like Seregios, with very high elemental-to-raw
-      hitzone ratios, we can make use of the Gogmazios elemental boosting skill, Gogmapocalypse, to
-      create a powerful hybrid build.
-    </p>
-    <p>
-      Because the Gogmazios pieces possess additional series skills, we can run one G. Rathalos and
-      G. Odogaron piece to get both Scorcherer and Burst Boost. These two together compensate for
-      not running Lord's Soul, so we only need to aim for Gore on the weapon.
-    </p>
 
-    <p>
-      On the weapon, instead of running 2x Attack III, we can aim to get 2x Element EX instead.
-      Together with Gogmapocalypse and Burst, we reach element levels high enough where it's even
-      worth slotting in Critical Element.
-    </p>
-
-    <BuildCard
-      build={{
-        title: '',
-        description: [
-          'We use the 2 Gogmazios pieces that come with a point of Burst Boost and Scorcherer.',
-          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points.',
-          'The final piece is Gore, which together with the weapon helps us with affinity.',
-        ],
-        image: gog,
-        imageAlt: 'gog elemental',
-        stats: {
-          raw: 474,
-          sharpness: {
-            hits: 170,
-            type: 'white',
-          },
-          element: {
-            type: 'dragon',
-            value: 139,
-          },
-          affinity: {
-            avg: 75,
-            peak: 100,
-          },
-        },
-      }}
-    />
-  </Section> */
-  }
   <Section title="Poverty Scorcher" emoji="💸">
     <p>
       This set does not require any skills on your Gogma Weapon, it works right out of the box. We
@@ -333,6 +290,112 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
           affinity: {
             avg: 78,
             peak: 100,
+          },
+        },
+      }}
+    />
+  </Section>
+
+  <Section title="Gogmental" emoji="🔱">
+    <p>
+      When fighting Gogmazios or other monsters with very high elemental-to-raw hitzone ratios, we
+      can make use of the Gogmazios elemental boosting skill, Gogmapocalypse, to create powerful
+      hybrid builds.
+    </p>
+
+    <p>
+      Because the Gogmazios pieces come with additional series skills, we can run one G. Rathalos
+      and G. Odogaron piece to get both Scorcherer and Burst Boost. These two together compensate
+      for not running Lord's Soul.
+    </p>
+
+    <p>
+      There are 2 variants of the set we want to show. The first one uses 2 pieces Gog + Gore, while
+      the second set runs 4 piece Gog. The difference is that for the first set, we don't
+      necessarily need to craft new weapons, while for the second set, we do.
+    </p>
+
+    <InfoBox type="tip">
+      When you fight Gogmazios, it's worth running <strong>Mind's Eye</strong> on your fire set and <strong
+        >Crit Element</strong
+      > on your dragon set over the usual where you max out Crit Boost.
+    </InfoBox>
+
+    <SectionSubTitle title="2 piece gog + gore" />
+
+    <p>
+      The first set can use your existing Gore weapons for both fire and dragon, making this a nice
+      option if you don't want to craft new weapons. Or, if you prefer, you can craft ONLY a new
+      dragon weapon (with 2x Element EX and 2x Element II). Out of the box, this set is around 10%
+      stronger than Gorcherer in phase 3. With element reinforcements on your dragon weapon, that
+      jumps to around 20%. For fire in phases 1 and 2, just stick with the raw weapon.
+    </p>
+
+    <BuildCard
+      build={{
+        title: '',
+        description: [
+          'We use the 2 Gogmazios pieces that come with a point of Burst Boost and Scorcherer.',
+          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points.',
+          'The final piece is Gore, which together with the weapon helps us with affinity.',
+        ],
+        image: twogog,
+        imageAlt: 'gog two piece',
+        stats: {
+          raw: 477,
+          sharpness: {
+            hits: 170,
+            type: 'white',
+          },
+          element: {
+            type: 'dragon',
+            value: 139,
+          },
+          affinity: {
+            avg: 74,
+            peak: 85,
+          },
+        },
+      }}
+    />
+
+    <SectionSubTitle title="4 piece gog" />
+
+    <p>
+      The second set runs 4 pieces of Gogmazios and unlocks an even stronger element boost and a
+      temporary shield that can help you survive the fight more easily. But to make this set work,
+      you need to have the Gogmazios skill on your weapon. So you'll need to craft a new dragon
+      weapon, and if you don't want to switch sets between phase 2 and 3, you'll also need to craft
+      a new fire weapon.
+    </p>
+
+    <p>
+      Since we're already crafting a new weapon, we might as well roll for elemental reinforcements
+      on this one to further boost our damage.
+    </p>
+
+    <BuildCard
+      build={{
+        title: '',
+        description: [
+          'We use 3 Gogmazios pieces and together with the weapon, we reach 4 points of Gogmapocalypse.',
+          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points of Scorcherer and Burst Boost.',
+        ],
+        image: fourgog,
+        imageAlt: 'gog four piece',
+        stats: {
+          raw: 460,
+          sharpness: {
+            hits: 160,
+            type: 'white',
+          },
+          element: {
+            type: 'dragon',
+            value: 150,
+          },
+          affinity: {
+            avg: 69,
+            peak: 78,
           },
         },
       }}
