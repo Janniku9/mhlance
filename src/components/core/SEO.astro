@@ -33,7 +33,7 @@ const {
   author = 'J9MH',
   organization = {
     name: 'J9MH',
-    logo: '/j9mh.ico',
+    logo: '/lance.ico',
   },
 } = Astro.props;
 
@@ -66,6 +66,8 @@ const metaTitle = title.includes('J9MH') ? title : `${title} - J9MH`;
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+<link rel="icon" type="image/svg+xml" href="/lance.svg" />
+<link rel="icon" type="image/x-icon" href="/lance.ico" />
 
 <!-- Schema.org JSON-LD -->
 <script
