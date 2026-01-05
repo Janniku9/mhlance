@@ -191,12 +191,14 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
       }}
     />
 
-    <InfoBox type="note">
-      Note: The displayed EFR does not include the damage from Scorcherer. Although the number
-      appears lower than other sets, Scorcherer adds around <strong
-        >2-3% more effective damage</strong
-      >
-      in theory, and even more in practice.
+    <InfoBox type="note"
+      ><p>
+        Note: The displayed EFR does not include the damage from Scorcherer. Although the number
+        appears lower than other sets, Scorcherer adds around <strong
+          >2-3% more effective damage</strong
+        >
+        in theory, and even more in practice.
+      </p>
     </InfoBox>
   </Section>
 
@@ -310,30 +312,19 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
     </p>
 
     <p>
-      There are 2 variants of the set we want to show. The first one uses 2 pieces Gog + Gore, while
-      the second set runs 4 piece Gog. The difference is that for the first set, we don't
-      necessarily need to craft new weapons, while for the second set, we do.
+      We can use your existing Gore weapons for both fire and dragon, or, if you want, you can craft
+      a NEW dragon weapon (with 2x Element EX and 2x Element II).
     </p>
 
-    <InfoBox type="tip">
-      When you fight Gogmazios, it's worth running <strong>Mind's Eye</strong> on your fire set and <strong
-        >Crit Element</strong
-      > on your dragon set over the usual where you max out Crit Boost.
-    </InfoBox>
-
-    <SectionSubTitle title="2 piece gog + gore" />
-
     <p>
-      The first set can use your existing Gore weapons for both fire and dragon, making this a nice
-      option if you don't want to craft new weapons. Or, if you prefer, you can craft ONLY a new
-      dragon weapon (with 2x Element EX and 2x Element II). Out of the box, this set is around 10%
-      stronger than Gorcherer in phase 3. With element reinforcements on your dragon weapon, that
-      jumps to around 20%. For fire in phases 1 and 2, just stick with the raw weapon.
+      Out of the box, this set is around 10% stronger than Gorcherer in phase 3. With element
+      reinforcements on your dragon weapon, that jumps to around 20%. For fire in phases 1 and 2,
+      just stick with the raw weapon reinforcements.
     </p>
 
     <BuildCard
       build={{
-        title: '',
+        title: 'gogmental',
         description: [
           'We use the 2 Gogmazios pieces that come with a point of Burst Boost and Scorcherer.',
           'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points.',
@@ -359,46 +350,11 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
       }}
     />
 
-    <SectionSubTitle title="4 piece gog" />
-
-    <p>
-      The second set runs 4 pieces of Gogmazios and unlocks an even stronger element boost and a
-      temporary shield that can help you survive the fight more easily. But to make this set work,
-      you need to have the Gogmazios skill on your weapon. So you'll need to craft a new dragon
-      weapon, and if you don't want to switch sets between phase 2 and 3, you'll also need to craft
-      a new fire weapon.
-    </p>
-
-    <p>
-      Since we're already crafting a new weapon, we might as well roll for elemental reinforcements
-      on this one to further boost our damage.
-    </p>
-
-    <BuildCard
-      build={{
-        title: '',
-        description: [
-          'We use 3 Gogmazios pieces and together with the weapon, we reach 4 points of Gogmapocalypse.',
-          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points of Scorcherer and Burst Boost.',
-        ],
-        image: fourgog,
-        imageAlt: 'gog four piece',
-        stats: {
-          raw: 460,
-          sharpness: {
-            hits: 160,
-            type: 'white',
-          },
-          element: {
-            type: 'dragon',
-            value: 150,
-          },
-          affinity: {
-            avg: 69,
-            peak: 78,
-          },
-        },
-      }}
-    />
+    <InfoBox type="tip"
+      ><p>
+        When you fight Gogmazios, it's worth running <strong>Mind's Eye</strong> on your fire set and
+        <strong>Crit Element</strong> on your dragon set over the usual where you max out Crit Boost.
+      </p>
+    </InfoBox>
   </Section>
 </ContentLayout>
