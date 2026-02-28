@@ -49,7 +49,7 @@ export const wildsGuardUp: GuardUp[] = [
   },
   {
     name: 'nu udra',
-    guardUp: ['grab attack'],
+    guardUp: ['grab attack', 'huge oil explosion (AT only)'],
   },
   {
     name: 'omega planetes',

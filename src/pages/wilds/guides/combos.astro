@@ -5,6 +5,7 @@ import GifCard from '../../../components/common/GifCard.astro';
 import Section from '../../../components/common/Section.astro';
 import SectionSubTitle from '../../../components/common/SectionSubTitle.astro';
 import ComboCard from '../../../components/guides/ComboCard.astro';
+import CodeBlock from '../../../components/common/CodeBlock.astro';
 import ContentLayout from '../../../layouts/ContentLayout.astro';
 import { ComboTag } from '../../../types/guides/Combo';
 ---
@@ -33,111 +34,45 @@ import { ComboTag } from '../../../types/guides/Combo';
 
     <SectionSubTitle title="Neutral" />
     <p>
-      With the august balance update, we saw massive buffs the the wide sweep, both a raw and
+      With the august balance update, we saw massive buffs to the the wide sweep, both a raw and
       elemental damage increase, and when you perform it as the second attack in your combo, the
-      third poke will come out ways faster.
+      third poke will come out way faster.
     </p>
 
     <p>
-      This makes it pretty much one of lance's best dps options in terms of damage coming from non
+      This makes it pretty much one of lance's best dps options in terms of damage outside of
       counters.
     </p>
 
     <p>
-      So in neutral you want to use as many wide sweeps and high thrusts as possible, while using
-      mid thrusts for positioning. The wide sweep is still rather slow, so you really only want to
-      squeeze it in when you know the monster's opening is long enough. But over time you'll learn
-      these openings and how to maximize your damage output.
+      In neutral, you want to fit in as many wide sweeps as possible due to their high damage.
+      However, the wide sweep is slow and commits you to the animation, so you can't use it
+      recklessly. Learning which openings allow for a wide sweep becomes essential: Maybe after a
+      power clash, maybe after the monster does attack X there's a long opening...
+    </p>
+
+    <p>
+      On the other hand, you also want to maximize the number of red Charged Counters you can pull
+      off. So sometimes it's worth sacrificing a wide sweep if it allows you to reach red counter in
+      time. It all comes down to experience and over time you'll learn these openings and how to
+      maximize your damage output. In the end most of lance's damage comes from counters and the
+      combos are a way to help set them up.
     </p>
   </Section>
 
   <Section title="Bread and Butter Combos">
     <p>
-      All possible combos in Wilds perform similarly, but here's the ones that stand out. These work
-      best when the monster is downed or you have a bigger opening. Almost all variations have a
-      leaping thrust variation, that is slightly weaker in terms of damage, but allows for easier
-      reposition/gap closing and is usually a good way to start the combo when a monster falls over.
+      All possible combos in Wilds perform similarly, but here's the ones that stand out and their
+      variations.
     </p>
 
-    <SectionSubTitle title="High Thrust Wide Sweep Counter" />
+    <SectionSubTitle title="Mid Thrust Wide Sweep" />
 
     <p>
-      With the wide sweep and high thrust buff, the best combo obviously includes both of these
-      moves. Due to the increased wide sweep recovery, and the fact that a poke in third place deals
-      more damage than in second place, and the fact that we can't start with a wide sweep, the best
-      combo becomes high thrust, wide sweep, high thrust and then one of the finishers.
-    </p>
-
-    <p>
-      When using a raw or status weapon, it's best to end with a charged counter, as even if you
-      don't actually counter anything, it provides more raw dps than the triple thrust finisher.
-    </p>
-
-    <ComboCard
-      combo={{
-        title: 'High Thrust Sweep',
-        longTitle: 'HT Wide Sweep HT Charged Counter',
-        stats: {
-          motionValue: 226.1,
-          elementModifier: 4.4,
-          sharpnessCost: 4,
-          duration: 4.6,
-        },
-        tags: [ComboTag.DamageRaw, ComboTag.OpportunityLong],
-        gif: 'https://assets.mhlance.com/wilds/ht-sweep-ht-cc.gif',
-        strengths: ['Deals very high raw damage', 'Low sharpness consumption'],
-        considerations: ['The wide sweep requires bigger commitment and is harder to aim'],
-        inputs: {
-          PlaystationInput: [['Circle'], ['Circle', 'Triangle'], ['Circle'], ['Circle']],
-          XboxInput: [['B'], ['B', 'Y'], ['B'], ['B']],
-          PCInput: [['MouseRight'], ['MouseRight', 'MouseLeft'], ['MouseRight'], ['MouseRight']],
-        },
-      }}
-    />
-
-    <Comment>
-      this combo's motion value per second increased from 44 to 49.2 with the buffs, that's roughly
-      a 10% dps increase
-    </Comment>
-
-    <p>
-      If you are at a distance, you can always do the leaping thrust variation to close the gap and
-      then transition into the normal combo. You trade a bit of damage for the gap closing ability.
-    </p>
-
-    <GifCard
-      src="https://assets.mhlance.com/wilds/lt-sweep-ht-cc.gif"
-      title="Leaping Thrust into Sweep HT CC"
-      reversed
-    >
-      We got a topple on mizu and follow up with Leaping Thrust to easily reach the head and then
-      transition into the normal combo.
-    </GifCard>
-
-    <p>
-      The leaping thrust variation is often the best follow up after a power clash or topple, as it
-      usually leaves you at a distance where this combo perfectly catches up to the monster and your
-      other follow up options just miss.
-    </p>
-
-    <p>
-      Another advantage that these sweep combos have is that they are very sharpness efficient, as
-      we do slower but heavier hitting attacks, resulting in less hits of sharpness consumed per
-      second.
-    </p>
-
-    <SectionSubTitle title="Mid Thrust Wide Sweep (Elemental)" />
-
-    <p>
-      A different variant of the Wide Sweep combo uses Mid Thrusts instead of High Thrusts and ends
-      with the Triple Thrust instead of the Charged Counter. This variant is lower in raw damage,
-      but higher in elemental damage.
-    </p>
-
-    <p>
-      Use this combo When you have an elemental weapon (even if it's raw reinforced) and you hit an
-      Elemental Hitzone of <strong>15 or higher</strong>, the extra elemental damage makes up for
-      the lower raw output and it starts outperforming the High Thrust Wide Sweep combo.
+      With the buffs to the triple thrust finisher in Title Update 4, looping <CodeBlock
+        >Mid Thrust -> Wide Sweep -> Mid Thrust -> Triple Thrust</CodeBlock
+      >
+      has become the highest damage combo overall.
     </p>
 
     <ComboCard
@@ -145,7 +80,7 @@ import { ComboTag } from '../../../types/guides/Combo';
         title: 'Mid Thrust Sweep + Triple',
         longTitle: 'MT Wide Sweep MT Triple Thrust',
         stats: {
-          motionValue: 227,
+          motionValue: 233,
           elementModifier: 8.1,
           sharpnessCost: 4,
           duration: 4.74,
@@ -163,8 +98,9 @@ import { ComboTag } from '../../../types/guides/Combo';
     />
 
     <p>
-      Again we can also perform a leaping thrust variation to close the gap and then transition into
-      the combo.
+      If you are at a distance to the monster, you can always start the combo with a leaping thrust
+      instead of the first mid thrust. The leaping thrust is slower and slightly less damage, but it
+      allows you to quickly close the distance while also dealing damage.
     </p>
 
     <GifCard
@@ -175,6 +111,20 @@ import { ComboTag } from '../../../types/guides/Combo';
       Uth Duna lost the veil and topples, we follow up with a Leaping Thrust and transition into a
       Wide Sweep Mid Thrust, followed by a Triple Thrust.
     </GifCard>
+
+    <p>
+      If you need to rotate by quite a large angle or the monster's weakspot is high up, use high
+      thrusts instead of mid thrusts. Performing this combo with high thrusts is slightly weaker
+      (1-2%) and slower (less reactive + longer to reach red CC) but it has its advantages and niche
+      use cases.
+    </p>
+
+    <InfoBox type="tip">
+      <b>Quick Summary</b>
+      Mid Thrust → Wide Sweep → Mid Thrust → Triple Thrust is the highest damage loop. You can replace
+      the first Mid Thrust with a Leaping Thrust for gap closing or a High Thrust to reach higher up
+      for slightly less damage.
+    </InfoBox>
 
     <SectionSubTitle title="Mid Thrust Spam (Corrupted Mantle)" />
 
@@ -189,7 +139,7 @@ import { ComboTag } from '../../../types/guides/Combo';
         title: 'Mid Thrust Spam',
         longTitle: 'Triple Mid Thrust into Triple Thrust',
         stats: {
-          motionValue: 173,
+          motionValue: 179,
           elementModifier: 7.9,
           sharpnessCost: 4,
           duration: 3.83,
@@ -201,7 +151,7 @@ import { ComboTag } from '../../../types/guides/Combo';
           'Very high elemental damage and easy to execute',
           'Good for positioning due to strafing',
         ],
-        considerations: ['Low damage', 'Consumes slightly more sharpness than other combos'],
+        considerations: ['Lower damage', 'Consumes slightly more sharpness than other combos'],
         inputs: {
           PlaystationInput: [['Triangle'], ['Triangle'], ['Triangle'], ['Triangle']],
           XboxInput: [['Y'], ['Y'], ['Y'], ['Y']],
@@ -211,15 +161,15 @@ import { ComboTag } from '../../../types/guides/Combo';
     />
 
     <p>
-      The true power of this combo doesn't necessarily come from the damage it deals, but rather
-      from it's reaction speed, ability to reposition and because it's the fastest way to reach red
-      Charged Counter.
+      The true power of this combo doesn't come from raw damage, but from its reaction speed,
+      repositioning ability, and being the fastest way to reach red Charged Counter.
     </p>
 
     <p>
-      So situationally you still want to use it, for example when you need to move slightly to the
-      side to hit the weakspot, or if you can fit in a red charged counter into an attack chain
-      where wide sweep combos can't.
+      Against aggressive monsters where wide sweeps don't fit cleanly, mid thrust spam keeps you
+      safe while still building toward red Charged Counter. It's also useful when you need to strafe
+      slightly to stay on a weakspot, or when you want to end your chain with a counter rather than
+      committing to a slower finisher.
     </p>
 
     <InfoBox type="tip">
