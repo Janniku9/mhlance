@@ -25,13 +25,14 @@ interface Props {
   build: Build;
   noTopRounding?: boolean;
   class?: string;
+  link?: { url: string; tooltip: string };
 }
 
 // get game from url
 const segments = Astro.url.pathname.split('/').filter(Boolean);
 const gameId = segments[0] as Game;
 
-const { build, noTopRounding, class: className } = Astro.props;
+const { build, noTopRounding, class: className, link } = Astro.props;
 
 // Generate unique modal ID for this build
 const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCase()}`;
@@ -62,18 +63,36 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
               alt={build.imageAlt || build.title}
               class="object-contain w-full"
             />
-            <!-- Expand Button -->
-            <button
-              type="button"
-              class="absolute top-3 right-3 bg-background-dark/80 backdrop-blur-sm border border-text/10 rounded-xl p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-background-darker hover:scale-105"
-              aria-label="Expand image"
-              data-expand-image={modalId}
-            >
-              <Icon
-                name="mingcute:fullscreen-line"
-                class="w-4 h-4 text-text/70 hover:text-primary transition-colors duration-300"
-              />
-            </button>
+            <!-- Image Buttons -->
+            <div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+              <button
+                type="button"
+                class="bg-background-dark/80 backdrop-blur-sm border border-text/10 rounded-xl p-2 hover:bg-background-darker hover:scale-105 transition-all duration-300"
+                aria-label="Expand image"
+                title="Expand"
+                data-expand-image={modalId}
+              >
+                <Icon
+                  name="mingcute:fullscreen-line"
+                  class="w-4 h-4 text-text/70 hover:text-primary transition-colors duration-300"
+                />
+              </button>
+              {link && (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-background-dark/80 backdrop-blur-sm border border-text/10 rounded-xl p-2 hover:bg-background-darker hover:scale-105 transition-all duration-300 flex"
+                  aria-label={link.tooltip}
+                  title={link.tooltip}
+                >
+                  <Icon
+                    name="mingcute:external-link-line"
+                    class="w-4 h-4 text-text/70 hover:text-primary transition-colors duration-300"
+                  />
+                </a>
+              )}
+            </div>
           </div>
         )
       }
@@ -209,7 +228,7 @@ const modalId = `build-image-modal-${build.title.replace(/\s+/g, '-').toLowerCas
 <!-- Reusable Image Modal -->
 {
   build.image && (
-    <ImageModal id={modalId}>
+    <ImageModal id={modalId} link={link}>
       <Image
         src={build.image}
         alt={build.imageAlt || build.title}

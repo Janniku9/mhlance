@@ -15,21 +15,21 @@ import ExternalLinkButton from '../../../components/common/ExternalLinkButton.as
 
 import gogma_artian from '../../../assets/wilds/builds/gog_artian.png';
 
-import gorcherer from '../../../assets/wilds/builds/high-rank/tu4-gorcherer.png';
-import fulgore from '../../../assets/wilds/builds/high-rank/tu4-fulgore.png';
-import twogog from '../../../assets/wilds/builds/high-rank/tu4-2gog.png';
-import fourgog from '../../../assets/wilds/builds/high-rank/tu4-4gog.png';
-import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
+import gorcher from '../../../assets/wilds/builds/high-rank/tu4-5-gorcher.png';
+import scorcher from '../../../assets/wilds/builds/high-rank/tu4-5-scorcher.png';
+import poverty from '../../../assets/wilds/builds/high-rank/tu4-5-poverty.png';
+import comfy from '../../../assets/wilds/builds/high-rank/tu4-5-comfy.png';
+import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
 ---
 
 <ContentLayout title="Wilds Endgame">
   <Section>
-    <Comment> last updated for Gogmazios and AT Jin Dahaad </Comment>
+    <Comment> last updated for Arch Tempered Arkveld </Comment>
 
     <p>
-      These are the current endgame builds for Title Update 4, which added Gogmazions and AT Jin
-      Dahaad. All of these builds assume you've completed the main story and have access to the
-      highest rarity Gogma Artian weapons, plus pretty much all decorations and armor pieces.
+      These are the current endgame builds for Title Update 4.5, which added Arch Tempered Arkveld.
+      All of these builds assume you've completed the main story and have access to the highest
+      rarity Gogma Artian weapons, plus pretty much all decorations and armor pieces.
     </p>
 
     <ExternalLinkButton href="/wilds/builds/endgame-tu2" name="Old Tu2 Builds" />
@@ -93,7 +93,7 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
     <p>
       Since Gogma Artian weapons can all reach the same raw damage, using elemental ones simply adds
       free damage on top. If possible, craft 6 different lances (one for each element plus one
-      status/raw weapon) to maximize your damage potential across all matchups.. Using the right
+      status/raw weapon) to maximize your damage potential across all matchups. Using the right
       element typically adds 5-15% damage, which really adds up over time.
     </p>
 
@@ -110,67 +110,141 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
   <Section title="RNG Charms">
     <p>
       The August update added a new RNG charm system. These charms allow you to potentially get more
-      weapon skills. Aim for an <b>Armor Skill 3 slot</b> (or 1 level of Agitator/Burst/WEX) combined
-      with skills like
-      <b>Offensive Guard 3</b>, <b>Master's Touch 1</b>, or <b>Razor Sharp 3</b> on the charm.
+      weapon skills. Aim for a level 1 weapon slot combined with skills like
+      <b>Critical Eye 3</b>, <b>Offensive Guard 3</b>, <b>Master's Touch 1</b>, or <b
+        >Razor Sharp 3</b
+      > on the charm.
     </p>
 
     <StyledList
       items={[
         {
-          text: 'Armor Skills',
-          subtext: '3 slot or 1 point of Wex/Agi or Burst',
+          text: 'Weapon 1 Slot',
+          subtext: 'to fit a level of crit boost or element attack',
           emoji: '🛡️',
         },
         {
           text: 'Weapon Skills',
-          subtext: "All 3 levels of Offensive Guard, Razor Sharp or  1 level of Master's Touch",
+          subtext:
+            "All 3 levels of Critical Eye, Offensive Guard, Razor Sharp or  1 level of Master's Touch",
           emoji: '🗡️',
         },
       ]}
     />
 
     <p>
-      This usually allows you to slot in more Crit Boost or get extra affinity from Critical Eye or
-      more raw from Attack Boost.
+      This usually allows you to slot in more Crit Boost or get extra affinity from Critical Eye.
     </p>
   </Section>
 
   <InfoBox>
     All sets relying on Gore/Lord's Soul being on the weapon have an alternative build that can be
-    made by replacing Gore with Lagiacrus and adding 1-2 levels of Latent Power. These sets are very
-    minimally (1-2%) weaker than the Gore versions. You can hopefully figure out the details
+    made by replacing Gore with Lagiacrus Legs and adding 1-2 levels of Latent Power. These sets are
+    very minimally (1-2%) weaker than the Gore versions. You can hopefully figure out the details
     yourself 🙏
   </InfoBox>
 
-  <Section title="Gorcher" emoji="🔥">
+  <Section title="Gorcher" emoji="🦠">
     <p>
-      This is theoretically the highest damage set available. It utilizes Lord's Soul and Bloodlust
-      to reach massive raw and affinity numbers. It maxes out every skill Lance wants, and as a
-      bonus, grants Binding Counter and Scorcherer for free (we would most likely want to run these
-      pieces even without those two skills).
+      This is theoretically the highest damage set available. It utilizes <b>Lord's Soul</b> and <b
+        >Bloodlust</b
+      >
+      to reach massive raw and affinity numbers. It maxes out every core skill Lance wants, and as a
+      bonus, also unlocks Binding Counter and Scorcher.
     </p>
 
     <p>
-      The transcended Guardian Rathalos allow us to max out the core skills and squeeze in a level
-      of Scorcherer. Thanks to the recent buff that added fixed damage and lowered the cooldown,
-      this skill is now quite powerful (even against fire resistant monsters).
+      The Transcended Guardian Rathalos pieces are incredibly efficient, letting us max out the core
+      skills and squeeze in a level of <b>Scorcher</b>, which got significant buffs in title update
+      4. It now deals fixed damage and has lower cooldown for procs, making it a powerful damage
+      skill (even against fire resistant monsters).
     </p>
 
-    <p>Binding counter is a nice raw damage boost, in matchups where we can proc it.</p>
+    <p>
+      <b>Binding Counter</b> gives +25 raw for 90 seconds after a power clash or when recovering from
+      grabs or web effects. Since a lot of the endgame fights can be powerclashed, or have some other
+      way to trigger it, it's a great skill to have.
+    </p>
 
     <BuildCard
       build={{
         title: 'Gorcher',
         description: [
           "The new AT Jin pieces allow us to easily max out Agitator and get Binding Counter and Lord's Soul.",
-          'Since the Gore armor is relatively skill inefficient but the series bonus is incredible, we choose to have 1 point on our weapon.',
-          'The Transcended Guardian Rathalos pieces are insanely efficient thanks to the new slots, allowing us to max out our core skills and get Scorcherer on top.',
+          'Since the Gore armor is relatively skill inefficient but the series bonus is incredibly strong, we choose to have 1 point on our weapon.',
+          'The Transcended Guardian Rathalos pieces round out the set, covering our remaining core skills and adding Scorcher on top.',
         ],
-        image: gorcherer,
+        image: gorcher,
         imageAlt: 'gorcher',
         stats: {
-          raw: 554,
+          raw: 557,
+          sharpness: {
+            hits: 210,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 51,
+          },
+          affinity: {
+            avg: 84,
+            peak: 100,
+          },
+        },
+        additionalNotes: {
+          charm:
+            "Any charm that maxes out a weapon skill (crit eye 3, master's touch 1, offensive guard 3) with a 1 slot works.",
+        },
+      }}
+      link={{
+        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;fireattackinfusion;fireattackinfusion;fireattackinfusion;attackboostex;attackboostex;attackboostiii;attackboostiii;sharpnessammoboostex;grathaloshelmbeta;dahaadshardmailgamma;grathalosvambracesbeta;dahaadshardcoilgamma;goregreavesbeta;criticaleye;3;?;0;?;0;criticaljeweliii;masteryjewel;guardianironwalljwl;tenderizerjewel;tenderizerjewel;?;mightyjewel;mightyjewel;?;chainjewel;mightyjewel;shockproofjewel;?;?;?;tenderizerjewel;sanejewel;sanejewel;criticaljewel;?;?;elementfocus;goremagalastyranny;lordssoul;2;;2;;;?',
+        tooltip: 'open in mathhunter',
+      }}
+    />
+
+    <InfoBox type="note"
+      ><p>
+        Note: The displayed EFR does not include the damage from Scorcher. Although the number
+        appears lower than other sets, Scorcher 1 adds around <strong
+          >2-3% more effective damage</strong
+        >
+        in theory, and even more in practice.
+      </p>
+    </InfoBox>
+  </Section>
+
+  <Section title="Scorcher" emoji="🔥">
+    <p>
+      You can also fully lean into <b>Scorcher</b> and reach level 2 by running 3 pieces of G. Rathalos
+      and 1 point on your weapon. Since Scorcher deals fixed damage, it's great against monsters with
+      bad raw hitzones (like Gore). It also scales with fire damage and the monster's fire weakness,
+      making it able to outdamage Gorcher in certain matchups.
+    </p>
+
+    <p>
+      The tradeoff is lower overall affinity, which means faster sharpness loss. The math gets
+      complicated quickly. There are a lot of variables at play: monster hitzone values, hit uptime,
+      internal skill cooldowns, and more. That said, Gorcher tends to be the more consistent choice
+      across most matchups, whereas Full Scorcher shines against monsters with low raw hitzone
+      values or when your hit uptime drops.
+    </p>
+
+    <p>
+      This set also uses 2 AT Jin Dahaad pieces, unlocking <b>Binding Counter</b> for a solid raw boost
+      whenever it can be triggered.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Full Scorcher',
+        description: [
+          "The new AT Jin pieces allow us to easily max out Agitator and get Binding Counter and Lord's Soul.",
+          'We use the 3 most efficient G. Rathalos pieces and together with the point from the weapon we unlock Scorcher 2',
+        ],
+        image: scorcher,
+        imageAlt: 'scorcher',
+        stats: {
+          raw: 536,
           sharpness: {
             hits: 180,
             type: 'white',
@@ -186,103 +260,43 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
         },
         additionalNotes: {
           charm:
-            "Flayer is a flex skill, it's nice to have but if your charm doesn't allow for it, you can use any charm with good weapon skills and then drop it it for level 1 burst.",
+            "Any charm that maxes out a weapon skill (crit eye 3, master's touch 1, offensive guard 3) with a 1 slot works.",
         },
       }}
-    />
-
-    <InfoBox type="note"
-      ><p>
-        Note: The displayed EFR does not include the damage from Scorcherer. Although the number
-        appears lower than other sets, Scorcherer adds around <strong
-          >2-3% more effective damage</strong
-        >
-        in theory, and even more in practice.
-      </p>
-    </InfoBox>
-  </Section>
-
-  <Section title="FulGore" emoji="🦖">
-    <p>
-      You may remember FulGore from the game's release. It makes a comeback return in TU4 now that
-      we can fit Lord's Soul.
-    </p>
-
-    <p>
-      We use 2 Transcended Fulgur Anjanath pieces to activate <strong>Second Wind</strong>. This
-      grants a secondary stamina gauge, allowing you to execute stamina-heavy moves (like Dash
-      Attack, Grand Retribution Thrust, or hops) without depleting your main bar. This prevents
-      Maximum Might from deactivating, potentially allowing you to match or even exceed Gorcher's
-      damage output.
-    </p>
-
-    <p>
-      However, this set is a bit harder to execute. You need to already be quite good at managing
-      stamina to make good use of the tiny extra stamina bar. If you struggle with stamina, the
-      passive damage from Scorcherer is simply more reliable. On the other hand, if your management
-      is too good, you may not need the safety net of Second Wind to begin with.
-    </p>
-
-    <p>
-      Ultimately, I believe FulGore shines if you have good monster knowledge and can play
-      aggressively with stamina-draining moves (like GRT), whereas Gorcher remains the simpler, more
-      general option.
-    </p>
-
-    <BuildCard
-      build={{
-        title: 'FulGore',
-        description: [
-          "The new AT Jin pieces allow us to easily max out Agitator and get Binding Counter and Lord's Soul.",
-          'Since the Gore armor is relatively skill inefficient but the series bonus is incredible, we choose to have 1 point on our weapon.',
-          'We use 2 transcended Guardian Fulgur Anjanath pieces to get second wind.',
-        ],
-        image: fulgore,
-        imageAlt: 'fulgore',
-        stats: {
-          raw: 557,
-          sharpness: {
-            hits: 220,
-            type: 'white',
-          },
-          element: {
-            type: 'fire',
-            value: 51,
-          },
-          affinity: {
-            avg: 84,
-            peak: 100,
-          },
-        },
+      link={{
+        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;fireattackinfusion;fireattackinfusion;fireattackinfusion;attackboostex;attackboostex;attackboostiii;attackboostiii;sharpnessammoboostex;grathaloshelmbeta;dahaadshardmailgamma;grathalosvambracesbeta;dahaadshardcoilgamma;grathalosgreavesbeta;criticaleye;3;?;0;?;0;criticaljeweliii;masteryjewel;guardianironwalljwl;tenderizerjewel;tenderizerjewel;?;mightyjewel;mightyjewel;?;chainjewel;mightyjewel;shockproofjewel;?;?;?;flayerjewel;?;?;criticaljewel;?;?;elementfocus;rathalossflare;lordssoul;2;;2;;2;?',
+        tooltip: 'open in mathhunter',
       }}
     />
   </Section>
 
   <Section title="Poverty Scorcher" emoji="💸">
     <p>
-      This set does not require any skills on your Gogma Weapon, it works right out of the box. We
-      achieve Lord's Soul by using 3 AT Jin pieces, while still fitting in Scorcherer.
+      This set does <b>not require any skills</b> on your Gogma weapon, it works right out of the box.
+      Because of this restriction, we can't run Bloodlust, so the focus is on getting <b
+        >Lord's Soul</b
+      > and <b>Scorcher</b> instead.
     </p>
 
     <p>
-      Instead of using an RNG charm, we drop the extra Crit Boost and compensate for the loss of
-      affinity (from not running Gore) with Latent Power. While not as reliable or strong as the
-      meta options, this is an excellent budget entry point.
+      We use 2 AT Jin Dahaad pieces to unlock <b>Binding Counter</b>, and the new AT Arkveld legs to
+      activate Lord's Soul. As an easy optional upgrade, rolling for <b>Arkveld's Hunger</b> on your
+      weapon gives you some nice healing since you're already running the legs anyway.
     </p>
 
     <BuildCard
       build={{
         title: 'Poverty Scorcher',
         description: [
-          'We use 3 AT jin pieces to max out Agitator and get some Weakness Exploit',
-          'Then we use 2 transcended Guardian Rathalos to round out the set and add Scorcherer.',
+          "We use 2 AT jin pieces and 1 AT arkveld piece to max out Agitator, Weakness Exploit and unlock Lord's Soul.",
+          'Then we use 2 transcended Guardian Rathalos to round out the set and add Scorcher.',
         ],
         image: poverty,
         imageAlt: 'poverty scorcher',
         stats: {
           raw: 532,
           sharpness: {
-            hits: 180,
+            hits: 160,
             type: 'white',
           },
           element: {
@@ -290,70 +304,143 @@ import poverty from '../../../assets/wilds/builds/high-rank/tu4-poverty.png';
             value: 51,
           },
           affinity: {
-            avg: 78,
-            peak: 100,
+            avg: 69,
+            peak: 90,
           },
         },
+        additionalNotes: {
+          optional:
+            "The build works without any weapon skills. Rolling for Arkveld's Hunger is an easy upgrade since you're already running the AT Arkveld legs, but it's not required.",
+          charm:
+            "Any charm that maxes out a weapon skill (crit eye 3, master's touch 1, offensive guard 3) with a 1 slot works.",
+        },
+      }}
+      link={{
+        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;fireattackinfusion;fireattackinfusion;fireattackinfusion;attackboostex;attackboostex;attackboostiii;attackboostiii;sharpnessammoboostex;grathaloshelmbeta;dahaadshardmailgamma;grathalosvambracesbeta;dahaadshardcoilgamma;arkvulcangreavesgamma;criticaleye;3;?;0;?;0;criticaljeweliii;masteryjewel;guardianironwalljwl;tenderizerjewel;tenderizerjewel;?;mightyjewel;mightyjewel;?;chainjewel;mightyjewel;shockproofjewel;?;?;?;tenderizerjewel;chainjewel;?;criticaljewel;?;?;elementfocus;arkveldshunger;?;2;;2;;;?',
+        tooltip: 'open in mathhunter',
       }}
     />
   </Section>
 
-  <Section title="Gogmental" emoji="🔱">
+  <Section title="Comfy Healing" emoji="❤️‍🩹">
     <p>
-      When fighting Gogmazios or other monsters with very high elemental-to-raw hitzone ratios, we
-      can make use of the Gogmazios elemental boosting skill, Gogmapocalypse, to create powerful
-      hybrid builds.
+      Thanks to AT Arkveld armor, we actually have a kinda competitive comfy healing set again. We
+      run double AT and double Numinous pieces to unlock both
+      <b>Arkveld's Hunger</b> and <b>Zoh Shia's Pulse</b>. The first heals you when you attack,
+      while the second is a passive regen effect. Both skills have diminishing returns, which is why
+      we get <b>both</b> but only at level 1.
     </p>
 
     <p>
-      Because the Gogmazios pieces come with additional series skills, we can run one G. Rathalos
-      and G. Odogaron piece to get both Scorcherer and Burst Boost. These two together compensate
-      for not running Lord's Soul.
-    </p>
-
-    <p>
-      We can use your existing Gore weapons for both fire and dragon, or, if you want, you can craft
-      a NEW dragon weapon (with 2x Element EX and 2x Element II).
-    </p>
-
-    <p>
-      Out of the box, this set is around 10% stronger than Gorcherer in phase 3. With element
-      reinforcements on your dragon weapon, that jumps to around 20%. For fire in phases 1 and 2,
-      just stick with the raw weapon reinforcements.
+      With the new Nadia armor, we are actually able to still fit <b>Gore Magala's</b> set bonus, so
+      we're not really missing out too much on damage, except for not having Scorcher.
     </p>
 
     <BuildCard
       build={{
-        title: 'gogmental',
+        title: 'Comfy Healing',
         description: [
-          'We use the 2 Gogmazios pieces that come with a point of Burst Boost and Scorcherer.',
-          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points.',
-          'The final piece is Gore, which together with the weapon helps us with affinity.',
+          "2 AT Arkveld and 2 Numinous pieces unlock both Arkveld's Hunger and Zoh Shia's Pulse.",
+          'The Nadia boots fill in the remaining core skills.',
+          "One point of Gore and Lord's Soul on the weapon keeps our core damage skills covered.",
         ],
-        image: twogog,
-        imageAlt: 'gog two piece',
+        image: comfy,
+        imageAlt: 'comfy healing',
         stats: {
-          raw: 477,
+          raw: 553,
           sharpness: {
-            hits: 170,
+            hits: 210,
+            type: 'white',
+          },
+          element: {
+            type: 'fire',
+            value: 54,
+          },
+          affinity: {
+            avg: 84,
+            peak: 100,
+          },
+        },
+        additionalNotes: {
+          charm:
+            "Any charm that maxes out a weapon skill (crit eye 3, master's touch 1, offensive guard 3) with a 1 slot works.",
+        },
+      }}
+      link={{
+        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;fireattackinfusion;fireattackinfusion;fireattackinfusion;attackboostex;attackboostex;attackboostiii;attackboostiii;sharpnessammoboostex;arkvulcanhelmgamma;numinousshroudbeta;arkvulcanvambracesgamma;numinousoverlaybeta;sororalbootsalpha;criticaleye;3;?;0;?;0;guardianironwalljwl;masteryjewel;criticaljeweliii;mightyjewel;sanejewel;?;challengerjewel;?;?;sanejewel;sanejewel;?;mightyjewel;?;?;chainjewel;mightyjewel;?;criticaljewel;?;?;elementfocus;goremagalastyranny;lordssoul;;;;;;?',
+        tooltip: 'open in mathhunter',
+      }}
+    />
+  </Section>
+
+  <Section title="Anti Gogmazios" emoji="🔱">
+    <p>
+      Gogmazios has an extreme dragon weakness in phase 3, making it one of the few matchups where
+      going full element is clearly worth it. Running 4 Gogmazios pieces unlocks <b
+        >Mutual Hostility</b
+      > level 2, which gives a massive element boost while the monster is enraged. You also get a temporary
+      shield, making some of his scarier one-shot attacks much more manageable.
+    </p>
+
+    <p>
+      Since Gogmazios weapons require materials that only drop from this fight, crafting a dedicated
+      dragon weapon makes sense once you're farming him regularly. For the build to work you only
+      need Gore on the weapon, which is more forgiving to roll than a fully optimized Gorcher setup.
+      With element reinforcements (2x Element EX, 2x Element II), you're looking at around 20% more
+      damage in phase 3 compared to Gorcher.
+    </p>
+
+    <p>
+      The fight plays quite differently across its three phases. In phases 1 and 2 he's weaker to
+      fire and since in the non-liquid state the hitzones are very low you can even run Mind's Eye.
+      Phase 3 is where this build really shines. Offensive Guard is very hard to activate so run
+      Crit Element on your dragon set instead. Slot Guard Up if you want extra comfort against his
+      fire bubble attacks, otherwise drop it and run Crit Boost 3 instead.
+    </p>
+
+    <BuildCard
+      build={{
+        title: 'Anti Gogmazios',
+        description: [
+          'We use 4 Gogmazios pieces to unlock Mutual Hostility 2.',
+          'The Nadia head piece gives us the second point of Bloodlust, with the first coming from the weapon.',
+        ],
+        image: gog,
+        imageAlt: 'gog',
+        stats: {
+          raw: 401,
+          sharpness: {
+            hits: 140,
             type: 'white',
           },
           element: {
             type: 'dragon',
-            value: 139,
+            value: 146,
           },
           affinity: {
-            avg: 74,
-            peak: 85,
+            avg: 62,
+            peak: 95,
           },
         },
+        additionalNotes: {
+          sharpness:
+            "Because of the phase transitions, it's very easy to sharpen so we rather use Razor Sharp Combo Deco to max out the elemental attack",
+          charm:
+            'Any charm that maxes out a weapon skill (crit eye 3, razor sharp 3, offensive guard 3) with a 1 slot works.',
+        },
+      }}
+      link={{
+        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;dragonattackinfusion;dragonattackinfusion;dragonattackinfusion;elementboostex;elementboostex;elementboostii;elementboostii;sharpnessammoboostex;sororalearringsalpha;gogmaziosmailalpha;gogmaziosvambracesalpha;gogmazioscoilalpha;gogmaziosgreavesalpha;criticaleye;3;?;0;?;0;shielddragonjwl;rzrsharpdragonjwl;critelemdragonjwl;chainjewel;sanejewel;sanejewel;throttlejewel;phoenixjewel;?;mightyjewel;sanejewel;?;phoenixjewel;?;?;chainjewel;phoenixjewel;?;expertjewel;?;?;elementfocus;goremagalastyranny;?;;;;;;?',
+        tooltip: 'open in mathhunter',
       }}
     />
 
     <InfoBox type="tip"
       ><p>
-        When you fight Gogmazios, it's worth running <strong>Mind's Eye</strong> on your fire set and
-        <strong>Crit Element</strong> on your dragon set over the usual where you max out Crit Boost.
+        In phases 1 and 2 run <strong>Mind's Eye</strong> on your fire set. In phase 3, Offensive Guard
+        is hard to trigger so run <strong>Crit Element</strong> on your dragon set instead. Slot <strong
+          >Guard Up</strong
+        > for extra comfort against his fire bubble attacks, or drop it for Crit Boost 3.
       </p>
     </InfoBox>
   </Section>

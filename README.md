@@ -15,7 +15,6 @@ If you're planning to contribute new guides or substantial content (rather than 
 ### 🚀 Setup & Development
 
 1. **Prerequisites**
-
    - Node.js (around v22)
    - Fork the repository and clone it to your local machine
 
