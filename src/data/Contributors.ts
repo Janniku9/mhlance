@@ -1,6 +1,8 @@
 import type { Contributor } from '../types/Contributors';
 
 import J9 from '../assets/contributors/j9.jpg';
+import Gnar from '../assets/contributors/gnar.png';
+import Latias from '../assets/contributors/latias.png';
 
 export const contributors: Contributor[] = [
   {
@@ -51,11 +53,20 @@ export const contributors: Contributor[] = [
   },
   {
     name: 'Gnar',
+    image: Gnar,
     contributions: {
       wilds: 'guard up testing and data collection',
     },
     socials: {
       youtube: 'https://www.youtube.com/@gnaryamanobe',
     },
+  },
+  {
+    name: 'Latias',
+    image: Latias,
+    contributions: {
+      wilds: 'endgame builds and corrections',
+    },
+    socials: {},
   },
 ];

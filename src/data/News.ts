@@ -6,6 +6,7 @@ import wildsThumbnail from '../assets/wilds/coming_soon.png';
 import wildsTu2 from '../assets/wilds/tu2.png';
 import wildsAugustBuffs from '../assets/wilds/august_buffs.png';
 import wildsTu4 from '../assets/wilds/tu4.png';
+import wildsTu45 from '../assets/wilds/tu4-5.png';
 
 export const news: News[] = [
   {
@@ -36,7 +37,7 @@ export const news: News[] = [
     game: 'wilds',
   },
   {
-    href: '/wilds/builds/endgame',
+    href: '/wilds/builds/endgame-tu2',
     type: 'builds',
     image: wildsTu2,
     date: '2025-08-03',
@@ -60,6 +61,15 @@ export const news: News[] = [
     date: '2025-12-26',
     title: 'Updated Builds & Combos for Tu4',
     description: 'More lance buffs, Gogmazios and AT Jin Dahaad have arrived!',
+    game: 'wilds',
+  },
+  {
+    href: '/wilds/builds/endgame',
+    type: 'builds',
+    image: wildsTu45,
+    date: '2026-3-1',
+    title: 'Updated Builds for Tu4.5',
+    description: 'AT Arkveld and 10* Monsters',
     game: 'wilds',
   },
 ];
