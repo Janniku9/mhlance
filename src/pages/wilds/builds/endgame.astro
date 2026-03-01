@@ -27,8 +27,7 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
     <Comment> last updated for Gogmazios and AT Jin Dahaad </Comment>
 
     <p>
-      These are the current endgame builds for Title Update 4, which added Gogmazions and AT Jin
-      Dahaad. All of these builds assume you've completed the main story and have access to the
+      These are the current endgame builds for Title Update 4.5, which added Arch Tempered Arkveld. All of these builds assume you've completed the main story and have access to the
       highest rarity Gogma Artian weapons, plus pretty much all decorations and armor pieces.
     </p>
 
@@ -110,35 +109,34 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
   <Section title="RNG Charms">
     <p>
       The August update added a new RNG charm system. These charms allow you to potentially get more
-      weapon skills. Aim for an <b>Armor Skill 3 slot</b> (or 1 level of Agitator/Burst/WEX) combined
+      weapon skills. Aim for a level 1 weapon slot combined
       with skills like
-      <b>Offensive Guard 3</b>, <b>Master's Touch 1</b>, or <b>Razor Sharp 3</b> on the charm.
+      <b>Critical Eye 3</b>, <b>Offensive Guard 3</b>, <b>Master's Touch 1</b>, or <b>Razor Sharp 3</b> on the charm.
     </p>
 
     <StyledList
       items={[
         {
-          text: 'Armor Skills',
-          subtext: '3 slot or 1 point of Wex/Agi or Burst',
+          text: 'Weapon 1 Slot',
+          subtext: 'to fit a level of crit boost or element attack',
           emoji: '🛡️',
         },
         {
           text: 'Weapon Skills',
-          subtext: "All 3 levels of Offensive Guard, Razor Sharp or  1 level of Master's Touch",
+          subtext: "All 3 levels of Critical Eye, Offensive Guard, Razor Sharp or  1 level of Master's Touch",
           emoji: '🗡️',
         },
       ]}
     />
 
     <p>
-      This usually allows you to slot in more Crit Boost or get extra affinity from Critical Eye or
-      more raw from Attack Boost.
+      This usually allows you to slot in more Crit Boost or get extra affinity from Critical Eye.
     </p>
   </Section>
 
   <InfoBox>
     All sets relying on Gore/Lord's Soul being on the weapon have an alternative build that can be
-    made by replacing Gore with Lagiacrus and adding 1-2 levels of Latent Power. These sets are very
+    made by replacing Gore with Lagiacrus Legs and adding 1-2 levels of Latent Power. These sets are very
     minimally (1-2%) weaker than the Gore versions. You can hopefully figure out the details
     yourself 🙏
   </InfoBox>
@@ -176,9 +174,9 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
         image: gorcher,
         imageAlt: 'gorcher',
         stats: {
-          raw: 554,
+          raw: 557,
           sharpness: {
-            hits: 180,
+            hits: 210,
             type: 'white',
           },
           element: {
@@ -186,7 +184,7 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
             value: 51,
           },
           affinity: {
-            avg: 81,
+            avg: 84,
             peak: 100,
           },
         },
@@ -244,7 +242,7 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
         image: scorcher,
         imageAlt: 'scorcher',
         stats: {
-          raw: 554,
+          raw: 536,
           sharpness: {
             hits: 180,
             type: 'white',
@@ -296,7 +294,7 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
         stats: {
           raw: 532,
           sharpness: {
-            hits: 180,
+            hits: 160,
             type: 'white',
           },
           element: {
@@ -304,8 +302,8 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
             value: 51,
           },
           affinity: {
-            avg: 78,
-            peak: 100,
+            avg: 69,
+            peak: 90,
           },
         },
         additionalNotes: {
@@ -345,17 +343,17 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
         image: comfy,
         imageAlt: 'comfy healing',
         stats: {
-          raw: 554,
+          raw: 553,
           sharpness: {
-            hits: 180,
+            hits: 210,
             type: 'white',
           },
           element: {
             type: 'fire',
-            value: 51,
+            value: 54,
           },
           affinity: {
-            avg: 81,
+            avg: 84,
             peak: 100,
           },
         },
@@ -398,32 +396,32 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
 
     <BuildCard
       build={{
-        title: 'gogmental',
+        title: 'Anti Gog',
         description: [
-          'We use the 2 Gogmazios pieces that come with a point of Burst Boost and Scorcher.',
-          'Then we use transcended G. Rathalos and G. Odogaron pieces to get the remaining points.',
+          'We use the 4 Gogmazios pieces to get Mutual Hostility 2',
+          'Then we use the new Nadia Head piece so we get Bloodlust together with the point from the weapon',
           'The final piece is Gore, which together with the weapon helps us with affinity.',
         ],
         image: gog,
         imageAlt: 'gog',
         stats: {
-          raw: 477,
+          raw: 401,
           sharpness: {
-            hits: 170,
+            hits: 140,
             type: 'white',
           },
           element: {
             type: 'dragon',
-            value: 139,
+            value: 146,
           },
           affinity: {
-            avg: 74,
-            peak: 85,
+            avg: 62,
+            peak: 95,
           },
         },
       }}
       link={{
-        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;dragonattackinfusion;dragonattackinfusion;dragonattackinfusion;elementboostex;elementboostex;elementboostii;elementboostii;sharpnessammoboostex;sororalearringsalpha;gogmaziosmailalpha;gogmaziosvambracesalpha;gogmazioscoilalpha;gogmaziosgreavesalpha;criticaleye;3;?;0;?;0;shielddragonjwl;masteryjewel;critelemdragonjwl;chainjewel;sanejewel;sanejewel;challengerjewel;phoenixjewel;?;mightyjewel;sanejewel;?;phoenixjewel;?;?;chainjewel;phoenixjewel;?;dragonjewel;?;?;elementfocus;goremagalastyranny;?;;;;;;?',
+        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;dragonattackinfusion;dragonattackinfusion;dragonattackinfusion;elementboostex;elementboostex;elementboostii;elementboostii;sharpnessammoboostex;sororalearringsalpha;gogmaziosmailalpha;gogmaziosvambracesalpha;gogmazioscoilalpha;gogmaziosgreavesalpha;criticaleye;3;?;0;?;0;shielddragonjwl;rzrsharpdragonjwl;critelemdragonjwl;chainjewel;sanejewel;sanejewel;throttlejewel;phoenixjewel;?;mightyjewel;sanejewel;?;phoenixjewel;?;?;chainjewel;phoenixjewel;?;expertjewel;?;?;elementfocus;goremagalastyranny;?;;;;;;?',
         tooltip: 'open in mathhunter',
       }}
     />
