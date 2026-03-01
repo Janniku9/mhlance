@@ -31,18 +31,20 @@ const { id, class: className = '', link } = Astro.props;
 
     <!-- Bottom Buttons - Bottom Center, Outside Image -->
     <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
-      {link && (
-        <a
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-background-dark/90 backdrop-blur-sm border border-text/10 rounded-lg px-4 py-2 hover:bg-background-darker hover:scale-105 transition-all duration-300 flex items-center gap-2"
-          aria-label={link.tooltip}
-        >
-          <span class="text-text/80 font-medium">{link.tooltip}</span>
-          <Icon name="mingcute:external-link-line" class="w-4 h-4 text-text/70" />
-        </a>
-      )}
+      {
+        link && (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-background-dark/90 backdrop-blur-sm border border-text/10 rounded-lg px-4 py-2 hover:bg-background-darker hover:scale-105 transition-all duration-300 flex items-center gap-2"
+            aria-label={link.tooltip}
+          >
+            <span class="text-text/80 font-medium">{link.tooltip}</span>
+            <Icon name="mingcute:external-link-line" class="w-4 h-4 text-text/70" />
+          </a>
+        )
+      }
       <button
         type="button"
         class="bg-background-dark/90 backdrop-blur-sm border border-text/10 rounded-lg px-4 py-2 hover:bg-background-darker hover:scale-105 transition-all duration-300 flex items-center gap-2"
