@@ -135,14 +135,16 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
     <p>
       This usually allows you to slot in more Crit Boost or get extra affinity from Critical Eye.
     </p>
-  </Section>
 
-  <InfoBox>
-    All sets relying on Gore/Lord's Soul being on the weapon have an alternative build that can be
-    made by replacing Gore with Lagiacrus Legs and adding 1-2 levels of Latent Power. These sets are
-    very minimally (1-2%) weaker than the Gore versions. You can hopefully figure out the details
-    yourself 🙏
-  </InfoBox>
+    <InfoBox type="note">
+      <p>
+        For fights where you want <strong>Guard Up</strong> (Gogmazios, Zoh Shia, AT Nu Udra),
+        drop Critical Eye first. A Guard Up 3 charm works well here since it's lower rarity and
+        easier to roll. With combo decos like OFG or GU, you can also pick between Guard or Element
+        Attack in the second slot depending on whether you want more comfort or damage.
+      </p>
+    </InfoBox>
+  </Section>
 
   <Section title="Gorcher" emoji="🦠">
     <p>
@@ -324,37 +326,57 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
 
   <Section title="Comfy Healing" emoji="❤️‍🩹">
     <p>
-      Thanks to AT Arkveld armor, we actually have a kinda competitive comfy healing set again. We
-      run double AT and double Numinous pieces to unlock both
-      <b>Arkveld's Hunger</b> and <b>Zoh Shia's Pulse</b>. The first heals you when you attack,
-      while the second is a passive regen effect. Both skills have diminishing returns, which is why
-      we get <b>both</b> but only at level 1.
+      This is essentially the same set as Gorcher, with the same armor pieces and core damage
+      skills, but instead of Scorcher we run <b>Arkveld's Hunger</b> for constant healing.
+      It also only needs <b>1 skill on the weapon</b> (just Gore for the series bonus), since Lord's Soul
+      is already covered by the armor. That makes it significantly less demanding to roll than
+      Gorcher.
     </p>
 
     <p>
-      With the new Nadia armor, we are actually able to still fit <b>Gore Magala's</b> set bonus, so
-      we're not really missing out too much on damage, except for not having Scorcher.
+      Arkveld's Hunger works similarly to Whiteflame Torrent or Scorcher: after 5 hits
+      (with an internal cooldown), you heal for a small amount (6 HP at level 1, 10 HP at level 2).
     </p>
+
+    <p>
+      On top of that, this set has plenty of 1-slots, letting us fit all levels of <b
+        >Recovery Speed</b
+      >. You might wonder why Recovery Speed over Recovery Up. Recovery Up barely affects
+      Arkveld's Hunger (30% of 6 HP is basically nothing), while Recovery Speed unlocks a
+      different healing source. Red health naturally recovers over time, and Recovery
+      Speed 3 makes that 4x faster. Combined with an <b>Immunizer</b>, which stacks
+      multiplicatively, you hit 12x faster red health recovery speed.
+    </p>
+
+    <p>
+      Ultimately, the <b>Immunizer</b> + <b>Recovery Speed</b> combo quickly regenerates red health,
+      while Arkveld's Hunger handles the chip damage (or damage that didn't turn into red health).
+    </p>
+
+    <InfoBox type="tip">
+      <p>
+          Don't skip the <strong>Immunizer</strong>. It stacks multiplicatively with <strong>Recovery Speed</strong> letting you recover red health very quickly.
+      </p>
+    </InfoBox>
 
     <BuildCard
       build={{
         title: 'Comfy Healing',
         description: [
-          "2 AT Arkveld and 2 Numinous pieces unlock both Arkveld's Hunger and Zoh Shia's Pulse.",
-          'The Nadia boots fill in the remaining core skills.',
-          "One point of Gore and Lord's Soul on the weapon keeps our core damage skills covered.",
+          "The 2 AT Arkveld pieces unlock Arkveld's Hunger, while the 2 Jin Dahaad pieces give us Binding Counter.",
+          "A single point of Gore on the weapon and the Gore Greaves round out the remaining core skills.",
         ],
         image: comfy,
         imageAlt: 'comfy healing',
         stats: {
-          raw: 553,
+          raw: 557,
           sharpness: {
             hits: 210,
             type: 'white',
           },
           element: {
             type: 'fire',
-            value: 54,
+            value: 51,
           },
           affinity: {
             avg: 84,
@@ -367,7 +389,7 @@ import gog from '../../../assets/wilds/builds/high-rank/tu4-5-gog.png';
         },
       }}
       link={{
-        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;fireattackinfusion;fireattackinfusion;fireattackinfusion;attackboostex;attackboostex;attackboostiii;attackboostiii;sharpnessammoboostex;arkvulcanhelmgamma;numinousshroudbeta;arkvulcanvambracesgamma;numinousoverlaybeta;sororalbootsalpha;criticaleye;3;?;0;?;0;guardianironwalljwl;masteryjewel;criticaljeweliii;mightyjewel;sanejewel;?;challengerjewel;?;?;sanejewel;sanejewel;?;mightyjewel;?;?;chainjewel;mightyjewel;?;criticaljewel;?;?;elementfocus;goremagalastyranny;lordssoul;;;;;;?',
+        url: 'https://www.mathhunter.ca/lance.html?id=aetherpike;fireattackinfusion;fireattackinfusion;fireattackinfusion;attackboostex;attackboostex;attackboostiii;attackboostiii;sharpnessammoboostex;arkvulcanhelmgamma;dahaadshardmailgamma;arkvulcanvambracesgamma;dahaadshardcoilgamma;goregreavesbeta;criticaleye;3;?;0;?;0;guardianironwalljwl;masteryjewel;criticaljeweliii;mightyjewel;shockproofjewel;?;mightyjewel;mightyjewel;?;sanejewel;sanejewel;?;recoveryjewel;?;?;chainjewel;recoveryjewel;recoveryjewel;criticaljewel;?;?;elementfocus;goremagalastyranny;?;;;;;;?',
         tooltip: 'open in mathhunter',
       }}
     />
