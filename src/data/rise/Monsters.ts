@@ -46,7 +46,7 @@ import magma_almudron from '../../assets/rise/monsters/magma_almudron.png';
 import magnamalo from '../../assets/rise/monsters/magnamalo.png';
 import malzeno from '../../assets/rise/monsters/malzeno.png';
 import mizutsune from '../../assets/rise/monsters/mizutsune.png';
-import nargacuga from '../../assets/rise/monsters/mizutsune.png';
+import nargacuga from '../../assets/rise/monsters/nargacuga.png';
 import narwa_the_allmother from '../../assets/rise/monsters/narwa_the_allmother.png';
 import primordial_malzeno from '../../assets/rise/monsters/primordial_malzeno.png';
 import pukei_pukei from '../../assets/rise/monsters/pukei-pukei.png';
